@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const { DatabaseSync } = require('node:sqlite');
 
-const SCHEMA_VERSION = 2;
+const SCHEMA_VERSION = 3;
 
 let db = null;
 let dbFile = null;
@@ -163,6 +163,21 @@ function migrate() {
       );
     `);
     setVersion(2);
+  }
+
+  // v3 — user edits to the generated study plan, keyed by the week's start date
+  // so they survive the plan being recomputed every day.
+  if (readVersion() < 3) {
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS plan_overrides (
+        week_start TEXT PRIMARY KEY,      -- YYYY-MM-DD, the Monday-ish week start
+        papers TEXT,                      -- JSON array of paper keys, null = keep suggested
+        topics TEXT,                      -- JSON array of topic ids, null = keep suggested
+        note TEXT,
+        updated_at INTEGER NOT NULL
+      );
+    `);
+    setVersion(3);
   }
 }
 
@@ -329,6 +344,7 @@ function exportAll() {
     answerChanges: answerChanges(),
     checklist: checklistDone(1000),
     archives: db.prepare(`SELECT * FROM archives ORDER BY created_at`).all(),
+    planOverrides: planOverrides(),
   };
 }
 
@@ -342,6 +358,7 @@ function importAll(payload) {
     db.exec(`DELETE FROM answer_changes`);
     db.exec(`DELETE FROM checklist_done`);
     db.exec(`DELETE FROM archives`);
+    db.exec(`DELETE FROM plan_overrides`);
     const insA = db.prepare(`
       INSERT INTO attempts (id, mode, year, paper, mock_group, status, started_at, completed_at,
         allowed_sec, elapsed_sec, current_index, finish_reason, score_raw, score_scaled, label,
@@ -372,6 +389,7 @@ function importAll(payload) {
                   VALUES (?,?,?,?,?,?)`)
         .run(c.attempt_id, c.position, c.question_id, c.from_letter ?? null, c.to_letter ?? null, c.at);
     }
+    for (const o of payload.planOverrides || []) planOverrideSet(o);
     for (const c of payload.checklist || []) {
       db.prepare(`INSERT INTO checklist_done (item_key, title, kind, completed_at, dismissed)
                   VALUES (?,?,?,?,?)`)
@@ -504,6 +522,40 @@ function backupNow() {
   return true;
 }
 
+// ---------- study-plan overrides ----------
+
+function planOverrides() {
+  const rows = db.prepare(`SELECT * FROM plan_overrides ORDER BY week_start`).all();
+  return rows.map(r => ({
+    weekStart: r.week_start,
+    papers: r.papers ? JSON.parse(r.papers) : null,
+    topics: r.topics ? JSON.parse(r.topics) : null,
+    note: r.note,
+    updatedAt: r.updated_at,
+  }));
+}
+
+function planOverrideSet({ weekStart, papers, topics, note }) {
+  db.prepare(`
+    INSERT INTO plan_overrides (week_start, papers, topics, note, updated_at)
+    VALUES (?, ?, ?, ?, ?)
+    ON CONFLICT(week_start) DO UPDATE SET
+      papers = excluded.papers, topics = excluded.topics,
+      note = excluded.note, updated_at = excluded.updated_at
+  `).run(
+    weekStart,
+    papers === null || papers === undefined ? null : JSON.stringify(papers),
+    topics === null || topics === undefined ? null : JSON.stringify(topics),
+    note ?? null,
+    Date.now(),
+  );
+}
+
+function planOverrideClear(weekStart) {
+  if (weekStart) db.prepare(`DELETE FROM plan_overrides WHERE week_start = ?`).run(weekStart);
+  else db.exec(`DELETE FROM plan_overrides`);
+}
+
 function getDbPath() { return dbFile; }
 function close() { if (db) { db.close(); db = null; } }
 
@@ -518,4 +570,5 @@ module.exports = {
   checklistDone, checklistComplete, checklistKeysSince,
   archiveList, archiveCreate, archiveRestore, attemptsScoped,
   setErrorType, backupNow, markOffline,
+  planOverrides, planOverrideSet, planOverrideClear,
 };

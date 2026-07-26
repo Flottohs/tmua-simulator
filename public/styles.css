@@ -282,3 +282,15 @@ details > summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 
 /* ---------- review queue ---------- */
 .srs-chip { display: inline-flex; gap: 6px; align-items: center; }
+
+/* ---------- editable study plan ---------- */
+.chip {
+  border: 1px solid var(--line); background: var(--panel); color: var(--ink-soft);
+  border-radius: 99px; padding: 4px 11px; font-size: 12px; font-weight: 600;
+}
+.chip:hover { border-color: var(--accent); color: var(--ink); }
+.chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chip.sat { opacity: .55; }
+.chip.sat.on { opacity: 1; }
+.week-editor { background: var(--panel-2); margin: 4px 0; }
+tr.edited-week > td { background: var(--accent-soft); }

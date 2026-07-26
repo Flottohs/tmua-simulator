@@ -315,11 +315,12 @@ function burnRate(donePapers, unseenCount, daysToExam, now) {
 
 // ---------------------------------------------------------------- study plan
 
-function plan({ attempts, settings, now = Date.now() }) {
+function plan({ attempts, settings, now = Date.now(), overrides = [] }) {
   const cd = coach.countdown(settings, now);
   const done = coach.fullPapers(attempts);
   const attemptedKeys = new Set(done.map(a => `${a.year}-P${a.paper}`));
-  const unseen = content.papers().filter(p => !attemptedKeys.has(p.key));
+  const allPapers = content.papers();
+  const unseen = allPapers.filter(p => !attemptedKeys.has(p.key));
   const diag = coach.topicDiagnostics(attempts).filter(t => t.enoughData);
   const weakOrder = diag.length
     ? diag.map(t => t.topic)
@@ -332,8 +333,16 @@ function plan({ attempts, settings, now = Date.now() }) {
 
   const totalWeeks = Math.max(1, Math.ceil(cd.days / 7));
   const reserve = Math.min(coach.RESERVE_PAPERS, unseen.length);
-  const forSchedule = unseen.slice(0, Math.max(0, unseen.length - reserve));
   const reserved = unseen.slice(unseen.length - reserve);
+
+  // Papers the user has pinned to a specific week are removed from the pool, so
+  // the generator never schedules the same paper twice.
+  const byWeek = new Map(overrides.map(o => [o.weekStart, o]));
+  const pinned = new Set(
+    overrides.flatMap(o => (o.papers || []).map(k => k)));
+  const forSchedule = unseen
+    .slice(0, Math.max(0, unseen.length - reserve))
+    .filter(p => !pinned.has(p.key));
 
   // spread the schedulable papers over the weeks before the final fortnight
   const buildWeeks = Math.max(1, totalWeeks - 2);
@@ -369,19 +378,51 @@ function plan({ attempts, settings, now = Date.now() }) {
         .map(t => ({ topic: t, label: content.getTaxonomy()[t] || t }));
     }
 
+    const startsOn = start.toISOString().slice(0, 10);
+    const ov = byWeek.get(startsOn);
+
+    // an override replaces the suggestion for that week, field by field
+    let finalPapers = papers.map(p => ({ key: p.key, year: p.year, paper: p.paper }));
+    let finalTopics = topics;
+    if (ov) {
+      if (ov.papers) {
+        finalPapers = ov.papers
+          .map(k => allPapers.find(p => p.key === k))
+          .filter(Boolean)
+          .map(p => ({ key: p.key, year: p.year, paper: p.paper }));
+      }
+      if (ov.topics) {
+        finalTopics = ov.topics.map(t => ({ topic: t, label: content.getTaxonomy()[t] || t }));
+      }
+    }
+
     weeks.push({
       index: w + 1,
-      startsOn: start.toISOString().slice(0, 10),
+      startsOn,
       weeksToExam: weeksLeft,
       phase: ph.label,
-      papers: papers.map(p => ({ key: p.key, year: p.year, paper: p.paper })),
+      papers: finalPapers,
+      suggestedPapers: papers.map(p => p.key),
       isMockWeek: mock,
-      topics,
+      topics: finalTopics,
+      note: ov ? ov.note : null,
+      edited: Boolean(ov),
     });
   }
 
+  // anything the user pinned but which no longer fits anywhere is still shown
+  const scheduledKeys = new Set(weeks.flatMap(w => w.papers.map(p => p.key)));
+  const unscheduled = unseen.filter(p => !scheduledKeys.has(p.key)
+    && !reserved.some(r => r.key === p.key));
+
   return {
     countdown: cd, phase: phase(cd.days), weeks,
+    editedWeeks: weeks.filter(w => w.edited).length,
+    unscheduled: unscheduled.map(p => p.key),
+    allPapers: allPapers.map(p => ({
+      key: p.key, year: p.year, paper: p.paper,
+      sat: attemptedKeys.has(p.key),
+    })),
     unseen: unseen.length,
     reserved: unseen.slice(unseen.length - reserve).map(p => p.key),
     papersPerWeek: Math.round(perWeek * 10) / 10,

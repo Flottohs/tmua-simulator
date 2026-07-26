@@ -1603,37 +1603,134 @@ async function viewPlan() {
       el('div', { class: 'card muted' }, plan.note || 'Nothing to plan.'));
   }
 
+  const tax = State.catalog.taxonomy;
+  const label = (k) => (k.startsWith('specimen') ? k.replace('specimen', 'Spec') : k);
+
+  // ---- editing a single week ----
+  const editWeek = (w) => {
+    const chosen = new Set(w.papers.map(p => p.key));
+    const chosenTopics = new Set(w.topics.map(t => t.topic));
+
+    const paperBox = el('div', { class: 'row' });
+    const paintPapers = () => {
+      paperBox.replaceChildren(...plan.allPapers.map(p => el('button', {
+        class: 'chip' + (chosen.has(p.key) ? ' on' : '') + (p.sat ? ' sat' : ''),
+        title: p.sat ? 'You have already sat this one' : '',
+        onclick: () => {
+          if (chosen.has(p.key)) chosen.delete(p.key); else chosen.add(p.key);
+          paintPapers();
+        },
+      }, label(p.key))));
+    };
+    paintPapers();
+
+    const topicBox = el('div', { class: 'row' },
+      Object.entries(tax).map(([id, name]) => {
+        const b = el('button', {
+          class: 'chip' + (chosenTopics.has(id) ? ' on' : ''),
+          onclick: () => {
+            if (chosenTopics.has(id)) chosenTopics.delete(id); else chosenTopics.add(id);
+            b.classList.toggle('on', chosenTopics.has(id));
+          },
+        }, name);
+        return b;
+      }));
+
+    const noteInput = el('input', { type: 'text', placeholder: 'Note for this week (optional)' });
+    noteInput.value = w.note || '';
+
+    const panel = el('div', { class: 'card week-editor' },
+      el('h3', {}, `Week ${w.index} — from ${w.startsOn}`),
+      el('div', { class: 'tiny muted', style: 'margin-bottom:6px' }, 'Papers this week'),
+      paperBox,
+      el('div', { class: 'tiny muted', style: 'margin:12px 0 6px' }, 'Topic focus'),
+      topicBox,
+      el('div', { style: 'margin-top:12px' }, noteInput),
+      el('div', { class: 'row', style: 'margin-top:14px' },
+        el('button', {
+          class: 'btn', onclick: async () => {
+            try {
+              await api.coach.setWeek({
+                weekStart: w.startsOn,
+                papers: [...chosen],
+                topics: [...chosenTopics],
+                note: noteInput.value.trim() || null,
+              });
+              toast('Week updated');
+              render();
+            } catch (e) { toast(e.message); }
+          }
+        }, 'Save week'),
+        w.edited ? el('button', {
+          class: 'btn ghost', onclick: async () => {
+            await api.coach.resetWeek(w.startsOn);
+            toast('Week reset to the suggested plan');
+            render();
+          }
+        }, 'Reset to suggested') : null,
+        el('button', { class: 'btn ghost', onclick: () => render() }, 'Cancel')));
+    return panel;
+  };
+
+  const rows = [];
+  for (const w of plan.weeks) {
+    const editing = State.params.editWeek === w.startsOn;
+    rows.push(el('tr', { class: w.edited ? 'edited-week' : '' },
+      el('td', { class: 'mono' }, String(w.index),
+        w.edited ? el('span', { class: 'pill', style: 'margin-left:6px' }, 'edited') : null),
+      el('td', { class: 'small' }, w.startsOn),
+      el('td', {}, el('span', { class: 'pill ' + (w.isMockWeek ? 'warn' : '') }, w.phase)),
+      el('td', { class: 'small' },
+        w.papers.length
+          ? w.papers.map(p => el('span', { class: 'pill', style: 'margin-right:4px' }, label(p.key)))
+          : el('span', { class: 'muted' }, w.isMockWeek ? 'review + re-sits' : '—')),
+      el('td', { class: 'small muted' },
+        w.topics.length ? w.topics.map(t => t.label).join(' · ')
+          : (w.isMockWeek ? 'consolidation only — no new topics' : '—'),
+        w.note ? el('div', { class: 'tiny', style: 'margin-top:4px;font-style:italic' }, w.note) : null),
+      el('td', {}, el('button', {
+        class: 'btn ghost small',
+        onclick: () => go('plan', { editWeek: editing ? null : w.startsOn }),
+      }, editing ? 'Close' : 'Edit'))));
+    if (editing) {
+      rows.push(el('tr', {}, el('td', { colspan: '6' }, editWeek(w))));
+    }
+  }
+
   return shell('plan',
-    el('h1', {}, 'Study plan'),
+    el('div', { class: 'row', style: 'justify-content:space-between' },
+      el('h1', {}, 'Study plan'),
+      plan.editedWeeks
+        ? el('button', {
+          class: 'btn ghost small', onclick: async () => {
+            if (!confirm('Discard all your edits and go back to the suggested plan?')) return;
+            await api.coach.resetWeek(null);
+            toast('Plan reset'); render();
+          }
+        }, `Reset all edits (${plan.editedWeeks})`)
+        : null),
     el('p', { class: 'small muted' },
       `${plan.countdown.days} days to ${plan.countdown.examDate}. `
       + `${plan.unseen} unseen paper(s), about ${plan.papersPerWeek} per week, `
       + `with ${plan.reserved.length} held back as clean mocks for the final fortnight`
-      + (plan.reserved.length ? ` (${plan.reserved.join(', ')})` : '') + '.'),
+      + (plan.reserved.length ? ` (${plan.reserved.map(label).join(', ')})` : '') + '. '
+      + 'Press Edit on any week to move papers around — your changes stick as the plan recalculates.'),
     review.due
       ? el('div', { class: 'banner info', style: 'margin-bottom:12px' },
         `${review.due} question(s) due for review today — fit these in around the papers below.`)
+      : null,
+    plan.unscheduled.length
+      ? el('div', { class: 'banner', style: 'margin-bottom:12px' },
+        `Not currently scheduled anywhere: ${plan.unscheduled.map(label).join(', ')}. `
+        + 'Add them to a week, or reset your edits.')
       : null,
     plan.note ? el('div', { class: 'banner', style: 'margin-bottom:12px' }, plan.note) : null,
     el('div', { class: 'card table-scroll' },
       el('table', {},
         el('thead', {}, el('tr', {},
           el('th', {}, 'Week'), el('th', {}, 'From'), el('th', {}, 'Phase'),
-          el('th', {}, 'Papers'), el('th', {}, 'Topic focus'))),
-        el('tbody', {}, plan.weeks.map(w => el('tr', {},
-          el('td', { class: 'mono' }, String(w.index)),
-          el('td', { class: 'small' }, w.startsOn),
-          el('td', {}, el('span', {
-            class: 'pill ' + (w.isMockWeek ? 'warn' : '')
-          }, w.phase)),
-          el('td', { class: 'small' },
-            w.papers.length
-              ? w.papers.map(p => el('span', { class: 'pill', style: 'margin-right:4px' },
-                `${p.year === 'specimen' ? 'Spec' : p.year} P${p.paper}`))
-              : el('span', { class: 'muted' }, w.isMockWeek ? 'review + re-sits' : '—')),
-          el('td', { class: 'small muted' },
-            w.topics.length ? w.topics.map(t => t.label).join(' · ')
-              : (w.isMockWeek ? 'consolidation only — no new topics' : '—'))))))));
+          el('th', {}, 'Papers'), el('th', {}, 'Topic focus'), el('th', {}, ''))),
+        el('tbody', {}, rows))));
 }
 
 // ---------------------------------------------------------- offline entry

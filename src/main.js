@@ -464,7 +464,36 @@ function registerIpc() {
   handle('coach:scaled', ({ year, paper, raw }) => coach.scaledFor(year, paper, raw));
 
   handle('coach:plan', ({ archiveId } = {}) =>
-    checklist.plan({ attempts: scopedAttempts(archiveId), settings: currentSettings(), now: nowMs() }));
+    checklist.plan({
+      attempts: scopedAttempts(archiveId), settings: currentSettings(),
+      now: nowMs(), overrides: db.planOverrides(),
+    }));
+
+  handle('plan:setWeek', ({ weekStart, papers, topics, note }) => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(weekStart || ''))) {
+      throw new Error('weekStart must be a date as YYYY-MM-DD');
+    }
+    if (papers != null) {
+      if (!Array.isArray(papers)) throw new Error('papers must be a list');
+      const valid = new Set(content.papers().map(p => p.key));
+      for (const k of papers) {
+        if (!valid.has(k)) throw new Error(`unknown paper '${k}'`);
+      }
+      if (new Set(papers).size !== papers.length) throw new Error('duplicate paper in week');
+    }
+    if (topics != null) {
+      if (!Array.isArray(topics)) throw new Error('topics must be a list');
+      const tax = content.getTaxonomy();
+      for (const t of topics) if (!tax[t]) throw new Error(`unknown topic '${t}'`);
+    }
+    db.planOverrideSet({ weekStart, papers, topics, note });
+    return db.planOverrides();
+  });
+
+  handle('plan:resetWeek', (weekStart) => {
+    db.planOverrideClear(weekStart || null);
+    return db.planOverrides();
+  });
 
   handle('coach:complete', ({ itemKey, title, kind, dismissed }) => {
     db.checklistComplete({ itemKey, title, kind, dismissed });

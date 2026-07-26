@@ -7,7 +7,7 @@ npm test
 ```
 
 runs the content integrity check followed by the full Playwright/Electron suite:
-**168 tests, 168 passed, 0 failed, 0 skipped** (about 2m 50s, including building the `.app`
+**174 tests, 174 passed, 0 failed, 0 skipped** (about 2m 50s, including building the `.app`
 from scratch and launching it from a clean directory).
 
 Three passes so far: the exam engine and content (85 tests), the Study Coach and refinements
@@ -293,7 +293,8 @@ Regenerate either with `npm run qa:pages` (and `npm run qa:ocr` after re-croppin
 | `tests/refinements.spec.js` | 20 | SRS, answer changes, guessing, PDF, offline entry, archive |
 | `tests/qa2-coach.spec.js` | 23 | QA2: harness safety, diagnostics, predictor, countdown |
 | `tests/qa2-behaviour.spec.js` | 25 | QA2: checklist, plan, SRS, stats, data safety, tone |
-| **Total** | **168** | |
+| `tests/plan-edit.spec.js` | 6 | Editable study plan: overrides, pinning, reset, persistence |
+| **Total** | **174** | |
 
 Supporting QA tooling: `pipeline/ocr_crops.py` (independent image + OCR analysis),
 `pipeline/reparse_keys.py` (independent key parser), `pipeline/qa_pages.py` (review pages),
@@ -514,10 +515,11 @@ about random). Auto-submit at timeout still records and reports the blanks.
 
 **§9 Data safety.** Every `DELETE`/`DROP`/`TRUNCATE` in the source is enumerated by a test and
 matched against a list of accounted-for statements, so a new destructive statement cannot be added
-silently. There are no `DROP` or `TRUNCATE` statements at all. The twelve `DELETE` statements are:
+silently. There are no `DROP` or `TRUNCATE` statements at all. The fourteen `DELETE` statements are:
 un-marking a revisit, removing a retired queue entry, the two for an explicit attempt delete,
-removing an archive row on restore, and the seven that clear tables before an import replaces
-history. Archiving is asserted to leave the export byte-identical after restore, to remove archived
+removing an archive row on restore, resetting one study-plan week, and the eight that clear tables
+before an import replaces history. (This audit earned its keep immediately: adding the editable
+study plan introduced two new `DELETE` statements and the test failed until they were justified.) Archiving is asserted to leave the export byte-identical after restore, to remove archived
 runs from the active predictor, and coach data (review queue, archives, checklist history) is
 asserted to survive a `kill -9`.
 
@@ -555,3 +557,23 @@ A representative selection:
 User-facing text is British English throughout. American spellings that remain are API surfaces
 that cannot change: Electron's `canceled` property on dialog results, PyMuPDF's `csGRAY`, and CSS
 keywords such as `color` and `justify-content: center`.
+
+
+---
+
+## Editable study plan
+
+The week-by-week plan is now editable: any week's papers, topic focus and a free-text note can be
+changed, and the edits persist as the plan recalculates each day.
+
+Overrides live in a new `plan_overrides` table (schema v3, additive) keyed by the week's start
+date, so they survive the plan being regenerated. A paper pinned to a week is removed from the
+auto-scheduling pool, so it can never be scheduled twice. Anything pinned that no longer fits is
+surfaced as "not currently scheduled anywhere" rather than silently dropped. Individual weeks reset
+to the suggestion, and there is a reset-all.
+
+Verified (`plan-edit.spec.js`, 6 tests): an edit survives recalculation; a pinned paper appears
+exactly once across the whole plan and no paper is ever duplicated; per-week reset restores the
+original suggestion and reset-all clears everything; invalid edits are rejected (bad date, unknown
+paper, duplicate paper, unknown topic, wrong type); edits survive a restart and travel through
+export/import; and the UI path itself edits and saves a week.

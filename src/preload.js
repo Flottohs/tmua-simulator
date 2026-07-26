@@ -37,6 +37,8 @@ contextBridge.exposeInMainWorld('api', {
     overview: call('coach:overview'),
     diagnostics: call('coach:diagnostics'),
     plan: call('coach:plan'),
+    setWeek: call('plan:setWeek'),
+    resetWeek: call('plan:resetWeek'),
     complete: call('coach:complete'),
     history: call('coach:history'),
     tagError: call('coach:tagError'),

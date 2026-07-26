@@ -510,6 +510,8 @@ test.describe('QA2 §9 — data safety audit', () => {
       'DELETE FROM answer_changes',
       'DELETE FROM checklist_done',
       'DELETE FROM archives',
+      'DELETE FROM plan_overrides WHERE week_start', // resetting one plan week
+      'DELETE FROM plan_overrides',                  // reset-all, and import replace
     ];
     for (const f of found) {
       const ok = expected.some(e => f.includes(e));
