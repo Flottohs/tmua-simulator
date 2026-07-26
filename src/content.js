@@ -92,6 +92,42 @@ function overallScaled(year, rawTotal) {
 
 function hasConversion(year) { return Boolean(conversions[year]); }
 
+// Years that have an official published conversion table, oldest first.
+function conversionYears() {
+  return Object.keys(conversions).sort();
+}
+
+// Raw table for a year/key, or null when that year has none published.
+function rawTable(year, key) {
+  const t = conversions[year];
+  return t && t[key] ? t[key] : null;
+}
+
+// Average number of questions per paper carrying each topic, across the bank.
+// This is what turns a topic accuracy into expected marks lost per paper.
+let perPaperCache = null;
+function topicsPerPaper() {
+  if (perPaperCache) return perPaperCache;
+  const paperKeys = new Set(questions.map(q => `${q.year}-${q.paper}`));
+  const counts = {};
+  for (const q of questions) {
+    for (const t of q.topics) counts[t] = (counts[t] || 0) + 1;
+  }
+  const n = paperKeys.size || 1;
+  perPaperCache = {};
+  for (const [t, c] of Object.entries(counts)) perPaperCache[t] = c / n;
+  return perPaperCache;
+}
+
+// Probability of a blind guess landing, averaged over the bank's option counts.
+let randomRateCache = null;
+function averageRandomRate() {
+  if (randomRateCache !== null) return randomRateCache;
+  const sum = questions.reduce((s, q) => s + 1 / (q.options || 8), 0);
+  randomRateCache = questions.length ? sum / questions.length : 0.2;
+  return randomRateCache;
+}
+
 function imageFileFor(kind, id) {
   const q = byId.get(id);
   if (!q) return null;
@@ -101,4 +137,5 @@ function imageFileFor(kind, id) {
 module.exports = {
   init, get, all, publicQuestion, fullQuestion, papers, paperQuestions,
   scaledScore, overallScaled, hasConversion, getTaxonomy, imageFileFor,
+  conversionYears, rawTable, topicsPerPaper, averageRandomRate,
 };

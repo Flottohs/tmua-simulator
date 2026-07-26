@@ -86,6 +86,8 @@ async function go(view, params = {}) {
 function shell(active, ...content) {
   const nav = [
     ['home', 'Practise'],
+    ['coach', 'Coach'],
+    ['plan', 'Plan'],
     ['history', 'History'],
     ['dashboard', 'Progress'],
     ['revisit', 'Revisit list'],
@@ -141,7 +143,10 @@ async function viewHome() {
     go('exam', { attemptId: a.id });
   };
 
+  const status = await statusBar();
+
   return shell('home',
+    status,
     el('h1', {}, 'Practise'),
     resumable.length ? el('div', { class: 'card', style: 'margin-bottom:16px' },
       el('h2', {}, 'Resume in progress'),
@@ -545,9 +550,13 @@ class Exam {
         el('div', { class: 'card' },
           el('button', {
             class: 'btn', style: 'width:100%', onclick: () => {
-              const unanswered = this.a.questions.filter(x => !x.selected).length;
-              const msg = unanswered
-                ? `${unanswered} question${unanswered === 1 ? '' : 's'} unanswered. Submit anyway?`
+              const blanks = this.a.questions
+                .map((x, i) => (x.selected ? null : i + 1))
+                .filter(Boolean);
+              const msg = blanks.length
+                ? `${blanks.length} question${blanks.length === 1 ? '' : 's'} still blank: `
+                  + `${blanks.join(', ')}.\n\nThere is no negative marking - guess before you `
+                  + `submit rather than leaving them empty.\n\nSubmit anyway?`
                 : 'Submit this paper?';
               if (confirm(msg)) this.finish('submitted');
             }
@@ -756,6 +765,7 @@ async function viewReview() {
         revBtn),
       el('img', { class: 'qimage', src: q.question.image, loading: 'lazy', alt: '' }),
       opts,
+      correct === false ? errorTagger(a.id, q) : null,
       q.notepad ? el('details', { style: 'margin-top:8px' },
         el('summary', {}, 'My working notes'), el('pre', { class: 'small' }, q.notepad)) : null,
       el('details', { style: 'margin-top:8px' },
@@ -1052,6 +1062,33 @@ async function viewRevisit() {
 // ---------------------------------------------------------------- settings
 async function viewSettings() {
   const s = State.settings;
+  const archives = await api.archive.list();
+  const years = [...new Set(State.catalog.papers.map(p => p.year))];
+
+  const targetInput = el('input', { type: 'number', min: '1', max: '9', step: '0.1',
+    value: String(s.targetScore ?? 7) });
+  const examInput = el('input', { type: 'date', value: s.examDate || '2026-10-12' });
+  const accessBox = el('input', { type: 'checkbox', ...(s.accessArranged ? { checked: true } : {}) });
+  const bookedBox = el('input', { type: 'checkbox', ...(s.examBooked ? { checked: true } : {}) });
+  const archiveName = el('input', { type: 'text', placeholder: 'e.g. pre-September run' });
+  const pdfYear = el('select', {}, years.map(y =>
+    el('option', { value: y }, y === 'specimen' ? 'Specimen' : y)));
+  const pdfPaper = el('select', {},
+    el('option', { value: '1' }, 'Paper 1'), el('option', { value: '2' }, 'Paper 2'));
+  const sheetBox = el('input', { type: 'checkbox' });
+  const msBox = el('input', { type: 'checkbox' });
+
+  const saveExam = async () => {
+    try {
+      State.settings = await api.settings.set({
+        targetScore: targetInput.valueAsNumber,
+        examDate: examInput.value,
+        accessArranged: accessBox.checked,
+        examBooked: bookedBox.checked,
+      });
+      toast('Exam settings saved');
+    } catch (e) { toast(e.message); }
+  };
   const totalMins = () => Math.max(1, Math.floor(base.valueAsNumber * (1 + extra.valueAsNumber / 100)));
   const preview = el('strong', {});
 
@@ -1095,6 +1132,71 @@ async function viewSettings() {
         el('button', { class: 'btn', style: 'margin-top:14px', onclick: save }, 'Save settings')),
 
       el('div', { class: 'card' },
+        el('h2', {}, 'Exam & target'),
+        el('div', { class: 'row' },
+          el('label', { class: 'field' }, 'Target score (1.0-9.0)', targetInput),
+          el('label', { class: 'field' }, 'Your booked exam date', examInput)),
+        el('p', { class: 'tiny muted', style: 'margin-top:8px' },
+          'October 2026 sitting runs 12-16 October. Until you enter your booked date the '
+          + 'countdown uses 12 October 2026.'),
+        el('div', { style: 'margin-top:10px' },
+          el('label', { class: 'checkline' }, accessBox,
+            'Access arrangements applied for (25% extra time) - deadline 14 Sep 2026, 6pm'),
+          el('label', { class: 'checkline' }, bookedBox,
+            'Test booked at a Pearson centre - deadline 28 Sep 2026, 6pm')),
+        el('button', { class: 'btn', style: 'margin-top:14px', onclick: saveExam }, 'Save exam settings')),
+
+      el('div', { class: 'card' },
+        el('h2', {}, 'Print a paper'),
+        el('p', { class: 'small muted' },
+          'Export a clean printable PDF with room for working. The questions-only version '
+          + 'contains no answers.'),
+        el('div', { class: 'row' }, pdfYear, pdfPaper),
+        el('div', { style: 'margin-top:8px' },
+          el('label', { class: 'checkline' }, sheetBox, 'Include an answer sheet'),
+          el('label', { class: 'checkline' }, msBox, 'Include the mark scheme (separate pages)')),
+        el('button', {
+          class: 'btn ghost', style: 'margin-top:12px', onclick: async () => {
+            const r = await api.pdf.paper({
+              year: pdfYear.value, paper: Number(pdfPaper.value),
+              includeAnswerSheet: sheetBox.checked, includeMarkScheme: msBox.checked,
+            });
+            if (!r.canceled) toast(`Exported (${Math.round(r.bytes / 1024)} KB)`);
+          }
+        }, 'Export paper as PDF')),
+
+      el('div', { class: 'card' },
+        el('h2', {}, 'Archives'),
+        el('p', { class: 'small muted' },
+          'Archiving moves your completed attempts out of the active dashboard so a fresh run '
+          + 'starts clean. Nothing is deleted - archives stay browsable and restorable, and a '
+          + 'backup is taken first.'),
+        el('div', { class: 'row' }, archiveName,
+          el('button', {
+            class: 'btn', onclick: async () => {
+              const name = archiveName.value.trim();
+              if (!name) return toast('Give the archive a name');
+              if (!confirm(`Archive all completed attempts as "${name}"? `
+                + 'Your active analytics will start fresh. Nothing is deleted.')) return;
+              const r = await api.archive.create({ name });
+              toast(`Archived ${r.moved} attempt(s)`); render();
+            }
+          }, 'Archive current run')),
+        archives.length
+          ? el('table', { style: 'margin-top:12px' }, el('tbody', {}, archives.map(a => el('tr', {},
+            el('td', {}, a.name),
+            el('td', { class: 'mono small' }, `${a.attempts} attempts`),
+            el('td', { class: 'small muted' }, fmtDate(a.created_at)),
+            el('td', {}, el('button', {
+              class: 'btn ghost small', onclick: async () => {
+                if (!confirm(`Restore "${a.name}" back into your active history?`)) return;
+                const r = await api.archive.restore(a.id);
+                toast(`Restored ${r.restored} attempt(s)`); render();
+              }
+            }, 'Restore')))))) 
+          : el('p', { class: 'tiny muted', style: 'margin-top:10px' }, 'No archives yet.')),
+
+      el('div', { class: 'card' },
         el('h2', {}, 'Your data'),
         el('p', { class: 'small muted' },
           'Everything is stored locally in a single SQLite file. A timestamped backup is taken on every launch (last 20 kept).'),
@@ -1116,7 +1218,9 @@ async function viewSettings() {
             }
           }, 'Import history')),
         el('p', { class: 'tiny muted', style: 'margin-top:14px' },
-          'This app makes no network requests. All questions, solutions and score conversions are bundled inside it.'))));
+          'This app makes no network requests. All questions, solutions and score conversions are bundled inside it.'),
+        el('button', { class: 'btn ghost small', style: 'margin-top:10px',
+          onclick: () => go('about') }, 'About & format note'))));
 }
 
 // ---------------------------------------------------------------- router
@@ -1124,6 +1228,7 @@ const VIEWS = {
   home: viewHome, drill: viewDrill, exam: viewExam, break: viewBreak,
   results: viewResults, review: viewReview, history: viewHistory,
   dashboard: viewDashboard, revisit: viewRevisit, settings: viewSettings,
+  coach: viewCoach, plan: viewPlan, offline: viewOffline, about: viewAbout,
 };
 
 async function render() {
@@ -1151,3 +1256,506 @@ async function render() {
   await go('home');
   window.__ready = true;
 })();
+
+// ================================================================ Study Coach
+
+function scoreState(predicted, target) {
+  if (predicted === null || predicted === undefined) return 'unknown';
+  if (predicted >= target) return 'ontrack';
+  if (predicted >= target - 0.5) return 'close';
+  return 'offtrack';
+}
+
+// Always-visible countdown + predicted-score strip on the home screen.
+async function statusBar() {
+  const ov = await api.coach.overview({});
+  const cd = ov.countdown;
+  const pred = ov.prediction;
+  const likely = pred.ready && pred.overall ? pred.overall.mostLikely : null;
+  const state = scoreState(likely, cd.target);
+  const gap = likely === null ? null : Math.round((cd.target - likely) * 10) / 10;
+
+  const warnings = cd.deadlines.filter(d => d.warn && !d.passed);
+  const missed = cd.deadlines.filter(d => d.passed && !d.done);
+
+  const next = ov.checklist[0] || null;
+
+  return el('div', { class: `statusbar state-${state}` },
+    el('div', { class: 'sb-block' },
+      el('div', { class: 'sb-label' }, cd.isPast ? 'Exam was' : 'Exam in'),
+      el('div', { class: 'sb-value mono' }, cd.daysLabel),
+      el('div', { class: 'sb-sub' },
+        cd.isPast ? cd.examDate
+          : `${cd.weeks} week${cd.weeks === 1 ? '' : 's'} · ${cd.examDate}`)),
+
+    el('div', { class: 'sb-block' },
+      el('div', { class: 'sb-label' }, 'Papers left'),
+      el('div', { class: 'sb-value mono' }, `${ov.corePapersLeft} of ${ov.totalCorePapers}`),
+      el('div', { class: 'sb-sub' }, 'undone')),
+
+    el('div', { class: 'sb-block grow' },
+      el('div', { class: 'sb-label' }, 'Predicted score'),
+      pred.ready && likely !== null
+        ? el('div', {},
+          el('div', { class: 'sb-value mono' },
+            `${likely.toFixed(1)} → target ${cd.target.toFixed(1)}`,
+            el('span', { class: `pill ${state === 'ontrack' ? 'good' : state === 'close' ? 'warn' : 'bad'}`,
+              style: 'margin-left:10px' },
+              state === 'ontrack' ? 'on track' : state === 'close' ? 'close' : 'off track')),
+          el('div', { class: 'sb-sub' },
+            gap > 0 ? `gap ${gap.toFixed(1)} · range ${pred.overall.low.toFixed(1)}–${pred.overall.high.toFixed(1)}`
+              : `range ${pred.overall.low.toFixed(1)}–${pred.overall.high.toFixed(1)}`))
+        : el('div', {},
+          el('div', { class: 'sb-value mono' }, '—'),
+          el('div', { class: 'sb-sub' }, pred.message || 'need more data'))),
+
+    el('div', { class: 'sb-block' },
+      next
+        ? el('button', {
+          class: 'btn', onclick: () => runChecklistAction(next)
+        }, 'Next: ' + shortTitle(next.title))
+        : el('button', { class: 'btn ghost', onclick: () => go('coach') }, 'Open coach')),
+
+    (warnings.length || missed.length)
+      ? el('div', { class: 'sb-warnings' },
+        warnings.map(d => el('div', { class: 'banner' },
+          `${d.label}: ${d.days} day${d.days === 1 ? '' : 's'} left — not yet ticked off. `,
+          el('button', {
+            class: 'btn small', style: 'margin-left:8px', onclick: () => go('settings')
+          }, 'Mark done'))),
+        missed.map(d => el('div', { class: 'banner' },
+          `${d.label}: deadline passed and still not ticked off.`)))
+      : null);
+}
+
+function shortTitle(t) {
+  return t.length > 42 ? t.slice(0, 40).trim() + '…' : t;
+}
+
+async function runChecklistAction(item) {
+  const a = item.action || {};
+  try {
+    if (a.type === 'drill') {
+      let ids = a.questionIds;
+      if (!ids) {
+        const res = await api.drill.build({
+          source: 'all', topics: a.topics || [], shuffle: true, limit: 20,
+        });
+        ids = res.ids;
+      }
+      if (!ids.length) return toast('No questions available for that drill');
+      const at = await api.attempt.start({
+        mode: 'drill', questionIds: ids, untimed: a.untimed !== false,
+        label: a.label || 'Drill',
+      });
+      await api.coach.complete({ itemKey: item.key, title: item.title, kind: item.kind });
+      return go('exam', { attemptId: at.id });
+    }
+    if (a.type === 'review') {
+      const sess = await api.review.session({ cap: a.cap });
+      if (!sess.ids.length) return toast('Nothing due for review right now');
+      const at = await api.attempt.start({
+        mode: 'drill', questionIds: sess.ids, untimed: true,
+        label: `Review · ${sess.ids.length} due`,
+      });
+      await api.coach.complete({ itemKey: item.key, title: item.title, kind: item.kind });
+      return go('exam', { attemptId: at.id });
+    }
+    if (a.type === 'paper') {
+      const at = await api.attempt.start({ mode: 'paper', year: a.year, paper: a.paper });
+      await api.coach.complete({ itemKey: item.key, title: item.title, kind: item.kind });
+      return go('exam', { attemptId: at.id });
+    }
+    if (a.type === 'mock') {
+      const group = `mock-${a.year}-${Date.now()}`;
+      const at = await api.attempt.start({ mode: 'mock', year: a.year, paper: 1, mockGroup: group });
+      await api.coach.complete({ itemKey: item.key, title: item.title, kind: item.kind });
+      return go('exam', { attemptId: at.id });
+    }
+    if (a.type === 'offline-entry') return go('offline');
+    return go('home');
+  } catch (err) {
+    toast(err.message);
+  }
+}
+
+async function viewCoach() {
+  const ov = await api.coach.overview({});
+  const diag = await api.coach.diagnostics({});
+  const doneHistory = await api.coach.history();
+  const pred = ov.prediction;
+  const cd = ov.countdown;
+
+  const kindPill = {
+    retry: 'flag', study: '', habit: 'warn', paper: 'good', consolidate: '',
+  };
+
+  const predictionCard = el('div', { class: 'card' },
+    el('h2', {}, 'Predicted score'),
+    !pred.ready
+      ? el('div', {},
+        el('p', { class: 'small' }, pred.message),
+        el('p', { class: 'tiny muted' },
+          `A prediction from fewer than ${pred.minPapers} papers would be noise, not information.`))
+      : el('div', {},
+        el('div', { class: 'grid cols-3' },
+          el('div', { class: 'stat' },
+            el('div', { class: 'label' }, 'Overall, most likely'),
+            el('div', { class: 'value' }, pred.overall.mostLikely.toFixed(1)),
+            el('div', { class: 'small muted' },
+              `range ${pred.overall.low.toFixed(1)} – ${pred.overall.high.toFixed(1)}`)),
+          el('div', { class: 'stat' },
+            el('div', { class: 'label' }, 'Paper 1'),
+            el('div', { class: 'value' },
+              pred.perPaper[1] ? pred.perPaper[1].scaled.toFixed(1) : '—'),
+            el('div', { class: 'small muted' },
+              pred.perPaper[1] ? `${pred.perPaper[1].predictedRaw} raw · ${pred.perPaper[1].attempts} attempts` : 'none sat')),
+          el('div', { class: 'stat' },
+            el('div', { class: 'label' }, 'Paper 2'),
+            el('div', { class: 'value' },
+              pred.perPaper[2] ? pred.perPaper[2].scaled.toFixed(1) : '—'),
+            el('div', { class: 'small muted' },
+              pred.perPaper[2] ? `${pred.perPaper[2].predictedRaw} raw · ${pred.perPaper[2].attempts} attempts` : 'none sat'))),
+        el('p', { class: 'small', style: 'margin-top:12px' },
+          `Based on your last ${Math.min(pred.papers, 6)} papers, weighted toward recent results. `,
+          `Confidence: ${pred.confidence} (${pred.papers} papers).`,
+          pred.anyEstimated
+            ? ' Some papers have no official conversion table, so their scaled values are estimated from the published years.'
+            : ''),
+        pred.trajectory
+          ? el('div', { class: 'banner ' + (pred.trajectory.reachesTarget ? 'info' : ''), style: 'margin-top:10px' },
+            pred.trajectory.reachesTarget
+              ? `At your current rate (${pred.trajectory.perWeek >= 0 ? '+' : ''}${pred.trajectory.perWeek}/week) you reach about ${pred.trajectory.projected.toFixed(1)} by ${cd.examDate} — at or above your ${cd.target.toFixed(1)} target.`
+              : `At your current rate (${pred.trajectory.perWeek >= 0 ? '+' : ''}${pred.trajectory.perWeek}/week) you reach about ${pred.trajectory.projected.toFixed(1)} by ${cd.examDate}. You need ${pred.trajectory.shortfall.toFixed(1)} more than that trend gives you.`)
+          : null,
+        pred.gap && pred.gap.totalMarksShort > 0
+          ? el('div', { style: 'margin-top:12px' },
+            el('h3', {}, `Closing the gap to ${cd.target.toFixed(1)}`),
+            el('p', { class: 'small' },
+              `You need roughly `,
+              el('strong', {}, `${pred.gap.totalMarksShort} more raw marks`),
+              ` across the two papers`,
+              pred.gap.byPaper[1] && pred.gap.byPaper[1].marksShort
+                ? ` (Paper 1: ${pred.gap.byPaper[1].marksShort}` : '',
+              pred.gap.byPaper[2] && pred.gap.byPaper[2].marksShort
+                ? `, Paper 2: ${pred.gap.byPaper[2].marksShort})` : ')'),
+            pred.gap.recoverable.length
+              ? el('p', { class: 'small' },
+                `About ${pred.gap.recoverableTotal} of those marks are realistically available in `,
+                el('strong', {}, pred.gap.recoverable.map(r => r.label).join(', ')),
+                ' — lifting each to 80% accuracy.')
+              : null)
+          : null));
+
+  const checklistCard = el('div', {},
+    el('div', { class: 'row', style: 'justify-content:space-between;align-items:baseline' },
+      el('h2', {}, 'Do this next'),
+      el('span', { class: 'pill' }, `Phase: ${ov.phase.label}`)),
+    el('p', { class: 'small muted' }, ov.phase.blurb),
+    el('div', { class: 'grid cols-2' },
+      ov.checklist.map(item => el('div', { class: 'card coach-item' },
+        el('div', { class: 'row', style: 'justify-content:space-between;align-items:flex-start' },
+          el('h3', { style: 'margin:0' }, item.title),
+          el('span', { class: 'pill ' + (kindPill[item.kind] || '') }, item.kind)),
+        el('p', { class: 'small', style: 'margin-top:8px' },
+          el('strong', {}, 'Why: '), item.why),
+        item.how ? el('p', { class: 'small' }, el('strong', {}, 'How: '), item.how) : null,
+        el('div', { class: 'row', style: 'margin-top:10px' },
+          item.minutes > 0
+            ? el('span', { class: 'pill' }, item.minutes >= 60
+              ? `${Math.round(item.minutes / 60 * 10) / 10} h`
+              : `${item.minutes} min`)
+            : null,
+          el('div', { class: 'spacer' }),
+          el('button', {
+            class: 'btn ghost small', onclick: async () => {
+              await api.coach.complete({
+                itemKey: item.key, title: item.title, kind: item.kind, dismissed: true,
+              });
+              toast('Dismissed for a week'); render();
+            }
+          }, 'Dismiss'),
+          el('button', {
+            class: 'btn small', onclick: () => runChecklistAction(item)
+          }, 'Start')))),
+    ),
+    ov.suppressed
+      ? el('p', { class: 'tiny muted' }, `${ov.suppressed} lower-priority item(s) hidden to keep this list short.`)
+      : null);
+
+  const topicRows = diag.topics.map(t => el('tr', {},
+    el('td', {}, t.label),
+    el('td', { class: 'mono' }, `${t.correct}/${t.seen}`),
+    el('td', { class: 'mono' }, t.enoughData ? pct(t.accuracy) : '—'),
+    el('td', { class: 'mono' }, t.questionsPerPaper),
+    el('td', { class: 'mono' },
+      t.enoughData
+        ? el('strong', {}, String(t.expectedMarksLost))
+        : el('span', { class: 'tiny muted' }, `need ${t.needMore} more`)),
+    el('td', {}, el('span', {
+      class: 'pill ' + (t.trend === 'improving' ? 'good' : t.trend === 'regressing' ? 'bad' : '')
+    }, t.trend)),
+    el('td', {}, el('button', {
+      class: 'btn ghost small', onclick: () => runChecklistAction({
+        key: `manual-${t.topic}`, title: `Drill ${t.label}`, kind: 'retry',
+        action: { type: 'drill', topics: [t.topic], untimed: true, label: `Drill · ${t.label}` },
+      })
+    }, 'Drill'))));
+
+  const err = diag.errors;
+  const errorCard = el('div', { class: 'card' },
+    el('h2', {}, 'Why you lose marks'),
+    err.tagged < 5
+      ? el('p', { class: 'small muted' },
+        `Only ${err.tagged} wrong answer(s) tagged so far. Tag them in Review — the fix for careless slips is nothing like the fix for a conceptual gap.`)
+      : el('div', {},
+        el('table', {}, el('tbody', {},
+          Object.entries(err.counts).filter(([, n]) => n > 0).map(([k, n]) => el('tr', {},
+            el('td', {}, err.labels[k]),
+            el('td', { class: 'mono' }, String(n)),
+            el('td', { style: 'width:45%' },
+              el('div', { class: 'bar' }, el('i', { style: `width:${(n / err.tagged) * 100}%` }))))))),
+        el('p', { class: 'small', style: 'margin-top:8px' },
+          `${err.tagged} tagged, ${err.untagged} still untagged.`)),
+    el('div', { class: 'row', style: 'margin-top:10px' },
+      el('button', {
+        class: 'btn ghost small', onclick: async () => {
+          const rows = await api.history.list();
+          const done = rows.find(r => r.status === 'completed');
+          if (!done) return toast('No completed attempt to tag yet');
+          go('review', { attemptId: done.id });
+        }
+      }, 'Tag wrong answers in Review')));
+
+  const g = diag.guessing;
+  const ch = diag.changes;
+  const habitsCard = el('div', { class: 'card' },
+    el('h2', {}, 'Exam habits'),
+    el('table', {}, el('tbody', {},
+      el('tr', {},
+        el('td', {}, 'Blank at submit'),
+        el('td', { class: 'mono' }, String(g.blanks)),
+        el('td', { class: 'small muted' },
+          g.blanks ? `≈ ${g.marksThrownAway} marks thrown away — there is no negative marking`
+            : 'nothing left blank')),
+      el('tr', {},
+        el('td', {}, 'Accuracy when sure'),
+        el('td', { class: 'mono' }, g.sureAccuracy === null ? '—' : pct(g.sureAccuracy)),
+        el('td', { class: 'small muted' },
+          g.sureWrong ? `${g.sureWrong} confident but wrong — misconceptions` : '')),
+      el('tr', {},
+        el('td', {}, 'Accuracy when unsure'),
+        el('td', { class: 'mono' }, g.unsureAccuracy === null ? '—' : pct(g.unsureAccuracy)),
+        el('td', { class: 'small muted' },
+          g.unsureVerdict === 'trust'
+            ? `Well above the ${pct(g.randomRate)} random rate — your educated guesses are worth making`
+            : g.unsureVerdict === 'eliminate'
+              ? `Near the ${pct(g.randomRate)} random rate — work on elimination technique`
+              : 'need more marked answers')),
+      el('tr', {},
+        el('td', {}, 'Answers changed'),
+        el('td', { class: 'mono' }, String(ch.total)),
+        el('td', { class: 'small muted' },
+          ch.enoughData
+            ? `${ch.helped} helped, ${ch.hurt} hurt, ${ch.neutral} neutral — net ${ch.net >= 0 ? '+' : ''}${ch.net} marks`
+            : `need ${ch.minSample}+ changes before this means anything`)))));
+
+  const doneCard = doneHistory.length
+    ? el('div', { class: 'card' },
+      el('h2', {}, 'Recently completed'),
+      el('table', {}, el('tbody', {}, doneHistory.slice(0, 12).map(d => el('tr', {},
+        el('td', { class: 'small' }, d.title),
+        el('td', {}, el('span', { class: 'pill ' + (d.dismissed ? '' : 'good') },
+          d.dismissed ? 'dismissed' : 'done')),
+        el('td', { class: 'small muted' }, fmtDate(d.completed_at)))))))
+    : null;
+
+  return shell('coach',
+    el('h1', {}, 'Coach'),
+    checklistCard,
+    el('div', { style: 'margin-top:18px' }, predictionCard),
+    el('h2', { style: 'margin:22px 0 10px' }, 'Where the marks go'),
+    el('p', { class: 'small muted' },
+      `Ranked by expected marks lost per paper — accuracy × how often the topic actually appears. `
+      + `A topic needs ${diag.minSample} attempted questions before it can be called a weakness.`),
+    el('div', { class: 'card table-scroll' },
+      el('table', {},
+        el('thead', {}, el('tr', {},
+          el('th', {}, 'Topic'), el('th', {}, 'Correct'), el('th', {}, 'Accuracy'),
+          el('th', {}, 'Per paper'), el('th', {}, 'Marks lost'), el('th', {}, 'Trend'), el('th', {}, ''))),
+        el('tbody', {}, topicRows))),
+    el('div', { class: 'grid cols-2', style: 'margin-top:18px' }, errorCard, habitsCard),
+    diag.split.weaker
+      ? el('div', { class: 'banner', style: 'margin-top:16px' },
+        `Paper ${diag.split.weaker} is dragging your total down: `
+        + `Paper 1 averages ${diag.split.paper1.avgScaled ?? '—'}, Paper 2 ${diag.split.paper2.avgScaled ?? '—'} `
+        + `(gap ${diag.split.gap}). Weight your practice toward Paper ${diag.split.weaker}.`)
+      : null,
+    doneCard ? el('div', { style: 'margin-top:18px' }, doneCard) : null);
+}
+
+async function viewPlan() {
+  const plan = await api.coach.plan({});
+  const review = await api.review.summary();
+
+  if (!plan.weeks.length) {
+    return shell('plan', el('h1', {}, 'Study plan'),
+      el('div', { class: 'card muted' }, plan.note || 'Nothing to plan.'));
+  }
+
+  return shell('plan',
+    el('h1', {}, 'Study plan'),
+    el('p', { class: 'small muted' },
+      `${plan.countdown.days} days to ${plan.countdown.examDate}. `
+      + `${plan.unseen} unseen paper(s), about ${plan.papersPerWeek} per week, `
+      + `with ${plan.reserved.length} held back as clean mocks for the final fortnight`
+      + (plan.reserved.length ? ` (${plan.reserved.join(', ')})` : '') + '.'),
+    review.due
+      ? el('div', { class: 'banner info', style: 'margin-bottom:12px' },
+        `${review.due} question(s) due for review today — fit these in around the papers below.`)
+      : null,
+    plan.note ? el('div', { class: 'banner', style: 'margin-bottom:12px' }, plan.note) : null,
+    el('div', { class: 'card table-scroll' },
+      el('table', {},
+        el('thead', {}, el('tr', {},
+          el('th', {}, 'Week'), el('th', {}, 'From'), el('th', {}, 'Phase'),
+          el('th', {}, 'Papers'), el('th', {}, 'Topic focus'))),
+        el('tbody', {}, plan.weeks.map(w => el('tr', {},
+          el('td', { class: 'mono' }, String(w.index)),
+          el('td', { class: 'small' }, w.startsOn),
+          el('td', {}, el('span', {
+            class: 'pill ' + (w.isMockWeek ? 'warn' : '')
+          }, w.phase)),
+          el('td', { class: 'small' },
+            w.papers.length
+              ? w.papers.map(p => el('span', { class: 'pill', style: 'margin-right:4px' },
+                `${p.year === 'specimen' ? 'Spec' : p.year} P${p.paper}`))
+              : el('span', { class: 'muted' }, w.isMockWeek ? 'review + re-sits' : '—')),
+          el('td', { class: 'small muted' },
+            w.topics.length ? w.topics.map(t => t.label).join(' · ')
+              : (w.isMockWeek ? 'consolidation only — no new topics' : '—'))))))));
+}
+
+// ---------------------------------------------------------- offline entry
+async function viewOffline() {
+  const years = [...new Set(State.catalog.papers.map(p => p.year))];
+  const yearSel = el('select', {}, years.map(y =>
+    el('option', { value: y }, y === 'specimen' ? 'Specimen' : y)));
+  const paperSel = el('select', {},
+    el('option', { value: '1' }, 'Paper 1'), el('option', { value: '2' }, 'Paper 2'));
+  const minutesInput = el('input', { type: 'number', min: '1', max: '600', value: '93' });
+  const dateInput = el('input', { type: 'date', value: new Date().toISOString().slice(0, 10) });
+
+  const inputs = [];
+  const grid = el('div', { class: 'answer-entry' },
+    Array.from({ length: 20 }, (_, i) => {
+      const inp = el('input', {
+        type: 'text', maxlength: '1', class: 'ans-box',
+        oninput: e => {
+          e.target.value = e.target.value.toUpperCase().replace(/[^A-H]/g, '');
+          if (e.target.value && inputs[i + 1]) inputs[i + 1].focus();
+        },
+      });
+      inputs.push(inp);
+      return el('label', { class: 'ans-cell' }, el('span', { class: 'tiny muted' }, String(i + 1)), inp);
+    }));
+
+  const submit = async () => {
+    const answers = inputs.map(i => (i.value ? i.value : null));
+    const filled = answers.filter(Boolean).length;
+    if (!filled) return toast('Enter at least one answer');
+    if (filled < 20 && !confirm(`${20 - filled} question(s) left blank. Record anyway?`)) return;
+    try {
+      const res = await api.offline.record({
+        year: yearSel.value, paper: Number(paperSel.value), answers,
+        minutes: minutesInput.valueAsNumber, when: dateInput.value,
+      });
+      toast(`Recorded — ${res.scoreRaw}/20`);
+      go('results', { attemptId: res.id });
+    } catch (e) { toast(e.message); }
+  };
+
+  return shell('home',
+    el('h1', {}, 'Enter answers from paper'),
+    el('p', { class: 'small muted' },
+      'Sat a paper on printed sheets? Type your answers here and it counts toward your history, '
+      + 'analytics and predicted score, tagged as an offline attempt.'),
+    el('div', { class: 'card' },
+      el('div', { class: 'row' },
+        el('label', { class: 'field' }, 'Paper', el('div', { class: 'row' }, yearSel, paperSel)),
+        el('label', { class: 'field' }, 'Minutes taken', minutesInput),
+        el('label', { class: 'field' }, 'Date sat', dateInput)),
+      el('h3', { style: 'margin-top:16px' }, 'Your answers'),
+      el('p', { class: 'tiny muted' }, 'Leave a box empty for a question you did not answer.'),
+      grid,
+      el('div', { class: 'row', style: 'margin-top:16px' },
+        el('button', { class: 'btn', onclick: submit }, 'Record this attempt'),
+        el('button', { class: 'btn ghost', onclick: () => go('home') }, 'Cancel'))));
+}
+
+// ---------------------------------------------------------- about
+async function viewAbout() {
+  return shell('settings',
+    el('h1', {}, 'About'),
+    el('div', { class: 'card' },
+      el('h2', {}, 'Papers in this app'),
+      el('p', {},
+        'Every paper bundled here is from the ',
+        el('strong', {}, 'Cambridge Assessment era, 2016–2023'),
+        '. UAT-UK took over the TMUA in 2024 and the format and specification shifted slightly.'),
+      el('p', { class: 'small' },
+        'The maths being tested is the same, and these papers remain the best practice material '
+        + 'available in volume. But before exam day you should sit at least one recent '
+        + 'specimen or practice paper from the current provider so the layout on the day is not a '
+        + 'surprise. The Coach adds this as a checklist item in your final month.'),
+      el('p', { class: 'small muted' },
+        'This app makes no network requests, so that download is something you do yourself. '
+        + 'Once you have sat it on paper, record it with "Enter answers from paper" so it counts '
+        + 'toward your analytics and predicted score.'),
+      el('div', { class: 'row', style: 'margin-top:12px' },
+        el('button', { class: 'btn ghost', onclick: () => go('offline') }, 'Enter answers from paper'),
+        el('button', { class: 'btn ghost', onclick: () => go('settings') }, 'Back to settings'))),
+    el('div', { class: 'card', style: 'margin-top:16px' },
+      el('h2', {}, 'Privacy'),
+      el('p', { class: 'small' },
+        'Everything stays on this machine. The app blocks all outbound network requests at the '
+        + 'process level, and the only data stored is your own: attempts, answers, flags, notes, '
+        + 'settings and the review queue.')));
+}
+
+
+// Tag why a question was lost. The suggestion comes from signals the app
+// already has, so tagging is a confirmation rather than data entry.
+const ERROR_LABELS = {
+  conceptual: 'Conceptual gap',
+  careless: 'Careless slip',
+  misread: 'Misread it',
+  time: 'Time / rushed',
+  guess: 'Guessed blind',
+};
+
+function errorTagger(attemptId, q) {
+  let current = q.errorType || null;
+  const suggested = q.suggestedError || null;
+  const row = el('div', { class: 'errtags' });
+  const paint = () => {
+    [...row.children].forEach(btn => {
+      btn.className = btn.dataset.key === current ? 'on' : '';
+      if (btn.dataset.key === suggested && !current) btn.classList.add('suggested');
+    });
+  };
+  for (const [key, label] of Object.entries(ERROR_LABELS)) {
+    row.append(el('button', {
+      'data-key': key,
+      onclick: async () => {
+        current = current === key ? null : key;
+        await api.coach.tagError({ attemptId, position: q.position, errorType: current });
+        paint();
+      },
+    }, label));
+  }
+  paint();
+  return el('div', { style: 'margin-top:10px' },
+    el('div', { class: 'tiny muted' }, 'Why did you lose this one?'),
+    row);
+}

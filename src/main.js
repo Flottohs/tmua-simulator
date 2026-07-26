@@ -10,6 +10,10 @@ const url = require('url');
 const db = require('./db');
 const content = require('./content');
 const analytics = require('./analytics');
+const coach = require('./coach');
+const srs = require('./srs');
+const checklist = require('./checklist');
+const pdf = require('./pdf');
 
 const DEFAULT_SETTINGS = {
   baseMinutes: 75,
@@ -18,6 +22,7 @@ const DEFAULT_SETTINGS = {
   hideTimer: false,
   darkMode: false,
   sound: true,
+  ...require('./coach').DEFAULTS,
 };
 
 let mainWindow = null;
@@ -71,6 +76,8 @@ function currentSettings() {
 }
 
 function attemptPayload(attempt, { reveal }) {
+  const times = attempt.questions.map(q => q.time_spent).filter(t => t > 0).sort((a, b) => a - b);
+  const medianTime = times.length ? times[Math.floor(times.length / 2)] : 0;
   const questions = attempt.questions.map(q => {
     const meta = content.get(q.question_id);
     const view = reveal ? content.fullQuestion(meta) : content.publicQuestion(meta);
@@ -82,6 +89,8 @@ function attemptPayload(attempt, { reveal }) {
       timeSpent: q.time_spent,
       notepad: q.notepad,
       correct: q.correct === null ? null : Boolean(q.correct),
+      errorType: q.error_type || null,
+      suggestedError: reveal && q.correct === 0 ? coach.suggestErrorType(q, medianTime) : null,
       question: view,
     };
   });
@@ -109,9 +118,45 @@ function scoreAttempt(attempt, reason, elapsedSec) {
   if (attempt.mode !== 'drill' && attempt.year && attempt.paper && attempt.questions.length === 20) {
     scaled = content.scaledScore(attempt.year, attempt.paper, raw);
   }
-  return db.finishAttempt(attempt.id, {
+  const done = db.finishAttempt(attempt.id, {
     reason, elapsedSec: elapsedSec ?? attempt.elapsed_sec, marks, scoreRaw: raw, scoreScaled: scaled,
   });
+  updateReviewQueue(done);
+  return done;
+}
+
+// Every scored attempt feeds the spaced-repetition queue: wrong answers enter
+// (or reset), correct ones advance the schedule, flags enter at low priority.
+function updateReviewQueue(attempt, now = Date.now()) {
+  for (const q of attempt.questions) {
+    const meta = content.get(q.question_id);
+    if (!meta) continue;
+    const correct = q.correct === null ? null : Boolean(q.correct);
+    let source = null;
+    if (correct === false) {
+      source = q.confidence === 'sure' ? 'sure_wrong' : 'wrong';
+    } else if (q.flagged) {
+      source = 'flag';
+    }
+    const existing = db.reviewGet(q.question_id);
+    // a correct answer only matters if the question is already being tracked
+    if (!existing && correct !== false && !q.flagged) continue;
+    const row = srs.applyResult(existing, {
+      questionId: q.question_id,
+      source: source || (existing ? existing.source : 'wrong'),
+      correct,
+      now,
+    });
+    db.reviewUpsert(row);
+  }
+  // anything on the manual revisit list is tracked too, at low priority
+  for (const r of db.revisitList()) {
+    if (!db.reviewGet(r.question_id)) {
+      db.reviewUpsert(srs.applyResult(null, {
+        questionId: r.question_id, source: 'revisit', correct: null, now,
+      }));
+    }
+  }
 }
 
 // ---------- IPC ----------
@@ -145,7 +190,9 @@ function registerIpc() {
       extraTimePercent: [0, 200],
       breakMinutes: [0, 120],
     };
-    const boolean = ['hideTimer', 'darkMode', 'sound'];
+    const boolean = ['hideTimer', 'darkMode', 'sound', 'accessArranged', 'examBooked'];
+    const dates = ['examDate', 'examWindowEnd', 'resultsDate'];
+    const isoish = ['accessDeadline', 'bookingDeadline'];
     for (const [k, v] of Object.entries(patch)) {
       if (numeric[k]) {
         const [lo, hi] = numeric[k];
@@ -153,6 +200,19 @@ function registerIpc() {
           throw new Error(`${k} must be a number`);
         }
         if (v < lo || v > hi) throw new Error(`${k} must be between ${lo} and ${hi}`);
+      } else if (k === 'targetScore') {
+        if (typeof v !== 'number' || !Number.isFinite(v) || v < 1 || v > 9) {
+          throw new Error('targetScore must be between 1.0 and 9.0');
+        }
+      } else if (dates.includes(k)) {
+        if (typeof v !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(v)
+            || Number.isNaN(Date.parse(`${v}T09:00:00`))) {
+          throw new Error(`${k} must be a date as YYYY-MM-DD`);
+        }
+      } else if (isoish.includes(k)) {
+        if (typeof v !== 'string' || Number.isNaN(Date.parse(v))) {
+          throw new Error(`${k} must be a valid date-time`);
+        }
       } else if (boolean.includes(k)) {
         if (typeof v !== 'boolean') throw new Error(`${k} must be true or false`);
       } else {
@@ -191,7 +251,16 @@ function registerIpc() {
   });
 
   handle('attempt:answer', ({ attemptId, position, selected, confidence }) => {
+    const before = db.getAttempt(attemptId);
+    const prev = before && before.questions[position] ? before.questions[position].selected : null;
     db.saveAnswer(attemptId, position, { selected, confidence });
+    // a change is replacing one letter with a different letter, not first entry
+    if (prev && selected && prev !== selected) {
+      db.logAnswerChange({
+        attemptId, position, questionId: before.questions[position].question_id,
+        from: prev, to: selected,
+      });
+    }
     return true;
   });
   handle('attempt:confidence', ({ attemptId, position, confidence }) => {
@@ -222,8 +291,8 @@ function registerIpc() {
   handle('attempt:abandon', (attemptId) => { db.abandonAttempt(attemptId); return true; });
   handle('attempt:delete', (attemptId) => { db.deleteAttempt(attemptId); return true; });
 
-  handle('history:list', () => {
-    const attempts = db.listAttemptsFull();
+  handle('history:list', ({ archiveId } = {}) => {
+    const attempts = db.attemptsScoped(archiveId);
     return attempts.map(a => ({
       id: a.id, mode: a.mode, year: a.year, paper: a.paper, status: a.status,
       label: a.label, mockGroup: a.mock_group,
@@ -234,7 +303,7 @@ function registerIpc() {
     }));
   });
 
-  handle('analytics:dashboard', () => analytics.dashboard(db.listAttemptsFull()));
+  handle('analytics:dashboard', ({ archiveId } = {}) => analytics.dashboard(db.attemptsScoped(archiveId)));
 
   handle('revisit:list', () => db.revisitList().map(r => {
     const meta = content.get(r.question_id);
@@ -248,7 +317,7 @@ function registerIpc() {
 
   // Build a custom drill set from filters.
   handle('drill:build', (filters) => {
-    const attempts = db.listAttemptsFull().filter(a => a.status === 'completed');
+    const attempts = db.attemptsScoped(filters.archiveId).filter(a => a.status === 'completed');
     const wrong = new Set();
     const flagged = new Set();
     for (const a of attempts) {
@@ -338,6 +407,166 @@ function registerIpc() {
     shell.showItemInFolder(db.getDbPath());
     return true;
   });
+
+  // ---------- Study Coach ----------
+
+  const scopedAttempts = (archiveId) => db.attemptsScoped(archiveId);
+
+  handle('coach:overview', ({ archiveId } = {}) => {
+    const attempts = scopedAttempts(archiveId);
+    const settings = currentSettings();
+    const now = Date.now();
+    const reviewRows = db.reviewAll();
+    const doneKeys = new Set(db.checklistKeysSince(now - 7 * 86400000).map(r => r.item_key));
+    const list = checklist.build({
+      attempts, reviewRows, changes: db.answerChanges(), settings, now, doneKeys,
+    });
+    const attempted = new Set(coach.fullPapers(attempts).map(a => `${a.year}-P${a.paper}`));
+    return {
+      countdown: list.countdown,
+      phase: list.phase,
+      prediction: coach.predict(attempts, settings, now),
+      checklist: list.items,
+      suppressed: list.suppressed,
+      context: list.context,
+      review: srs.summary(reviewRows, now),
+      papersLeft: content.papers().filter(p => !attempted.has(p.key)).length,
+      corePapersLeft: content.papers()
+        .filter(p => p.year !== 'specimen' && !attempted.has(p.key)).length,
+      totalCorePapers: content.papers().filter(p => p.year !== 'specimen').length,
+      settings,
+    };
+  });
+
+  handle('coach:diagnostics', ({ archiveId } = {}) => {
+    const attempts = scopedAttempts(archiveId);
+    return {
+      topics: coach.topicDiagnostics(attempts),
+      split: coach.paperSplit(attempts),
+      errors: coach.errorMix(attempts),
+      pacing: coach.pacing(attempts),
+      guessing: coach.guessing(attempts),
+      changes: coach.answerChangeStats(db.answerChanges(), attempts),
+      minSample: coach.MIN_TOPIC_SAMPLE,
+    };
+  });
+
+  handle('coach:plan', ({ archiveId } = {}) =>
+    checklist.plan({ attempts: scopedAttempts(archiveId), settings: currentSettings() }));
+
+  handle('coach:complete', ({ itemKey, title, kind, dismissed }) => {
+    db.checklistComplete({ itemKey, title, kind, dismissed });
+    return db.checklistDone(50);
+  });
+  handle('coach:history', () => db.checklistDone(100));
+
+  handle('coach:tagError', ({ attemptId, position, errorType }) => {
+    const allowed = Object.keys(coach.ERROR_TYPES);
+    if (errorType !== null && !allowed.includes(errorType)) {
+      throw new Error(`unknown error type '${errorType}'`);
+    }
+    db.setErrorType(attemptId, position, errorType);
+    return true;
+  });
+
+  // ---------- spaced repetition ----------
+
+  handle('review:summary', () => srs.summary(db.reviewAll()));
+  handle('review:list', () => srs.dueList(db.reviewAll()));
+  handle('review:all', () => db.reviewAll().map(r => srs.decorate(r, Date.now())));
+  handle('review:stubborn', () => srs.stubborn(db.reviewAll()));
+  handle('review:session', ({ cap } = {}) => {
+    const picked = srs.session(db.reviewAll(), Date.now(), cap || srs.SESSION_CAP);
+    return { ids: picked.map(p => p.questionId), items: picked };
+  });
+
+  // ---------- archives ----------
+
+  handle('archive:list', () => db.archiveList());
+  handle('archive:create', ({ name, note }) => {
+    if (!name || !String(name).trim()) throw new Error('An archive needs a name');
+    db.backupNow();                       // never archive without a backup first
+    return db.archiveCreate(String(name).trim(), note);
+  });
+  handle('archive:restore', (id) => {
+    db.backupNow();
+    return db.archiveRestore(id);
+  });
+
+  // ---------- offline (paper) attempt entry ----------
+
+  handle('offline:record', ({ year, paper, answers, minutes, when }) => {
+    const questions = content.paperQuestions(year, paper);
+    if (!questions.length) throw new Error('No such paper');
+    if (!Array.isArray(answers) || answers.length !== questions.length) {
+      throw new Error(`Expected ${questions.length} answers`);
+    }
+    for (const a of answers) {
+      if (a !== null && !/^[A-H]$/.test(a)) throw new Error(`Invalid answer '${a}'`);
+    }
+    const mins = Number(minutes);
+    if (!Number.isFinite(mins) || mins <= 0 || mins > 600) {
+      throw new Error('Minutes must be between 1 and 600');
+    }
+    const attempt = db.createAttempt({
+      mode: 'paper', year, paper,
+      allowedSec: Math.round(mins * 60),
+      questionIds: questions.map(q => q.id),
+      settings: {}, label: 'Sat on paper',
+    });
+    answers.forEach((sel, i) => {
+      if (sel) db.saveAnswer(attempt.id, i, { selected: sel });
+    });
+    db.markOffline(attempt.id, when ? new Date(when).getTime() : Date.now());
+    const fresh = db.getAttempt(attempt.id);
+    const done = scoreAttempt(fresh, 'submitted', Math.round(mins * 60));
+    return attemptPayload(done, { reveal: true });
+  });
+
+  // ---------- PDF export ----------
+
+  handle('pdf:paper', async ({ year, paper, includeAnswerSheet, includeMarkScheme, working }) => {
+    const label = year === 'specimen' ? 'Specimen' : year;
+    const { canceled, filePath } = await dialog.showSaveDialog(mainWindow, {
+      title: 'Export paper as PDF',
+      defaultPath: `TMUA ${label} Paper ${paper}.pdf`,
+      filters: [{ name: 'PDF', extensions: ['pdf'] }],
+    });
+    if (canceled || !filePath) return { canceled: true };
+    const res = await pdf.exportPaper({
+      year, paper, outPath: filePath,
+      working: working !== false,
+      includeAnswerSheet: Boolean(includeAnswerSheet),
+      includeMarkScheme: Boolean(includeMarkScheme),
+      minutes: allowedMinutes(currentSettings()),
+    });
+    return { canceled: false, ...res };
+  });
+
+  handle('pdf:drill', async ({ questionIds, title, includeMarkScheme }) => {
+    const { canceled, filePath } = await dialog.showSaveDialog(mainWindow, {
+      title: 'Export drill as PDF',
+      defaultPath: `${(title || 'TMUA drill').replace(/[^\w -]/g, '')}.pdf`,
+      filters: [{ name: 'PDF', extensions: ['pdf'] }],
+    });
+    if (canceled || !filePath) return { canceled: true };
+    const res = await pdf.exportDrill({
+      questionIds, outPath: filePath, title: title || 'TMUA custom drill',
+      includeMarkScheme: Boolean(includeMarkScheme),
+    });
+    return { canceled: false, ...res };
+  });
+
+  // dialog-free variants for the verification suite
+  handle('pdf:paperTo', ({ year, paper, outPath, includeAnswerSheet, includeMarkScheme }) =>
+    pdf.exportPaper({
+      year, paper, outPath,
+      includeAnswerSheet: Boolean(includeAnswerSheet),
+      includeMarkScheme: Boolean(includeMarkScheme),
+      minutes: allowedMinutes(currentSettings()),
+    }));
+  handle('pdf:drillTo', ({ questionIds, outPath, title, includeMarkScheme }) =>
+    pdf.exportDrill({ questionIds, outPath, title, includeMarkScheme: Boolean(includeMarkScheme) }));
 
   // used by the offline test
   handle('debug:blockedRequests', () => blockedRequests);

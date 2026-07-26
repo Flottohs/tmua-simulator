@@ -240,3 +240,45 @@ details > summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
   background: var(--panel-2); font-size: 12px; font-family: ui-monospace, monospace;
 }
 .checkline { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+
+/* ---------- study coach ---------- */
+.statusbar {
+  display: flex; gap: 26px; align-items: center; flex-wrap: wrap;
+  background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--accent);
+  border-radius: var(--radius); padding: 14px 18px; margin-bottom: 18px; box-shadow: var(--shadow);
+}
+.statusbar.state-ontrack { border-left-color: var(--good); }
+.statusbar.state-close   { border-left-color: var(--warn); }
+.statusbar.state-offtrack{ border-left-color: var(--bad); }
+.statusbar.state-unknown { border-left-color: var(--line); }
+.sb-block { display: flex; flex-direction: column; gap: 2px; }
+.sb-block.grow { flex: 1; min-width: 240px; }
+.sb-label { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); }
+.sb-value { font-size: 20px; font-weight: 650; letter-spacing: -.01em; }
+.sb-sub { font-size: 12px; color: var(--ink-soft); }
+.sb-warnings { flex-basis: 100%; display: grid; gap: 8px; }
+
+.coach-item { display: flex; flex-direction: column; }
+.coach-item h3 { font-size: 15px; }
+
+/* ---------- offline answer entry ---------- */
+.answer-entry {
+  display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; margin-top: 10px;
+}
+.ans-cell { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.ans-box {
+  width: 100%; text-align: center; font-size: 16px; font-weight: 600;
+  text-transform: uppercase; padding: 8px 0;
+}
+@media (max-width: 900px) { .answer-entry { grid-template-columns: repeat(5, 1fr); } }
+
+/* ---------- error tagging ---------- */
+.errtags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.errtags button { font-size: 12px; padding: 4px 9px; border-radius: 7px;
+  border: 1px solid var(--line); background: var(--panel); color: var(--ink-soft); }
+.errtags button.on { background: var(--warn-soft); color: var(--warn);
+  border-color: var(--warn); font-weight: 600; }
+.errtags .suggested::after { content: ' (suggested)'; opacity: .6; }
+
+/* ---------- review queue ---------- */
+.srs-chip { display: inline-flex; gap: 6px; align-items: center; }

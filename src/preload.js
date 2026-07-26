@@ -33,5 +33,30 @@ contextBridge.exposeInMainWorld('api', {
     export: call('data:export'), import: call('data:import'), reveal: call('data:reveal'),
     exportPayload: call('data:exportPayload'), importPayload: call('data:importPayload'),
   },
+  coach: {
+    overview: call('coach:overview'),
+    diagnostics: call('coach:diagnostics'),
+    plan: call('coach:plan'),
+    complete: call('coach:complete'),
+    history: call('coach:history'),
+    tagError: call('coach:tagError'),
+  },
+  review: {
+    summary: call('review:summary'),
+    list: call('review:list'),
+    all: call('review:all'),
+    stubborn: call('review:stubborn'),
+    session: call('review:session'),
+  },
+  archive: {
+    list: call('archive:list'),
+    create: call('archive:create'),
+    restore: call('archive:restore'),
+  },
+  offline: { record: call('offline:record') },
+  pdf: {
+    paper: call('pdf:paper'), drill: call('pdf:drill'),
+    paperTo: call('pdf:paperTo'), drillTo: call('pdf:drillTo'),
+  },
   debug: { blockedRequests: call('debug:blockedRequests') },
 });
