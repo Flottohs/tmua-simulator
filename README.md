@@ -90,8 +90,9 @@ To back up manually, copy the whole `data/` folder while the app is closed.
 Question images are cropped from the original PDFs by a Python pipeline. Crop boundaries live in
 data files, so a bad crop is a data edit — not a code change.
 
-1. **See the problem.** Open `pipeline/qa.html` in a browser: it shows all 360 crops in a grid with
-   each question's id, answer, and a link to its solution.
+1. **See the problem.** Open `qa/gallery.html` in a browser: all 360 crops and their worked
+   solutions in a grid, each with its option count, answer and pixel size. Click **mark bad** on
+   anything that looks wrong, then **Download fix list JSON** to get the ids.
 2. **Find the id**, e.g. `2019-P1-Q07`. Its current boundaries are in `data/crop-manifest.json`.
 3. **Override it** in `data/crop-overrides.json` (create the entry if absent). Coordinates are PDF
    points, measured from the top of the page:
@@ -109,7 +110,7 @@ data files, so a bad crop is a data edit — not a code change.
 
    ```bash
    pipeline/.venv/bin/python pipeline/crop.py
-   pipeline/.venv/bin/python pipeline/qa_page.py
+   npm run qa:ocr && npm run qa:pages
    ```
 
 If a question's *option count* is wrong (this happens when the options are diagrams rather than text
