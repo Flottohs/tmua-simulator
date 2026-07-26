@@ -1,0 +1,2882 @@
+{
+ "2016-P1-Q01": {
+  "w": 1448,
+  "h": 1126,
+  "ink": 0.01207,
+  "qnum": 1,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2016-P1-Q02": {
+  "w": 1448,
+  "h": 792,
+  "ink": 0.02577,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P1-Q03": {
+  "w": 1448,
+  "h": 1060,
+  "ink": 0.01523,
+  "qnum": 3,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P1-Q04": {
+  "w": 1448,
+  "h": 988,
+  "ink": 0.00935,
+  "qnum": null,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2016-P1-Q05": {
+  "w": 1448,
+  "h": 863,
+  "ink": 0.01085,
+  "qnum": 5,
+  "letters": "ADEF",
+  "highest": "F"
+ },
+ "2016-P1-Q06": {
+  "w": 1448,
+  "h": 1081,
+  "ink": 0.03044,
+  "qnum": 6,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P1-Q07": {
+  "w": 1448,
+  "h": 1213,
+  "ink": 0.02539,
+  "qnum": 7,
+  "letters": "A",
+  "highest": "A"
+ },
+ "2016-P1-Q08": {
+  "w": 1448,
+  "h": 842,
+  "ink": 0.01445,
+  "qnum": 8,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2016-P1-Q09": {
+  "w": 1448,
+  "h": 924,
+  "ink": 0.03327,
+  "qnum": 9,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P1-Q10": {
+  "w": 1448,
+  "h": 796,
+  "ink": 0.00958,
+  "qnum": 10,
+  "letters": "EFG",
+  "highest": "G"
+ },
+ "2016-P1-Q11": {
+  "w": 1448,
+  "h": 907,
+  "ink": 0.01418,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P1-Q12": {
+  "w": 1448,
+  "h": 1642,
+  "ink": 0.02389,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P1-Q13": {
+  "w": 1448,
+  "h": 727,
+  "ink": 0.00929,
+  "qnum": 13,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2016-P1-Q14": {
+  "w": 1448,
+  "h": 1085,
+  "ink": 0.0226,
+  "qnum": null,
+  "letters": "",
+  "highest": null
+ },
+ "2016-P1-Q15": {
+  "w": 1448,
+  "h": 913,
+  "ink": 0.01122,
+  "qnum": 15,
+  "letters": "ABE",
+  "highest": "E"
+ },
+ "2016-P1-Q16": {
+  "w": 1448,
+  "h": 907,
+  "ink": 0.01264,
+  "qnum": 16,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2016-P1-Q17": {
+  "w": 1448,
+  "h": 1062,
+  "ink": 0.01427,
+  "qnum": 17,
+  "letters": "D",
+  "highest": "D"
+ },
+ "2016-P1-Q18": {
+  "w": 1448,
+  "h": 811,
+  "ink": 0.01705,
+  "qnum": 18,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P1-Q19": {
+  "w": 1448,
+  "h": 761,
+  "ink": 0.02182,
+  "qnum": 19,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2016-P1-Q20": {
+  "w": 1448,
+  "h": 1377,
+  "ink": 0.02192,
+  "qnum": 20,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2016-P2-Q01": {
+  "w": 1448,
+  "h": 1140,
+  "ink": 0.00581,
+  "qnum": 1,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P2-Q02": {
+  "w": 1448,
+  "h": 915,
+  "ink": 0.012,
+  "qnum": null,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2016-P2-Q03": {
+  "w": 1448,
+  "h": 971,
+  "ink": 0.01246,
+  "qnum": 3,
+  "letters": "ABF",
+  "highest": "F"
+ },
+ "2016-P2-Q04": {
+  "w": 1448,
+  "h": 1084,
+  "ink": 0.03401,
+  "qnum": null,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2016-P2-Q05": {
+  "w": 1448,
+  "h": 799,
+  "ink": 0.01691,
+  "qnum": 5,
+  "letters": "ADE",
+  "highest": "E"
+ },
+ "2016-P2-Q06": {
+  "w": 1448,
+  "h": 1670,
+  "ink": 0.01657,
+  "qnum": null,
+  "letters": "ABCDFGH",
+  "highest": "H"
+ },
+ "2016-P2-Q07": {
+  "w": 1448,
+  "h": 1625,
+  "ink": 0.04279,
+  "qnum": 7,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2016-P2-Q08": {
+  "w": 1448,
+  "h": 1256,
+  "ink": 0.0169,
+  "qnum": 8,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2016-P2-Q09": {
+  "w": 1448,
+  "h": 1231,
+  "ink": 0.06798,
+  "qnum": 9,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2016-P2-Q10": {
+  "w": 1448,
+  "h": 813,
+  "ink": 0.01557,
+  "qnum": 10,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P2-Q11": {
+  "w": 1448,
+  "h": 1392,
+  "ink": 0.02858,
+  "qnum": 11,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2016-P2-Q12": {
+  "w": 1448,
+  "h": 870,
+  "ink": 0.03691,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P2-Q13": {
+  "w": 1448,
+  "h": 1457,
+  "ink": 0.0383,
+  "qnum": 13,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2016-P2-Q14": {
+  "w": 1448,
+  "h": 974,
+  "ink": 0.02941,
+  "qnum": null,
+  "letters": "ABCE",
+  "highest": "E"
+ },
+ "2016-P2-Q15": {
+  "w": 1448,
+  "h": 907,
+  "ink": 0.02379,
+  "qnum": 15,
+  "letters": "AB",
+  "highest": "B"
+ },
+ "2016-P2-Q16": {
+  "w": 1448,
+  "h": 1706,
+  "ink": 0.02103,
+  "qnum": 16,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "2016-P2-Q17": {
+  "w": 1448,
+  "h": 1468,
+  "ink": 0.02695,
+  "qnum": 17,
+  "letters": "ABDEFGH",
+  "highest": "H"
+ },
+ "2016-P2-Q18": {
+  "w": 1448,
+  "h": 1017,
+  "ink": 0.01886,
+  "qnum": 18,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2016-P2-Q19": {
+  "w": 1448,
+  "h": 1672,
+  "ink": 0.02817,
+  "qnum": null,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2016-P2-Q20": {
+  "w": 1448,
+  "h": 996,
+  "ink": 0.01959,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2017-P1-Q01": {
+  "w": 1448,
+  "h": 898,
+  "ink": 0.01565,
+  "qnum": 1,
+  "letters": "AE",
+  "highest": "E"
+ },
+ "2017-P1-Q02": {
+  "w": 1448,
+  "h": 715,
+  "ink": 0.01196,
+  "qnum": 2,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2017-P1-Q03": {
+  "w": 1448,
+  "h": 703,
+  "ink": 0.02091,
+  "qnum": 3,
+  "letters": "ADE",
+  "highest": "E"
+ },
+ "2017-P1-Q04": {
+  "w": 1448,
+  "h": 637,
+  "ink": 0.01887,
+  "qnum": 4,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2017-P1-Q05": {
+  "w": 1448,
+  "h": 1011,
+  "ink": 0.02551,
+  "qnum": null,
+  "letters": "ABCDFGH",
+  "highest": "H"
+ },
+ "2017-P1-Q06": {
+  "w": 1448,
+  "h": 743,
+  "ink": 0.02154,
+  "qnum": 6,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2017-P1-Q07": {
+  "w": 1448,
+  "h": 703,
+  "ink": 0.0286,
+  "qnum": 7,
+  "letters": "ABD",
+  "highest": "D"
+ },
+ "2017-P1-Q08": {
+  "w": 1448,
+  "h": 626,
+  "ink": 0.02104,
+  "qnum": 8,
+  "letters": "ABD",
+  "highest": "D"
+ },
+ "2017-P1-Q09": {
+  "w": 1448,
+  "h": 861,
+  "ink": 0.02073,
+  "qnum": 9,
+  "letters": "ABCDEFH",
+  "highest": "H"
+ },
+ "2017-P1-Q10": {
+  "w": 1448,
+  "h": 1008,
+  "ink": 0.0174,
+  "qnum": null,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2017-P1-Q11": {
+  "w": 1448,
+  "h": 787,
+  "ink": 0.01464,
+  "qnum": null,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2017-P1-Q12": {
+  "w": 1448,
+  "h": 867,
+  "ink": 0.02732,
+  "qnum": null,
+  "letters": "AEF",
+  "highest": "F"
+ },
+ "2017-P1-Q13": {
+  "w": 1448,
+  "h": 730,
+  "ink": 0.02061,
+  "qnum": 13,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2017-P1-Q14": {
+  "w": 1448,
+  "h": 1068,
+  "ink": 0.01128,
+  "qnum": null,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2017-P1-Q15": {
+  "w": 1448,
+  "h": 1399,
+  "ink": 0.05043,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2017-P1-Q16": {
+  "w": 1448,
+  "h": 866,
+  "ink": 0.02295,
+  "qnum": null,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2017-P1-Q17": {
+  "w": 1448,
+  "h": 838,
+  "ink": 0.01865,
+  "qnum": null,
+  "letters": "ABDE",
+  "highest": "E"
+ },
+ "2017-P1-Q18": {
+  "w": 1448,
+  "h": 758,
+  "ink": 0.02051,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2017-P1-Q19": {
+  "w": 1448,
+  "h": 824,
+  "ink": 0.02333,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2017-P1-Q20": {
+  "w": 1448,
+  "h": 675,
+  "ink": 0.03694,
+  "qnum": 20,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2017-P2-Q01": {
+  "w": 1448,
+  "h": 635,
+  "ink": 0.02026,
+  "qnum": 1,
+  "letters": "DF",
+  "highest": "F"
+ },
+ "2017-P2-Q02": {
+  "w": 1448,
+  "h": 692,
+  "ink": 0.01804,
+  "qnum": 2,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2017-P2-Q03": {
+  "w": 1448,
+  "h": 953,
+  "ink": 0.01508,
+  "qnum": 3,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2017-P2-Q04": {
+  "w": 1448,
+  "h": 1514,
+  "ink": 0.03773,
+  "qnum": 4,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2017-P2-Q05": {
+  "w": 1448,
+  "h": 1039,
+  "ink": 0.02547,
+  "qnum": 5,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2017-P2-Q06": {
+  "w": 1448,
+  "h": 1291,
+  "ink": 0.00984,
+  "qnum": 6,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2017-P2-Q07": {
+  "w": 1448,
+  "h": 1742,
+  "ink": 0.01837,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2017-P2-Q08": {
+  "w": 1448,
+  "h": 714,
+  "ink": 0.01045,
+  "qnum": 8,
+  "letters": "ABDE",
+  "highest": "E"
+ },
+ "2017-P2-Q09": {
+  "w": 1448,
+  "h": 1484,
+  "ink": 0.04249,
+  "qnum": 9,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2017-P2-Q10": {
+  "w": 1448,
+  "h": 568,
+  "ink": 0.02574,
+  "qnum": null,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2017-P2-Q11": {
+  "w": 1448,
+  "h": 1006,
+  "ink": 0.02954,
+  "qnum": 11,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2017-P2-Q12": {
+  "w": 1448,
+  "h": 1527,
+  "ink": 0.02481,
+  "qnum": 12,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2017-P2-Q13": {
+  "w": 1448,
+  "h": 1158,
+  "ink": 0.0168,
+  "qnum": 13,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2017-P2-Q14": {
+  "w": 1448,
+  "h": 1756,
+  "ink": 0.02509,
+  "qnum": 14,
+  "letters": "",
+  "highest": null
+ },
+ "2017-P2-Q15": {
+  "w": 1448,
+  "h": 962,
+  "ink": 0.02216,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2017-P2-Q16": {
+  "w": 1448,
+  "h": 773,
+  "ink": 0.02354,
+  "qnum": 16,
+  "letters": "ACD",
+  "highest": "D"
+ },
+ "2017-P2-Q17": {
+  "w": 1448,
+  "h": 1194,
+  "ink": 0.05862,
+  "qnum": 17,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2017-P2-Q18": {
+  "w": 1448,
+  "h": 1784,
+  "ink": 0.02331,
+  "qnum": 18,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2017-P2-Q19": {
+  "w": 1448,
+  "h": 743,
+  "ink": 0.01631,
+  "qnum": 19,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "2017-P2-Q20": {
+  "w": 1448,
+  "h": 775,
+  "ink": 0.04685,
+  "qnum": 20,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2018-P1-Q01": {
+  "w": 1448,
+  "h": 755,
+  "ink": 0.0062,
+  "qnum": 1,
+  "letters": "AE",
+  "highest": "E"
+ },
+ "2018-P1-Q02": {
+  "w": 1448,
+  "h": 694,
+  "ink": 0.02266,
+  "qnum": 2,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q03": {
+  "w": 1448,
+  "h": 686,
+  "ink": 0.01139,
+  "qnum": 3,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2018-P1-Q04": {
+  "w": 1448,
+  "h": 1050,
+  "ink": 0.01634,
+  "qnum": 4,
+  "letters": "ABDEFG",
+  "highest": "G"
+ },
+ "2018-P1-Q05": {
+  "w": 1448,
+  "h": 801,
+  "ink": 0.02302,
+  "qnum": 5,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2018-P1-Q06": {
+  "w": 1448,
+  "h": 613,
+  "ink": 0.01028,
+  "qnum": 6,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2018-P1-Q07": {
+  "w": 1448,
+  "h": 660,
+  "ink": 0.01428,
+  "qnum": 7,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q08": {
+  "w": 1448,
+  "h": 684,
+  "ink": 0.0196,
+  "qnum": 8,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q09": {
+  "w": 1448,
+  "h": 734,
+  "ink": 0.01335,
+  "qnum": 9,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q10": {
+  "w": 1448,
+  "h": 612,
+  "ink": 0.01569,
+  "qnum": 10,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q11": {
+  "w": 1448,
+  "h": 679,
+  "ink": 0.01175,
+  "qnum": 11,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q12": {
+  "w": 1448,
+  "h": 1219,
+  "ink": 0.01101,
+  "qnum": 12,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q13": {
+  "w": 1448,
+  "h": 1045,
+  "ink": 0.01702,
+  "qnum": 13,
+  "letters": "A",
+  "highest": "A"
+ },
+ "2018-P1-Q14": {
+  "w": 1448,
+  "h": 624,
+  "ink": 0.01982,
+  "qnum": 14,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q15": {
+  "w": 1448,
+  "h": 641,
+  "ink": 0.01146,
+  "qnum": 15,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q16": {
+  "w": 1448,
+  "h": 656,
+  "ink": 0.01913,
+  "qnum": 16,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q17": {
+  "w": 1448,
+  "h": 816,
+  "ink": 0.03152,
+  "qnum": 17,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2018-P1-Q18": {
+  "w": 1448,
+  "h": 508,
+  "ink": 0.01525,
+  "qnum": 18,
+  "letters": "BCDE",
+  "highest": "E"
+ },
+ "2018-P1-Q19": {
+  "w": 1448,
+  "h": 804,
+  "ink": 0.02292,
+  "qnum": 19,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P1-Q20": {
+  "w": 1448,
+  "h": 610,
+  "ink": 0.01184,
+  "qnum": 20,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P2-Q01": {
+  "w": 1448,
+  "h": 753,
+  "ink": 0.00921,
+  "qnum": 1,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2018-P2-Q02": {
+  "w": 1448,
+  "h": 650,
+  "ink": 0.01085,
+  "qnum": 2,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P2-Q03": {
+  "w": 1448,
+  "h": 1432,
+  "ink": 0.04084,
+  "qnum": 3,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2018-P2-Q04": {
+  "w": 1448,
+  "h": 651,
+  "ink": 0.01647,
+  "qnum": 4,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2018-P2-Q05": {
+  "w": 1448,
+  "h": 693,
+  "ink": 0.02855,
+  "qnum": 5,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2018-P2-Q06": {
+  "w": 1448,
+  "h": 562,
+  "ink": 0.02233,
+  "qnum": null,
+  "letters": "ABDE",
+  "highest": "E"
+ },
+ "2018-P2-Q07": {
+  "w": 1448,
+  "h": 868,
+  "ink": 0.02405,
+  "qnum": 7,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2018-P2-Q08": {
+  "w": 1448,
+  "h": 1895,
+  "ink": 0.04015,
+  "qnum": 8,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2018-P2-Q09": {
+  "w": 1448,
+  "h": 1873,
+  "ink": 0.02901,
+  "qnum": 9,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2018-P2-Q10": {
+  "w": 1448,
+  "h": 1123,
+  "ink": 0.04554,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2018-P2-Q11": {
+  "w": 1448,
+  "h": 962,
+  "ink": 0.02607,
+  "qnum": 11,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2018-P2-Q12": {
+  "w": 1448,
+  "h": 1230,
+  "ink": 0.05815,
+  "qnum": 12,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2018-P2-Q13": {
+  "w": 1448,
+  "h": 1506,
+  "ink": 0.0277,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P2-Q14": {
+  "w": 1448,
+  "h": 792,
+  "ink": 0.01775,
+  "qnum": 14,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2018-P2-Q15": {
+  "w": 1448,
+  "h": 1036,
+  "ink": 0.02362,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2018-P2-Q16": {
+  "w": 1448,
+  "h": 1041,
+  "ink": 0.0278,
+  "qnum": 16,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2018-P2-Q17": {
+  "w": 1448,
+  "h": 1081,
+  "ink": 0.05167,
+  "qnum": 17,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2018-P2-Q18": {
+  "w": 1448,
+  "h": 843,
+  "ink": 0.02282,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2018-P2-Q19": {
+  "w": 1448,
+  "h": 598,
+  "ink": 0.01696,
+  "qnum": 19,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2018-P2-Q20": {
+  "w": 1448,
+  "h": 669,
+  "ink": 0.02133,
+  "qnum": 20,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2019-P1-Q01": {
+  "w": 1448,
+  "h": 725,
+  "ink": 0.01862,
+  "qnum": 1,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2019-P1-Q02": {
+  "w": 1448,
+  "h": 884,
+  "ink": 0.01654,
+  "qnum": 2,
+  "letters": "ABDEGH",
+  "highest": "H"
+ },
+ "2019-P1-Q03": {
+  "w": 1448,
+  "h": 753,
+  "ink": 0.01283,
+  "qnum": 3,
+  "letters": "ABCDEGH",
+  "highest": "H"
+ },
+ "2019-P1-Q04": {
+  "w": 1448,
+  "h": 1029,
+  "ink": 0.01012,
+  "qnum": 4,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2019-P1-Q05": {
+  "w": 1448,
+  "h": 767,
+  "ink": 0.01422,
+  "qnum": 5,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2019-P1-Q06": {
+  "w": 1448,
+  "h": 817,
+  "ink": 0.01511,
+  "qnum": 6,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "2019-P1-Q07": {
+  "w": 1448,
+  "h": 887,
+  "ink": 0.01326,
+  "qnum": 7,
+  "letters": "AF",
+  "highest": "F"
+ },
+ "2019-P1-Q08": {
+  "w": 1448,
+  "h": 739,
+  "ink": 0.02885,
+  "qnum": 8,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2019-P1-Q09": {
+  "w": 1448,
+  "h": 708,
+  "ink": 0.01356,
+  "qnum": 9,
+  "letters": "ABDEFG",
+  "highest": "G"
+ },
+ "2019-P1-Q10": {
+  "w": 1448,
+  "h": 696,
+  "ink": 0.00548,
+  "qnum": 10,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2019-P1-Q11": {
+  "w": 1448,
+  "h": 932,
+  "ink": 0.01046,
+  "qnum": 11,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2019-P1-Q12": {
+  "w": 1448,
+  "h": 846,
+  "ink": 0.01143,
+  "qnum": 12,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2019-P1-Q13": {
+  "w": 1448,
+  "h": 701,
+  "ink": 0.00964,
+  "qnum": 13,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2019-P1-Q14": {
+  "w": 1448,
+  "h": 856,
+  "ink": 0.01421,
+  "qnum": null,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2019-P1-Q15": {
+  "w": 1448,
+  "h": 640,
+  "ink": 0.01141,
+  "qnum": 15,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2019-P1-Q16": {
+  "w": 1448,
+  "h": 1076,
+  "ink": 0.00793,
+  "qnum": 16,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "2019-P1-Q17": {
+  "w": 1448,
+  "h": 835,
+  "ink": 0.0112,
+  "qnum": 17,
+  "letters": "AB",
+  "highest": "B"
+ },
+ "2019-P1-Q18": {
+  "w": 1448,
+  "h": 608,
+  "ink": 0.0115,
+  "qnum": 18,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2019-P1-Q19": {
+  "w": 1448,
+  "h": 620,
+  "ink": 0.00984,
+  "qnum": 19,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2019-P1-Q20": {
+  "w": 1448,
+  "h": 841,
+  "ink": 0.01965,
+  "qnum": 20,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2019-P2-Q01": {
+  "w": 1448,
+  "h": 580,
+  "ink": 0.01124,
+  "qnum": 1,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2019-P2-Q02": {
+  "w": 1448,
+  "h": 611,
+  "ink": 0.01047,
+  "qnum": 2,
+  "letters": "ADEF",
+  "highest": "F"
+ },
+ "2019-P2-Q03": {
+  "w": 1448,
+  "h": 961,
+  "ink": 0.01503,
+  "qnum": 3,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2019-P2-Q04": {
+  "w": 1448,
+  "h": 1188,
+  "ink": 0.02592,
+  "qnum": 4,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2019-P2-Q05": {
+  "w": 1448,
+  "h": 571,
+  "ink": 0.03535,
+  "qnum": null,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2019-P2-Q06": {
+  "w": 1448,
+  "h": 1893,
+  "ink": 0.02584,
+  "qnum": null,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2019-P2-Q07": {
+  "w": 1448,
+  "h": 637,
+  "ink": 0.05563,
+  "qnum": 7,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2019-P2-Q08": {
+  "w": 1448,
+  "h": 983,
+  "ink": 0.01511,
+  "qnum": 8,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2019-P2-Q09": {
+  "w": 1448,
+  "h": 652,
+  "ink": 0.02234,
+  "qnum": 9,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2019-P2-Q10": {
+  "w": 1448,
+  "h": 510,
+  "ink": 0.03408,
+  "qnum": 10,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2019-P2-Q11": {
+  "w": 1448,
+  "h": 1035,
+  "ink": 0.02065,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2019-P2-Q12": {
+  "w": 1448,
+  "h": 928,
+  "ink": 0.02926,
+  "qnum": 12,
+  "letters": "",
+  "highest": null
+ },
+ "2019-P2-Q13": {
+  "w": 1448,
+  "h": 761,
+  "ink": 0.02976,
+  "qnum": 13,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2019-P2-Q14": {
+  "w": 1448,
+  "h": 1005,
+  "ink": 0.02067,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2019-P2-Q15": {
+  "w": 1448,
+  "h": 817,
+  "ink": 0.02229,
+  "qnum": 15,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "2019-P2-Q16": {
+  "w": 1448,
+  "h": 1751,
+  "ink": 0.05083,
+  "qnum": 16,
+  "letters": "ADG",
+  "highest": "G"
+ },
+ "2019-P2-Q17": {
+  "w": 1448,
+  "h": 532,
+  "ink": 0.03799,
+  "qnum": 17,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2019-P2-Q18": {
+  "w": 1448,
+  "h": 967,
+  "ink": 0.01709,
+  "qnum": 18,
+  "letters": "ABCDEGH",
+  "highest": "H"
+ },
+ "2019-P2-Q19": {
+  "w": 1448,
+  "h": 711,
+  "ink": 0.01105,
+  "qnum": 19,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2019-P2-Q20": {
+  "w": 1448,
+  "h": 956,
+  "ink": 0.04579,
+  "qnum": 20,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2020-P1-Q01": {
+  "w": 1448,
+  "h": 918,
+  "ink": 0.01261,
+  "qnum": 1,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q02": {
+  "w": 1448,
+  "h": 612,
+  "ink": 0.01146,
+  "qnum": 2,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q03": {
+  "w": 1448,
+  "h": 721,
+  "ink": 0.01392,
+  "qnum": 3,
+  "letters": "ABDEFG",
+  "highest": "G"
+ },
+ "2020-P1-Q04": {
+  "w": 1448,
+  "h": 726,
+  "ink": 0.02208,
+  "qnum": 4,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q05": {
+  "w": 1448,
+  "h": 818,
+  "ink": 0.01403,
+  "qnum": 5,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2020-P1-Q06": {
+  "w": 1448,
+  "h": 678,
+  "ink": 0.00795,
+  "qnum": 6,
+  "letters": "ADEF",
+  "highest": "F"
+ },
+ "2020-P1-Q07": {
+  "w": 1448,
+  "h": 968,
+  "ink": 0.0065,
+  "qnum": 7,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q08": {
+  "w": 1448,
+  "h": 782,
+  "ink": 0.01859,
+  "qnum": 8,
+  "letters": "DE",
+  "highest": "E"
+ },
+ "2020-P1-Q09": {
+  "w": 1448,
+  "h": 653,
+  "ink": 0.02515,
+  "qnum": 9,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q10": {
+  "w": 1448,
+  "h": 1040,
+  "ink": 0.02221,
+  "qnum": 10,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "2020-P1-Q11": {
+  "w": 1448,
+  "h": 1332,
+  "ink": 0.01284,
+  "qnum": 11,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q12": {
+  "w": 1448,
+  "h": 812,
+  "ink": 0.00981,
+  "qnum": null,
+  "letters": "ACDEFG",
+  "highest": "G"
+ },
+ "2020-P1-Q13": {
+  "w": 1448,
+  "h": 539,
+  "ink": 0.01158,
+  "qnum": 13,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q14": {
+  "w": 1448,
+  "h": 612,
+  "ink": 0.01396,
+  "qnum": 14,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q15": {
+  "w": 1448,
+  "h": 688,
+  "ink": 0.01331,
+  "qnum": 15,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q16": {
+  "w": 1448,
+  "h": 997,
+  "ink": 0.01819,
+  "qnum": null,
+  "letters": "ABFGH",
+  "highest": "H"
+ },
+ "2020-P1-Q17": {
+  "w": 1448,
+  "h": 577,
+  "ink": 0.0201,
+  "qnum": 17,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q18": {
+  "w": 1448,
+  "h": 742,
+  "ink": 0.03241,
+  "qnum": 18,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q19": {
+  "w": 1448,
+  "h": 539,
+  "ink": 0.01199,
+  "qnum": 19,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P1-Q20": {
+  "w": 1448,
+  "h": 684,
+  "ink": 0.01313,
+  "qnum": 20,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P2-Q01": {
+  "w": 1448,
+  "h": 578,
+  "ink": 0.01772,
+  "qnum": 1,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2020-P2-Q02": {
+  "w": 1448,
+  "h": 912,
+  "ink": 0.00905,
+  "qnum": 2,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2020-P2-Q03": {
+  "w": 1448,
+  "h": 1494,
+  "ink": 0.03157,
+  "qnum": 3,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2020-P2-Q04": {
+  "w": 1448,
+  "h": 1104,
+  "ink": 0.02093,
+  "qnum": 4,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2020-P2-Q05": {
+  "w": 1448,
+  "h": 926,
+  "ink": 0.02314,
+  "qnum": 5,
+  "letters": "AD",
+  "highest": "D"
+ },
+ "2020-P2-Q06": {
+  "w": 1448,
+  "h": 1115,
+  "ink": 0.02135,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2020-P2-Q07": {
+  "w": 1448,
+  "h": 1001,
+  "ink": 0.04877,
+  "qnum": 7,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "2020-P2-Q08": {
+  "w": 1448,
+  "h": 1009,
+  "ink": 0.05355,
+  "qnum": 8,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2020-P2-Q09": {
+  "w": 1448,
+  "h": 651,
+  "ink": 0.03256,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P2-Q10": {
+  "w": 1448,
+  "h": 1166,
+  "ink": 0.01377,
+  "qnum": 10,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2020-P2-Q11": {
+  "w": 1448,
+  "h": 1794,
+  "ink": 0.02485,
+  "qnum": null,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "2020-P2-Q12": {
+  "w": 1448,
+  "h": 678,
+  "ink": 0.04365,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P2-Q13": {
+  "w": 1448,
+  "h": 772,
+  "ink": 0.0207,
+  "qnum": 13,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2020-P2-Q14": {
+  "w": 1448,
+  "h": 1111,
+  "ink": 0.03281,
+  "qnum": null,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2020-P2-Q15": {
+  "w": 1448,
+  "h": 736,
+  "ink": 0.02552,
+  "qnum": 15,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P2-Q16": {
+  "w": 1448,
+  "h": 1477,
+  "ink": 0.02964,
+  "qnum": 16,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2020-P2-Q17": {
+  "w": 1448,
+  "h": 758,
+  "ink": 0.02486,
+  "qnum": 17,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2020-P2-Q18": {
+  "w": 1448,
+  "h": 1004,
+  "ink": 0.01943,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2020-P2-Q19": {
+  "w": 1448,
+  "h": 1420,
+  "ink": 0.04165,
+  "qnum": 19,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2020-P2-Q20": {
+  "w": 1448,
+  "h": 611,
+  "ink": 0.02607,
+  "qnum": 20,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2021-P1-Q01": {
+  "w": 1448,
+  "h": 944,
+  "ink": 0.01975,
+  "qnum": 1,
+  "letters": "BDFG",
+  "highest": "G"
+ },
+ "2021-P1-Q02": {
+  "w": 1448,
+  "h": 761,
+  "ink": 0.01169,
+  "qnum": 2,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2021-P1-Q03": {
+  "w": 1448,
+  "h": 1126,
+  "ink": 0.01776,
+  "qnum": 3,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2021-P1-Q04": {
+  "w": 1448,
+  "h": 653,
+  "ink": 0.00802,
+  "qnum": 4,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2021-P1-Q05": {
+  "w": 1448,
+  "h": 918,
+  "ink": 0.01529,
+  "qnum": 5,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2021-P1-Q06": {
+  "w": 1448,
+  "h": 838,
+  "ink": 0.01118,
+  "qnum": 6,
+  "letters": "AB",
+  "highest": "B"
+ },
+ "2021-P1-Q07": {
+  "w": 1448,
+  "h": 1372,
+  "ink": 0.00855,
+  "qnum": 7,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2021-P1-Q08": {
+  "w": 1448,
+  "h": 687,
+  "ink": 0.01553,
+  "qnum": 8,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2021-P1-Q09": {
+  "w": 1448,
+  "h": 729,
+  "ink": 0.00764,
+  "qnum": 9,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2021-P1-Q10": {
+  "w": 1448,
+  "h": 986,
+  "ink": 0.00847,
+  "qnum": 10,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2021-P1-Q11": {
+  "w": 1448,
+  "h": 1233,
+  "ink": 0.0078,
+  "qnum": 11,
+  "letters": "ACDEG",
+  "highest": "G"
+ },
+ "2021-P1-Q12": {
+  "w": 1448,
+  "h": 809,
+  "ink": 0.01261,
+  "qnum": 12,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2021-P1-Q13": {
+  "w": 1448,
+  "h": 935,
+  "ink": 0.0093,
+  "qnum": 13,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2021-P1-Q14": {
+  "w": 1448,
+  "h": 727,
+  "ink": 0.0124,
+  "qnum": null,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2021-P1-Q15": {
+  "w": 1448,
+  "h": 1569,
+  "ink": 0.01399,
+  "qnum": 15,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2021-P1-Q16": {
+  "w": 1448,
+  "h": 1084,
+  "ink": 0.01499,
+  "qnum": 16,
+  "letters": "BE",
+  "highest": "E"
+ },
+ "2021-P1-Q17": {
+  "w": 1448,
+  "h": 1850,
+  "ink": 0.03876,
+  "qnum": null,
+  "letters": "AE",
+  "highest": "E"
+ },
+ "2021-P1-Q18": {
+  "w": 1448,
+  "h": 959,
+  "ink": 0.01819,
+  "qnum": 18,
+  "letters": "ABCDEGH",
+  "highest": "H"
+ },
+ "2021-P1-Q19": {
+  "w": 1448,
+  "h": 833,
+  "ink": 0.01602,
+  "qnum": 19,
+  "letters": "DEF",
+  "highest": "F"
+ },
+ "2021-P1-Q20": {
+  "w": 1448,
+  "h": 653,
+  "ink": 0.01103,
+  "qnum": 20,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2021-P2-Q01": {
+  "w": 1448,
+  "h": 684,
+  "ink": 0.008,
+  "qnum": 1,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2021-P2-Q02": {
+  "w": 1448,
+  "h": 617,
+  "ink": 0.01935,
+  "qnum": 2,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2021-P2-Q03": {
+  "w": 1448,
+  "h": 1079,
+  "ink": 0.02926,
+  "qnum": 3,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2021-P2-Q04": {
+  "w": 1448,
+  "h": 1115,
+  "ink": 0.01898,
+  "qnum": 4,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2021-P2-Q05": {
+  "w": 1448,
+  "h": 496,
+  "ink": 0.03424,
+  "qnum": 5,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2021-P2-Q06": {
+  "w": 1448,
+  "h": 618,
+  "ink": 0.03675,
+  "qnum": 6,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2021-P2-Q07": {
+  "w": 1448,
+  "h": 986,
+  "ink": 0.03054,
+  "qnum": 7,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "2021-P2-Q08": {
+  "w": 1448,
+  "h": 634,
+  "ink": 0.04651,
+  "qnum": 8,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2021-P2-Q09": {
+  "w": 1448,
+  "h": 933,
+  "ink": 0.04369,
+  "qnum": 9,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2021-P2-Q10": {
+  "w": 1448,
+  "h": 1300,
+  "ink": 0.01622,
+  "qnum": 10,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2021-P2-Q11": {
+  "w": 1448,
+  "h": 1485,
+  "ink": 0.02944,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2021-P2-Q12": {
+  "w": 1448,
+  "h": 962,
+  "ink": 0.02413,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2021-P2-Q13": {
+  "w": 1448,
+  "h": 1157,
+  "ink": 0.01688,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2021-P2-Q14": {
+  "w": 1448,
+  "h": 1002,
+  "ink": 0.01934,
+  "qnum": null,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "2021-P2-Q15": {
+  "w": 1448,
+  "h": 916,
+  "ink": 0.02021,
+  "qnum": 15,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2021-P2-Q16": {
+  "w": 1448,
+  "h": 764,
+  "ink": 0.01837,
+  "qnum": null,
+  "letters": "ADEF",
+  "highest": "F"
+ },
+ "2021-P2-Q17": {
+  "w": 1448,
+  "h": 827,
+  "ink": 0.02618,
+  "qnum": null,
+  "letters": "ABDF",
+  "highest": "F"
+ },
+ "2021-P2-Q18": {
+  "w": 1448,
+  "h": 1441,
+  "ink": 0.0296,
+  "qnum": 18,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2021-P2-Q19": {
+  "w": 1448,
+  "h": 832,
+  "ink": 0.01491,
+  "qnum": null,
+  "letters": "ABCDEGH",
+  "highest": "H"
+ },
+ "2021-P2-Q20": {
+  "w": 1448,
+  "h": 1107,
+  "ink": 0.00937,
+  "qnum": 20,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2022-P1-Q01": {
+  "w": 1448,
+  "h": 1917,
+  "ink": 0.00463,
+  "qnum": 1,
+  "letters": "ABDEFGH",
+  "highest": "H"
+ },
+ "2022-P1-Q02": {
+  "w": 1448,
+  "h": 1912,
+  "ink": 0.00692,
+  "qnum": 2,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2022-P1-Q03": {
+  "w": 1448,
+  "h": 1935,
+  "ink": 0.00521,
+  "qnum": 3,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2022-P1-Q04": {
+  "w": 1448,
+  "h": 1974,
+  "ink": 0.01003,
+  "qnum": 4,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2022-P1-Q05": {
+  "w": 1448,
+  "h": 1940,
+  "ink": 0.0066,
+  "qnum": 5,
+  "letters": "ABCDH",
+  "highest": "H"
+ },
+ "2022-P1-Q06": {
+  "w": 1448,
+  "h": 1967,
+  "ink": 0.00355,
+  "qnum": 6,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2022-P1-Q07": {
+  "w": 1448,
+  "h": 1908,
+  "ink": 0.00452,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2022-P1-Q08": {
+  "w": 1448,
+  "h": 1959,
+  "ink": 0.01232,
+  "qnum": 8,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2022-P1-Q09": {
+  "w": 1448,
+  "h": 834,
+  "ink": 0.0188,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2022-P1-Q10": {
+  "w": 1448,
+  "h": 1993,
+  "ink": 0.01119,
+  "qnum": 10,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2022-P1-Q11": {
+  "w": 1448,
+  "h": 1916,
+  "ink": 0.00583,
+  "qnum": 11,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2022-P1-Q12": {
+  "w": 1448,
+  "h": 1992,
+  "ink": 0.0096,
+  "qnum": 12,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2022-P1-Q13": {
+  "w": 1448,
+  "h": 1916,
+  "ink": 0.00562,
+  "qnum": 13,
+  "letters": "ADEFGH",
+  "highest": "H"
+ },
+ "2022-P1-Q14": {
+  "w": 1448,
+  "h": 1857,
+  "ink": 0.00914,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2022-P1-Q15": {
+  "w": 1448,
+  "h": 1200,
+  "ink": 0.01736,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2022-P1-Q16": {
+  "w": 1448,
+  "h": 1770,
+  "ink": 0.00845,
+  "qnum": 16,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2022-P1-Q17": {
+  "w": 1448,
+  "h": 1837,
+  "ink": 0.009,
+  "qnum": 17,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2022-P1-Q18": {
+  "w": 1448,
+  "h": 1829,
+  "ink": 0.01166,
+  "qnum": 18,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2022-P1-Q19": {
+  "w": 1448,
+  "h": 988,
+  "ink": 0.02009,
+  "qnum": null,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2022-P1-Q20": {
+  "w": 1448,
+  "h": 1957,
+  "ink": 0.00684,
+  "qnum": 20,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2022-P2-Q01": {
+  "w": 1448,
+  "h": 1957,
+  "ink": 0.00369,
+  "qnum": 1,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "2022-P2-Q02": {
+  "w": 1448,
+  "h": 1992,
+  "ink": 0.00344,
+  "qnum": 2,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2022-P2-Q03": {
+  "w": 1448,
+  "h": 1823,
+  "ink": 0.01189,
+  "qnum": 3,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2022-P2-Q04": {
+  "w": 1448,
+  "h": 1880,
+  "ink": 0.01621,
+  "qnum": 4,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2022-P2-Q05": {
+  "w": 1448,
+  "h": 1976,
+  "ink": 0.0127,
+  "qnum": 5,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2022-P2-Q06": {
+  "w": 1448,
+  "h": 1923,
+  "ink": 0.01366,
+  "qnum": 6,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2022-P2-Q07": {
+  "w": 1448,
+  "h": 1846,
+  "ink": 0.04143,
+  "qnum": 7,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2022-P2-Q08": {
+  "w": 1448,
+  "h": 1668,
+  "ink": 0.01119,
+  "qnum": 8,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2022-P2-Q09": {
+  "w": 1448,
+  "h": 1835,
+  "ink": 0.00828,
+  "qnum": 9,
+  "letters": "ABCDEG",
+  "highest": "G"
+ },
+ "2022-P2-Q10": {
+  "w": 1448,
+  "h": 1916,
+  "ink": 0.01385,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2022-P2-Q11": {
+  "w": 1448,
+  "h": 1839,
+  "ink": 0.01228,
+  "qnum": 11,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2022-P2-Q12": {
+  "w": 1448,
+  "h": 1956,
+  "ink": 0.00648,
+  "qnum": 12,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2022-P2-Q13": {
+  "w": 1448,
+  "h": 1805,
+  "ink": 0.01175,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2022-P2-Q14": {
+  "w": 1448,
+  "h": 1527,
+  "ink": 0.0307,
+  "qnum": 14,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2022-P2-Q15": {
+  "w": 1448,
+  "h": 942,
+  "ink": 0.01926,
+  "qnum": null,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "2022-P2-Q16": {
+  "w": 1448,
+  "h": 1938,
+  "ink": 0.01739,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2022-P2-Q17": {
+  "w": 1448,
+  "h": 1938,
+  "ink": 0.04367,
+  "qnum": null,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2022-P2-Q18": {
+  "w": 1448,
+  "h": 1907,
+  "ink": 0.04713,
+  "qnum": null,
+  "letters": "ABDEFGH",
+  "highest": "H"
+ },
+ "2022-P2-Q19": {
+  "w": 1448,
+  "h": 1757,
+  "ink": 0.01905,
+  "qnum": null,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2022-P2-Q20": {
+  "w": 1448,
+  "h": 1919,
+  "ink": 0.01946,
+  "qnum": null,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2023-P1-Q01": {
+  "w": 1447,
+  "h": 950,
+  "ink": 0.00741,
+  "qnum": 1,
+  "letters": "",
+  "highest": null
+ },
+ "2023-P1-Q02": {
+  "w": 1447,
+  "h": 748,
+  "ink": 0.02531,
+  "qnum": 2,
+  "letters": "ADEF",
+  "highest": "F"
+ },
+ "2023-P1-Q03": {
+  "w": 1447,
+  "h": 870,
+  "ink": 0.0111,
+  "qnum": 3,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2023-P1-Q04": {
+  "w": 1447,
+  "h": 779,
+  "ink": 0.00619,
+  "qnum": 4,
+  "letters": "ABCE",
+  "highest": "E"
+ },
+ "2023-P1-Q05": {
+  "w": 1447,
+  "h": 1426,
+  "ink": 0.0623,
+  "qnum": null,
+  "letters": "ABDF",
+  "highest": "F"
+ },
+ "2023-P1-Q06": {
+  "w": 1447,
+  "h": 742,
+  "ink": 0.01392,
+  "qnum": null,
+  "letters": "ADEFG",
+  "highest": "G"
+ },
+ "2023-P1-Q07": {
+  "w": 1447,
+  "h": 966,
+  "ink": 0.01522,
+  "qnum": 7,
+  "letters": "ABDEFG",
+  "highest": "G"
+ },
+ "2023-P1-Q08": {
+  "w": 1447,
+  "h": 1077,
+  "ink": 0.01994,
+  "qnum": null,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "2023-P1-Q09": {
+  "w": 1447,
+  "h": 661,
+  "ink": 0.01112,
+  "qnum": null,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "2023-P1-Q10": {
+  "w": 1447,
+  "h": 815,
+  "ink": 0.02268,
+  "qnum": null,
+  "letters": "ADEF",
+  "highest": "F"
+ },
+ "2023-P1-Q11": {
+  "w": 1447,
+  "h": 834,
+  "ink": 0.02041,
+  "qnum": 11,
+  "letters": "ABDEF",
+  "highest": "F"
+ },
+ "2023-P1-Q12": {
+  "w": 1447,
+  "h": 806,
+  "ink": 0.01019,
+  "qnum": null,
+  "letters": "ACEFG",
+  "highest": "G"
+ },
+ "2023-P1-Q13": {
+  "w": 1447,
+  "h": 854,
+  "ink": 0.0182,
+  "qnum": 13,
+  "letters": "ABDEFG",
+  "highest": "G"
+ },
+ "2023-P1-Q14": {
+  "w": 1447,
+  "h": 1135,
+  "ink": 0.01549,
+  "qnum": 14,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P1-Q15": {
+  "w": 1447,
+  "h": 802,
+  "ink": 0.01843,
+  "qnum": 15,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2023-P1-Q16": {
+  "w": 1447,
+  "h": 781,
+  "ink": 0.01471,
+  "qnum": 16,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2023-P1-Q17": {
+  "w": 1447,
+  "h": 1750,
+  "ink": 0.05268,
+  "qnum": 17,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2023-P1-Q18": {
+  "w": 1447,
+  "h": 1219,
+  "ink": 0.02017,
+  "qnum": 18,
+  "letters": "",
+  "highest": null
+ },
+ "2023-P1-Q19": {
+  "w": 1447,
+  "h": 1108,
+  "ink": 0.01424,
+  "qnum": 19,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P1-Q20": {
+  "w": 1447,
+  "h": 1426,
+  "ink": 0.01685,
+  "qnum": 20,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q01": {
+  "w": 1447,
+  "h": 975,
+  "ink": 0.00886,
+  "qnum": 1,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q02": {
+  "w": 1447,
+  "h": 918,
+  "ink": 0.00749,
+  "qnum": 2,
+  "letters": "BCDEFH",
+  "highest": "H"
+ },
+ "2023-P2-Q03": {
+  "w": 1447,
+  "h": 1251,
+  "ink": 0.01653,
+  "qnum": 3,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q04": {
+  "w": 1447,
+  "h": 1522,
+  "ink": 0.05154,
+  "qnum": 4,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q05": {
+  "w": 1447,
+  "h": 748,
+  "ink": 0.03271,
+  "qnum": 5,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2023-P2-Q06": {
+  "w": 1447,
+  "h": 1155,
+  "ink": 0.0193,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q07": {
+  "w": 1447,
+  "h": 796,
+  "ink": 0.03194,
+  "qnum": 7,
+  "letters": "ABCF",
+  "highest": "F"
+ },
+ "2023-P2-Q08": {
+  "w": 1447,
+  "h": 1182,
+  "ink": 0.04046,
+  "qnum": 8,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q09": {
+  "w": 1447,
+  "h": 1184,
+  "ink": 0.02473,
+  "qnum": 9,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q10": {
+  "w": 1447,
+  "h": 1385,
+  "ink": 0.02673,
+  "qnum": null,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2023-P2-Q11": {
+  "w": 1447,
+  "h": 1257,
+  "ink": 0.05071,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q12": {
+  "w": 1447,
+  "h": 798,
+  "ink": 0.02318,
+  "qnum": 12,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "2023-P2-Q13": {
+  "w": 1447,
+  "h": 671,
+  "ink": 0.02213,
+  "qnum": 13,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "2023-P2-Q14": {
+  "w": 1447,
+  "h": 1045,
+  "ink": 0.04704,
+  "qnum": null,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "2023-P2-Q15": {
+  "w": 1447,
+  "h": 1266,
+  "ink": 0.01784,
+  "qnum": 15,
+  "letters": "AFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q16": {
+  "w": 1447,
+  "h": 1338,
+  "ink": 0.02342,
+  "qnum": 16,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q17": {
+  "w": 1447,
+  "h": 891,
+  "ink": 0.01866,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2023-P2-Q18": {
+  "w": 1447,
+  "h": 671,
+  "ink": 0.02164,
+  "qnum": 18,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "2023-P2-Q19": {
+  "w": 1447,
+  "h": 1226,
+  "ink": 0.0233,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "2023-P2-Q20": {
+  "w": 1447,
+  "h": 1296,
+  "ink": 0.0194,
+  "qnum": null,
+  "letters": "ABCDEFGH",
+  "highest": "H"
+ },
+ "specimen-P1-Q01": {
+  "w": 1395,
+  "h": 947,
+  "ink": 0.01062,
+  "qnum": null,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "specimen-P1-Q02": {
+  "w": 1395,
+  "h": 708,
+  "ink": 0.01161,
+  "qnum": null,
+  "letters": "G",
+  "highest": "G"
+ },
+ "specimen-P1-Q03": {
+  "w": 1395,
+  "h": 999,
+  "ink": 0.01136,
+  "qnum": null,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "specimen-P1-Q04": {
+  "w": 1395,
+  "h": 580,
+  "ink": 0.01504,
+  "qnum": null,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "specimen-P1-Q05": {
+  "w": 1395,
+  "h": 1028,
+  "ink": 0.00857,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "specimen-P1-Q06": {
+  "w": 1395,
+  "h": 585,
+  "ink": 0.01349,
+  "qnum": 6,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "specimen-P1-Q07": {
+  "w": 1395,
+  "h": 1024,
+  "ink": 0.02417,
+  "qnum": null,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "specimen-P1-Q08": {
+  "w": 1395,
+  "h": 1209,
+  "ink": 0.01148,
+  "qnum": null,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "specimen-P1-Q09": {
+  "w": 1395,
+  "h": 572,
+  "ink": 0.01338,
+  "qnum": null,
+  "letters": "ACD",
+  "highest": "D"
+ },
+ "specimen-P1-Q10": {
+  "w": 1395,
+  "h": 923,
+  "ink": 0.01964,
+  "qnum": null,
+  "letters": "ACD",
+  "highest": "D"
+ },
+ "specimen-P1-Q11": {
+  "w": 1395,
+  "h": 637,
+  "ink": 0.01252,
+  "qnum": 11,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "specimen-P1-Q12": {
+  "w": 1395,
+  "h": 1167,
+  "ink": 0.01931,
+  "qnum": 12,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "specimen-P1-Q13": {
+  "w": 1395,
+  "h": 580,
+  "ink": 0.0112,
+  "qnum": 13,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "specimen-P1-Q14": {
+  "w": 1395,
+  "h": 1237,
+  "ink": 0.01301,
+  "qnum": 14,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "specimen-P1-Q15": {
+  "w": 1395,
+  "h": 671,
+  "ink": 0.00943,
+  "qnum": 15,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "specimen-P1-Q16": {
+  "w": 1395,
+  "h": 1028,
+  "ink": 0.01354,
+  "qnum": 16,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "specimen-P1-Q17": {
+  "w": 1395,
+  "h": 565,
+  "ink": 0.02288,
+  "qnum": 17,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "specimen-P1-Q18": {
+  "w": 1395,
+  "h": 1180,
+  "ink": 0.01096,
+  "qnum": 18,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "specimen-P1-Q19": {
+  "w": 1395,
+  "h": 650,
+  "ink": 0.03176,
+  "qnum": null,
+  "letters": "ACD",
+  "highest": "D"
+ },
+ "specimen-P1-Q20": {
+  "w": 1395,
+  "h": 640,
+  "ink": 0.01388,
+  "qnum": 20,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "specimen-P2-Q01": {
+  "w": 1395,
+  "h": 1050,
+  "ink": 0.00674,
+  "qnum": 1,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "specimen-P2-Q02": {
+  "w": 1395,
+  "h": 565,
+  "ink": 0.01415,
+  "qnum": null,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "specimen-P2-Q03": {
+  "w": 1395,
+  "h": 1056,
+  "ink": 0.03802,
+  "qnum": null,
+  "letters": "ABCDE",
+  "highest": "E"
+ },
+ "specimen-P2-Q04": {
+  "w": 1395,
+  "h": 1059,
+  "ink": 0.04211,
+  "qnum": null,
+  "letters": "A",
+  "highest": "A"
+ },
+ "specimen-P2-Q05": {
+  "w": 1395,
+  "h": 740,
+  "ink": 0.01214,
+  "qnum": null,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "specimen-P2-Q06": {
+  "w": 1395,
+  "h": 957,
+  "ink": 0.02598,
+  "qnum": 6,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "specimen-P2-Q07": {
+  "w": 1395,
+  "h": 1306,
+  "ink": 0.01894,
+  "qnum": null,
+  "letters": "AC",
+  "highest": "C"
+ },
+ "specimen-P2-Q08": {
+  "w": 1395,
+  "h": 987,
+  "ink": 0.04027,
+  "qnum": null,
+  "letters": "ADE",
+  "highest": "E"
+ },
+ "specimen-P2-Q09": {
+  "w": 1395,
+  "h": 626,
+  "ink": 0.05924,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "specimen-P2-Q10": {
+  "w": 1395,
+  "h": 1698,
+  "ink": 0.026,
+  "qnum": 10,
+  "letters": "ACE",
+  "highest": "E"
+ },
+ "specimen-P2-Q11": {
+  "w": 1395,
+  "h": 780,
+  "ink": 0.01489,
+  "qnum": 11,
+  "letters": "ACDE",
+  "highest": "E"
+ },
+ "specimen-P2-Q12": {
+  "w": 1395,
+  "h": 755,
+  "ink": 0.0453,
+  "qnum": null,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "specimen-P2-Q13": {
+  "w": 1395,
+  "h": 1055,
+  "ink": 0.02228,
+  "qnum": 13,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "specimen-P2-Q14": {
+  "w": 1395,
+  "h": 598,
+  "ink": 0.04682,
+  "qnum": null,
+  "letters": "ABCD",
+  "highest": "D"
+ },
+ "specimen-P2-Q15": {
+  "w": 1395,
+  "h": 965,
+  "ink": 0.01733,
+  "qnum": null,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ },
+ "specimen-P2-Q16": {
+  "w": 1395,
+  "h": 838,
+  "ink": 0.01318,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "specimen-P2-Q17": {
+  "w": 1395,
+  "h": 1085,
+  "ink": 0.05954,
+  "qnum": 17,
+  "letters": "ACDEF",
+  "highest": "F"
+ },
+ "specimen-P2-Q18": {
+  "w": 1395,
+  "h": 794,
+  "ink": 0.01369,
+  "qnum": null,
+  "letters": "ABCDEF",
+  "highest": "F"
+ },
+ "specimen-P2-Q19": {
+  "w": 1395,
+  "h": 1013,
+  "ink": 0.04657,
+  "qnum": null,
+  "letters": "ABCDEFG",
+  "highest": "G"
+ },
+ "specimen-P2-Q20": {
+  "w": 1395,
+  "h": 1011,
+  "ink": 0.03252,
+  "qnum": null,
+  "letters": "ACDEFGH",
+  "highest": "H"
+ }
+}

@@ -7,9 +7,12 @@
   "private": true,
   "scripts": {
     "start": "electron .",
-    "test": "playwright test --workers=1",
+    "test": "node scripts/verify-content.js && playwright test --workers=1",
     "dist": "electron-builder --mac --dir",
-    "verify": "node scripts/verify-content.js"
+    "verify": "node scripts/verify-content.js",
+    "qa:ocr": "pipeline/.venv/bin/python pipeline/ocr_crops.py",
+    "qa:keys": "pipeline/.venv/bin/python pipeline/reparse_keys.py",
+    "qa:pages": "pipeline/.venv/bin/python pipeline/qa_pages.py"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.0",

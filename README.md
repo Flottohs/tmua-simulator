@@ -120,9 +120,14 @@ rows), set it explicitly in `data/option-overrides.json` and re-run `crop.py`.
 ## Verification
 
 ```bash
-node scripts/verify-content.js   # content integrity
-npm test                         # full Playwright + Electron suite
+npm test
 ```
+
+Runs the content integrity check and then the full Playwright/Electron suite — **85 tests**.
+See [TEST-REPORT.md](TEST-REPORT.md) for the full QA pass, the bugs it found, and the two
+human-review pages (`qa/gallery.html`, `qa/spotcheck.html`).
+
+Regenerate the QA artefacts with `npm run qa:ocr`, `npm run qa:keys`, `npm run qa:pages`.
 
 `verify-content.js` checks that every paper has exactly 20 questions and that every question has a
 crop, an answer that agrees with the answer key, at least one topic tag, a worked solution, and a

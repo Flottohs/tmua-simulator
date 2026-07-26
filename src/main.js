@@ -137,6 +137,28 @@ function registerIpc() {
 
   handle('settings:get', () => currentSettings());
   handle('settings:set', (patch) => {
+    // Validate before writing: a zero, negative or absurd timer would produce
+    // an unusable exam, so bad values are rejected rather than clamped
+    // silently.
+    const numeric = {
+      baseMinutes: [1, 300],
+      extraTimePercent: [0, 200],
+      breakMinutes: [0, 120],
+    };
+    const boolean = ['hideTimer', 'darkMode', 'sound'];
+    for (const [k, v] of Object.entries(patch)) {
+      if (numeric[k]) {
+        const [lo, hi] = numeric[k];
+        if (typeof v !== 'number' || !Number.isFinite(v)) {
+          throw new Error(`${k} must be a number`);
+        }
+        if (v < lo || v > hi) throw new Error(`${k} must be between ${lo} and ${hi}`);
+      } else if (boolean.includes(k)) {
+        if (typeof v !== 'boolean') throw new Error(`${k} must be true or false`);
+      } else {
+        throw new Error(`unknown setting '${k}'`);
+      }
+    }
     for (const [k, v] of Object.entries(patch)) db.setSetting(k, v);
     return currentSettings();
   });
@@ -347,7 +369,23 @@ protocol.registerSchemesAsPrivileged([
   { scheme: 'tmua-img', privileges: { standard: true, secure: true, supportFetchAPI: true, bypassCSP: false } },
 ]);
 
+// One instance per data directory. Two processes writing the same SQLite file
+// could interleave an in-progress exam, so a second launch hands focus to the
+// running window and exits instead.
+const gotLock = app.requestSingleInstanceLock();
+if (!gotLock) {
+  app.quit();
+} else {
+  app.on('second-instance', () => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+    }
+  });
+}
+
 app.whenReady().then(() => {
+  if (!gotLock) return;
   db.init(app.getPath('userData'));
   content.init({
     appPath: app.getAppPath(),

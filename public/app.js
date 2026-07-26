@@ -115,7 +115,17 @@ async function viewHome() {
   const paperSel = el('select', {},
     el('option', { value: '1' }, 'Paper 1'), el('option', { value: '2' }, 'Paper 2'));
 
+  // Starting something new never destroys an in-progress attempt — it stays
+  // resumable — but say so rather than letting it look lost.
+  const confirmOverExisting = () => {
+    if (!resumable.length) return true;
+    return confirm(
+      `You have ${resumable.length} attempt${resumable.length === 1 ? '' : 's'} still in progress. ` +
+      `Starting a new one keeps ${resumable.length === 1 ? 'it' : 'them'} — you can resume from Practise or History. Continue?`);
+  };
+
   const startPaper = async (untimed) => {
+    if (!confirmOverExisting()) return;
     const a = await api.attempt.start({
       mode: untimed ? 'untimed' : 'paper',
       year: yearSel.value, paper: Number(paperSel.value), untimed,
@@ -124,6 +134,7 @@ async function viewHome() {
   };
 
   const startMock = async () => {
+    if (!confirmOverExisting()) return;
     const year = yearSel.value;
     const group = `mock-${year}-${Date.now()}`;
     const a = await api.attempt.start({ mode: 'mock', year, paper: 1, mockGroup: group });
@@ -279,17 +290,23 @@ class Exam {
   constructor(attempt) {
     this.a = attempt;
     this.index = Math.min(attempt.currentIndex || 0, attempt.questions.length - 1);
-    this.elapsed = attempt.elapsedSec || 0;
     this.allowed = attempt.allowedSec;              // null = untimed
     this.timerHidden = Boolean(State.settings.hideTimer);
     this.warned = new Set();
     this.finished = false;
-    this.lastTick = performance.now();
-    this.qStart = performance.now();
-    this.pendingQTime = 0;
     this.onKey = this.onKey.bind(this);
+
+    // Wall-clock timing. Elapsed is derived from timestamps, never accumulated
+    // from ticks: a throttled window, a suspended renderer or a sleeping
+    // machine must not hand back exam time.
+    this.baseElapsed = attempt.elapsedSec || 0;
+    this.sessionStart = Date.now();
+    this.qWallStart = Date.now();
   }
 
+  get elapsed() {
+    return this.baseElapsed + Math.max(0, Date.now() - this.sessionStart) / 1000;
+  }
   get remaining() { return this.allowed === null ? null : Math.max(0, this.allowed - this.elapsed); }
   get q() { return this.a.questions[this.index]; }
 
@@ -312,12 +329,7 @@ class Exam {
   }
 
   tick() {
-    const now = performance.now();
-    const dt = (now - this.lastTick) / 1000;
-    this.lastTick = now;
     if (this.finished) return;
-    this.elapsed += dt;
-    this.pendingQTime += dt;
     if (this.allowed !== null) {
       const r = this.remaining;
       for (const mark of [900, 300, 60]) {
@@ -331,10 +343,17 @@ class Exam {
     this.paintTimer();
   }
 
+  // seconds spent on the current question since the last persist, wall-clock
+  takeQuestionDelta() {
+    const now = Date.now();
+    const delta = Math.max(0, now - this.qWallStart) / 1000;
+    this.qWallStart = now;
+    return delta;
+  }
+
   async persist() {
     if (this.finished) return;
-    const delta = this.pendingQTime;
-    this.pendingQTime = 0;
+    const delta = this.takeQuestionDelta();
     try {
       await api.attempt.heartbeat({
         attemptId: this.a.id, elapsedSec: this.elapsed, currentIndex: this.index,
@@ -398,7 +417,7 @@ class Exam {
     clearInterval(this.interval);
     clearInterval(this.heartbeat);
     if (reason === 'timeout') { beep('end'); toast('Time is up — paper submitted', 4000); }
-    const delta = this.pendingQTime; this.pendingQTime = 0;
+    const delta = this.takeQuestionDelta();
     try {
       await api.attempt.heartbeat({
         attemptId: this.a.id, elapsedSec: this.elapsed, currentIndex: this.index,
@@ -941,23 +960,59 @@ async function viewDashboard() {
           : el('div', { class: 'muted small' }, 'Every paper has been attempted at least once.'))),
 
     el('h2', { style: 'margin:22px 0 10px' }, 'Wrong-answer log'),
-    el('div', { class: 'card table-scroll' },
-      d.wrong.length ? el('table', {},
+    wrongLogCard(d.wrong));
+}
+
+// Wrong-answer log with topic / paper / year filters.
+function wrongLogCard(wrong) {
+  const topics = [...new Set(wrong.flatMap(w => w.topics))]
+    .sort((a, b) => (State.catalog.taxonomy[a] || a).localeCompare(State.catalog.taxonomy[b] || b));
+  const years = [...new Set(wrong.map(w => w.year))].sort();
+  const filters = { topic: 'all', paper: 'all', year: 'all' };
+
+  const body = el('tbody');
+  const countEl = el('span', { class: 'small muted' });
+
+  const apply = () => {
+    const rows = wrong.filter(w =>
+      (filters.topic === 'all' || w.topics.includes(filters.topic)) &&
+      (filters.paper === 'all' || String(w.paper) === filters.paper) &&
+      (filters.year === 'all' || w.year === filters.year));
+    countEl.textContent = `${rows.length} of ${wrong.length} shown`;
+    body.replaceChildren(...rows.slice(0, 200).map(w => el('tr', { class: 'wrong-row' },
+      el('td', {}, `${w.year === 'specimen' ? 'Spec' : w.year} P${w.paper} Q${w.number}`),
+      el('td', { class: 'small muted' }, w.topics.map(t => State.catalog.taxonomy[t] || t).join(', ')),
+      el('td', { class: 'mono' }, w.unanswered ? '—' : w.selected),
+      el('td', { class: 'mono' }, w.answer),
+      el('td', { class: 'mono small' }, fmtMinSec(w.time)),
+      el('td', { class: 'small muted' }, fmtDate(w.at)),
+      el('td', {}, el('button', {
+        class: 'btn ghost small',
+        onclick: () => go('review', { attemptId: w.attemptId })
+      }, 'Review')))));
+  };
+
+  const sel = (id, label, values, render) => el('select', {
+    id, onchange: e => { filters[label] = e.target.value; apply(); }
+  }, el('option', { value: 'all' }, `All ${label}s`),
+    values.map(v => el('option', { value: String(v) }, render(v))));
+
+  if (!wrong.length) {
+    return el('div', { class: 'card muted' }, 'No wrong answers recorded.');
+  }
+  apply();
+  return el('div', { class: 'card' },
+    el('div', { class: 'row', style: 'margin-bottom:10px' },
+      sel('filter-topic', 'topic', topics, t => State.catalog.taxonomy[t] || t),
+      sel('filter-paper', 'paper', [1, 2], p => `Paper ${p}`),
+      sel('filter-year', 'year', years, y => (y === 'specimen' ? 'Specimen' : y)),
+      el('div', { class: 'spacer' }), countEl),
+    el('div', { class: 'table-scroll' },
+      el('table', {},
         el('thead', {}, el('tr', {},
           el('th', {}, 'Question'), el('th', {}, 'Topics'), el('th', {}, 'You'), el('th', {}, 'Answer'),
           el('th', {}, 'Time'), el('th', {}, 'When'), el('th', {}, ''))),
-        el('tbody', {}, d.wrong.slice(0, 100).map(w => el('tr', {},
-          el('td', {}, `${w.year === 'specimen' ? 'Spec' : w.year} P${w.paper} Q${w.number}`),
-          el('td', { class: 'small muted' }, w.topics.map(t => State.catalog.taxonomy[t] || t).join(', ')),
-          el('td', { class: 'mono' }, w.unanswered ? '—' : w.selected),
-          el('td', { class: 'mono' }, w.answer),
-          el('td', { class: 'mono small' }, fmtMinSec(w.time)),
-          el('td', { class: 'small muted' }, fmtDate(w.at)),
-          el('td', {}, el('button', {
-            class: 'btn ghost small',
-            onclick: () => go('review', { attemptId: w.attemptId })
-          }, 'Review'))))))
-        : el('div', { class: 'muted' }, 'No wrong answers recorded.')));
+        body)));
 }
 
 // ---------------------------------------------------------------- revisit

@@ -1,0 +1,3654 @@
+<!doctype html><meta charset=utf-8><title>TMUA crop QA gallery</title>
+<style>
+ body{font:14px/1.5 -apple-system,system-ui,sans-serif;margin:20px;background:#f6f7f9;color:#16202c}
+ .bar{position:sticky;top:0;background:#fff;border:1px solid #dfe3e8;border-radius:8px;
+      padding:12px 16px;margin-bottom:16px;display:flex;gap:12px;align-items:center;z-index:5}
+ .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:14px}
+ .card{background:#fff;border:1px solid #dfe3e8;border-radius:8px;padding:10px}
+ .card.flagged{outline:3px solid #b4232b}
+ .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+ .meta{font-size:12px;color:#5b6875;margin-bottom:6px}
+ img{width:100%;height:auto;border:1px solid #eee;border-radius:4px;background:#fff}
+ button{font:inherit;cursor:pointer;border:1px solid #dfe3e8;background:#f0f2f5;
+        border-radius:6px;padding:4px 10px}
+ button.on{background:#b4232b;color:#fff;border-color:#b4232b}
+ #count{font-weight:600}
+ summary{cursor:pointer;font-size:13px;color:#5b6875;margin-top:6px}
+</style>
+<div class=bar>
+  <b>TMUA crop QA</b>
+  <span>360 questions</span>
+  <span id=count>0 marked bad</span>
+  <button onclick=download()>Download fix list JSON</button>
+  <button onclick=clearAll()>Clear marks</button>
+  <input id=filter placeholder="filter e.g. 2019-P1" oninput=filt()>
+</div>
+<div class=grid>
+<div class=card data-id="2016-P1-Q01">
+  <div class=head>
+    <b>2016-P1-Q01</b>
+    <button class=bad onclick="mark('2016-P1-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer H · 1448×1126px · ink 0.01207</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q01.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q02">
+  <div class=head>
+    <b>2016-P1-Q02</b>
+    <button class=bad onclick="mark('2016-P1-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×792px · ink 0.02577</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q02.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q03">
+  <div class=head>
+    <b>2016-P1-Q03</b>
+    <button class=bad onclick="mark('2016-P1-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×1060px · ink 0.01523</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q03.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q04">
+  <div class=head>
+    <b>2016-P1-Q04</b>
+    <button class=bad onclick="mark('2016-P1-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer B · 1448×988px · ink 0.00935</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q04.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q05">
+  <div class=head>
+    <b>2016-P1-Q05</b>
+    <button class=bad onclick="mark('2016-P1-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×863px · ink 0.01085</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q05.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q06">
+  <div class=head>
+    <b>2016-P1-Q06</b>
+    <button class=bad onclick="mark('2016-P1-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×1081px · ink 0.03044</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q06.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q07">
+  <div class=head>
+    <b>2016-P1-Q07</b>
+    <button class=bad onclick="mark('2016-P1-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×1213px · ink 0.02539</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q07.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q08">
+  <div class=head>
+    <b>2016-P1-Q08</b>
+    <button class=bad onclick="mark('2016-P1-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×842px · ink 0.01445</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q08.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q09">
+  <div class=head>
+    <b>2016-P1-Q09</b>
+    <button class=bad onclick="mark('2016-P1-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×924px · ink 0.03327</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q09.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q10">
+  <div class=head>
+    <b>2016-P1-Q10</b>
+    <button class=bad onclick="mark('2016-P1-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer E · 1448×796px · ink 0.00958</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q10.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q11">
+  <div class=head>
+    <b>2016-P1-Q11</b>
+    <button class=bad onclick="mark('2016-P1-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×907px · ink 0.01418</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q11.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q12">
+  <div class=head>
+    <b>2016-P1-Q12</b>
+    <button class=bad onclick="mark('2016-P1-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×1642px · ink 0.02389</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q12.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q13">
+  <div class=head>
+    <b>2016-P1-Q13</b>
+    <button class=bad onclick="mark('2016-P1-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1448×727px · ink 0.00929</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q13.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q14">
+  <div class=head>
+    <b>2016-P1-Q14</b>
+    <button class=bad onclick="mark('2016-P1-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×1085px · ink 0.0226</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q14.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q15">
+  <div class=head>
+    <b>2016-P1-Q15</b>
+    <button class=bad onclick="mark('2016-P1-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1448×913px · ink 0.01122</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q15.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q16">
+  <div class=head>
+    <b>2016-P1-Q16</b>
+    <button class=bad onclick="mark('2016-P1-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1448×907px · ink 0.01264</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q16.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q17">
+  <div class=head>
+    <b>2016-P1-Q17</b>
+    <button class=bad onclick="mark('2016-P1-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×1062px · ink 0.01427</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q17.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q18">
+  <div class=head>
+    <b>2016-P1-Q18</b>
+    <button class=bad onclick="mark('2016-P1-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×811px · ink 0.01705</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q18.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q19">
+  <div class=head>
+    <b>2016-P1-Q19</b>
+    <button class=bad onclick="mark('2016-P1-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×761px · ink 0.02182</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q19.png"></details>
+</div>
+<div class=card data-id="2016-P1-Q20">
+  <div class=head>
+    <b>2016-P1-Q20</b>
+    <button class=bad onclick="mark('2016-P1-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1448×1377px · ink 0.02192</div>
+  <img loading=lazy src="../assets/questions/2016-P1-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P1-Q20.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q01">
+  <div class=head>
+    <b>2016-P2-Q01</b>
+    <button class=bad onclick="mark('2016-P2-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×1140px · ink 0.00581</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q01.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q02">
+  <div class=head>
+    <b>2016-P2-Q02</b>
+    <button class=bad onclick="mark('2016-P2-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer B · 1448×915px · ink 0.012</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q02.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q03">
+  <div class=head>
+    <b>2016-P2-Q03</b>
+    <button class=bad onclick="mark('2016-P2-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×971px · ink 0.01246</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q03.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q04">
+  <div class=head>
+    <b>2016-P2-Q04</b>
+    <button class=bad onclick="mark('2016-P2-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1448×1084px · ink 0.03401</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q04.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q05">
+  <div class=head>
+    <b>2016-P2-Q05</b>
+    <button class=bad onclick="mark('2016-P2-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1448×799px · ink 0.01691</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q05.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q06">
+  <div class=head>
+    <b>2016-P2-Q06</b>
+    <button class=bad onclick="mark('2016-P2-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1670px · ink 0.01657</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q06.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q07">
+  <div class=head>
+    <b>2016-P2-Q07</b>
+    <button class=bad onclick="mark('2016-P2-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1625px · ink 0.04279</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q07.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q08">
+  <div class=head>
+    <b>2016-P2-Q08</b>
+    <button class=bad onclick="mark('2016-P2-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1448×1256px · ink 0.0169</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q08.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q09">
+  <div class=head>
+    <b>2016-P2-Q09</b>
+    <button class=bad onclick="mark('2016-P2-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer D · 1448×1231px · ink 0.06798</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q09.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q10">
+  <div class=head>
+    <b>2016-P2-Q10</b>
+    <button class=bad onclick="mark('2016-P2-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×813px · ink 0.01557</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q10.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q11">
+  <div class=head>
+    <b>2016-P2-Q11</b>
+    <button class=bad onclick="mark('2016-P2-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer D · 1448×1392px · ink 0.02858</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q11.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q12">
+  <div class=head>
+    <b>2016-P2-Q12</b>
+    <button class=bad onclick="mark('2016-P2-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×870px · ink 0.03691</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q12.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q13">
+  <div class=head>
+    <b>2016-P2-Q13</b>
+    <button class=bad onclick="mark('2016-P2-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×1457px · ink 0.0383</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q13.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q14">
+  <div class=head>
+    <b>2016-P2-Q14</b>
+    <button class=bad onclick="mark('2016-P2-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×974px · ink 0.02941</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q14.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q15">
+  <div class=head>
+    <b>2016-P2-Q15</b>
+    <button class=bad onclick="mark('2016-P2-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1448×907px · ink 0.02379</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q15.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q16">
+  <div class=head>
+    <b>2016-P2-Q16</b>
+    <button class=bad onclick="mark('2016-P2-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1448×1706px · ink 0.02103</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q16.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q17">
+  <div class=head>
+    <b>2016-P2-Q17</b>
+    <button class=bad onclick="mark('2016-P2-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer H · 1448×1468px · ink 0.02695</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q17.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q18">
+  <div class=head>
+    <b>2016-P2-Q18</b>
+    <button class=bad onclick="mark('2016-P2-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×1017px · ink 0.01886</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q18.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q19">
+  <div class=head>
+    <b>2016-P2-Q19</b>
+    <button class=bad onclick="mark('2016-P2-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1448×1672px · ink 0.02817</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q19.png"></details>
+</div>
+<div class=card data-id="2016-P2-Q20">
+  <div class=head>
+    <b>2016-P2-Q20</b>
+    <button class=bad onclick="mark('2016-P2-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1448×996px · ink 0.01959</div>
+  <img loading=lazy src="../assets/questions/2016-P2-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2016-P2-Q20.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q01">
+  <div class=head>
+    <b>2017-P1-Q01</b>
+    <button class=bad onclick="mark('2017-P1-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×898px · ink 0.01565</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q01.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q02">
+  <div class=head>
+    <b>2017-P1-Q02</b>
+    <button class=bad onclick="mark('2017-P1-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×715px · ink 0.01196</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q02.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q03">
+  <div class=head>
+    <b>2017-P1-Q03</b>
+    <button class=bad onclick="mark('2017-P1-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer A · 1448×703px · ink 0.02091</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q03.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q04">
+  <div class=head>
+    <b>2017-P1-Q04</b>
+    <button class=bad onclick="mark('2017-P1-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×637px · ink 0.01887</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q04.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q05">
+  <div class=head>
+    <b>2017-P1-Q05</b>
+    <button class=bad onclick="mark('2017-P1-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1011px · ink 0.02551</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q05.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q06">
+  <div class=head>
+    <b>2017-P1-Q06</b>
+    <button class=bad onclick="mark('2017-P1-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×743px · ink 0.02154</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q06.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q07">
+  <div class=head>
+    <b>2017-P1-Q07</b>
+    <button class=bad onclick="mark('2017-P1-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer B · 1448×703px · ink 0.0286</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q07.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q08">
+  <div class=head>
+    <b>2017-P1-Q08</b>
+    <button class=bad onclick="mark('2017-P1-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer A · 1448×626px · ink 0.02104</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q08.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q09">
+  <div class=head>
+    <b>2017-P1-Q09</b>
+    <button class=bad onclick="mark('2017-P1-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×861px · ink 0.02073</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q09.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q10">
+  <div class=head>
+    <b>2017-P1-Q10</b>
+    <button class=bad onclick="mark('2017-P1-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×1008px · ink 0.0174</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q10.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q11">
+  <div class=head>
+    <b>2017-P1-Q11</b>
+    <button class=bad onclick="mark('2017-P1-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer A · 1448×787px · ink 0.01464</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q11.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q12">
+  <div class=head>
+    <b>2017-P1-Q12</b>
+    <button class=bad onclick="mark('2017-P1-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×867px · ink 0.02732</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q12.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q13">
+  <div class=head>
+    <b>2017-P1-Q13</b>
+    <button class=bad onclick="mark('2017-P1-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×730px · ink 0.02061</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q13.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q14">
+  <div class=head>
+    <b>2017-P1-Q14</b>
+    <button class=bad onclick="mark('2017-P1-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×1068px · ink 0.01128</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q14.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q15">
+  <div class=head>
+    <b>2017-P1-Q15</b>
+    <button class=bad onclick="mark('2017-P1-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1448×1399px · ink 0.05043</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q15.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q16">
+  <div class=head>
+    <b>2017-P1-Q16</b>
+    <button class=bad onclick="mark('2017-P1-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer E · 1448×866px · ink 0.02295</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q16.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q17">
+  <div class=head>
+    <b>2017-P1-Q17</b>
+    <button class=bad onclick="mark('2017-P1-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1448×838px · ink 0.01865</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q17.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q18">
+  <div class=head>
+    <b>2017-P1-Q18</b>
+    <button class=bad onclick="mark('2017-P1-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×758px · ink 0.02051</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q18.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q19">
+  <div class=head>
+    <b>2017-P1-Q19</b>
+    <button class=bad onclick="mark('2017-P1-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×824px · ink 0.02333</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q19.png"></details>
+</div>
+<div class=card data-id="2017-P1-Q20">
+  <div class=head>
+    <b>2017-P1-Q20</b>
+    <button class=bad onclick="mark('2017-P1-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1448×675px · ink 0.03694</div>
+  <img loading=lazy src="../assets/questions/2017-P1-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P1-Q20.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q01">
+  <div class=head>
+    <b>2017-P2-Q01</b>
+    <button class=bad onclick="mark('2017-P2-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×635px · ink 0.02026</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q01.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q02">
+  <div class=head>
+    <b>2017-P2-Q02</b>
+    <button class=bad onclick="mark('2017-P2-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1448×692px · ink 0.01804</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q02.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q03">
+  <div class=head>
+    <b>2017-P2-Q03</b>
+    <button class=bad onclick="mark('2017-P2-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer G · 1448×953px · ink 0.01508</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q03.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q04">
+  <div class=head>
+    <b>2017-P2-Q04</b>
+    <button class=bad onclick="mark('2017-P2-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×1514px · ink 0.03773</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q04.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q05">
+  <div class=head>
+    <b>2017-P2-Q05</b>
+    <button class=bad onclick="mark('2017-P2-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1448×1039px · ink 0.02547</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q05.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q06">
+  <div class=head>
+    <b>2017-P2-Q06</b>
+    <button class=bad onclick="mark('2017-P2-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1448×1291px · ink 0.00984</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q06.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q07">
+  <div class=head>
+    <b>2017-P2-Q07</b>
+    <button class=bad onclick="mark('2017-P2-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1448×1742px · ink 0.01837</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q07.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q08">
+  <div class=head>
+    <b>2017-P2-Q08</b>
+    <button class=bad onclick="mark('2017-P2-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1448×714px · ink 0.01045</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q08.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q09">
+  <div class=head>
+    <b>2017-P2-Q09</b>
+    <button class=bad onclick="mark('2017-P2-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer D · 1448×1484px · ink 0.04249</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q09.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q10">
+  <div class=head>
+    <b>2017-P2-Q10</b>
+    <button class=bad onclick="mark('2017-P2-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1448×568px · ink 0.02574</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q10.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q11">
+  <div class=head>
+    <b>2017-P2-Q11</b>
+    <button class=bad onclick="mark('2017-P2-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer B · 1448×1006px · ink 0.02954</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q11.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q12">
+  <div class=head>
+    <b>2017-P2-Q12</b>
+    <button class=bad onclick="mark('2017-P2-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×1527px · ink 0.02481</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q12.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q13">
+  <div class=head>
+    <b>2017-P2-Q13</b>
+    <button class=bad onclick="mark('2017-P2-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1448×1158px · ink 0.0168</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q13.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q14">
+  <div class=head>
+    <b>2017-P2-Q14</b>
+    <button class=bad onclick="mark('2017-P2-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×1756px · ink 0.02509</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q14.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q15">
+  <div class=head>
+    <b>2017-P2-Q15</b>
+    <button class=bad onclick="mark('2017-P2-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×962px · ink 0.02216</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q15.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q16">
+  <div class=head>
+    <b>2017-P2-Q16</b>
+    <button class=bad onclick="mark('2017-P2-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer C · 1448×773px · ink 0.02354</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q16.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q17">
+  <div class=head>
+    <b>2017-P2-Q17</b>
+    <button class=bad onclick="mark('2017-P2-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×1194px · ink 0.05862</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q17.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q18">
+  <div class=head>
+    <b>2017-P2-Q18</b>
+    <button class=bad onclick="mark('2017-P2-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×1784px · ink 0.02331</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q18.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q19">
+  <div class=head>
+    <b>2017-P2-Q19</b>
+    <button class=bad onclick="mark('2017-P2-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1448×743px · ink 0.01631</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q19.png"></details>
+</div>
+<div class=card data-id="2017-P2-Q20">
+  <div class=head>
+    <b>2017-P2-Q20</b>
+    <button class=bad onclick="mark('2017-P2-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×775px · ink 0.04685</div>
+  <img loading=lazy src="../assets/questions/2017-P2-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2017-P2-Q20.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q01">
+  <div class=head>
+    <b>2018-P1-Q01</b>
+    <button class=bad onclick="mark('2018-P1-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer D · 1448×755px · ink 0.0062</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q01.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q02">
+  <div class=head>
+    <b>2018-P1-Q02</b>
+    <button class=bad onclick="mark('2018-P1-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×694px · ink 0.02266</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q02.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q03">
+  <div class=head>
+    <b>2018-P1-Q03</b>
+    <button class=bad onclick="mark('2018-P1-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1448×686px · ink 0.01139</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q03.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q04">
+  <div class=head>
+    <b>2018-P1-Q04</b>
+    <button class=bad onclick="mark('2018-P1-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer G · 1448×1050px · ink 0.01634</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q04.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q05">
+  <div class=head>
+    <b>2018-P1-Q05</b>
+    <button class=bad onclick="mark('2018-P1-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1448×801px · ink 0.02302</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q05.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q06">
+  <div class=head>
+    <b>2018-P1-Q06</b>
+    <button class=bad onclick="mark('2018-P1-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1448×613px · ink 0.01028</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q06.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q07">
+  <div class=head>
+    <b>2018-P1-Q07</b>
+    <button class=bad onclick="mark('2018-P1-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×660px · ink 0.01428</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q07.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q08">
+  <div class=head>
+    <b>2018-P1-Q08</b>
+    <button class=bad onclick="mark('2018-P1-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×684px · ink 0.0196</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q08.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q09">
+  <div class=head>
+    <b>2018-P1-Q09</b>
+    <button class=bad onclick="mark('2018-P1-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×734px · ink 0.01335</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q09.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q10">
+  <div class=head>
+    <b>2018-P1-Q10</b>
+    <button class=bad onclick="mark('2018-P1-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×612px · ink 0.01569</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q10.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q11">
+  <div class=head>
+    <b>2018-P1-Q11</b>
+    <button class=bad onclick="mark('2018-P1-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×679px · ink 0.01175</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q11.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q12">
+  <div class=head>
+    <b>2018-P1-Q12</b>
+    <button class=bad onclick="mark('2018-P1-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×1219px · ink 0.01101</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q12.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q13">
+  <div class=head>
+    <b>2018-P1-Q13</b>
+    <button class=bad onclick="mark('2018-P1-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×1045px · ink 0.01702</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q13.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q14">
+  <div class=head>
+    <b>2018-P1-Q14</b>
+    <button class=bad onclick="mark('2018-P1-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×624px · ink 0.01982</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q14.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q15">
+  <div class=head>
+    <b>2018-P1-Q15</b>
+    <button class=bad onclick="mark('2018-P1-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×641px · ink 0.01146</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q15.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q16">
+  <div class=head>
+    <b>2018-P1-Q16</b>
+    <button class=bad onclick="mark('2018-P1-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×656px · ink 0.01913</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q16.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q17">
+  <div class=head>
+    <b>2018-P1-Q17</b>
+    <button class=bad onclick="mark('2018-P1-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer A · 1448×816px · ink 0.03152</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q17.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q18">
+  <div class=head>
+    <b>2018-P1-Q18</b>
+    <button class=bad onclick="mark('2018-P1-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×508px · ink 0.01525</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q18.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q19">
+  <div class=head>
+    <b>2018-P1-Q19</b>
+    <button class=bad onclick="mark('2018-P1-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×804px · ink 0.02292</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q19.png"></details>
+</div>
+<div class=card data-id="2018-P1-Q20">
+  <div class=head>
+    <b>2018-P1-Q20</b>
+    <button class=bad onclick="mark('2018-P1-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×610px · ink 0.01184</div>
+  <img loading=lazy src="../assets/questions/2018-P1-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P1-Q20.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q01">
+  <div class=head>
+    <b>2018-P2-Q01</b>
+    <button class=bad onclick="mark('2018-P2-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×753px · ink 0.00921</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q01.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q02">
+  <div class=head>
+    <b>2018-P2-Q02</b>
+    <button class=bad onclick="mark('2018-P2-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×650px · ink 0.01085</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q02.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q03">
+  <div class=head>
+    <b>2018-P2-Q03</b>
+    <button class=bad onclick="mark('2018-P2-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×1432px · ink 0.04084</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q03.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q04">
+  <div class=head>
+    <b>2018-P2-Q04</b>
+    <button class=bad onclick="mark('2018-P2-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×651px · ink 0.01647</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q04.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q05">
+  <div class=head>
+    <b>2018-P2-Q05</b>
+    <button class=bad onclick="mark('2018-P2-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer A · 1448×693px · ink 0.02855</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q05.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q06">
+  <div class=head>
+    <b>2018-P2-Q06</b>
+    <button class=bad onclick="mark('2018-P2-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1448×562px · ink 0.02233</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q06.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q07">
+  <div class=head>
+    <b>2018-P2-Q07</b>
+    <button class=bad onclick="mark('2018-P2-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer B · 1448×868px · ink 0.02405</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q07.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q08">
+  <div class=head>
+    <b>2018-P2-Q08</b>
+    <button class=bad onclick="mark('2018-P2-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer D · 1448×1895px · ink 0.04015</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q08.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q09">
+  <div class=head>
+    <b>2018-P2-Q09</b>
+    <button class=bad onclick="mark('2018-P2-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1448×1873px · ink 0.02901</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q09.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q10">
+  <div class=head>
+    <b>2018-P2-Q10</b>
+    <button class=bad onclick="mark('2018-P2-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1448×1123px · ink 0.04554</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q10.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q11">
+  <div class=head>
+    <b>2018-P2-Q11</b>
+    <button class=bad onclick="mark('2018-P2-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1448×962px · ink 0.02607</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q11.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q12">
+  <div class=head>
+    <b>2018-P2-Q12</b>
+    <button class=bad onclick="mark('2018-P2-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×1230px · ink 0.05815</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q12.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q13">
+  <div class=head>
+    <b>2018-P2-Q13</b>
+    <button class=bad onclick="mark('2018-P2-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×1506px · ink 0.0277</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q13.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q14">
+  <div class=head>
+    <b>2018-P2-Q14</b>
+    <button class=bad onclick="mark('2018-P2-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1448×792px · ink 0.01775</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q14.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q15">
+  <div class=head>
+    <b>2018-P2-Q15</b>
+    <button class=bad onclick="mark('2018-P2-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer G · 1448×1036px · ink 0.02362</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q15.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q16">
+  <div class=head>
+    <b>2018-P2-Q16</b>
+    <button class=bad onclick="mark('2018-P2-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×1041px · ink 0.0278</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q16.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q17">
+  <div class=head>
+    <b>2018-P2-Q17</b>
+    <button class=bad onclick="mark('2018-P2-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer C · 1448×1081px · ink 0.05167</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q17.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q18">
+  <div class=head>
+    <b>2018-P2-Q18</b>
+    <button class=bad onclick="mark('2018-P2-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×843px · ink 0.02282</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q18.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q19">
+  <div class=head>
+    <b>2018-P2-Q19</b>
+    <button class=bad onclick="mark('2018-P2-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer C · 1448×598px · ink 0.01696</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q19.png"></details>
+</div>
+<div class=card data-id="2018-P2-Q20">
+  <div class=head>
+    <b>2018-P2-Q20</b>
+    <button class=bad onclick="mark('2018-P2-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×669px · ink 0.02133</div>
+  <img loading=lazy src="../assets/questions/2018-P2-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2018-P2-Q20.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q01">
+  <div class=head>
+    <b>2019-P1-Q01</b>
+    <button class=bad onclick="mark('2019-P1-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×725px · ink 0.01862</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q01.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q02">
+  <div class=head>
+    <b>2019-P1-Q02</b>
+    <button class=bad onclick="mark('2019-P1-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1448×884px · ink 0.01654</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q02.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q03">
+  <div class=head>
+    <b>2019-P1-Q03</b>
+    <button class=bad onclick="mark('2019-P1-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1448×753px · ink 0.01283</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q03.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q04">
+  <div class=head>
+    <b>2019-P1-Q04</b>
+    <button class=bad onclick="mark('2019-P1-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1029px · ink 0.01012</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q04.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q05">
+  <div class=head>
+    <b>2019-P1-Q05</b>
+    <button class=bad onclick="mark('2019-P1-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×767px · ink 0.01422</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q05.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q06">
+  <div class=head>
+    <b>2019-P1-Q06</b>
+    <button class=bad onclick="mark('2019-P1-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1448×817px · ink 0.01511</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q06.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q07">
+  <div class=head>
+    <b>2019-P1-Q07</b>
+    <button class=bad onclick="mark('2019-P1-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1448×887px · ink 0.01326</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q07.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q08">
+  <div class=head>
+    <b>2019-P1-Q08</b>
+    <button class=bad onclick="mark('2019-P1-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1448×739px · ink 0.02885</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q08.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q09">
+  <div class=head>
+    <b>2019-P1-Q09</b>
+    <button class=bad onclick="mark('2019-P1-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer D · 1448×708px · ink 0.01356</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q09.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q10">
+  <div class=head>
+    <b>2019-P1-Q10</b>
+    <button class=bad onclick="mark('2019-P1-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×696px · ink 0.00548</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q10.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q11">
+  <div class=head>
+    <b>2019-P1-Q11</b>
+    <button class=bad onclick="mark('2019-P1-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer H · 1448×932px · ink 0.01046</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q11.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q12">
+  <div class=head>
+    <b>2019-P1-Q12</b>
+    <button class=bad onclick="mark('2019-P1-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×846px · ink 0.01143</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q12.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q13">
+  <div class=head>
+    <b>2019-P1-Q13</b>
+    <button class=bad onclick="mark('2019-P1-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×701px · ink 0.00964</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q13.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q14">
+  <div class=head>
+    <b>2019-P1-Q14</b>
+    <button class=bad onclick="mark('2019-P1-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×856px · ink 0.01421</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q14.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q15">
+  <div class=head>
+    <b>2019-P1-Q15</b>
+    <button class=bad onclick="mark('2019-P1-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×640px · ink 0.01141</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q15.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q16">
+  <div class=head>
+    <b>2019-P1-Q16</b>
+    <button class=bad onclick="mark('2019-P1-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1076px · ink 0.00793</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q16.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q17">
+  <div class=head>
+    <b>2019-P1-Q17</b>
+    <button class=bad onclick="mark('2019-P1-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×835px · ink 0.0112</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q17.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q18">
+  <div class=head>
+    <b>2019-P1-Q18</b>
+    <button class=bad onclick="mark('2019-P1-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer B · 1448×608px · ink 0.0115</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q18.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q19">
+  <div class=head>
+    <b>2019-P1-Q19</b>
+    <button class=bad onclick="mark('2019-P1-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×620px · ink 0.00984</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q19.png"></details>
+</div>
+<div class=card data-id="2019-P1-Q20">
+  <div class=head>
+    <b>2019-P1-Q20</b>
+    <button class=bad onclick="mark('2019-P1-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×841px · ink 0.01965</div>
+  <img loading=lazy src="../assets/questions/2019-P1-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P1-Q20.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q01">
+  <div class=head>
+    <b>2019-P2-Q01</b>
+    <button class=bad onclick="mark('2019-P2-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1448×580px · ink 0.01124</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q01.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q02">
+  <div class=head>
+    <b>2019-P2-Q02</b>
+    <button class=bad onclick="mark('2019-P2-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×611px · ink 0.01047</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q02.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q03">
+  <div class=head>
+    <b>2019-P2-Q03</b>
+    <button class=bad onclick="mark('2019-P2-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1448×961px · ink 0.01503</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q03.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q04">
+  <div class=head>
+    <b>2019-P2-Q04</b>
+    <button class=bad onclick="mark('2019-P2-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer D · 1448×1188px · ink 0.02592</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q04.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q05">
+  <div class=head>
+    <b>2019-P2-Q05</b>
+    <button class=bad onclick="mark('2019-P2-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer B · 1448×571px · ink 0.03535</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q05.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q06">
+  <div class=head>
+    <b>2019-P2-Q06</b>
+    <button class=bad onclick="mark('2019-P2-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer D · 1448×1893px · ink 0.02584</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q06.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q07">
+  <div class=head>
+    <b>2019-P2-Q07</b>
+    <button class=bad onclick="mark('2019-P2-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer B · 1448×637px · ink 0.05563</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q07.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q08">
+  <div class=head>
+    <b>2019-P2-Q08</b>
+    <button class=bad onclick="mark('2019-P2-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1448×983px · ink 0.01511</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q08.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q09">
+  <div class=head>
+    <b>2019-P2-Q09</b>
+    <button class=bad onclick="mark('2019-P2-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×652px · ink 0.02234</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q09.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q10">
+  <div class=head>
+    <b>2019-P2-Q10</b>
+    <button class=bad onclick="mark('2019-P2-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer A · 1448×510px · ink 0.03408</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q10.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q11">
+  <div class=head>
+    <b>2019-P2-Q11</b>
+    <button class=bad onclick="mark('2019-P2-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1448×1035px · ink 0.02065</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q11.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q12">
+  <div class=head>
+    <b>2019-P2-Q12</b>
+    <button class=bad onclick="mark('2019-P2-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×928px · ink 0.02926</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q12.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q13">
+  <div class=head>
+    <b>2019-P2-Q13</b>
+    <button class=bad onclick="mark('2019-P2-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer D · 1448×761px · ink 0.02976</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q13.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q14">
+  <div class=head>
+    <b>2019-P2-Q14</b>
+    <button class=bad onclick="mark('2019-P2-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1448×1005px · ink 0.02067</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q14.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q15">
+  <div class=head>
+    <b>2019-P2-Q15</b>
+    <button class=bad onclick="mark('2019-P2-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×817px · ink 0.02229</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q15.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q16">
+  <div class=head>
+    <b>2019-P2-Q16</b>
+    <button class=bad onclick="mark('2019-P2-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×1751px · ink 0.05083</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q16.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q17">
+  <div class=head>
+    <b>2019-P2-Q17</b>
+    <button class=bad onclick="mark('2019-P2-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer D · 1448×532px · ink 0.03799</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q17.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q18">
+  <div class=head>
+    <b>2019-P2-Q18</b>
+    <button class=bad onclick="mark('2019-P2-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1448×967px · ink 0.01709</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q18.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q19">
+  <div class=head>
+    <b>2019-P2-Q19</b>
+    <button class=bad onclick="mark('2019-P2-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer E · 1448×711px · ink 0.01105</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q19.png"></details>
+</div>
+<div class=card data-id="2019-P2-Q20">
+  <div class=head>
+    <b>2019-P2-Q20</b>
+    <button class=bad onclick="mark('2019-P2-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer B · 1448×956px · ink 0.04579</div>
+  <img loading=lazy src="../assets/questions/2019-P2-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2019-P2-Q20.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q01">
+  <div class=head>
+    <b>2020-P1-Q01</b>
+    <button class=bad onclick="mark('2020-P1-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×918px · ink 0.01261</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q01.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q02">
+  <div class=head>
+    <b>2020-P1-Q02</b>
+    <button class=bad onclick="mark('2020-P1-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×612px · ink 0.01146</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q02.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q03">
+  <div class=head>
+    <b>2020-P1-Q03</b>
+    <button class=bad onclick="mark('2020-P1-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer B · 1448×721px · ink 0.01392</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q03.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q04">
+  <div class=head>
+    <b>2020-P1-Q04</b>
+    <button class=bad onclick="mark('2020-P1-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×726px · ink 0.02208</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q04.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q05">
+  <div class=head>
+    <b>2020-P1-Q05</b>
+    <button class=bad onclick="mark('2020-P1-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer A · 1448×818px · ink 0.01403</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q05.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q06">
+  <div class=head>
+    <b>2020-P1-Q06</b>
+    <button class=bad onclick="mark('2020-P1-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×678px · ink 0.00795</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q06.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q07">
+  <div class=head>
+    <b>2020-P1-Q07</b>
+    <button class=bad onclick="mark('2020-P1-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×968px · ink 0.0065</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q07.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q08">
+  <div class=head>
+    <b>2020-P1-Q08</b>
+    <button class=bad onclick="mark('2020-P1-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×782px · ink 0.01859</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q08.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q09">
+  <div class=head>
+    <b>2020-P1-Q09</b>
+    <button class=bad onclick="mark('2020-P1-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×653px · ink 0.02515</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q09.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q10">
+  <div class=head>
+    <b>2020-P1-Q10</b>
+    <button class=bad onclick="mark('2020-P1-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1448×1040px · ink 0.02221</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q10.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q11">
+  <div class=head>
+    <b>2020-P1-Q11</b>
+    <button class=bad onclick="mark('2020-P1-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×1332px · ink 0.01284</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q11.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q12">
+  <div class=head>
+    <b>2020-P1-Q12</b>
+    <button class=bad onclick="mark('2020-P1-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer D · 1448×812px · ink 0.00981</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q12.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q13">
+  <div class=head>
+    <b>2020-P1-Q13</b>
+    <button class=bad onclick="mark('2020-P1-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×539px · ink 0.01158</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q13.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q14">
+  <div class=head>
+    <b>2020-P1-Q14</b>
+    <button class=bad onclick="mark('2020-P1-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×612px · ink 0.01396</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q14.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q15">
+  <div class=head>
+    <b>2020-P1-Q15</b>
+    <button class=bad onclick="mark('2020-P1-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×688px · ink 0.01331</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q15.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q16">
+  <div class=head>
+    <b>2020-P1-Q16</b>
+    <button class=bad onclick="mark('2020-P1-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×997px · ink 0.01819</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q16.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q17">
+  <div class=head>
+    <b>2020-P1-Q17</b>
+    <button class=bad onclick="mark('2020-P1-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×577px · ink 0.0201</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q17.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q18">
+  <div class=head>
+    <b>2020-P1-Q18</b>
+    <button class=bad onclick="mark('2020-P1-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×742px · ink 0.03241</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q18.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q19">
+  <div class=head>
+    <b>2020-P1-Q19</b>
+    <button class=bad onclick="mark('2020-P1-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×539px · ink 0.01199</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q19.png"></details>
+</div>
+<div class=card data-id="2020-P1-Q20">
+  <div class=head>
+    <b>2020-P1-Q20</b>
+    <button class=bad onclick="mark('2020-P1-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×684px · ink 0.01313</div>
+  <img loading=lazy src="../assets/questions/2020-P1-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P1-Q20.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q01">
+  <div class=head>
+    <b>2020-P2-Q01</b>
+    <button class=bad onclick="mark('2020-P2-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×578px · ink 0.01772</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q01.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q02">
+  <div class=head>
+    <b>2020-P2-Q02</b>
+    <button class=bad onclick="mark('2020-P2-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×912px · ink 0.00905</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q02.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q03">
+  <div class=head>
+    <b>2020-P2-Q03</b>
+    <button class=bad onclick="mark('2020-P2-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer C · 1448×1494px · ink 0.03157</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q03.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q04">
+  <div class=head>
+    <b>2020-P2-Q04</b>
+    <button class=bad onclick="mark('2020-P2-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer G · 1448×1104px · ink 0.02093</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q04.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q05">
+  <div class=head>
+    <b>2020-P2-Q05</b>
+    <button class=bad onclick="mark('2020-P2-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×926px · ink 0.02314</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q05.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q06">
+  <div class=head>
+    <b>2020-P2-Q06</b>
+    <button class=bad onclick="mark('2020-P2-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1448×1115px · ink 0.02135</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q06.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q07">
+  <div class=head>
+    <b>2020-P2-Q07</b>
+    <button class=bad onclick="mark('2020-P2-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer H · 1448×1001px · ink 0.04877</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q07.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q08">
+  <div class=head>
+    <b>2020-P2-Q08</b>
+    <button class=bad onclick="mark('2020-P2-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1448×1009px · ink 0.05355</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q08.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q09">
+  <div class=head>
+    <b>2020-P2-Q09</b>
+    <button class=bad onclick="mark('2020-P2-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×651px · ink 0.03256</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q09.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q10">
+  <div class=head>
+    <b>2020-P2-Q10</b>
+    <button class=bad onclick="mark('2020-P2-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×1166px · ink 0.01377</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q10.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q11">
+  <div class=head>
+    <b>2020-P2-Q11</b>
+    <button class=bad onclick="mark('2020-P2-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer G · 1448×1794px · ink 0.02485</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q11.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q12">
+  <div class=head>
+    <b>2020-P2-Q12</b>
+    <button class=bad onclick="mark('2020-P2-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×678px · ink 0.04365</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q12.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q13">
+  <div class=head>
+    <b>2020-P2-Q13</b>
+    <button class=bad onclick="mark('2020-P2-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer D · 1448×772px · ink 0.0207</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q13.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q14">
+  <div class=head>
+    <b>2020-P2-Q14</b>
+    <button class=bad onclick="mark('2020-P2-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer A · 1448×1111px · ink 0.03281</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q14.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q15">
+  <div class=head>
+    <b>2020-P2-Q15</b>
+    <button class=bad onclick="mark('2020-P2-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×736px · ink 0.02552</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q15.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q16">
+  <div class=head>
+    <b>2020-P2-Q16</b>
+    <button class=bad onclick="mark('2020-P2-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×1477px · ink 0.02964</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q16.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q17">
+  <div class=head>
+    <b>2020-P2-Q17</b>
+    <button class=bad onclick="mark('2020-P2-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×758px · ink 0.02486</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q17.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q18">
+  <div class=head>
+    <b>2020-P2-Q18</b>
+    <button class=bad onclick="mark('2020-P2-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer G · 1448×1004px · ink 0.01943</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q18.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q19">
+  <div class=head>
+    <b>2020-P2-Q19</b>
+    <button class=bad onclick="mark('2020-P2-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1448×1420px · ink 0.04165</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q19.png"></details>
+</div>
+<div class=card data-id="2020-P2-Q20">
+  <div class=head>
+    <b>2020-P2-Q20</b>
+    <button class=bad onclick="mark('2020-P2-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×611px · ink 0.02607</div>
+  <img loading=lazy src="../assets/questions/2020-P2-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2020-P2-Q20.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q01">
+  <div class=head>
+    <b>2021-P1-Q01</b>
+    <button class=bad onclick="mark('2021-P1-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1448×944px · ink 0.01975</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q01.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q02">
+  <div class=head>
+    <b>2021-P1-Q02</b>
+    <button class=bad onclick="mark('2021-P1-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1448×761px · ink 0.01169</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q02.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q03">
+  <div class=head>
+    <b>2021-P1-Q03</b>
+    <button class=bad onclick="mark('2021-P1-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer G · 1448×1126px · ink 0.01776</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q03.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q04">
+  <div class=head>
+    <b>2021-P1-Q04</b>
+    <button class=bad onclick="mark('2021-P1-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×653px · ink 0.00802</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q04.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q05">
+  <div class=head>
+    <b>2021-P1-Q05</b>
+    <button class=bad onclick="mark('2021-P1-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×918px · ink 0.01529</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q05.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q06">
+  <div class=head>
+    <b>2021-P1-Q06</b>
+    <button class=bad onclick="mark('2021-P1-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×838px · ink 0.01118</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q06.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q07">
+  <div class=head>
+    <b>2021-P1-Q07</b>
+    <button class=bad onclick="mark('2021-P1-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer G · 1448×1372px · ink 0.00855</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q07.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q08">
+  <div class=head>
+    <b>2021-P1-Q08</b>
+    <button class=bad onclick="mark('2021-P1-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1448×687px · ink 0.01553</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q08.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q09">
+  <div class=head>
+    <b>2021-P1-Q09</b>
+    <button class=bad onclick="mark('2021-P1-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer C · 1448×729px · ink 0.00764</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q09.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q10">
+  <div class=head>
+    <b>2021-P1-Q10</b>
+    <button class=bad onclick="mark('2021-P1-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×986px · ink 0.00847</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q10.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q11">
+  <div class=head>
+    <b>2021-P1-Q11</b>
+    <button class=bad onclick="mark('2021-P1-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer A · 1448×1233px · ink 0.0078</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q11.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q12">
+  <div class=head>
+    <b>2021-P1-Q12</b>
+    <button class=bad onclick="mark('2021-P1-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×809px · ink 0.01261</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q12.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q13">
+  <div class=head>
+    <b>2021-P1-Q13</b>
+    <button class=bad onclick="mark('2021-P1-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×935px · ink 0.0093</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q13.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q14">
+  <div class=head>
+    <b>2021-P1-Q14</b>
+    <button class=bad onclick="mark('2021-P1-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×727px · ink 0.0124</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q14.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q15">
+  <div class=head>
+    <b>2021-P1-Q15</b>
+    <button class=bad onclick="mark('2021-P1-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×1569px · ink 0.01399</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q15.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q16">
+  <div class=head>
+    <b>2021-P1-Q16</b>
+    <button class=bad onclick="mark('2021-P1-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×1084px · ink 0.01499</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q16.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q17">
+  <div class=head>
+    <b>2021-P1-Q17</b>
+    <button class=bad onclick="mark('2021-P1-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer A · 1448×1850px · ink 0.03876</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q17.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q18">
+  <div class=head>
+    <b>2021-P1-Q18</b>
+    <button class=bad onclick="mark('2021-P1-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1448×959px · ink 0.01819</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q18.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q19">
+  <div class=head>
+    <b>2021-P1-Q19</b>
+    <button class=bad onclick="mark('2021-P1-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×833px · ink 0.01602</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q19.png"></details>
+</div>
+<div class=card data-id="2021-P1-Q20">
+  <div class=head>
+    <b>2021-P1-Q20</b>
+    <button class=bad onclick="mark('2021-P1-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×653px · ink 0.01103</div>
+  <img loading=lazy src="../assets/questions/2021-P1-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P1-Q20.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q01">
+  <div class=head>
+    <b>2021-P2-Q01</b>
+    <button class=bad onclick="mark('2021-P2-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer D · 1448×684px · ink 0.008</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q01.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q02">
+  <div class=head>
+    <b>2021-P2-Q02</b>
+    <button class=bad onclick="mark('2021-P2-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×617px · ink 0.01935</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q02.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q03">
+  <div class=head>
+    <b>2021-P2-Q03</b>
+    <button class=bad onclick="mark('2021-P2-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1079px · ink 0.02926</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q03.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q04">
+  <div class=head>
+    <b>2021-P2-Q04</b>
+    <button class=bad onclick="mark('2021-P2-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1115px · ink 0.01898</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q04.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q05">
+  <div class=head>
+    <b>2021-P2-Q05</b>
+    <button class=bad onclick="mark('2021-P2-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×496px · ink 0.03424</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q05.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q06">
+  <div class=head>
+    <b>2021-P2-Q06</b>
+    <button class=bad onclick="mark('2021-P2-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer D · 1448×618px · ink 0.03675</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q06.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q07">
+  <div class=head>
+    <b>2021-P2-Q07</b>
+    <button class=bad onclick="mark('2021-P2-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1448×986px · ink 0.03054</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q07.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q08">
+  <div class=head>
+    <b>2021-P2-Q08</b>
+    <button class=bad onclick="mark('2021-P2-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer C · 1448×634px · ink 0.04651</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q08.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q09">
+  <div class=head>
+    <b>2021-P2-Q09</b>
+    <button class=bad onclick="mark('2021-P2-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×933px · ink 0.04369</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q09.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q10">
+  <div class=head>
+    <b>2021-P2-Q10</b>
+    <button class=bad onclick="mark('2021-P2-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer E · 1448×1300px · ink 0.01622</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q10.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q11">
+  <div class=head>
+    <b>2021-P2-Q11</b>
+    <button class=bad onclick="mark('2021-P2-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×1485px · ink 0.02944</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q11.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q12">
+  <div class=head>
+    <b>2021-P2-Q12</b>
+    <button class=bad onclick="mark('2021-P2-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1448×962px · ink 0.02413</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q12.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q13">
+  <div class=head>
+    <b>2021-P2-Q13</b>
+    <button class=bad onclick="mark('2021-P2-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1448×1157px · ink 0.01688</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q13.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q14">
+  <div class=head>
+    <b>2021-P2-Q14</b>
+    <button class=bad onclick="mark('2021-P2-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1002px · ink 0.01934</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q14.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q15">
+  <div class=head>
+    <b>2021-P2-Q15</b>
+    <button class=bad onclick="mark('2021-P2-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×916px · ink 0.02021</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q15.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q16">
+  <div class=head>
+    <b>2021-P2-Q16</b>
+    <button class=bad onclick="mark('2021-P2-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×764px · ink 0.01837</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q16.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q17">
+  <div class=head>
+    <b>2021-P2-Q17</b>
+    <button class=bad onclick="mark('2021-P2-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×827px · ink 0.02618</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q17.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q18">
+  <div class=head>
+    <b>2021-P2-Q18</b>
+    <button class=bad onclick="mark('2021-P2-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1441px · ink 0.0296</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q18.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q19">
+  <div class=head>
+    <b>2021-P2-Q19</b>
+    <button class=bad onclick="mark('2021-P2-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×832px · ink 0.01491</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q19.png"></details>
+</div>
+<div class=card data-id="2021-P2-Q20">
+  <div class=head>
+    <b>2021-P2-Q20</b>
+    <button class=bad onclick="mark('2021-P2-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1448×1107px · ink 0.00937</div>
+  <img loading=lazy src="../assets/questions/2021-P2-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2021-P2-Q20.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q01">
+  <div class=head>
+    <b>2022-P1-Q01</b>
+    <button class=bad onclick="mark('2022-P1-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1917px · ink 0.00463</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q01.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q02">
+  <div class=head>
+    <b>2022-P1-Q02</b>
+    <button class=bad onclick="mark('2022-P1-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×1912px · ink 0.00692</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q02.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q03">
+  <div class=head>
+    <b>2022-P1-Q03</b>
+    <button class=bad onclick="mark('2022-P1-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×1935px · ink 0.00521</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q03.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q04">
+  <div class=head>
+    <b>2022-P1-Q04</b>
+    <button class=bad onclick="mark('2022-P1-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer C · 1448×1974px · ink 0.01003</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q04.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q05">
+  <div class=head>
+    <b>2022-P1-Q05</b>
+    <button class=bad onclick="mark('2022-P1-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer H · 1448×1940px · ink 0.0066</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q05.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q06">
+  <div class=head>
+    <b>2022-P1-Q06</b>
+    <button class=bad onclick="mark('2022-P1-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1448×1967px · ink 0.00355</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q06.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q07">
+  <div class=head>
+    <b>2022-P1-Q07</b>
+    <button class=bad onclick="mark('2022-P1-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×1908px · ink 0.00452</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q07.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q08">
+  <div class=head>
+    <b>2022-P1-Q08</b>
+    <button class=bad onclick="mark('2022-P1-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×1959px · ink 0.01232</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q08.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q09">
+  <div class=head>
+    <b>2022-P1-Q09</b>
+    <button class=bad onclick="mark('2022-P1-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×834px · ink 0.0188</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q09.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q10">
+  <div class=head>
+    <b>2022-P1-Q10</b>
+    <button class=bad onclick="mark('2022-P1-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1993px · ink 0.01119</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q10.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q11">
+  <div class=head>
+    <b>2022-P1-Q11</b>
+    <button class=bad onclick="mark('2022-P1-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1448×1916px · ink 0.00583</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q11.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q12">
+  <div class=head>
+    <b>2022-P1-Q12</b>
+    <button class=bad onclick="mark('2022-P1-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1448×1992px · ink 0.0096</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q12.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q13">
+  <div class=head>
+    <b>2022-P1-Q13</b>
+    <button class=bad onclick="mark('2022-P1-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1448×1916px · ink 0.00562</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q13.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q14">
+  <div class=head>
+    <b>2022-P1-Q14</b>
+    <button class=bad onclick="mark('2022-P1-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×1857px · ink 0.00914</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q14.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q15">
+  <div class=head>
+    <b>2022-P1-Q15</b>
+    <button class=bad onclick="mark('2022-P1-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer H · 1448×1200px · ink 0.01736</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q15.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q16">
+  <div class=head>
+    <b>2022-P1-Q16</b>
+    <button class=bad onclick="mark('2022-P1-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×1770px · ink 0.00845</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q16.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q17">
+  <div class=head>
+    <b>2022-P1-Q17</b>
+    <button class=bad onclick="mark('2022-P1-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1448×1837px · ink 0.009</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q17.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q18">
+  <div class=head>
+    <b>2022-P1-Q18</b>
+    <button class=bad onclick="mark('2022-P1-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1448×1829px · ink 0.01166</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q18.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q19">
+  <div class=head>
+    <b>2022-P1-Q19</b>
+    <button class=bad onclick="mark('2022-P1-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×988px · ink 0.02009</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q19.png"></details>
+</div>
+<div class=card data-id="2022-P1-Q20">
+  <div class=head>
+    <b>2022-P1-Q20</b>
+    <button class=bad onclick="mark('2022-P1-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×1957px · ink 0.00684</div>
+  <img loading=lazy src="../assets/questions/2022-P1-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P1-Q20.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q01">
+  <div class=head>
+    <b>2022-P2-Q01</b>
+    <button class=bad onclick="mark('2022-P2-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×1957px · ink 0.00369</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q01.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q02">
+  <div class=head>
+    <b>2022-P2-Q02</b>
+    <button class=bad onclick="mark('2022-P2-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1448×1992px · ink 0.00344</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q02.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q03">
+  <div class=head>
+    <b>2022-P2-Q03</b>
+    <button class=bad onclick="mark('2022-P2-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1448×1823px · ink 0.01189</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q03.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q04">
+  <div class=head>
+    <b>2022-P2-Q04</b>
+    <button class=bad onclick="mark('2022-P2-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×1880px · ink 0.01621</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q04.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q05">
+  <div class=head>
+    <b>2022-P2-Q05</b>
+    <button class=bad onclick="mark('2022-P2-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×1976px · ink 0.0127</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q05.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q06">
+  <div class=head>
+    <b>2022-P2-Q06</b>
+    <button class=bad onclick="mark('2022-P2-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer C · 1448×1923px · ink 0.01366</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q06.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q07">
+  <div class=head>
+    <b>2022-P2-Q07</b>
+    <button class=bad onclick="mark('2022-P2-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1448×1846px · ink 0.04143</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q07.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q08">
+  <div class=head>
+    <b>2022-P2-Q08</b>
+    <button class=bad onclick="mark('2022-P2-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1448×1668px · ink 0.01119</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q08.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q09">
+  <div class=head>
+    <b>2022-P2-Q09</b>
+    <button class=bad onclick="mark('2022-P2-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer A · 1448×1835px · ink 0.00828</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q09.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q10">
+  <div class=head>
+    <b>2022-P2-Q10</b>
+    <button class=bad onclick="mark('2022-P2-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer G · 1448×1916px · ink 0.01385</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q10.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q11">
+  <div class=head>
+    <b>2022-P2-Q11</b>
+    <button class=bad onclick="mark('2022-P2-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1448×1839px · ink 0.01228</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q11.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q12">
+  <div class=head>
+    <b>2022-P2-Q12</b>
+    <button class=bad onclick="mark('2022-P2-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1448×1956px · ink 0.00648</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q12.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q13">
+  <div class=head>
+    <b>2022-P2-Q13</b>
+    <button class=bad onclick="mark('2022-P2-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×1805px · ink 0.01175</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q13.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q14">
+  <div class=head>
+    <b>2022-P2-Q14</b>
+    <button class=bad onclick="mark('2022-P2-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer D · 1448×1527px · ink 0.0307</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q14.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q15">
+  <div class=head>
+    <b>2022-P2-Q15</b>
+    <button class=bad onclick="mark('2022-P2-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1448×942px · ink 0.01926</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q15.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q16">
+  <div class=head>
+    <b>2022-P2-Q16</b>
+    <button class=bad onclick="mark('2022-P2-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer D · 1448×1938px · ink 0.01739</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q16.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q17">
+  <div class=head>
+    <b>2022-P2-Q17</b>
+    <button class=bad onclick="mark('2022-P2-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1448×1938px · ink 0.04367</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q17.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q18">
+  <div class=head>
+    <b>2022-P2-Q18</b>
+    <button class=bad onclick="mark('2022-P2-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1448×1907px · ink 0.04713</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q18.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q19">
+  <div class=head>
+    <b>2022-P2-Q19</b>
+    <button class=bad onclick="mark('2022-P2-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1448×1757px · ink 0.01905</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q19.png"></details>
+</div>
+<div class=card data-id="2022-P2-Q20">
+  <div class=head>
+    <b>2022-P2-Q20</b>
+    <button class=bad onclick="mark('2022-P2-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1448×1919px · ink 0.01946</div>
+  <img loading=lazy src="../assets/questions/2022-P2-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2022-P2-Q20.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q01">
+  <div class=head>
+    <b>2023-P1-Q01</b>
+    <button class=bad onclick="mark('2023-P1-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1447×950px · ink 0.00741</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q01.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q02">
+  <div class=head>
+    <b>2023-P1-Q02</b>
+    <button class=bad onclick="mark('2023-P1-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1447×748px · ink 0.02531</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q02.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q03">
+  <div class=head>
+    <b>2023-P1-Q03</b>
+    <button class=bad onclick="mark('2023-P1-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1447×870px · ink 0.0111</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q03.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q04">
+  <div class=head>
+    <b>2023-P1-Q04</b>
+    <button class=bad onclick="mark('2023-P1-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1447×779px · ink 0.00619</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q04.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q05">
+  <div class=head>
+    <b>2023-P1-Q05</b>
+    <button class=bad onclick="mark('2023-P1-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1447×1426px · ink 0.0623</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q05.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q06">
+  <div class=head>
+    <b>2023-P1-Q06</b>
+    <button class=bad onclick="mark('2023-P1-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer E · 1447×742px · ink 0.01392</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q06.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q07">
+  <div class=head>
+    <b>2023-P1-Q07</b>
+    <button class=bad onclick="mark('2023-P1-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1447×966px · ink 0.01522</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q07.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q08">
+  <div class=head>
+    <b>2023-P1-Q08</b>
+    <button class=bad onclick="mark('2023-P1-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1447×1077px · ink 0.01994</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q08.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q09">
+  <div class=head>
+    <b>2023-P1-Q09</b>
+    <button class=bad onclick="mark('2023-P1-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1447×661px · ink 0.01112</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q09.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q10">
+  <div class=head>
+    <b>2023-P1-Q10</b>
+    <button class=bad onclick="mark('2023-P1-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1447×815px · ink 0.02268</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q10.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q11">
+  <div class=head>
+    <b>2023-P1-Q11</b>
+    <button class=bad onclick="mark('2023-P1-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer B · 1447×834px · ink 0.02041</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q11.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q12">
+  <div class=head>
+    <b>2023-P1-Q12</b>
+    <button class=bad onclick="mark('2023-P1-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1447×806px · ink 0.01019</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q12.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q13">
+  <div class=head>
+    <b>2023-P1-Q13</b>
+    <button class=bad onclick="mark('2023-P1-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1447×854px · ink 0.0182</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q13.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q14">
+  <div class=head>
+    <b>2023-P1-Q14</b>
+    <button class=bad onclick="mark('2023-P1-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1447×1135px · ink 0.01549</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q14.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q15">
+  <div class=head>
+    <b>2023-P1-Q15</b>
+    <button class=bad onclick="mark('2023-P1-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1447×802px · ink 0.01843</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q15.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q16">
+  <div class=head>
+    <b>2023-P1-Q16</b>
+    <button class=bad onclick="mark('2023-P1-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer E · 1447×781px · ink 0.01471</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q16.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q17">
+  <div class=head>
+    <b>2023-P1-Q17</b>
+    <button class=bad onclick="mark('2023-P1-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1447×1750px · ink 0.05268</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q17.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q18">
+  <div class=head>
+    <b>2023-P1-Q18</b>
+    <button class=bad onclick="mark('2023-P1-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1447×1219px · ink 0.02017</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q18.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q19">
+  <div class=head>
+    <b>2023-P1-Q19</b>
+    <button class=bad onclick="mark('2023-P1-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer D · 1447×1108px · ink 0.01424</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q19.png"></details>
+</div>
+<div class=card data-id="2023-P1-Q20">
+  <div class=head>
+    <b>2023-P1-Q20</b>
+    <button class=bad onclick="mark('2023-P1-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1447×1426px · ink 0.01685</div>
+  <img loading=lazy src="../assets/questions/2023-P1-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P1-Q20.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q01">
+  <div class=head>
+    <b>2023-P2-Q01</b>
+    <button class=bad onclick="mark('2023-P2-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer H · 1447×975px · ink 0.00886</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q01.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q02">
+  <div class=head>
+    <b>2023-P2-Q02</b>
+    <button class=bad onclick="mark('2023-P2-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1447×918px · ink 0.00749</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q02.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q03">
+  <div class=head>
+    <b>2023-P2-Q03</b>
+    <button class=bad onclick="mark('2023-P2-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer C · 1447×1251px · ink 0.01653</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q03.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q04">
+  <div class=head>
+    <b>2023-P2-Q04</b>
+    <button class=bad onclick="mark('2023-P2-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer G · 1447×1522px · ink 0.05154</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q04.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q05">
+  <div class=head>
+    <b>2023-P2-Q05</b>
+    <button class=bad onclick="mark('2023-P2-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer A · 1447×748px · ink 0.03271</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q05.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q06">
+  <div class=head>
+    <b>2023-P2-Q06</b>
+    <button class=bad onclick="mark('2023-P2-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1447×1155px · ink 0.0193</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q06.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q07">
+  <div class=head>
+    <b>2023-P2-Q07</b>
+    <button class=bad onclick="mark('2023-P2-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1447×796px · ink 0.03194</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q07.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q08">
+  <div class=head>
+    <b>2023-P2-Q08</b>
+    <button class=bad onclick="mark('2023-P2-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer D · 1447×1182px · ink 0.04046</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q08.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q09">
+  <div class=head>
+    <b>2023-P2-Q09</b>
+    <button class=bad onclick="mark('2023-P2-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer D · 1447×1184px · ink 0.02473</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q09.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q10">
+  <div class=head>
+    <b>2023-P2-Q10</b>
+    <button class=bad onclick="mark('2023-P2-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer A · 1447×1385px · ink 0.02673</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q10.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q11">
+  <div class=head>
+    <b>2023-P2-Q11</b>
+    <button class=bad onclick="mark('2023-P2-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer G · 1447×1257px · ink 0.05071</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q11.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q12">
+  <div class=head>
+    <b>2023-P2-Q12</b>
+    <button class=bad onclick="mark('2023-P2-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer C · 1447×798px · ink 0.02318</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q12.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q13">
+  <div class=head>
+    <b>2023-P2-Q13</b>
+    <button class=bad onclick="mark('2023-P2-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1447×671px · ink 0.02213</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q13.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q14">
+  <div class=head>
+    <b>2023-P2-Q14</b>
+    <button class=bad onclick="mark('2023-P2-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer F · 1447×1045px · ink 0.04704</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q14.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q15">
+  <div class=head>
+    <b>2023-P2-Q15</b>
+    <button class=bad onclick="mark('2023-P2-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1447×1266px · ink 0.01784</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q15.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q16">
+  <div class=head>
+    <b>2023-P2-Q16</b>
+    <button class=bad onclick="mark('2023-P2-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer B · 1447×1338px · ink 0.02342</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q16.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q17">
+  <div class=head>
+    <b>2023-P2-Q17</b>
+    <button class=bad onclick="mark('2023-P2-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1447×891px · ink 0.01866</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q17.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q18">
+  <div class=head>
+    <b>2023-P2-Q18</b>
+    <button class=bad onclick="mark('2023-P2-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1447×671px · ink 0.02164</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q18.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q19">
+  <div class=head>
+    <b>2023-P2-Q19</b>
+    <button class=bad onclick="mark('2023-P2-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer H · 1447×1226px · ink 0.0233</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q19.png"></details>
+</div>
+<div class=card data-id="2023-P2-Q20">
+  <div class=head>
+    <b>2023-P2-Q20</b>
+    <button class=bad onclick="mark('2023-P2-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer D · 1447×1296px · ink 0.0194</div>
+  <img loading=lazy src="../assets/questions/2023-P2-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/2023-P2-Q20.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q01">
+  <div class=head>
+    <b>specimen-P1-Q01</b>
+    <button class=bad onclick="mark('specimen-P1-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1395×947px · ink 0.01062</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q01.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q02">
+  <div class=head>
+    <b>specimen-P1-Q02</b>
+    <button class=bad onclick="mark('specimen-P1-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer D · 1395×708px · ink 0.01161</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q02.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q03">
+  <div class=head>
+    <b>specimen-P1-Q03</b>
+    <button class=bad onclick="mark('specimen-P1-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1395×999px · ink 0.01136</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q03.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q04">
+  <div class=head>
+    <b>specimen-P1-Q04</b>
+    <button class=bad onclick="mark('specimen-P1-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1395×580px · ink 0.01504</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q04.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q05">
+  <div class=head>
+    <b>specimen-P1-Q05</b>
+    <button class=bad onclick="mark('specimen-P1-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer D · 1395×1028px · ink 0.00857</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q05.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q06">
+  <div class=head>
+    <b>specimen-P1-Q06</b>
+    <button class=bad onclick="mark('specimen-P1-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1395×585px · ink 0.01349</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q06.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q07">
+  <div class=head>
+    <b>specimen-P1-Q07</b>
+    <button class=bad onclick="mark('specimen-P1-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1395×1024px · ink 0.02417</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q07.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q08">
+  <div class=head>
+    <b>specimen-P1-Q08</b>
+    <button class=bad onclick="mark('specimen-P1-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer F · 1395×1209px · ink 0.01148</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q08.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q09">
+  <div class=head>
+    <b>specimen-P1-Q09</b>
+    <button class=bad onclick="mark('specimen-P1-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer A · 1395×572px · ink 0.01338</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q09.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q10">
+  <div class=head>
+    <b>specimen-P1-Q10</b>
+    <button class=bad onclick="mark('specimen-P1-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer D · 1395×923px · ink 0.01964</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q10.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q11">
+  <div class=head>
+    <b>specimen-P1-Q11</b>
+    <button class=bad onclick="mark('specimen-P1-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer E · 1395×637px · ink 0.01252</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q11.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q12">
+  <div class=head>
+    <b>specimen-P1-Q12</b>
+    <button class=bad onclick="mark('specimen-P1-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1395×1167px · ink 0.01931</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q12.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q13">
+  <div class=head>
+    <b>specimen-P1-Q13</b>
+    <button class=bad onclick="mark('specimen-P1-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1395×580px · ink 0.0112</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q13.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q14">
+  <div class=head>
+    <b>specimen-P1-Q14</b>
+    <button class=bad onclick="mark('specimen-P1-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1395×1237px · ink 0.01301</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q14.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q15">
+  <div class=head>
+    <b>specimen-P1-Q15</b>
+    <button class=bad onclick="mark('specimen-P1-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer A · 1395×671px · ink 0.00943</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q15.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q16">
+  <div class=head>
+    <b>specimen-P1-Q16</b>
+    <button class=bad onclick="mark('specimen-P1-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1395×1028px · ink 0.01354</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q16.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q17">
+  <div class=head>
+    <b>specimen-P1-Q17</b>
+    <button class=bad onclick="mark('specimen-P1-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1395×565px · ink 0.02288</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q17.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q18">
+  <div class=head>
+    <b>specimen-P1-Q18</b>
+    <button class=bad onclick="mark('specimen-P1-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer B · 1395×1180px · ink 0.01096</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q18.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q19">
+  <div class=head>
+    <b>specimen-P1-Q19</b>
+    <button class=bad onclick="mark('specimen-P1-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer D · 1395×650px · ink 0.03176</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q19.png"></details>
+</div>
+<div class=card data-id="specimen-P1-Q20">
+  <div class=head>
+    <b>specimen-P1-Q20</b>
+    <button class=bad onclick="mark('specimen-P1-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer G · 1395×640px · ink 0.01388</div>
+  <img loading=lazy src="../assets/questions/specimen-P1-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P1-Q20.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q01">
+  <div class=head>
+    <b>specimen-P2-Q01</b>
+    <button class=bad onclick="mark('specimen-P2-Q01',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1395×1050px · ink 0.00674</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q01.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q01.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q02">
+  <div class=head>
+    <b>specimen-P2-Q02</b>
+    <button class=bad onclick="mark('specimen-P2-Q02',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer B · 1395×565px · ink 0.01415</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q02.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q02.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q03">
+  <div class=head>
+    <b>specimen-P2-Q03</b>
+    <button class=bad onclick="mark('specimen-P2-Q03',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1395×1056px · ink 0.03802</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q03.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q03.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q04">
+  <div class=head>
+    <b>specimen-P2-Q04</b>
+    <button class=bad onclick="mark('specimen-P2-Q04',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer A · 1395×1059px · ink 0.04211</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q04.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q04.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q05">
+  <div class=head>
+    <b>specimen-P2-Q05</b>
+    <button class=bad onclick="mark('specimen-P2-Q05',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1395×740px · ink 0.01214</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q05.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q05.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q06">
+  <div class=head>
+    <b>specimen-P2-Q06</b>
+    <button class=bad onclick="mark('specimen-P2-Q06',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer F · 1395×957px · ink 0.02598</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q06.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q06.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q07">
+  <div class=head>
+    <b>specimen-P2-Q07</b>
+    <button class=bad onclick="mark('specimen-P2-Q07',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer C · 1395×1306px · ink 0.01894</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q07.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q07.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q08">
+  <div class=head>
+    <b>specimen-P2-Q08</b>
+    <button class=bad onclick="mark('specimen-P2-Q08',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer C · 1395×987px · ink 0.04027</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q08.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q08.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q09">
+  <div class=head>
+    <b>specimen-P2-Q09</b>
+    <button class=bad onclick="mark('specimen-P2-Q09',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1395×626px · ink 0.05924</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q09.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q09.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q10">
+  <div class=head>
+    <b>specimen-P2-Q10</b>
+    <button class=bad onclick="mark('specimen-P2-Q10',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1395×1698px · ink 0.026</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q10.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q10.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q11">
+  <div class=head>
+    <b>specimen-P2-Q11</b>
+    <button class=bad onclick="mark('specimen-P2-Q11',this)">mark bad</button>
+  </div>
+  <div class=meta>5 options · answer D · 1395×780px · ink 0.01489</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q11.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q11.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q12">
+  <div class=head>
+    <b>specimen-P2-Q12</b>
+    <button class=bad onclick="mark('specimen-P2-Q12',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer A · 1395×755px · ink 0.0453</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q12.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q12.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q13">
+  <div class=head>
+    <b>specimen-P2-Q13</b>
+    <button class=bad onclick="mark('specimen-P2-Q13',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer C · 1395×1055px · ink 0.02228</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q13.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q13.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q14">
+  <div class=head>
+    <b>specimen-P2-Q14</b>
+    <button class=bad onclick="mark('specimen-P2-Q14',this)">mark bad</button>
+  </div>
+  <div class=meta>4 options · answer B · 1395×598px · ink 0.04682</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q14.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q14.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q15">
+  <div class=head>
+    <b>specimen-P2-Q15</b>
+    <button class=bad onclick="mark('specimen-P2-Q15',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer E · 1395×965px · ink 0.01733</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q15.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q15.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q16">
+  <div class=head>
+    <b>specimen-P2-Q16</b>
+    <button class=bad onclick="mark('specimen-P2-Q16',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer A · 1395×838px · ink 0.01318</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q16.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q16.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q17">
+  <div class=head>
+    <b>specimen-P2-Q17</b>
+    <button class=bad onclick="mark('specimen-P2-Q17',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1395×1085px · ink 0.05954</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q17.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q17.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q18">
+  <div class=head>
+    <b>specimen-P2-Q18</b>
+    <button class=bad onclick="mark('specimen-P2-Q18',this)">mark bad</button>
+  </div>
+  <div class=meta>6 options · answer E · 1395×794px · ink 0.01369</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q18.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q18.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q19">
+  <div class=head>
+    <b>specimen-P2-Q19</b>
+    <button class=bad onclick="mark('specimen-P2-Q19',this)">mark bad</button>
+  </div>
+  <div class=meta>7 options · answer B · 1395×1013px · ink 0.04657</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q19.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q19.png"></details>
+</div>
+<div class=card data-id="specimen-P2-Q20">
+  <div class=head>
+    <b>specimen-P2-Q20</b>
+    <button class=bad onclick="mark('specimen-P2-Q20',this)">mark bad</button>
+  </div>
+  <div class=meta>8 options · answer D · 1395×1011px · ink 0.03252</div>
+  <img loading=lazy src="../assets/questions/specimen-P2-Q20.png">
+  <details><summary>worked solution</summary>
+    <img loading=lazy src="../assets/solutions/specimen-P2-Q20.png"></details>
+</div></div>
+<script>
+const KEY='tmua-bad-crops';
+let bad=new Set(JSON.parse(localStorage.getItem(KEY)||'[]'));
+function paint(){
+  document.querySelectorAll('.card').forEach(c=>{
+    const on=bad.has(c.dataset.id);
+    c.classList.toggle('flagged',on);
+    c.querySelector('button.bad').classList.toggle('on',on);
+  });
+  document.getElementById('count').textContent=bad.size+' marked bad';
+}
+function mark(id){ bad.has(id)?bad.delete(id):bad.add(id);
+  localStorage.setItem(KEY,JSON.stringify([...bad])); paint(); }
+function clearAll(){ bad=new Set(); localStorage.removeItem(KEY); paint(); }
+function download(){
+  const body={markedBad:[...bad].sort(),note:'paste ids into data/crop-overrides.json and re-run pipeline/crop.py'};
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(body,null,1)],{type:'application/json'}));
+  a.download='crop-fix-list.json'; a.click();
+}
+function filt(){
+  const v=document.getElementById('filter').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(c=>{
+    c.style.display=c.dataset.id.toLowerCase().includes(v)?'':'none';
+  });
+}
+paint();
+</script>

@@ -143,3 +143,101 @@ test.describe('data safety', () => {
     await app.close();
   });
 });
+
+test.describe('durability and restore', () => {
+  test('an answer survives a kill -9 fired immediately after it', async () => {
+    const userDir = freshUserDir('durable');
+    let { app, win } = await launch(userDir);
+    const id = await startExam(win, { mode: 'paper', year: '2019', paper: 1, allowedSec: 600 });
+
+    // write one answer and kill the process with no grace period at all —
+    // no heartbeat, no flush, no quit handler
+    await win.evaluate((i) =>
+      window.api.attempt.answer({ attemptId: i, position: 4, selected: 'G' }), id);
+    process.kill(app.process().pid, 'SIGKILL');
+    await new Promise(r => setTimeout(r, 1200));
+
+    ({ app, win } = await launch(userDir));
+    const a = await win.evaluate((i) => window.api.attempt.get(i), id);
+    expect(a.questions[4].selected).toBe('G');
+    expect(a.status).toBe('in_progress');
+    await app.close();
+  });
+
+  test('three attempts survive a restart byte-for-byte', async () => {
+    const userDir = freshUserDir('snapshot');
+    let { app, win } = await launch(userDir);
+
+    for (const [year, paper] of [['2016', 1], ['2017', 2], ['2018', 1]]) {
+      const key = answerKey(year, paper);
+      const id = await startExam(win, { mode: 'paper', year, paper });
+      await win.evaluate(async ({ attemptId, key }) => {
+        for (let i = 0; i < 14; i++) {
+          await window.api.attempt.answer({ attemptId, position: i, selected: key[i] });
+        }
+        await window.api.attempt.flag({ attemptId, position: 2, flagged: true });
+        await State.exam.finish('submitted');
+      }, { attemptId: id, key });
+      await win.waitForSelector('h1:has-text("Results")');
+    }
+    await win.evaluate(() => window.api.revisit.add({ questionId: '2016-P1-Q05' }));
+
+    const before = await win.evaluate(() => window.api.data.exportPayload());
+    const beforeDash = await win.evaluate(() => window.api.analytics.dashboard());
+    await app.close();
+
+    ({ app, win } = await launch(userDir));
+    const after = await win.evaluate(() => window.api.data.exportPayload());
+    const afterDash = await win.evaluate(() => window.api.analytics.dashboard());
+
+    // ignore the export timestamp, compare everything else exactly
+    delete before.exportedAt; delete after.exportedAt;
+    expect(after).toEqual(before);
+    expect(afterDash).toEqual(beforeDash);
+    expect(after.attempts.length).toBe(3);
+    await app.close();
+  });
+
+  test('a launch backup can actually be restored', async () => {
+    const userDir = freshUserDir('restore');
+    let { app, win } = await launch(userDir);
+
+    const key = answerKey('2020', 1);
+    const id = await startExam(win, { mode: 'paper', year: '2020', paper: 1 });
+    await win.evaluate(async ({ attemptId, key }) => {
+      for (let i = 0; i < 9; i++) {
+        await window.api.attempt.answer({ attemptId, position: i, selected: key[i] });
+      }
+      await State.exam.finish('submitted');
+    }, { attemptId: id, key });
+    await win.waitForSelector('h1:has-text("Results")');
+    const original = await win.evaluate(() => window.api.data.exportPayload());
+    await app.close();
+
+    // next launch snapshots that state into backups/
+    ({ app, win } = await launch(userDir));
+    await app.close();
+
+    const backupsDir = path.join(userDir, 'data', 'backups');
+    const backups = fs.readdirSync(backupsDir).filter(f => f.endsWith('.sqlite')).sort();
+    expect(backups.length).toBeGreaterThanOrEqual(1);
+    const newest = path.join(backupsDir, backups[backups.length - 1]);
+
+    // wreck the live database, then restore the backup over it
+    const live = path.join(userDir, 'data', 'tmua.sqlite');
+    fs.writeFileSync(live, 'corrupted');
+    for (const sfx of ['-wal', '-shm']) {
+      if (fs.existsSync(live + sfx)) fs.unlinkSync(live + sfx);
+    }
+    fs.copyFileSync(newest, live);
+
+    ({ app, win } = await launch(userDir));
+    const restored = await win.evaluate(() => window.api.data.exportPayload());
+    delete original.exportedAt; delete restored.exportedAt;
+    expect(restored.attempts.length).toBe(original.attempts.length);
+    expect(restored.attempts[0].score_raw).toBe(original.attempts[0].score_raw);
+    expect(restored.attempts[0].questions.map(q => q.selected))
+      .toEqual(original.attempts[0].questions.map(q => q.selected));
+    await app.close();
+  });
+});
