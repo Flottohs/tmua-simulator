@@ -451,6 +451,9 @@ function registerIpc() {
     };
   });
 
+  // exposed so the verification suite can check the conversion maths directly
+  handle('coach:scaled', ({ year, paper, raw }) => coach.scaledFor(year, paper, raw));
+
   handle('coach:plan', ({ archiveId } = {}) =>
     checklist.plan({ attempts: scopedAttempts(archiveId), settings: currentSettings() }));
 
@@ -567,6 +570,49 @@ function registerIpc() {
     }));
   handle('pdf:drillTo', ({ questionIds, outPath, title, includeMarkScheme }) =>
     pdf.exportDrill({ questionIds, outPath, title, includeMarkScheme: Boolean(includeMarkScheme) }));
+
+  // ---- verification hooks for the pure SRS scheduler ----
+  // The schedule spans weeks, so it is driven with an injected clock rather
+  // than by waiting real days.
+  handle('debug:srsSimulate', ({ steps, startIso }) => {
+    let now = new Date(startIso).getTime();
+    let row = null;
+    const out = [];
+    for (const step of steps) {
+      row = srs.applyResult(row, {
+        questionId: 'sim-q', source: 'wrong',
+        correct: step === 'correct', now,
+      });
+      const days = Math.round((row.due_at - new Date(now).setHours(0, 0, 0, 0)) / 86400000);
+      out.push({
+        step,
+        afterDays: days,
+        dueOn: new Date(row.due_at).toISOString().slice(0, 10),
+        intervalIndex: row.interval_index,
+        consecutiveCorrect: row.consecutive_correct,
+        lapses: row.lapses,
+        retired: Boolean(row.retired),
+      });
+      now = row.due_at;                     // next review happens when it is due
+    }
+    return out;
+  });
+
+  handle('debug:srsSeed', ({ count, lapses = 0, sources = null, sameDue = false }) => {
+    const ids = content.all().slice(0, count).map(q => q.id);
+    const now = Date.now();
+    ids.forEach((id, i) => {
+      db.reviewUpsert({
+        question_id: id,
+        source: sources ? sources[i % sources.length] : 'wrong',
+        due_at: sameDue ? now - 86400000 : now - (i + 1) * 86400000,
+        interval_index: 0, consecutive_correct: 0,
+        lapses, attempts: lapses + 1, hits: 0, retired: 0,
+        last_result: 'wrong', last_seen_at: now, created_at: now, history: '[]',
+      });
+    });
+    return { inserted: ids.length };
+  });
 
   // used by the offline test
   handle('debug:blockedRequests', () => blockedRequests);

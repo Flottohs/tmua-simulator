@@ -40,6 +40,7 @@ contextBridge.exposeInMainWorld('api', {
     complete: call('coach:complete'),
     history: call('coach:history'),
     tagError: call('coach:tagError'),
+    scaled: call('coach:scaled'),
   },
   review: {
     summary: call('review:summary'),
@@ -58,5 +59,9 @@ contextBridge.exposeInMainWorld('api', {
     paper: call('pdf:paper'), drill: call('pdf:drill'),
     paperTo: call('pdf:paperTo'), drillTo: call('pdf:drillTo'),
   },
-  debug: { blockedRequests: call('debug:blockedRequests') },
+  debug: {
+    blockedRequests: call('debug:blockedRequests'),
+    srsSimulate: call('debug:srsSimulate'),
+    srsSeed: call('debug:srsSeed'),
+  },
 });

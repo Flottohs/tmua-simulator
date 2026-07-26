@@ -53,6 +53,13 @@ Keyboard: <kbd>A</kbd>–<kbd>H</kbd> select an answer, <kbd>←</kbd> <kbd>→<
 for that year, per-topic breakdown, and per-question timings. Review every question against the
 official worked solution, and mark anything for a persistent revisit list.
 
+**Study Coach** — a countdown to your exam with a predicted score against your 7.0 target, a
+prioritised "do this next" checklist (at most five items, each saying what, why, how long, and
+starting immediately), a diagnostic engine that ranks topics by *expected marks lost per paper*
+rather than raw accuracy, and a week-by-week study plan that holds back three unseen papers as
+clean mocks for the final fortnight. Question-level spaced repetition (+3/+7/+21/+45 days) puts
+every wrong answer into a review queue that only retires after two consecutive spaced successes.
+
 **Progress dashboard** — score trend, Paper 1 vs Paper 2 comparison, papers not yet attempted,
 a filterable wrong-answer log, per-topic accuracy with concrete revision advice and a one-click
 "drill this topic" button, pacing analysis (including a warning when accuracy falls off in the last
@@ -124,7 +131,7 @@ rows), set it explicitly in `data/option-overrides.json` and re-run `crop.py`.
 npm test
 ```
 
-Runs the content integrity check and then the full Playwright/Electron suite — **85 tests**.
+Runs the content integrity check and then the full Playwright/Electron suite — **120 tests**.
 See [TEST-REPORT.md](TEST-REPORT.md) for the full QA pass, the bugs it found, and the two
 human-review pages (`qa/gallery.html`, `qa/spotcheck.html`).
 

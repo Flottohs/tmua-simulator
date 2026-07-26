@@ -3,6 +3,7 @@
 // bundled crops the app already uses.
 const { BrowserWindow } = require('electron');
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 const url = require('url');
 const content = require('./content');
@@ -89,15 +90,35 @@ function buildHtml({ title, subtitle, questions, working, includeAnswerSheet, in
 }
 
 // Render HTML to a PDF file in a hidden window that can only load local files.
+//
+// The page is written to a temp file and loaded over file:// rather than as a
+// data: URL — a data: page has an opaque origin and silently fails to load the
+// file:// question images, which produced a PDF with no questions in it.
 async function renderToFile(html, outPath) {
+  const tmp = path.join(os.tmpdir(),
+    `tmua-print-${Date.now()}-${Math.random().toString(36).slice(2)}.html`);
+  fs.writeFileSync(tmp, html, 'utf8');
   const win = new BrowserWindow({
     show: false,
-    webPreferences: { offscreen: true, javascript: false, images: true, sandbox: false },
+    webPreferences: { offscreen: true, javascript: true, images: true, sandbox: false },
   });
   try {
-    await win.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
-    // give the bundled images a moment to decode before printing
-    await new Promise(r => setTimeout(r, 400));
+    await win.loadFile(tmp);
+    // let every bundled image decode before printing
+    await win.webContents.executeJavaScript(`
+      new Promise(res => {
+        const imgs = [...document.images];
+        let left = imgs.filter(i => !i.complete).length;
+        if (!left) return res(true);
+        for (const i of imgs) {
+          if (i.complete) continue;
+          const done = () => { if (--left <= 0) res(true); };
+          i.addEventListener('load', done); i.addEventListener('error', done);
+        }
+        setTimeout(() => res(true), 15000);
+      })
+    `).catch(() => {});
+    await new Promise(r => setTimeout(r, 250));
     const buf = await win.webContents.printToPDF({
       pageSize: 'A4',
       printBackground: true,
@@ -108,6 +129,7 @@ async function renderToFile(html, outPath) {
     return { path: outPath, bytes: buf.length };
   } finally {
     win.destroy();
+    try { fs.unlinkSync(tmp); } catch { /* already gone */ }
   }
 }
 

@@ -61,3 +61,62 @@ function answerKey(year, paper) {
 module.exports = {
   ROOT, CONTENT, freshUserDir, launch, launchPackaged, startExam, paperQuestions, answerKey,
 };
+
+// ---------------------------------------------------------------------------
+// Seeding helpers for the coach/refinement suites. Builds an import payload
+// directly so a whole history can be created without sitting papers.
+const BASE = Date.UTC(2026, 6, 1, 9, 0, 0);   // 1 July 2026
+
+function wrongLetter(q) {
+  return 'ABCDEFGH'.slice(0, q.options).split('').find(L => L !== q.answer);
+}
+
+// decide(q, index) -> 'correct' | 'wrong' | 'blank'
+function seedAttempt({ id, year, paper, decide, at, confidence, errorType, elapsed = 5400 }) {
+  const qs = paperQuestions(year, paper);
+  let raw = 0;
+  const questions = qs.map((q, i) => {
+    const verdict = decide(q, i);
+    const selected = verdict === 'correct' ? q.answer : verdict === 'wrong' ? wrongLetter(q) : null;
+    const correct = verdict === 'correct' ? 1 : 0;
+    if (correct) raw++;
+    return {
+      attempt_id: id, position: i, question_id: q.id, selected, correct,
+      flagged: 0,
+      confidence: confidence ? confidence(q, i, verdict) : null,
+      time_spent: 200 + i, notepad: null, updated_at: at,
+      error_type: errorType ? errorType(q, i, verdict) : null,
+    };
+  });
+  return {
+    attempt: {
+      id, mode: 'paper', year, paper, mock_group: null, status: 'completed',
+      started_at: at, completed_at: at + elapsed * 1000,
+      allowed_sec: 5580, elapsed_sec: elapsed, current_index: 19,
+      finish_reason: 'submitted', score_raw: raw, score_scaled: null,
+      label: null, settings_json: '{}', archive_id: null, source: 'app',
+      questions,
+    },
+    raw,
+  };
+}
+
+function seedPayload(specs) {
+  const attempts = [];
+  const raws = [];
+  specs.forEach((spec, i) => {
+    const built = seedAttempt({
+      id: i + 1,
+      at: spec.at ?? BASE + i * 3 * 86400000,
+      ...spec,
+    });
+    attempts.push(built.attempt);
+    raws.push(built.raw);
+  });
+  return { payload: { attempts, revisit: [], settings: {} }, raws };
+}
+
+module.exports.BASE = BASE;
+module.exports.wrongLetter = wrongLetter;
+module.exports.seedAttempt = seedAttempt;
+module.exports.seedPayload = seedPayload;

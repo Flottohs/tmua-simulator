@@ -7,8 +7,12 @@ npm test
 ```
 
 runs the content integrity check followed by the full Playwright/Electron suite:
-**85 tests, 85 passed, 0 failed, 0 skipped** (about 1m 50s, including building the `.app`
+**120 tests, 120 passed, 0 failed, 0 skipped** (about 2m 10s, including building the `.app`
 from scratch and launching it from a clean directory).
+
+The suite grew from 85 to 120 with the Study Coach and refinements; see
+[Study Coach and refinements](#study-coach-and-refinements) at the end for what those 35 cover
+and the three bugs they found.
 
 Nothing was left un-green. Two things need your own eyes rather than an assertion, and both
 have a page built for them — see [What needs your eyes](#what-needs-your-eyes).
@@ -284,8 +288,106 @@ Regenerate either with `npm run qa:pages` (and `npm run qa:ocr` after re-croppin
 | `tests/ui-formatting.spec.js` | 11 | §3 formatting sweep, console errors, dark mode |
 | `tests/offline.spec.js` | 3 | §8 zero network |
 | `tests/packaged.spec.js` | 2 | §8 fresh packaged app |
-| **Total** | **85** | |
+| `tests/coach.spec.js` | 15 | Study Coach: countdown, predictor, diagnostics, checklist, plan |
+| `tests/refinements.spec.js` | 20 | SRS, answer changes, guessing, PDF, offline entry, archive |
+| **Total** | **120** | |
 
 Supporting QA tooling: `pipeline/ocr_crops.py` (independent image + OCR analysis),
 `pipeline/reparse_keys.py` (independent key parser), `pipeline/qa_pages.py` (review pages),
 `scripts/verify-content.js` (fast pre-flight integrity check).
+
+
+---
+
+## Study Coach and refinements
+
+Added after the QA pass above: countdown and status bar, diagnostic engine, grade predictor,
+action checklist, study plan, question-level spaced repetition, answer-change tracking, guessing
+and confidence strategy stats, printable PDF export, offline attempt entry, archives, and the
+2024 format-change notice. 35 further tests, all green.
+
+### Bugs found while building it
+
+**1. The printable PDF contained almost no questions.** The export page was loaded as a
+`data:text/html` URL, which has an opaque origin and therefore silently refuses to load the
+`file://` question images. The PDF rendered with 2 images instead of 20 — and it failed silently,
+producing a plausible-looking file. Fixed by writing the page to a temp file and loading it over
+`file://`, plus explicitly awaiting every image decode before printing. The test now inspects the
+real PDF with PyMuPDF and asserts the image count, so this cannot regress quietly.
+
+**2. Analytics ignored archives.** `analytics:dashboard`, `history:list` and `drill:build` all read
+every attempt, so archiving would not have reset the active dashboard. They now take an archive
+scope, with active (non-archived) as the default.
+
+**3. Export/import would have dropped the new tables.** The round-trip predates the review queue,
+answer-change log, checklist history and archives. Extended before shipping, so an export taken
+today still restores everything — verified by the existing lossless round-trip test.
+
+### What is verified
+
+**Countdown** — day counts across month boundaries, on exam day (`0`, "today"), and after the exam
+(negative days reported as "N days ago", never a negative countdown; the plan screen empties
+gracefully). Deadline warnings fire inside 21 days and clear when ticked off.
+
+**Grade predictor** — refuses to predict under 3 papers and says so rather than showing a number.
+Scaled scores checked against the official tables for **every published year, both papers, at raw
+0, 1, 7, 13, 19 and 20**. Papers with no published table (the specimens) are flagged `estimated`,
+never invented. Recent papers are weighted above old ones (an improving 4→18 history predicts above
+the flat mean). Paper 1 and Paper 2 are predicted separately, and the overall figure comes from the
+official *overall* table on the combined raw total rather than an average of two scaled scores.
+The gap to 7.0 is stated in raw marks, and the raw needed is cross-checked against the table.
+
+**Diagnostics** — a topic needs 5 attempted questions before it can be called a weakness; thinner
+topics report "need N more" and are excluded from ranking. Weakness ranking is by
+`(1 − accuracy) × questions per paper`, verified against the question bank's own topic frequency —
+so a 50% topic appearing 4× ranks above a 40% topic appearing once.
+
+**Checklist behaviour** — a weak Paper 2 pushes Paper 2; errors concentrated in one topic produce a
+study item naming the sub-skill; **all-careless errors produce habit fixes and no topic study**;
+two weeks out the phase switches to `Exam simulation`, a full mock replaces single papers, new topic
+study stops, and every planned week is a mock week. With ten weeks left, three reserve papers are
+held back and never appear in the build weeks. The list is capped at 5 and completing an item
+removes it and records it in history.
+
+**Spaced repetition** — schedule asserted at **+3, +7, +21, +45** including across a month boundary
+(30 Jan → 2 Feb → 9 Feb → 2 Mar). A wrong answer resets to the start and increments lapses. One
+correct review does **not** retire a question; two consecutive do; a lapse in between prevents it.
+Sessions are capped at 20 and ordered most-overdue first. Stubborn questions (2+ lapses) are
+surfaced and drive a top-priority checklist item. A confidently-wrong answer is recorded as
+`sure_wrong` and outranks ordinary wrong answers when equally overdue.
+
+**Answer changes** — a scripted attempt with 3 wrong→right, 2 right→wrong and 1 wrong→wrong asserts
+exactly those counts and a net of +1. Setting an answer for the first time is not counted as a
+change. The coach refuses to give advice below 15 changes.
+
+**Guessing** — blank counts and the marks-thrown-away figure computed against the bank's own
+average random-guess rate. Sure vs unsure accuracy checked against hand-computed values, with the
+verdict (`trust` vs `eliminate`) judged against random. The pre-submit warning lists the blank
+question numbers (1-based) and says there is no negative marking.
+
+**PDF export** — the real PDF is opened with PyMuPDF: page count, at least one image per question,
+cover text present, and **no mark scheme in the questions-only version**. With the mark scheme
+opted in, every one of the 20 answers is present in that section.
+
+**Offline entry** — a paper sat on physical paper is recorded, scored (14/20 from a known pattern),
+counted in history and analytics, and rejects malformed input.
+
+**Archive** — archiving takes a backup first, moves attempts out of the active scope, empties the
+active dashboard and the coach prediction, keeps the archived run fully readable via an archive
+scope, and restores byte-identically (export and dashboard both deep-equal the pre-archive
+snapshot). An archive with no name is rejected.
+
+**Offline** — the coach, plan, dashboard, offline-entry and about screens together produce zero
+outbound requests and zero blocked ones.
+
+### Known limitations of the coach
+
+- **The predictor is a projection, not a promise.** It rests on your own past papers under your own
+  conditions, and it says so: sample size and confidence are shown on the Coach screen, and it
+  refuses outright below three papers.
+- **Scaled scores for the specimen papers are estimated** from the mean of the eight published
+  tables, and labelled as such wherever they appear.
+- **Error-type analysis needs you to tag.** The app suggests a tag from timing signals, but until
+  around five wrong answers are tagged the coach will not claim a dominant error type.
+- **The trajectory fit is linear** over your completed papers. With few papers, or a flat run, it
+  reports a small slope rather than pretending to detect a trend.
