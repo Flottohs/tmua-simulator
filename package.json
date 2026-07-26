@@ -1,0 +1,56 @@
+{
+  "name": "tmua-simulator",
+  "productName": "TMUA Simulator",
+  "version": "1.0.0",
+  "description": "Offline TMUA exam simulator \u2014 official past papers 2016-2023",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "playwright test --workers=1",
+    "dist": "electron-builder --mac --dir",
+    "verify": "node scripts/verify-content.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "electron": "^43.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.hayden.tmua-simulator",
+    "productName": "TMUA Simulator",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "public/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/questions",
+        "to": "content/questions"
+      },
+      {
+        "from": "assets/solutions",
+        "to": "content/solutions"
+      },
+      {
+        "from": "data/questions.json",
+        "to": "content/questions.json"
+      },
+      {
+        "from": "data/conversions.json",
+        "to": "content/conversions.json"
+      }
+    ],
+    "mac": {
+      "target": "dir",
+      "category": "public.app-category.education",
+      "identity": null
+    }
+  },
+  "author": "Hayden Fletcher",
+  "license": "UNLICENSED"
+}

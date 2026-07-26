@@ -1,0 +1,4977 @@
+{
+ "taxonomy": {
+  "algebra-functions": "Algebra & functions",
+  "equations-inequalities": "Equations & inequalities",
+  "sequences-series": "Sequences & series",
+  "coordinate-geometry": "Coordinate geometry",
+  "trigonometry": "Trigonometry",
+  "exponentials-logarithms": "Exponentials & logarithms",
+  "differentiation": "Differentiation",
+  "integration": "Integration",
+  "graphs": "Graphs of functions",
+  "geometry": "Geometry & measure",
+  "number": "Number",
+  "counting-probability": "Counting & probability",
+  "logic-truth": "Logic & truth",
+  "necessary-sufficient": "Necessary & sufficient",
+  "proof-counterexample": "Proof & counterexamples",
+  "argument-analysis": "Argument analysis"
+ },
+ "questions": [
+  {
+   "id": "2016-P1-Q01",
+   "year": "2016",
+   "paper": 1,
+   "number": 1,
+   "image": "questions/2016-P1-Q01.png",
+   "solutionImage": "solutions/2016-P1-Q01.png",
+   "options": 8,
+   "answer": "H",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2016-P1-Q02",
+   "year": "2016",
+   "paper": 1,
+   "number": 2,
+   "image": "questions/2016-P1-Q02.png",
+   "solutionImage": "solutions/2016-P1-Q02.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2016-P1-Q03",
+   "year": "2016",
+   "paper": 1,
+   "number": 3,
+   "image": "questions/2016-P1-Q03.png",
+   "solutionImage": "solutions/2016-P1-Q03.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "differentiation",
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2016-P1-Q04",
+   "year": "2016",
+   "paper": 1,
+   "number": 4,
+   "image": "questions/2016-P1-Q04.png",
+   "solutionImage": "solutions/2016-P1-Q04.png",
+   "options": 7,
+   "answer": "B",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2016-P1-Q05",
+   "year": "2016",
+   "paper": 1,
+   "number": 5,
+   "image": "questions/2016-P1-Q05.png",
+   "solutionImage": "solutions/2016-P1-Q05.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "integration"
+   ]
+  },
+  {
+   "id": "2016-P1-Q06",
+   "year": "2016",
+   "paper": 1,
+   "number": 6,
+   "image": "questions/2016-P1-Q06.png",
+   "solutionImage": "solutions/2016-P1-Q06.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "number"
+   ]
+  },
+  {
+   "id": "2016-P1-Q07",
+   "year": "2016",
+   "paper": 1,
+   "number": 7,
+   "image": "questions/2016-P1-Q07.png",
+   "solutionImage": "solutions/2016-P1-Q07.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "2016-P1-Q08",
+   "year": "2016",
+   "paper": 1,
+   "number": 8,
+   "image": "questions/2016-P1-Q08.png",
+   "solutionImage": "solutions/2016-P1-Q08.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2016-P1-Q09",
+   "year": "2016",
+   "paper": 1,
+   "number": 9,
+   "image": "questions/2016-P1-Q09.png",
+   "solutionImage": "solutions/2016-P1-Q09.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2016-P1-Q10",
+   "year": "2016",
+   "paper": 1,
+   "number": 10,
+   "image": "questions/2016-P1-Q10.png",
+   "solutionImage": "solutions/2016-P1-Q10.png",
+   "options": 7,
+   "answer": "E",
+   "topics": [
+    "trigonometry",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2016-P1-Q11",
+   "year": "2016",
+   "paper": 1,
+   "number": 11,
+   "image": "questions/2016-P1-Q11.png",
+   "solutionImage": "solutions/2016-P1-Q11.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2016-P1-Q12",
+   "year": "2016",
+   "paper": 1,
+   "number": 12,
+   "image": "questions/2016-P1-Q12.png",
+   "solutionImage": "solutions/2016-P1-Q12.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "differentiation",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2016-P1-Q13",
+   "year": "2016",
+   "paper": 1,
+   "number": 13,
+   "image": "questions/2016-P1-Q13.png",
+   "solutionImage": "solutions/2016-P1-Q13.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "differentiation",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2016-P1-Q14",
+   "year": "2016",
+   "paper": 1,
+   "number": 14,
+   "image": "questions/2016-P1-Q14.png",
+   "solutionImage": "solutions/2016-P1-Q14.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2016-P1-Q15",
+   "year": "2016",
+   "paper": 1,
+   "number": 15,
+   "image": "questions/2016-P1-Q15.png",
+   "solutionImage": "solutions/2016-P1-Q15.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "differentiation",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2016-P1-Q16",
+   "year": "2016",
+   "paper": 1,
+   "number": 16,
+   "image": "questions/2016-P1-Q16.png",
+   "solutionImage": "solutions/2016-P1-Q16.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2016-P1-Q17",
+   "year": "2016",
+   "paper": 1,
+   "number": 17,
+   "image": "questions/2016-P1-Q17.png",
+   "solutionImage": "solutions/2016-P1-Q17.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2016-P1-Q18",
+   "year": "2016",
+   "paper": 1,
+   "number": 18,
+   "image": "questions/2016-P1-Q18.png",
+   "solutionImage": "solutions/2016-P1-Q18.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2016-P1-Q19",
+   "year": "2016",
+   "paper": 1,
+   "number": 19,
+   "image": "questions/2016-P1-Q19.png",
+   "solutionImage": "solutions/2016-P1-Q19.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2016-P1-Q20",
+   "year": "2016",
+   "paper": 1,
+   "number": 20,
+   "image": "questions/2016-P1-Q20.png",
+   "solutionImage": "solutions/2016-P1-Q20.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "geometry"
+   ]
+  },
+  {
+   "id": "2016-P2-Q01",
+   "year": "2016",
+   "paper": 2,
+   "number": 1,
+   "image": "questions/2016-P2-Q01.png",
+   "solutionImage": "solutions/2016-P2-Q01.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "integration"
+   ]
+  },
+  {
+   "id": "2016-P2-Q02",
+   "year": "2016",
+   "paper": 2,
+   "number": 2,
+   "image": "questions/2016-P2-Q02.png",
+   "solutionImage": "solutions/2016-P2-Q02.png",
+   "options": 4,
+   "answer": "B",
+   "topics": [
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2016-P2-Q03",
+   "year": "2016",
+   "paper": 2,
+   "number": 3,
+   "image": "questions/2016-P2-Q03.png",
+   "solutionImage": "solutions/2016-P2-Q03.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2016-P2-Q04",
+   "year": "2016",
+   "paper": 2,
+   "number": 4,
+   "image": "questions/2016-P2-Q04.png",
+   "solutionImage": "solutions/2016-P2-Q04.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2016-P2-Q05",
+   "year": "2016",
+   "paper": 2,
+   "number": 5,
+   "image": "questions/2016-P2-Q05.png",
+   "solutionImage": "solutions/2016-P2-Q05.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "proof-counterexample",
+    "number"
+   ]
+  },
+  {
+   "id": "2016-P2-Q06",
+   "year": "2016",
+   "paper": 2,
+   "number": 6,
+   "image": "questions/2016-P2-Q06.png",
+   "solutionImage": "solutions/2016-P2-Q06.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "sequences-series",
+    "integration"
+   ]
+  },
+  {
+   "id": "2016-P2-Q07",
+   "year": "2016",
+   "paper": 2,
+   "number": 7,
+   "image": "questions/2016-P2-Q07.png",
+   "solutionImage": "solutions/2016-P2-Q07.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "exponentials-logarithms",
+    "proof-counterexample"
+   ]
+  },
+  {
+   "id": "2016-P2-Q08",
+   "year": "2016",
+   "paper": 2,
+   "number": 8,
+   "image": "questions/2016-P2-Q08.png",
+   "solutionImage": "solutions/2016-P2-Q08.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "equations-inequalities",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2016-P2-Q09",
+   "year": "2016",
+   "paper": 2,
+   "number": 9,
+   "image": "questions/2016-P2-Q09.png",
+   "solutionImage": "solutions/2016-P2-Q09.png",
+   "options": 8,
+   "answer": "D",
+   "topics": [
+    "geometry",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2016-P2-Q10",
+   "year": "2016",
+   "paper": 2,
+   "number": 10,
+   "image": "questions/2016-P2-Q10.png",
+   "solutionImage": "solutions/2016-P2-Q10.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "necessary-sufficient",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2016-P2-Q11",
+   "year": "2016",
+   "paper": 2,
+   "number": 11,
+   "image": "questions/2016-P2-Q11.png",
+   "solutionImage": "solutions/2016-P2-Q11.png",
+   "options": 8,
+   "answer": "D",
+   "topics": [
+    "algebra-functions",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2016-P2-Q12",
+   "year": "2016",
+   "paper": 2,
+   "number": 12,
+   "image": "questions/2016-P2-Q12.png",
+   "solutionImage": "solutions/2016-P2-Q12.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "sequences-series",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2016-P2-Q13",
+   "year": "2016",
+   "paper": 2,
+   "number": 13,
+   "image": "questions/2016-P2-Q13.png",
+   "solutionImage": "solutions/2016-P2-Q13.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "argument-analysis",
+    "number"
+   ]
+  },
+  {
+   "id": "2016-P2-Q14",
+   "year": "2016",
+   "paper": 2,
+   "number": 14,
+   "image": "questions/2016-P2-Q14.png",
+   "solutionImage": "solutions/2016-P2-Q14.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "graphs",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2016-P2-Q15",
+   "year": "2016",
+   "paper": 2,
+   "number": 15,
+   "image": "questions/2016-P2-Q15.png",
+   "solutionImage": "solutions/2016-P2-Q15.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "equations-inequalities",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2016-P2-Q16",
+   "year": "2016",
+   "paper": 2,
+   "number": 16,
+   "image": "questions/2016-P2-Q16.png",
+   "solutionImage": "solutions/2016-P2-Q16.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "geometry"
+   ]
+  },
+  {
+   "id": "2016-P2-Q17",
+   "year": "2016",
+   "paper": 2,
+   "number": 17,
+   "image": "questions/2016-P2-Q17.png",
+   "solutionImage": "solutions/2016-P2-Q17.png",
+   "options": 8,
+   "answer": "H",
+   "topics": [
+    "trigonometry",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2016-P2-Q18",
+   "year": "2016",
+   "paper": 2,
+   "number": 18,
+   "image": "questions/2016-P2-Q18.png",
+   "solutionImage": "solutions/2016-P2-Q18.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "proof-counterexample",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2016-P2-Q19",
+   "year": "2016",
+   "paper": 2,
+   "number": 19,
+   "image": "questions/2016-P2-Q19.png",
+   "solutionImage": "solutions/2016-P2-Q19.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "geometry"
+   ]
+  },
+  {
+   "id": "2016-P2-Q20",
+   "year": "2016",
+   "paper": 2,
+   "number": 20,
+   "image": "questions/2016-P2-Q20.png",
+   "solutionImage": "solutions/2016-P2-Q20.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "geometry",
+    "number"
+   ]
+  },
+  {
+   "id": "2017-P1-Q01",
+   "year": "2017",
+   "paper": 1,
+   "number": 1,
+   "image": "questions/2017-P1-Q01.png",
+   "solutionImage": "solutions/2017-P1-Q01.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "integration"
+   ]
+  },
+  {
+   "id": "2017-P1-Q02",
+   "year": "2017",
+   "paper": 1,
+   "number": 2,
+   "image": "questions/2017-P1-Q02.png",
+   "solutionImage": "solutions/2017-P1-Q02.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2017-P1-Q03",
+   "year": "2017",
+   "paper": 1,
+   "number": 3,
+   "image": "questions/2017-P1-Q03.png",
+   "solutionImage": "solutions/2017-P1-Q03.png",
+   "options": 5,
+   "answer": "A",
+   "topics": [
+    "coordinate-geometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2017-P1-Q04",
+   "year": "2017",
+   "paper": 1,
+   "number": 4,
+   "image": "questions/2017-P1-Q04.png",
+   "solutionImage": "solutions/2017-P1-Q04.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2017-P1-Q05",
+   "year": "2017",
+   "paper": 1,
+   "number": 5,
+   "image": "questions/2017-P1-Q05.png",
+   "solutionImage": "solutions/2017-P1-Q05.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2017-P1-Q06",
+   "year": "2017",
+   "paper": 1,
+   "number": 6,
+   "image": "questions/2017-P1-Q06.png",
+   "solutionImage": "solutions/2017-P1-Q06.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "coordinate-geometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2017-P1-Q07",
+   "year": "2017",
+   "paper": 1,
+   "number": 7,
+   "image": "questions/2017-P1-Q07.png",
+   "solutionImage": "solutions/2017-P1-Q07.png",
+   "options": 4,
+   "answer": "B",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2017-P1-Q08",
+   "year": "2017",
+   "paper": 1,
+   "number": 8,
+   "image": "questions/2017-P1-Q08.png",
+   "solutionImage": "solutions/2017-P1-Q08.png",
+   "options": 4,
+   "answer": "A",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2017-P1-Q09",
+   "year": "2017",
+   "paper": 1,
+   "number": 9,
+   "image": "questions/2017-P1-Q09.png",
+   "solutionImage": "solutions/2017-P1-Q09.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "coordinate-geometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2017-P1-Q10",
+   "year": "2017",
+   "paper": 1,
+   "number": 10,
+   "image": "questions/2017-P1-Q10.png",
+   "solutionImage": "solutions/2017-P1-Q10.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "differentiation",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2017-P1-Q11",
+   "year": "2017",
+   "paper": 1,
+   "number": 11,
+   "image": "questions/2017-P1-Q11.png",
+   "solutionImage": "solutions/2017-P1-Q11.png",
+   "options": 5,
+   "answer": "A",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2017-P1-Q12",
+   "year": "2017",
+   "paper": 1,
+   "number": 12,
+   "image": "questions/2017-P1-Q12.png",
+   "solutionImage": "solutions/2017-P1-Q12.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "integration",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2017-P1-Q13",
+   "year": "2017",
+   "paper": 1,
+   "number": 13,
+   "image": "questions/2017-P1-Q13.png",
+   "solutionImage": "solutions/2017-P1-Q13.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2017-P1-Q14",
+   "year": "2017",
+   "paper": 1,
+   "number": 14,
+   "image": "questions/2017-P1-Q14.png",
+   "solutionImage": "solutions/2017-P1-Q14.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2017-P1-Q15",
+   "year": "2017",
+   "paper": 1,
+   "number": 15,
+   "image": "questions/2017-P1-Q15.png",
+   "solutionImage": "solutions/2017-P1-Q15.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "integration",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2017-P1-Q16",
+   "year": "2017",
+   "paper": 1,
+   "number": 16,
+   "image": "questions/2017-P1-Q16.png",
+   "solutionImage": "solutions/2017-P1-Q16.png",
+   "options": 7,
+   "answer": "E",
+   "topics": [
+    "differentiation",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2017-P1-Q17",
+   "year": "2017",
+   "paper": 1,
+   "number": 17,
+   "image": "questions/2017-P1-Q17.png",
+   "solutionImage": "solutions/2017-P1-Q17.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "integration",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2017-P1-Q18",
+   "year": "2017",
+   "paper": 1,
+   "number": 18,
+   "image": "questions/2017-P1-Q18.png",
+   "solutionImage": "solutions/2017-P1-Q18.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "exponentials-logarithms",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2017-P1-Q19",
+   "year": "2017",
+   "paper": 1,
+   "number": 19,
+   "image": "questions/2017-P1-Q19.png",
+   "solutionImage": "solutions/2017-P1-Q19.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "equations-inequalities",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2017-P1-Q20",
+   "year": "2017",
+   "paper": 1,
+   "number": 20,
+   "image": "questions/2017-P1-Q20.png",
+   "solutionImage": "solutions/2017-P1-Q20.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "geometry",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2017-P2-Q01",
+   "year": "2017",
+   "paper": 2,
+   "number": 1,
+   "image": "questions/2017-P2-Q01.png",
+   "solutionImage": "solutions/2017-P2-Q01.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2017-P2-Q02",
+   "year": "2017",
+   "paper": 2,
+   "number": 2,
+   "image": "questions/2017-P2-Q02.png",
+   "solutionImage": "solutions/2017-P2-Q02.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "coordinate-geometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2017-P2-Q03",
+   "year": "2017",
+   "paper": 2,
+   "number": 3,
+   "image": "questions/2017-P2-Q03.png",
+   "solutionImage": "solutions/2017-P2-Q03.png",
+   "options": 7,
+   "answer": "G",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2017-P2-Q04",
+   "year": "2017",
+   "paper": 2,
+   "number": 4,
+   "image": "questions/2017-P2-Q04.png",
+   "solutionImage": "solutions/2017-P2-Q04.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "trigonometry",
+    "argument-analysis"
+   ]
+  },
+  {
+   "id": "2017-P2-Q05",
+   "year": "2017",
+   "paper": 2,
+   "number": 5,
+   "image": "questions/2017-P2-Q05.png",
+   "solutionImage": "solutions/2017-P2-Q05.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "number",
+    "proof-counterexample"
+   ]
+  },
+  {
+   "id": "2017-P2-Q06",
+   "year": "2017",
+   "paper": 2,
+   "number": 6,
+   "image": "questions/2017-P2-Q06.png",
+   "solutionImage": "solutions/2017-P2-Q06.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "integration",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2017-P2-Q07",
+   "year": "2017",
+   "paper": 2,
+   "number": 7,
+   "image": "questions/2017-P2-Q07.png",
+   "solutionImage": "solutions/2017-P2-Q07.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "exponentials-logarithms",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2017-P2-Q08",
+   "year": "2017",
+   "paper": 2,
+   "number": 8,
+   "image": "questions/2017-P2-Q08.png",
+   "solutionImage": "solutions/2017-P2-Q08.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "exponentials-logarithms",
+    "number"
+   ]
+  },
+  {
+   "id": "2017-P2-Q09",
+   "year": "2017",
+   "paper": 2,
+   "number": 9,
+   "image": "questions/2017-P2-Q09.png",
+   "solutionImage": "solutions/2017-P2-Q09.png",
+   "options": 7,
+   "answer": "D",
+   "topics": [
+    "argument-analysis",
+    "number"
+   ]
+  },
+  {
+   "id": "2017-P2-Q10",
+   "year": "2017",
+   "paper": 2,
+   "number": 10,
+   "image": "questions/2017-P2-Q10.png",
+   "solutionImage": "solutions/2017-P2-Q10.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "necessary-sufficient",
+    "integration"
+   ]
+  },
+  {
+   "id": "2017-P2-Q11",
+   "year": "2017",
+   "paper": 2,
+   "number": 11,
+   "image": "questions/2017-P2-Q11.png",
+   "solutionImage": "solutions/2017-P2-Q11.png",
+   "options": 7,
+   "answer": "B",
+   "topics": [
+    "integration",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2017-P2-Q12",
+   "year": "2017",
+   "paper": 2,
+   "number": 12,
+   "image": "questions/2017-P2-Q12.png",
+   "solutionImage": "solutions/2017-P2-Q12.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "trigonometry",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2017-P2-Q13",
+   "year": "2017",
+   "paper": 2,
+   "number": 13,
+   "image": "questions/2017-P2-Q13.png",
+   "solutionImage": "solutions/2017-P2-Q13.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "number",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2017-P2-Q14",
+   "year": "2017",
+   "paper": 2,
+   "number": 14,
+   "image": "questions/2017-P2-Q14.png",
+   "solutionImage": "solutions/2017-P2-Q14.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "graphs",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2017-P2-Q15",
+   "year": "2017",
+   "paper": 2,
+   "number": 15,
+   "image": "questions/2017-P2-Q15.png",
+   "solutionImage": "solutions/2017-P2-Q15.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "sequences-series",
+    "number"
+   ]
+  },
+  {
+   "id": "2017-P2-Q16",
+   "year": "2017",
+   "paper": 2,
+   "number": 16,
+   "image": "questions/2017-P2-Q16.png",
+   "solutionImage": "solutions/2017-P2-Q16.png",
+   "options": 4,
+   "answer": "C",
+   "topics": [
+    "proof-counterexample",
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2017-P2-Q17",
+   "year": "2017",
+   "paper": 2,
+   "number": 17,
+   "image": "questions/2017-P2-Q17.png",
+   "solutionImage": "solutions/2017-P2-Q17.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2017-P2-Q18",
+   "year": "2017",
+   "paper": 2,
+   "number": 18,
+   "image": "questions/2017-P2-Q18.png",
+   "solutionImage": "solutions/2017-P2-Q18.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "argument-analysis",
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "2017-P2-Q19",
+   "year": "2017",
+   "paper": 2,
+   "number": 19,
+   "image": "questions/2017-P2-Q19.png",
+   "solutionImage": "solutions/2017-P2-Q19.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "necessary-sufficient",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2017-P2-Q20",
+   "year": "2017",
+   "paper": 2,
+   "number": 20,
+   "image": "questions/2017-P2-Q20.png",
+   "solutionImage": "solutions/2017-P2-Q20.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "logic-truth",
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "2018-P1-Q01",
+   "year": "2018",
+   "paper": 1,
+   "number": 1,
+   "image": "questions/2018-P1-Q01.png",
+   "solutionImage": "solutions/2018-P1-Q01.png",
+   "options": 7,
+   "answer": "D",
+   "topics": [
+    "integration"
+   ]
+  },
+  {
+   "id": "2018-P1-Q02",
+   "year": "2018",
+   "paper": 1,
+   "number": 2,
+   "image": "questions/2018-P1-Q02.png",
+   "solutionImage": "solutions/2018-P1-Q02.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2018-P1-Q03",
+   "year": "2018",
+   "paper": 1,
+   "number": 3,
+   "image": "questions/2018-P1-Q03.png",
+   "solutionImage": "solutions/2018-P1-Q03.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "coordinate-geometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2018-P1-Q04",
+   "year": "2018",
+   "paper": 1,
+   "number": 4,
+   "image": "questions/2018-P1-Q04.png",
+   "solutionImage": "solutions/2018-P1-Q04.png",
+   "options": 7,
+   "answer": "G",
+   "topics": [
+    "equations-inequalities",
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2018-P1-Q05",
+   "year": "2018",
+   "paper": 1,
+   "number": 5,
+   "image": "questions/2018-P1-Q05.png",
+   "solutionImage": "solutions/2018-P1-Q05.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2018-P1-Q06",
+   "year": "2018",
+   "paper": 1,
+   "number": 6,
+   "image": "questions/2018-P1-Q06.png",
+   "solutionImage": "solutions/2018-P1-Q06.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "trigonometry",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2018-P1-Q07",
+   "year": "2018",
+   "paper": 1,
+   "number": 7,
+   "image": "questions/2018-P1-Q07.png",
+   "solutionImage": "solutions/2018-P1-Q07.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2018-P1-Q08",
+   "year": "2018",
+   "paper": 1,
+   "number": 8,
+   "image": "questions/2018-P1-Q08.png",
+   "solutionImage": "solutions/2018-P1-Q08.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2018-P1-Q09",
+   "year": "2018",
+   "paper": 1,
+   "number": 9,
+   "image": "questions/2018-P1-Q09.png",
+   "solutionImage": "solutions/2018-P1-Q09.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "differentiation",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2018-P1-Q10",
+   "year": "2018",
+   "paper": 1,
+   "number": 10,
+   "image": "questions/2018-P1-Q10.png",
+   "solutionImage": "solutions/2018-P1-Q10.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "equations-inequalities",
+    "number"
+   ]
+  },
+  {
+   "id": "2018-P1-Q11",
+   "year": "2018",
+   "paper": 1,
+   "number": 11,
+   "image": "questions/2018-P1-Q11.png",
+   "solutionImage": "solutions/2018-P1-Q11.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "differentiation",
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2018-P1-Q12",
+   "year": "2018",
+   "paper": 1,
+   "number": 12,
+   "image": "questions/2018-P1-Q12.png",
+   "solutionImage": "solutions/2018-P1-Q12.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "integration",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2018-P1-Q13",
+   "year": "2018",
+   "paper": 1,
+   "number": 13,
+   "image": "questions/2018-P1-Q13.png",
+   "solutionImage": "solutions/2018-P1-Q13.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "differentiation",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2018-P1-Q14",
+   "year": "2018",
+   "paper": 1,
+   "number": 14,
+   "image": "questions/2018-P1-Q14.png",
+   "solutionImage": "solutions/2018-P1-Q14.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "coordinate-geometry",
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "2018-P1-Q15",
+   "year": "2018",
+   "paper": 1,
+   "number": 15,
+   "image": "questions/2018-P1-Q15.png",
+   "solutionImage": "solutions/2018-P1-Q15.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2018-P1-Q16",
+   "year": "2018",
+   "paper": 1,
+   "number": 16,
+   "image": "questions/2018-P1-Q16.png",
+   "solutionImage": "solutions/2018-P1-Q16.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "differentiation",
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2018-P1-Q17",
+   "year": "2018",
+   "paper": 1,
+   "number": 17,
+   "image": "questions/2018-P1-Q17.png",
+   "solutionImage": "solutions/2018-P1-Q17.png",
+   "options": 5,
+   "answer": "A",
+   "topics": [
+    "number"
+   ]
+  },
+  {
+   "id": "2018-P1-Q18",
+   "year": "2018",
+   "paper": 1,
+   "number": 18,
+   "image": "questions/2018-P1-Q18.png",
+   "solutionImage": "solutions/2018-P1-Q18.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "trigonometry",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2018-P1-Q19",
+   "year": "2018",
+   "paper": 1,
+   "number": 19,
+   "image": "questions/2018-P1-Q19.png",
+   "solutionImage": "solutions/2018-P1-Q19.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "trigonometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2018-P1-Q20",
+   "year": "2018",
+   "paper": 1,
+   "number": 20,
+   "image": "questions/2018-P1-Q20.png",
+   "solutionImage": "solutions/2018-P1-Q20.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "trigonometry",
+    "number"
+   ]
+  },
+  {
+   "id": "2018-P2-Q01",
+   "year": "2018",
+   "paper": 2,
+   "number": 1,
+   "image": "questions/2018-P2-Q01.png",
+   "solutionImage": "solutions/2018-P2-Q01.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2018-P2-Q02",
+   "year": "2018",
+   "paper": 2,
+   "number": 2,
+   "image": "questions/2018-P2-Q02.png",
+   "solutionImage": "solutions/2018-P2-Q02.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2018-P2-Q03",
+   "year": "2018",
+   "paper": 2,
+   "number": 3,
+   "image": "questions/2018-P2-Q03.png",
+   "solutionImage": "solutions/2018-P2-Q03.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "argument-analysis",
+    "number"
+   ]
+  },
+  {
+   "id": "2018-P2-Q04",
+   "year": "2018",
+   "paper": 2,
+   "number": 4,
+   "image": "questions/2018-P2-Q04.png",
+   "solutionImage": "solutions/2018-P2-Q04.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2018-P2-Q05",
+   "year": "2018",
+   "paper": 2,
+   "number": 5,
+   "image": "questions/2018-P2-Q05.png",
+   "solutionImage": "solutions/2018-P2-Q05.png",
+   "options": 4,
+   "answer": "A",
+   "topics": [
+    "geometry",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2018-P2-Q06",
+   "year": "2018",
+   "paper": 2,
+   "number": 6,
+   "image": "questions/2018-P2-Q06.png",
+   "solutionImage": "solutions/2018-P2-Q06.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "proof-counterexample",
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2018-P2-Q07",
+   "year": "2018",
+   "paper": 2,
+   "number": 7,
+   "image": "questions/2018-P2-Q07.png",
+   "solutionImage": "solutions/2018-P2-Q07.png",
+   "options": 7,
+   "answer": "B",
+   "topics": [
+    "sequences-series",
+    "number"
+   ]
+  },
+  {
+   "id": "2018-P2-Q08",
+   "year": "2018",
+   "paper": 2,
+   "number": 8,
+   "image": "questions/2018-P2-Q08.png",
+   "solutionImage": "solutions/2018-P2-Q08.png",
+   "options": 8,
+   "answer": "D",
+   "topics": [
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2018-P2-Q09",
+   "year": "2018",
+   "paper": 2,
+   "number": 9,
+   "image": "questions/2018-P2-Q09.png",
+   "solutionImage": "solutions/2018-P2-Q09.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "argument-analysis",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2018-P2-Q10",
+   "year": "2018",
+   "paper": 2,
+   "number": 10,
+   "image": "questions/2018-P2-Q10.png",
+   "solutionImage": "solutions/2018-P2-Q10.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "necessary-sufficient",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2018-P2-Q11",
+   "year": "2018",
+   "paper": 2,
+   "number": 11,
+   "image": "questions/2018-P2-Q11.png",
+   "solutionImage": "solutions/2018-P2-Q11.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "exponentials-logarithms",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2018-P2-Q12",
+   "year": "2018",
+   "paper": 2,
+   "number": 12,
+   "image": "questions/2018-P2-Q12.png",
+   "solutionImage": "solutions/2018-P2-Q12.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "logic-truth",
+    "number"
+   ]
+  },
+  {
+   "id": "2018-P2-Q13",
+   "year": "2018",
+   "paper": 2,
+   "number": 13,
+   "image": "questions/2018-P2-Q13.png",
+   "solutionImage": "solutions/2018-P2-Q13.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "argument-analysis",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2018-P2-Q14",
+   "year": "2018",
+   "paper": 2,
+   "number": 14,
+   "image": "questions/2018-P2-Q14.png",
+   "solutionImage": "solutions/2018-P2-Q14.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "trigonometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2018-P2-Q15",
+   "year": "2018",
+   "paper": 2,
+   "number": 15,
+   "image": "questions/2018-P2-Q15.png",
+   "solutionImage": "solutions/2018-P2-Q15.png",
+   "options": 8,
+   "answer": "G",
+   "topics": [
+    "algebra-functions",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2018-P2-Q16",
+   "year": "2018",
+   "paper": 2,
+   "number": 16,
+   "image": "questions/2018-P2-Q16.png",
+   "solutionImage": "solutions/2018-P2-Q16.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "sequences-series",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2018-P2-Q17",
+   "year": "2018",
+   "paper": 2,
+   "number": 17,
+   "image": "questions/2018-P2-Q17.png",
+   "solutionImage": "solutions/2018-P2-Q17.png",
+   "options": 4,
+   "answer": "C",
+   "topics": [
+    "number",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2018-P2-Q18",
+   "year": "2018",
+   "paper": 2,
+   "number": 18,
+   "image": "questions/2018-P2-Q18.png",
+   "solutionImage": "solutions/2018-P2-Q18.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "necessary-sufficient",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2018-P2-Q19",
+   "year": "2018",
+   "paper": 2,
+   "number": 19,
+   "image": "questions/2018-P2-Q19.png",
+   "solutionImage": "solutions/2018-P2-Q19.png",
+   "options": 4,
+   "answer": "C",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2018-P2-Q20",
+   "year": "2018",
+   "paper": 2,
+   "number": 20,
+   "image": "questions/2018-P2-Q20.png",
+   "solutionImage": "solutions/2018-P2-Q20.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "equations-inequalities",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2019-P1-Q01",
+   "year": "2019",
+   "paper": 1,
+   "number": 1,
+   "image": "questions/2019-P1-Q01.png",
+   "solutionImage": "solutions/2019-P1-Q01.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "algebra-functions",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2019-P1-Q02",
+   "year": "2019",
+   "paper": 1,
+   "number": 2,
+   "image": "questions/2019-P1-Q02.png",
+   "solutionImage": "solutions/2019-P1-Q02.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2019-P1-Q03",
+   "year": "2019",
+   "paper": 1,
+   "number": 3,
+   "image": "questions/2019-P1-Q03.png",
+   "solutionImage": "solutions/2019-P1-Q03.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "algebra-functions",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2019-P1-Q04",
+   "year": "2019",
+   "paper": 1,
+   "number": 4,
+   "image": "questions/2019-P1-Q04.png",
+   "solutionImage": "solutions/2019-P1-Q04.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "sequences-series",
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "2019-P1-Q05",
+   "year": "2019",
+   "paper": 1,
+   "number": 5,
+   "image": "questions/2019-P1-Q05.png",
+   "solutionImage": "solutions/2019-P1-Q05.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2019-P1-Q06",
+   "year": "2019",
+   "paper": 1,
+   "number": 6,
+   "image": "questions/2019-P1-Q06.png",
+   "solutionImage": "solutions/2019-P1-Q06.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "coordinate-geometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2019-P1-Q07",
+   "year": "2019",
+   "paper": 1,
+   "number": 7,
+   "image": "questions/2019-P1-Q07.png",
+   "solutionImage": "solutions/2019-P1-Q07.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2019-P1-Q08",
+   "year": "2019",
+   "paper": 1,
+   "number": 8,
+   "image": "questions/2019-P1-Q08.png",
+   "solutionImage": "solutions/2019-P1-Q08.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "integration",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2019-P1-Q09",
+   "year": "2019",
+   "paper": 1,
+   "number": 9,
+   "image": "questions/2019-P1-Q09.png",
+   "solutionImage": "solutions/2019-P1-Q09.png",
+   "options": 7,
+   "answer": "D",
+   "topics": [
+    "integration",
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2019-P1-Q10",
+   "year": "2019",
+   "paper": 1,
+   "number": 10,
+   "image": "questions/2019-P1-Q10.png",
+   "solutionImage": "solutions/2019-P1-Q10.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "integration",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2019-P1-Q11",
+   "year": "2019",
+   "paper": 1,
+   "number": 11,
+   "image": "questions/2019-P1-Q11.png",
+   "solutionImage": "solutions/2019-P1-Q11.png",
+   "options": 8,
+   "answer": "H",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2019-P1-Q12",
+   "year": "2019",
+   "paper": 1,
+   "number": 12,
+   "image": "questions/2019-P1-Q12.png",
+   "solutionImage": "solutions/2019-P1-Q12.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "integration"
+   ]
+  },
+  {
+   "id": "2019-P1-Q13",
+   "year": "2019",
+   "paper": 1,
+   "number": 13,
+   "image": "questions/2019-P1-Q13.png",
+   "solutionImage": "solutions/2019-P1-Q13.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "exponentials-logarithms",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2019-P1-Q14",
+   "year": "2019",
+   "paper": 1,
+   "number": 14,
+   "image": "questions/2019-P1-Q14.png",
+   "solutionImage": "solutions/2019-P1-Q14.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2019-P1-Q15",
+   "year": "2019",
+   "paper": 1,
+   "number": 15,
+   "image": "questions/2019-P1-Q15.png",
+   "solutionImage": "solutions/2019-P1-Q15.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "2019-P1-Q16",
+   "year": "2019",
+   "paper": 1,
+   "number": 16,
+   "image": "questions/2019-P1-Q16.png",
+   "solutionImage": "solutions/2019-P1-Q16.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "integration",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2019-P1-Q17",
+   "year": "2019",
+   "paper": 1,
+   "number": 17,
+   "image": "questions/2019-P1-Q17.png",
+   "solutionImage": "solutions/2019-P1-Q17.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2019-P1-Q18",
+   "year": "2019",
+   "paper": 1,
+   "number": 18,
+   "image": "questions/2019-P1-Q18.png",
+   "solutionImage": "solutions/2019-P1-Q18.png",
+   "options": 7,
+   "answer": "B",
+   "topics": [
+    "differentiation",
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2019-P1-Q19",
+   "year": "2019",
+   "paper": 1,
+   "number": 19,
+   "image": "questions/2019-P1-Q19.png",
+   "solutionImage": "solutions/2019-P1-Q19.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "trigonometry",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2019-P1-Q20",
+   "year": "2019",
+   "paper": 1,
+   "number": 20,
+   "image": "questions/2019-P1-Q20.png",
+   "solutionImage": "solutions/2019-P1-Q20.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "graphs",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2019-P2-Q01",
+   "year": "2019",
+   "paper": 2,
+   "number": 1,
+   "image": "questions/2019-P2-Q01.png",
+   "solutionImage": "solutions/2019-P2-Q01.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2019-P2-Q02",
+   "year": "2019",
+   "paper": 2,
+   "number": 2,
+   "image": "questions/2019-P2-Q02.png",
+   "solutionImage": "solutions/2019-P2-Q02.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2019-P2-Q03",
+   "year": "2019",
+   "paper": 2,
+   "number": 3,
+   "image": "questions/2019-P2-Q03.png",
+   "solutionImage": "solutions/2019-P2-Q03.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "number",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2019-P2-Q04",
+   "year": "2019",
+   "paper": 2,
+   "number": 4,
+   "image": "questions/2019-P2-Q04.png",
+   "solutionImage": "solutions/2019-P2-Q04.png",
+   "options": 8,
+   "answer": "D",
+   "topics": [
+    "number",
+    "proof-counterexample"
+   ]
+  },
+  {
+   "id": "2019-P2-Q05",
+   "year": "2019",
+   "paper": 2,
+   "number": 5,
+   "image": "questions/2019-P2-Q05.png",
+   "solutionImage": "solutions/2019-P2-Q05.png",
+   "options": 4,
+   "answer": "B",
+   "topics": [
+    "necessary-sufficient",
+    "number"
+   ]
+  },
+  {
+   "id": "2019-P2-Q06",
+   "year": "2019",
+   "paper": 2,
+   "number": 6,
+   "image": "questions/2019-P2-Q06.png",
+   "solutionImage": "solutions/2019-P2-Q06.png",
+   "options": 7,
+   "answer": "D",
+   "topics": [
+    "argument-analysis",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2019-P2-Q07",
+   "year": "2019",
+   "paper": 2,
+   "number": 7,
+   "image": "questions/2019-P2-Q07.png",
+   "solutionImage": "solutions/2019-P2-Q07.png",
+   "options": 4,
+   "answer": "B",
+   "topics": [
+    "proof-counterexample",
+    "number"
+   ]
+  },
+  {
+   "id": "2019-P2-Q08",
+   "year": "2019",
+   "paper": 2,
+   "number": 8,
+   "image": "questions/2019-P2-Q08.png",
+   "solutionImage": "solutions/2019-P2-Q08.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "equations-inequalities",
+    "number"
+   ]
+  },
+  {
+   "id": "2019-P2-Q09",
+   "year": "2019",
+   "paper": 2,
+   "number": 9,
+   "image": "questions/2019-P2-Q09.png",
+   "solutionImage": "solutions/2019-P2-Q09.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "2019-P2-Q10",
+   "year": "2019",
+   "paper": 2,
+   "number": 10,
+   "image": "questions/2019-P2-Q10.png",
+   "solutionImage": "solutions/2019-P2-Q10.png",
+   "options": 4,
+   "answer": "A",
+   "topics": [
+    "necessary-sufficient",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2019-P2-Q11",
+   "year": "2019",
+   "paper": 2,
+   "number": 11,
+   "image": "questions/2019-P2-Q11.png",
+   "solutionImage": "solutions/2019-P2-Q11.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "sequences-series",
+    "number"
+   ]
+  },
+  {
+   "id": "2019-P2-Q12",
+   "year": "2019",
+   "paper": 2,
+   "number": 12,
+   "image": "questions/2019-P2-Q12.png",
+   "solutionImage": "solutions/2019-P2-Q12.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "2019-P2-Q13",
+   "year": "2019",
+   "paper": 2,
+   "number": 13,
+   "image": "questions/2019-P2-Q13.png",
+   "solutionImage": "solutions/2019-P2-Q13.png",
+   "options": 4,
+   "answer": "D",
+   "topics": [
+    "integration",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2019-P2-Q14",
+   "year": "2019",
+   "paper": 2,
+   "number": 14,
+   "image": "questions/2019-P2-Q14.png",
+   "solutionImage": "solutions/2019-P2-Q14.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "differentiation",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2019-P2-Q15",
+   "year": "2019",
+   "paper": 2,
+   "number": 15,
+   "image": "questions/2019-P2-Q15.png",
+   "solutionImage": "solutions/2019-P2-Q15.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2019-P2-Q16",
+   "year": "2019",
+   "paper": 2,
+   "number": 16,
+   "image": "questions/2019-P2-Q16.png",
+   "solutionImage": "solutions/2019-P2-Q16.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "graphs",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2019-P2-Q17",
+   "year": "2019",
+   "paper": 2,
+   "number": 17,
+   "image": "questions/2019-P2-Q17.png",
+   "solutionImage": "solutions/2019-P2-Q17.png",
+   "options": 4,
+   "answer": "D",
+   "topics": [
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2019-P2-Q18",
+   "year": "2019",
+   "paper": 2,
+   "number": 18,
+   "image": "questions/2019-P2-Q18.png",
+   "solutionImage": "solutions/2019-P2-Q18.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "equations-inequalities",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2019-P2-Q19",
+   "year": "2019",
+   "paper": 2,
+   "number": 19,
+   "image": "questions/2019-P2-Q19.png",
+   "solutionImage": "solutions/2019-P2-Q19.png",
+   "options": 7,
+   "answer": "E",
+   "topics": [
+    "number",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2019-P2-Q20",
+   "year": "2019",
+   "paper": 2,
+   "number": 20,
+   "image": "questions/2019-P2-Q20.png",
+   "solutionImage": "solutions/2019-P2-Q20.png",
+   "options": 7,
+   "answer": "B",
+   "topics": [
+    "necessary-sufficient",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2020-P1-Q01",
+   "year": "2020",
+   "paper": 1,
+   "number": 1,
+   "image": "questions/2020-P1-Q01.png",
+   "solutionImage": "solutions/2020-P1-Q01.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2020-P1-Q02",
+   "year": "2020",
+   "paper": 1,
+   "number": 2,
+   "image": "questions/2020-P1-Q02.png",
+   "solutionImage": "solutions/2020-P1-Q02.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2020-P1-Q03",
+   "year": "2020",
+   "paper": 1,
+   "number": 3,
+   "image": "questions/2020-P1-Q03.png",
+   "solutionImage": "solutions/2020-P1-Q03.png",
+   "options": 7,
+   "answer": "B",
+   "topics": [
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2020-P1-Q04",
+   "year": "2020",
+   "paper": 1,
+   "number": 4,
+   "image": "questions/2020-P1-Q04.png",
+   "solutionImage": "solutions/2020-P1-Q04.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2020-P1-Q05",
+   "year": "2020",
+   "paper": 1,
+   "number": 5,
+   "image": "questions/2020-P1-Q05.png",
+   "solutionImage": "solutions/2020-P1-Q05.png",
+   "options": 5,
+   "answer": "A",
+   "topics": [
+    "algebra-functions",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2020-P1-Q06",
+   "year": "2020",
+   "paper": 1,
+   "number": 6,
+   "image": "questions/2020-P1-Q06.png",
+   "solutionImage": "solutions/2020-P1-Q06.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "exponentials-logarithms",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2020-P1-Q07",
+   "year": "2020",
+   "paper": 1,
+   "number": 7,
+   "image": "questions/2020-P1-Q07.png",
+   "solutionImage": "solutions/2020-P1-Q07.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2020-P1-Q08",
+   "year": "2020",
+   "paper": 1,
+   "number": 8,
+   "image": "questions/2020-P1-Q08.png",
+   "solutionImage": "solutions/2020-P1-Q08.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "algebra-functions",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2020-P1-Q09",
+   "year": "2020",
+   "paper": 1,
+   "number": 9,
+   "image": "questions/2020-P1-Q09.png",
+   "solutionImage": "solutions/2020-P1-Q09.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2020-P1-Q10",
+   "year": "2020",
+   "paper": 1,
+   "number": 10,
+   "image": "questions/2020-P1-Q10.png",
+   "solutionImage": "solutions/2020-P1-Q10.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "graphs",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2020-P1-Q11",
+   "year": "2020",
+   "paper": 1,
+   "number": 11,
+   "image": "questions/2020-P1-Q11.png",
+   "solutionImage": "solutions/2020-P1-Q11.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "integration",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2020-P1-Q12",
+   "year": "2020",
+   "paper": 1,
+   "number": 12,
+   "image": "questions/2020-P1-Q12.png",
+   "solutionImage": "solutions/2020-P1-Q12.png",
+   "options": 7,
+   "answer": "D",
+   "topics": [
+    "trigonometry",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2020-P1-Q13",
+   "year": "2020",
+   "paper": 1,
+   "number": 13,
+   "image": "questions/2020-P1-Q13.png",
+   "solutionImage": "solutions/2020-P1-Q13.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2020-P1-Q14",
+   "year": "2020",
+   "paper": 1,
+   "number": 14,
+   "image": "questions/2020-P1-Q14.png",
+   "solutionImage": "solutions/2020-P1-Q14.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "integration"
+   ]
+  },
+  {
+   "id": "2020-P1-Q15",
+   "year": "2020",
+   "paper": 1,
+   "number": 15,
+   "image": "questions/2020-P1-Q15.png",
+   "solutionImage": "solutions/2020-P1-Q15.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2020-P1-Q16",
+   "year": "2020",
+   "paper": 1,
+   "number": 16,
+   "image": "questions/2020-P1-Q16.png",
+   "solutionImage": "solutions/2020-P1-Q16.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "coordinate-geometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2020-P1-Q17",
+   "year": "2020",
+   "paper": 1,
+   "number": 17,
+   "image": "questions/2020-P1-Q17.png",
+   "solutionImage": "solutions/2020-P1-Q17.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "equations-inequalities",
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2020-P1-Q18",
+   "year": "2020",
+   "paper": 1,
+   "number": 18,
+   "image": "questions/2020-P1-Q18.png",
+   "solutionImage": "solutions/2020-P1-Q18.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2020-P1-Q19",
+   "year": "2020",
+   "paper": 1,
+   "number": 19,
+   "image": "questions/2020-P1-Q19.png",
+   "solutionImage": "solutions/2020-P1-Q19.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "equations-inequalities",
+    "number"
+   ]
+  },
+  {
+   "id": "2020-P1-Q20",
+   "year": "2020",
+   "paper": 1,
+   "number": 20,
+   "image": "questions/2020-P1-Q20.png",
+   "solutionImage": "solutions/2020-P1-Q20.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "algebra-functions",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2020-P2-Q01",
+   "year": "2020",
+   "paper": 2,
+   "number": 1,
+   "image": "questions/2020-P2-Q01.png",
+   "solutionImage": "solutions/2020-P2-Q01.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2020-P2-Q02",
+   "year": "2020",
+   "paper": 2,
+   "number": 2,
+   "image": "questions/2020-P2-Q02.png",
+   "solutionImage": "solutions/2020-P2-Q02.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2020-P2-Q03",
+   "year": "2020",
+   "paper": 2,
+   "number": 3,
+   "image": "questions/2020-P2-Q03.png",
+   "solutionImage": "solutions/2020-P2-Q03.png",
+   "options": 7,
+   "answer": "C",
+   "topics": [
+    "argument-analysis",
+    "number"
+   ]
+  },
+  {
+   "id": "2020-P2-Q04",
+   "year": "2020",
+   "paper": 2,
+   "number": 4,
+   "image": "questions/2020-P2-Q04.png",
+   "solutionImage": "solutions/2020-P2-Q04.png",
+   "options": 8,
+   "answer": "G",
+   "topics": [
+    "proof-counterexample",
+    "number"
+   ]
+  },
+  {
+   "id": "2020-P2-Q05",
+   "year": "2020",
+   "paper": 2,
+   "number": 5,
+   "image": "questions/2020-P2-Q05.png",
+   "solutionImage": "solutions/2020-P2-Q05.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "graphs",
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "2020-P2-Q06",
+   "year": "2020",
+   "paper": 2,
+   "number": 6,
+   "image": "questions/2020-P2-Q06.png",
+   "solutionImage": "solutions/2020-P2-Q06.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "necessary-sufficient",
+    "integration"
+   ]
+  },
+  {
+   "id": "2020-P2-Q07",
+   "year": "2020",
+   "paper": 2,
+   "number": 7,
+   "image": "questions/2020-P2-Q07.png",
+   "solutionImage": "solutions/2020-P2-Q07.png",
+   "options": 8,
+   "answer": "H",
+   "topics": [
+    "necessary-sufficient",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2020-P2-Q08",
+   "year": "2020",
+   "paper": 2,
+   "number": 8,
+   "image": "questions/2020-P2-Q08.png",
+   "solutionImage": "solutions/2020-P2-Q08.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "argument-analysis",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2020-P2-Q09",
+   "year": "2020",
+   "paper": 2,
+   "number": 9,
+   "image": "questions/2020-P2-Q09.png",
+   "solutionImage": "solutions/2020-P2-Q09.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "number",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2020-P2-Q10",
+   "year": "2020",
+   "paper": 2,
+   "number": 10,
+   "image": "questions/2020-P2-Q10.png",
+   "solutionImage": "solutions/2020-P2-Q10.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "equations-inequalities",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2020-P2-Q11",
+   "year": "2020",
+   "paper": 2,
+   "number": 11,
+   "image": "questions/2020-P2-Q11.png",
+   "solutionImage": "solutions/2020-P2-Q11.png",
+   "options": 8,
+   "answer": "G",
+   "topics": [
+    "coordinate-geometry",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2020-P2-Q12",
+   "year": "2020",
+   "paper": 2,
+   "number": 12,
+   "image": "questions/2020-P2-Q12.png",
+   "solutionImage": "solutions/2020-P2-Q12.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "necessary-sufficient",
+    "integration"
+   ]
+  },
+  {
+   "id": "2020-P2-Q13",
+   "year": "2020",
+   "paper": 2,
+   "number": 13,
+   "image": "questions/2020-P2-Q13.png",
+   "solutionImage": "solutions/2020-P2-Q13.png",
+   "options": 4,
+   "answer": "D",
+   "topics": [
+    "integration",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2020-P2-Q14",
+   "year": "2020",
+   "paper": 2,
+   "number": 14,
+   "image": "questions/2020-P2-Q14.png",
+   "solutionImage": "solutions/2020-P2-Q14.png",
+   "options": 4,
+   "answer": "A",
+   "topics": [
+    "sequences-series",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2020-P2-Q15",
+   "year": "2020",
+   "paper": 2,
+   "number": 15,
+   "image": "questions/2020-P2-Q15.png",
+   "solutionImage": "solutions/2020-P2-Q15.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "trigonometry",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2020-P2-Q16",
+   "year": "2020",
+   "paper": 2,
+   "number": 16,
+   "image": "questions/2020-P2-Q16.png",
+   "solutionImage": "solutions/2020-P2-Q16.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "argument-analysis",
+    "integration"
+   ]
+  },
+  {
+   "id": "2020-P2-Q17",
+   "year": "2020",
+   "paper": 2,
+   "number": 17,
+   "image": "questions/2020-P2-Q17.png",
+   "solutionImage": "solutions/2020-P2-Q17.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "number"
+   ]
+  },
+  {
+   "id": "2020-P2-Q18",
+   "year": "2020",
+   "paper": 2,
+   "number": 18,
+   "image": "questions/2020-P2-Q18.png",
+   "solutionImage": "solutions/2020-P2-Q18.png",
+   "options": 8,
+   "answer": "G",
+   "topics": [
+    "algebra-functions",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2020-P2-Q19",
+   "year": "2020",
+   "paper": 2,
+   "number": 19,
+   "image": "questions/2020-P2-Q19.png",
+   "solutionImage": "solutions/2020-P2-Q19.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "logic-truth",
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "2020-P2-Q20",
+   "year": "2020",
+   "paper": 2,
+   "number": 20,
+   "image": "questions/2020-P2-Q20.png",
+   "solutionImage": "solutions/2020-P2-Q20.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2021-P1-Q01",
+   "year": "2021",
+   "paper": 1,
+   "number": 1,
+   "image": "questions/2021-P1-Q01.png",
+   "solutionImage": "solutions/2021-P1-Q01.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2021-P1-Q02",
+   "year": "2021",
+   "paper": 1,
+   "number": 2,
+   "image": "questions/2021-P1-Q02.png",
+   "solutionImage": "solutions/2021-P1-Q02.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "integration",
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2021-P1-Q03",
+   "year": "2021",
+   "paper": 1,
+   "number": 3,
+   "image": "questions/2021-P1-Q03.png",
+   "solutionImage": "solutions/2021-P1-Q03.png",
+   "options": 8,
+   "answer": "G",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2021-P1-Q04",
+   "year": "2021",
+   "paper": 1,
+   "number": 4,
+   "image": "questions/2021-P1-Q04.png",
+   "solutionImage": "solutions/2021-P1-Q04.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "exponentials-logarithms",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2021-P1-Q05",
+   "year": "2021",
+   "paper": 1,
+   "number": 5,
+   "image": "questions/2021-P1-Q05.png",
+   "solutionImage": "solutions/2021-P1-Q05.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "number",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2021-P1-Q06",
+   "year": "2021",
+   "paper": 1,
+   "number": 6,
+   "image": "questions/2021-P1-Q06.png",
+   "solutionImage": "solutions/2021-P1-Q06.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "trigonometry",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2021-P1-Q07",
+   "year": "2021",
+   "paper": 1,
+   "number": 7,
+   "image": "questions/2021-P1-Q07.png",
+   "solutionImage": "solutions/2021-P1-Q07.png",
+   "options": 8,
+   "answer": "G",
+   "topics": [
+    "integration",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2021-P1-Q08",
+   "year": "2021",
+   "paper": 1,
+   "number": 8,
+   "image": "questions/2021-P1-Q08.png",
+   "solutionImage": "solutions/2021-P1-Q08.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "coordinate-geometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2021-P1-Q09",
+   "year": "2021",
+   "paper": 1,
+   "number": 9,
+   "image": "questions/2021-P1-Q09.png",
+   "solutionImage": "solutions/2021-P1-Q09.png",
+   "options": 7,
+   "answer": "C",
+   "topics": [
+    "graphs",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2021-P1-Q10",
+   "year": "2021",
+   "paper": 1,
+   "number": 10,
+   "image": "questions/2021-P1-Q10.png",
+   "solutionImage": "solutions/2021-P1-Q10.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "integration",
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "2021-P1-Q11",
+   "year": "2021",
+   "paper": 1,
+   "number": 11,
+   "image": "questions/2021-P1-Q11.png",
+   "solutionImage": "solutions/2021-P1-Q11.png",
+   "options": 7,
+   "answer": "A",
+   "topics": [
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2021-P1-Q12",
+   "year": "2021",
+   "paper": 1,
+   "number": 12,
+   "image": "questions/2021-P1-Q12.png",
+   "solutionImage": "solutions/2021-P1-Q12.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "algebra-functions",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2021-P1-Q13",
+   "year": "2021",
+   "paper": 1,
+   "number": 13,
+   "image": "questions/2021-P1-Q13.png",
+   "solutionImage": "solutions/2021-P1-Q13.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "integration",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2021-P1-Q14",
+   "year": "2021",
+   "paper": 1,
+   "number": 14,
+   "image": "questions/2021-P1-Q14.png",
+   "solutionImage": "solutions/2021-P1-Q14.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "graphs",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2021-P1-Q15",
+   "year": "2021",
+   "paper": 1,
+   "number": 15,
+   "image": "questions/2021-P1-Q15.png",
+   "solutionImage": "solutions/2021-P1-Q15.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "integration",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2021-P1-Q16",
+   "year": "2021",
+   "paper": 1,
+   "number": 16,
+   "image": "questions/2021-P1-Q16.png",
+   "solutionImage": "solutions/2021-P1-Q16.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2021-P1-Q17",
+   "year": "2021",
+   "paper": 1,
+   "number": 17,
+   "image": "questions/2021-P1-Q17.png",
+   "solutionImage": "solutions/2021-P1-Q17.png",
+   "options": 5,
+   "answer": "A",
+   "topics": [
+    "graphs",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2021-P1-Q18",
+   "year": "2021",
+   "paper": 1,
+   "number": 18,
+   "image": "questions/2021-P1-Q18.png",
+   "solutionImage": "solutions/2021-P1-Q18.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "coordinate-geometry",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2021-P1-Q19",
+   "year": "2021",
+   "paper": 1,
+   "number": 19,
+   "image": "questions/2021-P1-Q19.png",
+   "solutionImage": "solutions/2021-P1-Q19.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "trigonometry",
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "2021-P1-Q20",
+   "year": "2021",
+   "paper": 1,
+   "number": 20,
+   "image": "questions/2021-P1-Q20.png",
+   "solutionImage": "solutions/2021-P1-Q20.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "exponentials-logarithms",
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2021-P2-Q01",
+   "year": "2021",
+   "paper": 2,
+   "number": 1,
+   "image": "questions/2021-P2-Q01.png",
+   "solutionImage": "solutions/2021-P2-Q01.png",
+   "options": 7,
+   "answer": "D",
+   "topics": [
+    "integration"
+   ]
+  },
+  {
+   "id": "2021-P2-Q02",
+   "year": "2021",
+   "paper": 2,
+   "number": 2,
+   "image": "questions/2021-P2-Q02.png",
+   "solutionImage": "solutions/2021-P2-Q02.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2021-P2-Q03",
+   "year": "2021",
+   "paper": 2,
+   "number": 3,
+   "image": "questions/2021-P2-Q03.png",
+   "solutionImage": "solutions/2021-P2-Q03.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "counting-probability",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2021-P2-Q04",
+   "year": "2021",
+   "paper": 2,
+   "number": 4,
+   "image": "questions/2021-P2-Q04.png",
+   "solutionImage": "solutions/2021-P2-Q04.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "number",
+    "proof-counterexample"
+   ]
+  },
+  {
+   "id": "2021-P2-Q05",
+   "year": "2021",
+   "paper": 2,
+   "number": 5,
+   "image": "questions/2021-P2-Q05.png",
+   "solutionImage": "solutions/2021-P2-Q05.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "argument-analysis",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2021-P2-Q06",
+   "year": "2021",
+   "paper": 2,
+   "number": 6,
+   "image": "questions/2021-P2-Q06.png",
+   "solutionImage": "solutions/2021-P2-Q06.png",
+   "options": 4,
+   "answer": "D",
+   "topics": [
+    "necessary-sufficient",
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2021-P2-Q07",
+   "year": "2021",
+   "paper": 2,
+   "number": 7,
+   "image": "questions/2021-P2-Q07.png",
+   "solutionImage": "solutions/2021-P2-Q07.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "coordinate-geometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2021-P2-Q08",
+   "year": "2021",
+   "paper": 2,
+   "number": 8,
+   "image": "questions/2021-P2-Q08.png",
+   "solutionImage": "solutions/2021-P2-Q08.png",
+   "options": 4,
+   "answer": "C",
+   "topics": [
+    "necessary-sufficient",
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2021-P2-Q09",
+   "year": "2021",
+   "paper": 2,
+   "number": 9,
+   "image": "questions/2021-P2-Q09.png",
+   "solutionImage": "solutions/2021-P2-Q09.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "logic-truth",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2021-P2-Q10",
+   "year": "2021",
+   "paper": 2,
+   "number": 10,
+   "image": "questions/2021-P2-Q10.png",
+   "solutionImage": "solutions/2021-P2-Q10.png",
+   "options": 7,
+   "answer": "E",
+   "topics": [
+    "sequences-series",
+    "proof-counterexample"
+   ]
+  },
+  {
+   "id": "2021-P2-Q11",
+   "year": "2021",
+   "paper": 2,
+   "number": 11,
+   "image": "questions/2021-P2-Q11.png",
+   "solutionImage": "solutions/2021-P2-Q11.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "argument-analysis",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2021-P2-Q12",
+   "year": "2021",
+   "paper": 2,
+   "number": 12,
+   "image": "questions/2021-P2-Q12.png",
+   "solutionImage": "solutions/2021-P2-Q12.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "integration",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2021-P2-Q13",
+   "year": "2021",
+   "paper": 2,
+   "number": 13,
+   "image": "questions/2021-P2-Q13.png",
+   "solutionImage": "solutions/2021-P2-Q13.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "equations-inequalities",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2021-P2-Q14",
+   "year": "2021",
+   "paper": 2,
+   "number": 14,
+   "image": "questions/2021-P2-Q14.png",
+   "solutionImage": "solutions/2021-P2-Q14.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2021-P2-Q15",
+   "year": "2021",
+   "paper": 2,
+   "number": 15,
+   "image": "questions/2021-P2-Q15.png",
+   "solutionImage": "solutions/2021-P2-Q15.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "coordinate-geometry",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2021-P2-Q16",
+   "year": "2021",
+   "paper": 2,
+   "number": 16,
+   "image": "questions/2021-P2-Q16.png",
+   "solutionImage": "solutions/2021-P2-Q16.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "graphs",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2021-P2-Q17",
+   "year": "2021",
+   "paper": 2,
+   "number": 17,
+   "image": "questions/2021-P2-Q17.png",
+   "solutionImage": "solutions/2021-P2-Q17.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2021-P2-Q18",
+   "year": "2021",
+   "paper": 2,
+   "number": 18,
+   "image": "questions/2021-P2-Q18.png",
+   "solutionImage": "solutions/2021-P2-Q18.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "trigonometry",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2021-P2-Q19",
+   "year": "2021",
+   "paper": 2,
+   "number": 19,
+   "image": "questions/2021-P2-Q19.png",
+   "solutionImage": "solutions/2021-P2-Q19.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2021-P2-Q20",
+   "year": "2021",
+   "paper": 2,
+   "number": 20,
+   "image": "questions/2021-P2-Q20.png",
+   "solutionImage": "solutions/2021-P2-Q20.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "integration",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2022-P1-Q01",
+   "year": "2022",
+   "paper": 1,
+   "number": 1,
+   "image": "questions/2022-P1-Q01.png",
+   "solutionImage": "solutions/2022-P1-Q01.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2022-P1-Q02",
+   "year": "2022",
+   "paper": 1,
+   "number": 2,
+   "image": "questions/2022-P1-Q02.png",
+   "solutionImage": "solutions/2022-P1-Q02.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "coordinate-geometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2022-P1-Q03",
+   "year": "2022",
+   "paper": 1,
+   "number": 3,
+   "image": "questions/2022-P1-Q03.png",
+   "solutionImage": "solutions/2022-P1-Q03.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "integration",
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2022-P1-Q04",
+   "year": "2022",
+   "paper": 1,
+   "number": 4,
+   "image": "questions/2022-P1-Q04.png",
+   "solutionImage": "solutions/2022-P1-Q04.png",
+   "options": 7,
+   "answer": "C",
+   "topics": [
+    "geometry",
+    "number"
+   ]
+  },
+  {
+   "id": "2022-P1-Q05",
+   "year": "2022",
+   "paper": 1,
+   "number": 5,
+   "image": "questions/2022-P1-Q05.png",
+   "solutionImage": "solutions/2022-P1-Q05.png",
+   "options": 8,
+   "answer": "H",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2022-P1-Q06",
+   "year": "2022",
+   "paper": 1,
+   "number": 6,
+   "image": "questions/2022-P1-Q06.png",
+   "solutionImage": "solutions/2022-P1-Q06.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "integration",
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "2022-P1-Q07",
+   "year": "2022",
+   "paper": 1,
+   "number": 7,
+   "image": "questions/2022-P1-Q07.png",
+   "solutionImage": "solutions/2022-P1-Q07.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "integration",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2022-P1-Q08",
+   "year": "2022",
+   "paper": 1,
+   "number": 8,
+   "image": "questions/2022-P1-Q08.png",
+   "solutionImage": "solutions/2022-P1-Q08.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2022-P1-Q09",
+   "year": "2022",
+   "paper": 1,
+   "number": 9,
+   "image": "questions/2022-P1-Q09.png",
+   "solutionImage": "solutions/2022-P1-Q09.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "trigonometry",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2022-P1-Q10",
+   "year": "2022",
+   "paper": 1,
+   "number": 10,
+   "image": "questions/2022-P1-Q10.png",
+   "solutionImage": "solutions/2022-P1-Q10.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "graphs",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2022-P1-Q11",
+   "year": "2022",
+   "paper": 1,
+   "number": 11,
+   "image": "questions/2022-P1-Q11.png",
+   "solutionImage": "solutions/2022-P1-Q11.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "exponentials-logarithms",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2022-P1-Q12",
+   "year": "2022",
+   "paper": 1,
+   "number": 12,
+   "image": "questions/2022-P1-Q12.png",
+   "solutionImage": "solutions/2022-P1-Q12.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "algebra-functions",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2022-P1-Q13",
+   "year": "2022",
+   "paper": 1,
+   "number": 13,
+   "image": "questions/2022-P1-Q13.png",
+   "solutionImage": "solutions/2022-P1-Q13.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "algebra-functions",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2022-P1-Q14",
+   "year": "2022",
+   "paper": 1,
+   "number": 14,
+   "image": "questions/2022-P1-Q14.png",
+   "solutionImage": "solutions/2022-P1-Q14.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "geometry",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2022-P1-Q15",
+   "year": "2022",
+   "paper": 1,
+   "number": 15,
+   "image": "questions/2022-P1-Q15.png",
+   "solutionImage": "solutions/2022-P1-Q15.png",
+   "options": 8,
+   "answer": "H",
+   "topics": [
+    "differentiation",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2022-P1-Q16",
+   "year": "2022",
+   "paper": 1,
+   "number": 16,
+   "image": "questions/2022-P1-Q16.png",
+   "solutionImage": "solutions/2022-P1-Q16.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "algebra-functions",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2022-P1-Q17",
+   "year": "2022",
+   "paper": 1,
+   "number": 17,
+   "image": "questions/2022-P1-Q17.png",
+   "solutionImage": "solutions/2022-P1-Q17.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "trigonometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2022-P1-Q18",
+   "year": "2022",
+   "paper": 1,
+   "number": 18,
+   "image": "questions/2022-P1-Q18.png",
+   "solutionImage": "solutions/2022-P1-Q18.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "graphs",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2022-P1-Q19",
+   "year": "2022",
+   "paper": 1,
+   "number": 19,
+   "image": "questions/2022-P1-Q19.png",
+   "solutionImage": "solutions/2022-P1-Q19.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "coordinate-geometry",
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "2022-P1-Q20",
+   "year": "2022",
+   "paper": 1,
+   "number": 20,
+   "image": "questions/2022-P1-Q20.png",
+   "solutionImage": "solutions/2022-P1-Q20.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "graphs",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2022-P2-Q01",
+   "year": "2022",
+   "paper": 2,
+   "number": 1,
+   "image": "questions/2022-P2-Q01.png",
+   "solutionImage": "solutions/2022-P2-Q01.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "differentiation"
+   ]
+  },
+  {
+   "id": "2022-P2-Q02",
+   "year": "2022",
+   "paper": 2,
+   "number": 2,
+   "image": "questions/2022-P2-Q02.png",
+   "solutionImage": "solutions/2022-P2-Q02.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "algebra-functions",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2022-P2-Q03",
+   "year": "2022",
+   "paper": 2,
+   "number": 3,
+   "image": "questions/2022-P2-Q03.png",
+   "solutionImage": "solutions/2022-P2-Q03.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "number",
+    "proof-counterexample"
+   ]
+  },
+  {
+   "id": "2022-P2-Q04",
+   "year": "2022",
+   "paper": 2,
+   "number": 4,
+   "image": "questions/2022-P2-Q04.png",
+   "solutionImage": "solutions/2022-P2-Q04.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "coordinate-geometry",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2022-P2-Q05",
+   "year": "2022",
+   "paper": 2,
+   "number": 5,
+   "image": "questions/2022-P2-Q05.png",
+   "solutionImage": "solutions/2022-P2-Q05.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "coordinate-geometry",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2022-P2-Q06",
+   "year": "2022",
+   "paper": 2,
+   "number": 6,
+   "image": "questions/2022-P2-Q06.png",
+   "solutionImage": "solutions/2022-P2-Q06.png",
+   "options": 4,
+   "answer": "C",
+   "topics": [
+    "number",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2022-P2-Q07",
+   "year": "2022",
+   "paper": 2,
+   "number": 7,
+   "image": "questions/2022-P2-Q07.png",
+   "solutionImage": "solutions/2022-P2-Q07.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "argument-analysis",
+    "number"
+   ]
+  },
+  {
+   "id": "2022-P2-Q08",
+   "year": "2022",
+   "paper": 2,
+   "number": 8,
+   "image": "questions/2022-P2-Q08.png",
+   "solutionImage": "solutions/2022-P2-Q08.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "sequences-series",
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "2022-P2-Q09",
+   "year": "2022",
+   "paper": 2,
+   "number": 9,
+   "image": "questions/2022-P2-Q09.png",
+   "solutionImage": "solutions/2022-P2-Q09.png",
+   "options": 7,
+   "answer": "A",
+   "topics": [
+    "logic-truth",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2022-P2-Q10",
+   "year": "2022",
+   "paper": 2,
+   "number": 10,
+   "image": "questions/2022-P2-Q10.png",
+   "solutionImage": "solutions/2022-P2-Q10.png",
+   "options": 8,
+   "answer": "G",
+   "topics": [
+    "logic-truth",
+    "number"
+   ]
+  },
+  {
+   "id": "2022-P2-Q11",
+   "year": "2022",
+   "paper": 2,
+   "number": 11,
+   "image": "questions/2022-P2-Q11.png",
+   "solutionImage": "solutions/2022-P2-Q11.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "geometry",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2022-P2-Q12",
+   "year": "2022",
+   "paper": 2,
+   "number": 12,
+   "image": "questions/2022-P2-Q12.png",
+   "solutionImage": "solutions/2022-P2-Q12.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "integration",
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "2022-P2-Q13",
+   "year": "2022",
+   "paper": 2,
+   "number": 13,
+   "image": "questions/2022-P2-Q13.png",
+   "solutionImage": "solutions/2022-P2-Q13.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "logic-truth",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2022-P2-Q14",
+   "year": "2022",
+   "paper": 2,
+   "number": 14,
+   "image": "questions/2022-P2-Q14.png",
+   "solutionImage": "solutions/2022-P2-Q14.png",
+   "options": 7,
+   "answer": "D",
+   "topics": [
+    "equations-inequalities",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2022-P2-Q15",
+   "year": "2022",
+   "paper": 2,
+   "number": 15,
+   "image": "questions/2022-P2-Q15.png",
+   "solutionImage": "solutions/2022-P2-Q15.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "exponentials-logarithms",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2022-P2-Q16",
+   "year": "2022",
+   "paper": 2,
+   "number": 16,
+   "image": "questions/2022-P2-Q16.png",
+   "solutionImage": "solutions/2022-P2-Q16.png",
+   "options": 8,
+   "answer": "D",
+   "topics": [
+    "sequences-series",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2022-P2-Q17",
+   "year": "2022",
+   "paper": 2,
+   "number": 17,
+   "image": "questions/2022-P2-Q17.png",
+   "solutionImage": "solutions/2022-P2-Q17.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "argument-analysis",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2022-P2-Q18",
+   "year": "2022",
+   "paper": 2,
+   "number": 18,
+   "image": "questions/2022-P2-Q18.png",
+   "solutionImage": "solutions/2022-P2-Q18.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "graphs",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2022-P2-Q19",
+   "year": "2022",
+   "paper": 2,
+   "number": 19,
+   "image": "questions/2022-P2-Q19.png",
+   "solutionImage": "solutions/2022-P2-Q19.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "geometry",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2022-P2-Q20",
+   "year": "2022",
+   "paper": 2,
+   "number": 20,
+   "image": "questions/2022-P2-Q20.png",
+   "solutionImage": "solutions/2022-P2-Q20.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "trigonometry",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2023-P1-Q01",
+   "year": "2023",
+   "paper": 1,
+   "number": 1,
+   "image": "questions/2023-P1-Q01.png",
+   "solutionImage": "solutions/2023-P1-Q01.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "integration"
+   ]
+  },
+  {
+   "id": "2023-P1-Q02",
+   "year": "2023",
+   "paper": 1,
+   "number": 2,
+   "image": "questions/2023-P1-Q02.png",
+   "solutionImage": "solutions/2023-P1-Q02.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "equations-inequalities",
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2023-P1-Q03",
+   "year": "2023",
+   "paper": 1,
+   "number": 3,
+   "image": "questions/2023-P1-Q03.png",
+   "solutionImage": "solutions/2023-P1-Q03.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "integration"
+   ]
+  },
+  {
+   "id": "2023-P1-Q04",
+   "year": "2023",
+   "paper": 1,
+   "number": 4,
+   "image": "questions/2023-P1-Q04.png",
+   "solutionImage": "solutions/2023-P1-Q04.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "trigonometry",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2023-P1-Q05",
+   "year": "2023",
+   "paper": 1,
+   "number": 5,
+   "image": "questions/2023-P1-Q05.png",
+   "solutionImage": "solutions/2023-P1-Q05.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "geometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2023-P1-Q06",
+   "year": "2023",
+   "paper": 1,
+   "number": 6,
+   "image": "questions/2023-P1-Q06.png",
+   "solutionImage": "solutions/2023-P1-Q06.png",
+   "options": 7,
+   "answer": "E",
+   "topics": [
+    "algebra-functions",
+    "number"
+   ]
+  },
+  {
+   "id": "2023-P1-Q07",
+   "year": "2023",
+   "paper": 1,
+   "number": 7,
+   "image": "questions/2023-P1-Q07.png",
+   "solutionImage": "solutions/2023-P1-Q07.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2023-P1-Q08",
+   "year": "2023",
+   "paper": 1,
+   "number": 8,
+   "image": "questions/2023-P1-Q08.png",
+   "solutionImage": "solutions/2023-P1-Q08.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "trigonometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2023-P1-Q09",
+   "year": "2023",
+   "paper": 1,
+   "number": 9,
+   "image": "questions/2023-P1-Q09.png",
+   "solutionImage": "solutions/2023-P1-Q09.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2023-P1-Q10",
+   "year": "2023",
+   "paper": 1,
+   "number": 10,
+   "image": "questions/2023-P1-Q10.png",
+   "solutionImage": "solutions/2023-P1-Q10.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "integration",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2023-P1-Q11",
+   "year": "2023",
+   "paper": 1,
+   "number": 11,
+   "image": "questions/2023-P1-Q11.png",
+   "solutionImage": "solutions/2023-P1-Q11.png",
+   "options": 6,
+   "answer": "B",
+   "topics": [
+    "algebra-functions",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2023-P1-Q12",
+   "year": "2023",
+   "paper": 1,
+   "number": 12,
+   "image": "questions/2023-P1-Q12.png",
+   "solutionImage": "solutions/2023-P1-Q12.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2023-P1-Q13",
+   "year": "2023",
+   "paper": 1,
+   "number": 13,
+   "image": "questions/2023-P1-Q13.png",
+   "solutionImage": "solutions/2023-P1-Q13.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "coordinate-geometry",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2023-P1-Q14",
+   "year": "2023",
+   "paper": 1,
+   "number": 14,
+   "image": "questions/2023-P1-Q14.png",
+   "solutionImage": "solutions/2023-P1-Q14.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "differentiation",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2023-P1-Q15",
+   "year": "2023",
+   "paper": 1,
+   "number": 15,
+   "image": "questions/2023-P1-Q15.png",
+   "solutionImage": "solutions/2023-P1-Q15.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "exponentials-logarithms",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "2023-P1-Q16",
+   "year": "2023",
+   "paper": 1,
+   "number": 16,
+   "image": "questions/2023-P1-Q16.png",
+   "solutionImage": "solutions/2023-P1-Q16.png",
+   "options": 7,
+   "answer": "E",
+   "topics": [
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "2023-P1-Q17",
+   "year": "2023",
+   "paper": 1,
+   "number": 17,
+   "image": "questions/2023-P1-Q17.png",
+   "solutionImage": "solutions/2023-P1-Q17.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "coordinate-geometry",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2023-P1-Q18",
+   "year": "2023",
+   "paper": 1,
+   "number": 18,
+   "image": "questions/2023-P1-Q18.png",
+   "solutionImage": "solutions/2023-P1-Q18.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "sequences-series",
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "2023-P1-Q19",
+   "year": "2023",
+   "paper": 1,
+   "number": 19,
+   "image": "questions/2023-P1-Q19.png",
+   "solutionImage": "solutions/2023-P1-Q19.png",
+   "options": 8,
+   "answer": "D",
+   "topics": [
+    "integration",
+    "graphs"
+   ]
+  },
+  {
+   "id": "2023-P1-Q20",
+   "year": "2023",
+   "paper": 1,
+   "number": 20,
+   "image": "questions/2023-P1-Q20.png",
+   "solutionImage": "solutions/2023-P1-Q20.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "graphs",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "2023-P2-Q01",
+   "year": "2023",
+   "paper": 2,
+   "number": 1,
+   "image": "questions/2023-P2-Q01.png",
+   "solutionImage": "solutions/2023-P2-Q01.png",
+   "options": 8,
+   "answer": "H",
+   "topics": [
+    "algebra-functions",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2023-P2-Q02",
+   "year": "2023",
+   "paper": 2,
+   "number": 2,
+   "image": "questions/2023-P2-Q02.png",
+   "solutionImage": "solutions/2023-P2-Q02.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "integration"
+   ]
+  },
+  {
+   "id": "2023-P2-Q03",
+   "year": "2023",
+   "paper": 2,
+   "number": 3,
+   "image": "questions/2023-P2-Q03.png",
+   "solutionImage": "solutions/2023-P2-Q03.png",
+   "options": 8,
+   "answer": "C",
+   "topics": [
+    "proof-counterexample",
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "2023-P2-Q04",
+   "year": "2023",
+   "paper": 2,
+   "number": 4,
+   "image": "questions/2023-P2-Q04.png",
+   "solutionImage": "solutions/2023-P2-Q04.png",
+   "options": 8,
+   "answer": "G",
+   "topics": [
+    "argument-analysis",
+    "number"
+   ]
+  },
+  {
+   "id": "2023-P2-Q05",
+   "year": "2023",
+   "paper": 2,
+   "number": 5,
+   "image": "questions/2023-P2-Q05.png",
+   "solutionImage": "solutions/2023-P2-Q05.png",
+   "options": 4,
+   "answer": "A",
+   "topics": [
+    "necessary-sufficient",
+    "integration"
+   ]
+  },
+  {
+   "id": "2023-P2-Q06",
+   "year": "2023",
+   "paper": 2,
+   "number": 6,
+   "image": "questions/2023-P2-Q06.png",
+   "solutionImage": "solutions/2023-P2-Q06.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "exponentials-logarithms",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2023-P2-Q07",
+   "year": "2023",
+   "paper": 2,
+   "number": 7,
+   "image": "questions/2023-P2-Q07.png",
+   "solutionImage": "solutions/2023-P2-Q07.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "coordinate-geometry",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2023-P2-Q08",
+   "year": "2023",
+   "paper": 2,
+   "number": 8,
+   "image": "questions/2023-P2-Q08.png",
+   "solutionImage": "solutions/2023-P2-Q08.png",
+   "options": 8,
+   "answer": "D",
+   "topics": [
+    "geometry",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2023-P2-Q09",
+   "year": "2023",
+   "paper": 2,
+   "number": 9,
+   "image": "questions/2023-P2-Q09.png",
+   "solutionImage": "solutions/2023-P2-Q09.png",
+   "options": 8,
+   "answer": "D",
+   "topics": [
+    "logic-truth",
+    "geometry"
+   ]
+  },
+  {
+   "id": "2023-P2-Q10",
+   "year": "2023",
+   "paper": 2,
+   "number": 10,
+   "image": "questions/2023-P2-Q10.png",
+   "solutionImage": "solutions/2023-P2-Q10.png",
+   "options": 7,
+   "answer": "A",
+   "topics": [
+    "argument-analysis",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2023-P2-Q11",
+   "year": "2023",
+   "paper": 2,
+   "number": 11,
+   "image": "questions/2023-P2-Q11.png",
+   "solutionImage": "solutions/2023-P2-Q11.png",
+   "options": 8,
+   "answer": "G",
+   "topics": [
+    "logic-truth",
+    "number"
+   ]
+  },
+  {
+   "id": "2023-P2-Q12",
+   "year": "2023",
+   "paper": 2,
+   "number": 12,
+   "image": "questions/2023-P2-Q12.png",
+   "solutionImage": "solutions/2023-P2-Q12.png",
+   "options": 4,
+   "answer": "C",
+   "topics": [
+    "trigonometry",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2023-P2-Q13",
+   "year": "2023",
+   "paper": 2,
+   "number": 13,
+   "image": "questions/2023-P2-Q13.png",
+   "solutionImage": "solutions/2023-P2-Q13.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "logic-truth",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "2023-P2-Q14",
+   "year": "2023",
+   "paper": 2,
+   "number": 14,
+   "image": "questions/2023-P2-Q14.png",
+   "solutionImage": "solutions/2023-P2-Q14.png",
+   "options": 7,
+   "answer": "F",
+   "topics": [
+    "coordinate-geometry",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2023-P2-Q15",
+   "year": "2023",
+   "paper": 2,
+   "number": 15,
+   "image": "questions/2023-P2-Q15.png",
+   "solutionImage": "solutions/2023-P2-Q15.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "number",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2023-P2-Q16",
+   "year": "2023",
+   "paper": 2,
+   "number": 16,
+   "image": "questions/2023-P2-Q16.png",
+   "solutionImage": "solutions/2023-P2-Q16.png",
+   "options": 8,
+   "answer": "B",
+   "topics": [
+    "number",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2023-P2-Q17",
+   "year": "2023",
+   "paper": 2,
+   "number": 17,
+   "image": "questions/2023-P2-Q17.png",
+   "solutionImage": "solutions/2023-P2-Q17.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "integration",
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "2023-P2-Q18",
+   "year": "2023",
+   "paper": 2,
+   "number": 18,
+   "image": "questions/2023-P2-Q18.png",
+   "solutionImage": "solutions/2023-P2-Q18.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "equations-inequalities",
+    "necessary-sufficient"
+   ]
+  },
+  {
+   "id": "2023-P2-Q19",
+   "year": "2023",
+   "paper": 2,
+   "number": 19,
+   "image": "questions/2023-P2-Q19.png",
+   "solutionImage": "solutions/2023-P2-Q19.png",
+   "options": 8,
+   "answer": "H",
+   "topics": [
+    "differentiation",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "2023-P2-Q20",
+   "year": "2023",
+   "paper": 2,
+   "number": 20,
+   "image": "questions/2023-P2-Q20.png",
+   "solutionImage": "solutions/2023-P2-Q20.png",
+   "options": 8,
+   "answer": "D",
+   "topics": [
+    "integration",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q01",
+   "year": "specimen",
+   "paper": 1,
+   "number": 1,
+   "image": "questions/specimen-P1-Q01.png",
+   "solutionImage": "solutions/specimen-P1-Q01.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q02",
+   "year": "specimen",
+   "paper": 1,
+   "number": 2,
+   "image": "questions/specimen-P1-Q02.png",
+   "solutionImage": "solutions/specimen-P1-Q02.png",
+   "options": 7,
+   "answer": "D",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q03",
+   "year": "specimen",
+   "paper": 1,
+   "number": 3,
+   "image": "questions/specimen-P1-Q03.png",
+   "solutionImage": "solutions/specimen-P1-Q03.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q04",
+   "year": "specimen",
+   "paper": 1,
+   "number": 4,
+   "image": "questions/specimen-P1-Q04.png",
+   "solutionImage": "solutions/specimen-P1-Q04.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q05",
+   "year": "specimen",
+   "paper": 1,
+   "number": 5,
+   "image": "questions/specimen-P1-Q05.png",
+   "solutionImage": "solutions/specimen-P1-Q05.png",
+   "options": 6,
+   "answer": "D",
+   "topics": [
+    "exponentials-logarithms",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q06",
+   "year": "specimen",
+   "paper": 1,
+   "number": 6,
+   "image": "questions/specimen-P1-Q06.png",
+   "solutionImage": "solutions/specimen-P1-Q06.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q07",
+   "year": "specimen",
+   "paper": 1,
+   "number": 7,
+   "image": "questions/specimen-P1-Q07.png",
+   "solutionImage": "solutions/specimen-P1-Q07.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q08",
+   "year": "specimen",
+   "paper": 1,
+   "number": 8,
+   "image": "questions/specimen-P1-Q08.png",
+   "solutionImage": "solutions/specimen-P1-Q08.png",
+   "options": 8,
+   "answer": "F",
+   "topics": [
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q09",
+   "year": "specimen",
+   "paper": 1,
+   "number": 9,
+   "image": "questions/specimen-P1-Q09.png",
+   "solutionImage": "solutions/specimen-P1-Q09.png",
+   "options": 4,
+   "answer": "A",
+   "topics": [
+    "algebra-functions",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q10",
+   "year": "specimen",
+   "paper": 1,
+   "number": 10,
+   "image": "questions/specimen-P1-Q10.png",
+   "solutionImage": "solutions/specimen-P1-Q10.png",
+   "options": 4,
+   "answer": "D",
+   "topics": [
+    "graphs",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q11",
+   "year": "specimen",
+   "paper": 1,
+   "number": 11,
+   "image": "questions/specimen-P1-Q11.png",
+   "solutionImage": "solutions/specimen-P1-Q11.png",
+   "options": 5,
+   "answer": "E",
+   "topics": [
+    "exponentials-logarithms",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q12",
+   "year": "specimen",
+   "paper": 1,
+   "number": 12,
+   "image": "questions/specimen-P1-Q12.png",
+   "solutionImage": "solutions/specimen-P1-Q12.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "geometry",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q13",
+   "year": "specimen",
+   "paper": 1,
+   "number": 13,
+   "image": "questions/specimen-P1-Q13.png",
+   "solutionImage": "solutions/specimen-P1-Q13.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "algebra-functions",
+    "graphs"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q14",
+   "year": "specimen",
+   "paper": 1,
+   "number": 14,
+   "image": "questions/specimen-P1-Q14.png",
+   "solutionImage": "solutions/specimen-P1-Q14.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "exponentials-logarithms",
+    "graphs"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q15",
+   "year": "specimen",
+   "paper": 1,
+   "number": 15,
+   "image": "questions/specimen-P1-Q15.png",
+   "solutionImage": "solutions/specimen-P1-Q15.png",
+   "options": 5,
+   "answer": "A",
+   "topics": [
+    "integration",
+    "differentiation"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q16",
+   "year": "specimen",
+   "paper": 1,
+   "number": 16,
+   "image": "questions/specimen-P1-Q16.png",
+   "solutionImage": "solutions/specimen-P1-Q16.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "exponentials-logarithms",
+    "number"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q17",
+   "year": "specimen",
+   "paper": 1,
+   "number": 17,
+   "image": "questions/specimen-P1-Q17.png",
+   "solutionImage": "solutions/specimen-P1-Q17.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "equations-inequalities",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q18",
+   "year": "specimen",
+   "paper": 1,
+   "number": 18,
+   "image": "questions/specimen-P1-Q18.png",
+   "solutionImage": "solutions/specimen-P1-Q18.png",
+   "options": 7,
+   "answer": "B",
+   "topics": [
+    "trigonometry",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q19",
+   "year": "specimen",
+   "paper": 1,
+   "number": 19,
+   "image": "questions/specimen-P1-Q19.png",
+   "solutionImage": "solutions/specimen-P1-Q19.png",
+   "options": 4,
+   "answer": "D",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "specimen-P1-Q20",
+   "year": "specimen",
+   "paper": 1,
+   "number": 20,
+   "image": "questions/specimen-P1-Q20.png",
+   "solutionImage": "solutions/specimen-P1-Q20.png",
+   "options": 7,
+   "answer": "G",
+   "topics": [
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q01",
+   "year": "specimen",
+   "paper": 2,
+   "number": 1,
+   "image": "questions/specimen-P2-Q01.png",
+   "solutionImage": "solutions/specimen-P2-Q01.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "coordinate-geometry"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q02",
+   "year": "specimen",
+   "paper": 2,
+   "number": 2,
+   "image": "questions/specimen-P2-Q02.png",
+   "solutionImage": "solutions/specimen-P2-Q02.png",
+   "options": 5,
+   "answer": "B",
+   "topics": [
+    "differentiation"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q03",
+   "year": "specimen",
+   "paper": 2,
+   "number": 3,
+   "image": "questions/specimen-P2-Q03.png",
+   "solutionImage": "solutions/specimen-P2-Q03.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "argument-analysis",
+    "equations-inequalities"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q04",
+   "year": "specimen",
+   "paper": 2,
+   "number": 4,
+   "image": "questions/specimen-P2-Q04.png",
+   "solutionImage": "solutions/specimen-P2-Q04.png",
+   "options": 5,
+   "answer": "A",
+   "topics": [
+    "logic-truth",
+    "proof-counterexample"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q05",
+   "year": "specimen",
+   "paper": 2,
+   "number": 5,
+   "image": "questions/specimen-P2-Q05.png",
+   "solutionImage": "solutions/specimen-P2-Q05.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "exponentials-logarithms",
+    "number"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q06",
+   "year": "specimen",
+   "paper": 2,
+   "number": 6,
+   "image": "questions/specimen-P2-Q06.png",
+   "solutionImage": "solutions/specimen-P2-Q06.png",
+   "options": 6,
+   "answer": "F",
+   "topics": [
+    "number",
+    "geometry"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q07",
+   "year": "specimen",
+   "paper": 2,
+   "number": 7,
+   "image": "questions/specimen-P2-Q07.png",
+   "solutionImage": "solutions/specimen-P2-Q07.png",
+   "options": 4,
+   "answer": "C",
+   "topics": [
+    "graphs",
+    "algebra-functions"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q08",
+   "year": "specimen",
+   "paper": 2,
+   "number": 8,
+   "image": "questions/specimen-P2-Q08.png",
+   "solutionImage": "solutions/specimen-P2-Q08.png",
+   "options": 5,
+   "answer": "C",
+   "topics": [
+    "number",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q09",
+   "year": "specimen",
+   "paper": 2,
+   "number": 9,
+   "image": "questions/specimen-P2-Q09.png",
+   "solutionImage": "solutions/specimen-P2-Q09.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q10",
+   "year": "specimen",
+   "paper": 2,
+   "number": 10,
+   "image": "questions/specimen-P2-Q10.png",
+   "solutionImage": "solutions/specimen-P2-Q10.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "graphs",
+    "exponentials-logarithms"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q11",
+   "year": "specimen",
+   "paper": 2,
+   "number": 11,
+   "image": "questions/specimen-P2-Q11.png",
+   "solutionImage": "solutions/specimen-P2-Q11.png",
+   "options": 5,
+   "answer": "D",
+   "topics": [
+    "number",
+    "trigonometry"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q12",
+   "year": "specimen",
+   "paper": 2,
+   "number": 12,
+   "image": "questions/specimen-P2-Q12.png",
+   "solutionImage": "solutions/specimen-P2-Q12.png",
+   "options": 8,
+   "answer": "A",
+   "topics": [
+    "algebra-functions",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q13",
+   "year": "specimen",
+   "paper": 2,
+   "number": 13,
+   "image": "questions/specimen-P2-Q13.png",
+   "solutionImage": "solutions/specimen-P2-Q13.png",
+   "options": 6,
+   "answer": "C",
+   "topics": [
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q14",
+   "year": "specimen",
+   "paper": 2,
+   "number": 14,
+   "image": "questions/specimen-P2-Q14.png",
+   "solutionImage": "solutions/specimen-P2-Q14.png",
+   "options": 4,
+   "answer": "B",
+   "topics": [
+    "graphs",
+    "differentiation"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q15",
+   "year": "specimen",
+   "paper": 2,
+   "number": 15,
+   "image": "questions/specimen-P2-Q15.png",
+   "solutionImage": "solutions/specimen-P2-Q15.png",
+   "options": 8,
+   "answer": "E",
+   "topics": [
+    "equations-inequalities",
+    "logic-truth"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q16",
+   "year": "specimen",
+   "paper": 2,
+   "number": 16,
+   "image": "questions/specimen-P2-Q16.png",
+   "solutionImage": "solutions/specimen-P2-Q16.png",
+   "options": 6,
+   "answer": "A",
+   "topics": [
+    "sequences-series"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q17",
+   "year": "specimen",
+   "paper": 2,
+   "number": 17,
+   "image": "questions/specimen-P2-Q17.png",
+   "solutionImage": "solutions/specimen-P2-Q17.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "logic-truth",
+    "number"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q18",
+   "year": "specimen",
+   "paper": 2,
+   "number": 18,
+   "image": "questions/specimen-P2-Q18.png",
+   "solutionImage": "solutions/specimen-P2-Q18.png",
+   "options": 6,
+   "answer": "E",
+   "topics": [
+    "number",
+    "counting-probability"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q19",
+   "year": "specimen",
+   "paper": 2,
+   "number": 19,
+   "image": "questions/specimen-P2-Q19.png",
+   "solutionImage": "solutions/specimen-P2-Q19.png",
+   "options": 7,
+   "answer": "B",
+   "topics": [
+    "algebra-functions",
+    "graphs"
+   ]
+  },
+  {
+   "id": "specimen-P2-Q20",
+   "year": "specimen",
+   "paper": 2,
+   "number": 20,
+   "image": "questions/specimen-P2-Q20.png",
+   "solutionImage": "solutions/specimen-P2-Q20.png",
+   "options": 8,
+   "answer": "D",
+   "topics": [
+    "logic-truth"
+   ]
+  }
+ ]
+}
