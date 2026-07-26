@@ -1417,7 +1417,7 @@ async function viewCoach() {
             el('div', { class: 'small muted' },
               pred.perPaper[2] ? `${pred.perPaper[2].predictedRaw} raw · ${pred.perPaper[2].attempts} attempts` : 'none sat'))),
         el('p', { class: 'small', style: 'margin-top:12px' },
-          `Based on your last ${Math.min(pred.papers, 6)} papers, weighted toward recent results. `,
+          `Based on your last ${Math.min(pred.papers, 6)} papers, weighted towards recent results. `,
           `Confidence: ${pred.confidence} (${pred.papers} papers).`,
           pred.anyEstimated
             ? ' Some papers have no official conversion table, so their scaled values are estimated from the published years.'
@@ -1589,7 +1589,7 @@ async function viewCoach() {
       ? el('div', { class: 'banner', style: 'margin-top:16px' },
         `Paper ${diag.split.weaker} is dragging your total down: `
         + `Paper 1 averages ${diag.split.paper1.avgScaled ?? '—'}, Paper 2 ${diag.split.paper2.avgScaled ?? '—'} `
-        + `(gap ${diag.split.gap}). Weight your practice toward Paper ${diag.split.weaker}.`)
+        + `(gap ${diag.split.gap}). Weight your practice towards Paper ${diag.split.weaker}.`)
       : null,
     doneCard ? el('div', { style: 'margin-top:18px' }, doneCard) : null);
 }
@@ -1678,7 +1678,7 @@ async function viewOffline() {
   return shell('home',
     el('h1', {}, 'Enter answers from paper'),
     el('p', { class: 'small muted' },
-      'Sat a paper on printed sheets? Type your answers here and it counts toward your history, '
+      'Sat a paper on printed sheets? Type your answers here and it counts towards your history, '
       + 'analytics and predicted score, tagged as an offline attempt.'),
     el('div', { class: 'card' },
       el('div', { class: 'row' },
@@ -1711,7 +1711,7 @@ async function viewAbout() {
       el('p', { class: 'small muted' },
         'This app makes no network requests, so that download is something you do yourself. '
         + 'Once you have sat it on paper, record it with "Enter answers from paper" so it counts '
-        + 'toward your analytics and predicted score.'),
+        + 'towards your analytics and predicted score.'),
       el('div', { class: 'row', style: 'margin-top:12px' },
         el('button', { class: 'btn ghost', onclick: () => go('offline') }, 'Enter answers from paper'),
         el('button', { class: 'btn ghost', onclick: () => go('settings') }, 'Back to settings'))),

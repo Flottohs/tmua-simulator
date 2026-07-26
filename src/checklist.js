@@ -30,6 +30,9 @@ const SUBSKILLS = {
   'counting-probability': 'counting principles and probability without replacement',
 };
 
+function plural(n, word) { return `${n} ${word}${n === 1 ? '' : 's'}`; }
+function oneDp(n) { return String(Math.round(n * 10) / 10); }
+
 function subskill(topic) {
   return SUBSKILLS[topic] || 'the core techniques for this topic in the TMUA specification';
 }
@@ -70,6 +73,7 @@ function build({ attempts, reviewRows, changes, settings, now = Date.now(), done
   const changeStats = coach.answerChangeStats(changes, attempts);
   const review = srs.summary(reviewRows, now);
   const stubbornList = srs.stubborn(reviewRows, now);
+  const missedTwice = srs.repeatedlyMissed(reviewRows, now);
 
   const attemptedKeys = new Set(done.map(a => `${a.year}-P${a.paper}`));
   const allPapers = content.papers();
@@ -82,13 +86,13 @@ function build({ attempts, reviewRows, changes, settings, now = Date.now(), done
   };
 
   // 1. questions missed more than once — the strongest signal available
-  const repeated = stubbornList.slice(0, 12);
-  if (repeated.length >= 3) {
+  const repeated = missedTwice.slice(0, 12);
+  if (repeated.length >= 2) {
     add({
       key: `repeat-misses-${repeated.length}`,
       kind: 'retry', priority: 100,
-      title: `Redo ${repeated.length} questions you have missed more than once`,
-      why: `These have reset in your review queue ${repeated[0].lapses}+ times. A repeated miss is a real gap, not bad luck.`,
+      title: `Redo ${repeated.length} question${repeated.length === 1 ? '' : 's'} you have missed more than once`,
+      why: `You have got ${repeated.length === 1 ? 'this one' : 'these'} wrong on ${repeated[0].misses} separate occasions. A repeated miss is a real gap, not bad luck.`,
       minutes: Math.max(15, repeated.length * 3),
       action: { type: 'drill', questionIds: repeated.map(r => r.questionId), untimed: true,
         label: 'Drill · stubborn questions' },
@@ -129,7 +133,10 @@ function build({ attempts, reviewRows, changes, settings, now = Date.now(), done
         key: `habit-time-${pctOf}`,
         kind: 'habit', priority: 88,
         title: 'Fix triage — time is costing you more than knowledge',
-        why: `${pctOf}% of your tagged errors are time-related, and you have left ${pace.unanswered} question(s) blank at timeout.`,
+        why: `${pctOf}% of your tagged errors are time-related`
+          + (pace.unanswered
+            ? `, and you have left ${plural(pace.unanswered, 'question')} blank at timeout.`
+            : ' — you are finishing, but the back half is rushed.'),
         minutes: 20,
         how: 'Budget 4:30 per question. On sight, sort each question into do-now / come-back / guess-and-move. Never spend more than 7 minutes on one question before flagging it and moving on.',
         action: { type: 'paper-suggest' },
@@ -181,8 +188,8 @@ function build({ attempts, reviewRows, changes, settings, now = Date.now(), done
     add({
       key: `study-${t.topic}`,
       kind: 'study', priority: 78,
-      title: `Study ${t.label} — worth about ${t.expectedMarksLost} marks a paper`,
-      why: `You are ${Math.round(t.accuracy * 100)}% on ${t.label} over ${t.seen} questions, and it appears ${t.questionsPerPaper} times per paper. That is your biggest single leak.`,
+      title: `Study ${t.label} — worth about ${oneDp(t.expectedMarksLost)} marks a paper`,
+      why: `You are ${Math.round(t.accuracy * 100)}% on ${t.label} over ${t.seen} questions, and it appears about ${oneDp(t.questionsPerPaper)} times per paper. That is your biggest single leak.`,
       minutes: 45,
       how: `Work offline on ${subskill(t.topic)}. Use your A-level textbook chapter on this and the TMUA specification points, then come back and drill.`,
       action: { type: 'drill', topics: [t.topic], untimed: true, label: `Drill · ${t.label}` },
@@ -201,16 +208,24 @@ function build({ attempts, reviewRows, changes, settings, now = Date.now(), done
 
     if (chosen) {
       const asMock = ph.key === 'simulation' || (cd.days <= 21);
-      const reason = split.weaker
-        ? `Paper ${split.weaker} is your weaker paper (${split[`paper${split.weaker}`].avgScaled ?? '—'} vs ${split[`paper${split.weaker === 1 ? 2 : 1}`].avgScaled ?? '—'} scaled).`
-        : `You have done ${split.paper1.attempts} Paper 1s and ${split.paper2.attempts} Paper 2s — keep them balanced.`;
+      const firstEver = done.length === 0;
+      const reason = firstEver
+        ? 'The coach needs at least one real paper before it can tell you anything useful about your maths.'
+        : split.weaker
+          ? `Paper ${split.weaker} is your weaker paper (${split[`paper${split.weaker}`].avgScaled ?? '—'} vs ${split[`paper${split.weaker === 1 ? 2 : 1}`].avgScaled ?? '—'} scaled).`
+          : `You have done ${plural(split.paper1.attempts, 'Paper 1')} and ${plural(split.paper2.attempts, 'Paper 2')} — keep them balanced.`;
       add({
-        key: `sit-${chosen.key}`,
+        key: firstEver ? 'sit-first-paper' : `sit-${chosen.key}`,
         kind: 'paper', priority: ph.key === 'simulation' ? 92 : 74,
-        title: asMock
-          ? `Sit a full timed mock — ${labelYear(chosen.year)}`
-          : `Sit ${labelYear(chosen.year)} Paper ${chosen.paper} under timed conditions`,
-        why: `${reason} ${unseen.length} papers still unseen, ${reserved.length} held back as clean mocks for the final fortnight.`,
+        title: firstEver
+          ? `Sit your first paper — ${labelYear(chosen.year)} Paper ${chosen.paper}`
+          : asMock
+            ? `Sit a full timed mock — ${labelYear(chosen.year)}`
+            : `Sit ${labelYear(chosen.year)} Paper ${chosen.paper} under timed conditions`,
+        why: firstEver
+          ? `${reason} Sit it under timed conditions so the numbers mean something.`
+          : `${reason} ${unseen.length} papers still unseen${reserved.length
+              ? `, ${reserved.length} held back as clean mocks for the final fortnight` : ''}.`,
         minutes: asMock ? 201 : 93,
         action: asMock
           ? { type: 'mock', year: chosen.year }

@@ -27,6 +27,15 @@ const DEFAULT_SETTINGS = {
 
 let mainWindow = null;
 
+// Injectable clock. Production always reads the real time; the verification
+// suite freezes it so date-dependent logic (countdowns, spaced repetition,
+// study phases) is deterministic instead of flaky.
+let clockOffset = 0;
+let clockFixed = null;
+function nowMs() {
+  return clockFixed !== null ? clockFixed : Date.now() + clockOffset;
+}
+
 // ---------- offline enforcement ----------
 // Nothing in this app may reach the network. Anything that is not a local
 // file or our own image protocol is cancelled and logged.
@@ -121,7 +130,7 @@ function scoreAttempt(attempt, reason, elapsedSec) {
   const done = db.finishAttempt(attempt.id, {
     reason, elapsedSec: elapsedSec ?? attempt.elapsed_sec, marks, scoreRaw: raw, scoreScaled: scaled,
   });
-  updateReviewQueue(done);
+  updateReviewQueue(done, nowMs());
   return done;
 }
 
@@ -415,7 +424,7 @@ function registerIpc() {
   handle('coach:overview', ({ archiveId } = {}) => {
     const attempts = scopedAttempts(archiveId);
     const settings = currentSettings();
-    const now = Date.now();
+    const now = nowMs();
     const reviewRows = db.reviewAll();
     const doneKeys = new Set(db.checklistKeysSince(now - 7 * 86400000).map(r => r.item_key));
     const list = checklist.build({
@@ -455,7 +464,7 @@ function registerIpc() {
   handle('coach:scaled', ({ year, paper, raw }) => coach.scaledFor(year, paper, raw));
 
   handle('coach:plan', ({ archiveId } = {}) =>
-    checklist.plan({ attempts: scopedAttempts(archiveId), settings: currentSettings() }));
+    checklist.plan({ attempts: scopedAttempts(archiveId), settings: currentSettings(), now: nowMs() }));
 
   handle('coach:complete', ({ itemKey, title, kind, dismissed }) => {
     db.checklistComplete({ itemKey, title, kind, dismissed });
@@ -474,12 +483,12 @@ function registerIpc() {
 
   // ---------- spaced repetition ----------
 
-  handle('review:summary', () => srs.summary(db.reviewAll()));
-  handle('review:list', () => srs.dueList(db.reviewAll()));
-  handle('review:all', () => db.reviewAll().map(r => srs.decorate(r, Date.now())));
-  handle('review:stubborn', () => srs.stubborn(db.reviewAll()));
+  handle('review:summary', () => srs.summary(db.reviewAll(), nowMs()));
+  handle('review:list', () => srs.dueList(db.reviewAll(), nowMs()));
+  handle('review:all', () => db.reviewAll().map(r => srs.decorate(r, nowMs())));
+  handle('review:stubborn', () => srs.stubborn(db.reviewAll(), nowMs()));
   handle('review:session', ({ cap } = {}) => {
-    const picked = srs.session(db.reviewAll(), Date.now(), cap || srs.SESSION_CAP);
+    const picked = srs.session(db.reviewAll(), nowMs(), cap || srs.SESSION_CAP);
     return { ids: picked.map(p => p.questionId), items: picked };
   });
 
@@ -613,6 +622,14 @@ function registerIpc() {
     });
     return { inserted: ids.length };
   });
+
+  handle('debug:setClock', ({ fixedIso, offsetMs }) => {
+    clockFixed = fixedIso ? new Date(fixedIso).getTime() : null;
+    clockOffset = Number(offsetMs) || 0;
+    return { now: new Date(nowMs()).toISOString(), frozen: clockFixed !== null };
+  });
+  handle('debug:now', () => new Date(nowMs()).toISOString());
+  handle('debug:dbPath', () => db.getDbPath());
 
   // used by the offline test
   handle('debug:blockedRequests', () => blockedRequests);

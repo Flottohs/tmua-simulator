@@ -106,7 +106,7 @@ function decorate(row, now) {
     paper: meta ? meta.paper : null,
     number: meta ? meta.number : null,
     topics: meta ? meta.topics : [],
-    trend: row.consecutive_correct >= 1 ? 'toward retirement'
+    trend: row.consecutive_correct >= 1 ? 'towards retirement'
       : row.lapses >= 2 ? 'keeps resetting' : 'in progress',
   };
 }
@@ -128,11 +128,22 @@ function session(rows, now = Date.now(), cap = SESSION_CAP) {
   return dueList(rows, now).slice(0, cap);
 }
 
+// "Stubborn": has reset more than once — the strongest signal in the data.
 function stubborn(rows, now = Date.now()) {
   return rows
     .filter(r => !r.retired && r.lapses >= 2)
     .map(r => decorate(r, now))
     .sort((a, b) => b.lapses - a.lapses || b.misses - a.misses);
+}
+
+// "Repeatedly missed": got it wrong on two or more separate occasions. A
+// question missed twice is already a real gap, so this is the threshold the
+// checklist uses — waiting for a third miss would be too slow to be useful.
+function repeatedlyMissed(rows, now = Date.now()) {
+  return rows
+    .filter(r => !r.retired && (r.attempts - r.hits) >= 2)
+    .map(r => decorate(r, now))
+    .sort((a, b) => b.misses - a.misses || b.lapses - a.lapses);
 }
 
 function summary(rows, now = Date.now()) {
@@ -145,6 +156,7 @@ function summary(rows, now = Date.now()) {
     due: due.length,
     overdue: due.filter(d => d.overdueDays > 0).length,
     stubborn: stubborn(rows, now).length,
+    repeatedlyMissed: repeatedlyMissed(rows, now).length,
     cap: SESSION_CAP,
     intervals: INTERVALS,
   };
@@ -152,5 +164,5 @@ function summary(rows, now = Date.now()) {
 
 module.exports = {
   INTERVALS, RETIRE_AFTER, SESSION_CAP, PRIORITY,
-  applyResult, dueList, session, stubborn, summary, decorate, addDays, blank,
+  applyResult, dueList, session, stubborn, repeatedlyMissed, summary, decorate, addDays, blank,
 };

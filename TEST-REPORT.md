@@ -7,12 +7,13 @@ npm test
 ```
 
 runs the content integrity check followed by the full Playwright/Electron suite:
-**120 tests, 120 passed, 0 failed, 0 skipped** (about 2m 10s, including building the `.app`
+**168 tests, 168 passed, 0 failed, 0 skipped** (about 2m 50s, including building the `.app`
 from scratch and launching it from a clean directory).
 
-The suite grew from 85 to 120 with the Study Coach and refinements; see
-[Study Coach and refinements](#study-coach-and-refinements) at the end for what those 35 cover
-and the three bugs they found.
+Three passes so far: the exam engine and content (85 tests), the Study Coach and refinements
+(120), and an adversarial pass over everything built on the history data (168). See
+[QA pass 2](#qa-pass-2--study-coach-predictor-and-refinements) at the end for the most recent
+work and the six defects it found.
 
 Nothing was left un-green. Two things need your own eyes rather than an assertion, and both
 have a page built for them — see [What needs your eyes](#what-needs-your-eyes).
@@ -290,7 +291,9 @@ Regenerate either with `npm run qa:pages` (and `npm run qa:ocr` after re-croppin
 | `tests/packaged.spec.js` | 2 | §8 fresh packaged app |
 | `tests/coach.spec.js` | 15 | Study Coach: countdown, predictor, diagnostics, checklist, plan |
 | `tests/refinements.spec.js` | 20 | SRS, answer changes, guessing, PDF, offline entry, archive |
-| **Total** | **120** | |
+| `tests/qa2-coach.spec.js` | 23 | QA2: harness safety, diagnostics, predictor, countdown |
+| `tests/qa2-behaviour.spec.js` | 25 | QA2: checklist, plan, SRS, stats, data safety, tone |
+| **Total** | **168** | |
 
 Supporting QA tooling: `pipeline/ocr_crops.py` (independent image + OCR analysis),
 `pipeline/reparse_keys.py` (independent key parser), `pipeline/qa_pages.py` (review pages),
@@ -391,3 +394,164 @@ outbound requests and zero blocked ones.
   around five wrong answers are tagged the coach will not claim a dominant error type.
 - **The trajectory fit is linear** over your completed papers. With few papers, or a flat run, it
   reports a small slope rather than pretending to detect a trend.
+
+
+---
+
+## QA pass 2 — Study Coach, predictor and refinements
+
+An adversarial pass over everything computed from history data, on the principle that **wrong
+numbers are worse than no numbers**. Every figure is checked against an expectation hand-computed
+inside the test from the question bank and the official conversion tables — never against the
+app's own output. 48 further tests (`qa2-coach.spec.js`, `qa2-behaviour.spec.js`).
+
+### Harness
+
+- **An injectable clock** in the main process (`debug:setClock`). Countdowns, spaced-repetition
+  due dates and study phases are all tested at frozen instants rather than relative to "now",
+  so none of it is flaky.
+- **Seeded histories** with chosen right/wrong per question, per-question times, confidence marks,
+  answer changes, error tags and back-dated attempt dates.
+- **Scratch-database safety is asserted, not assumed.** A test resolves the live database path
+  through the IPC surface, follows symlinks (macOS `/var` → `/private/var`), and asserts it sits
+  inside the scratch directory and *not* inside the real profile. A test that wiped real attempt
+  history would be catastrophic, so it is checked explicitly.
+
+### Defects found and fixed
+
+**1. The predicted range could reach above any paper actually sat (the inflation failure).**
+On a strongly improving run (4→18 raw), the optimistic end of the range reached **9.0 when the best
+real paper was 8.3**. That is precisely the failure mode that would hurt: it tells you that you are
+already good enough. The range is now capped at your best-ever paper **+0.5**, and the headline
+figure is capped at the same ceiling. Six differently-shaped histories (rising, falling, flat,
+volatile, very weak, very strong) assert the prediction never exceeds demonstrated performance.
+
+**2. The trajectory was fitted on a different scale from the prediction.** Each paper's scaled
+score came from its own year's conversion table, while the prediction used the most recent table as
+the exam-day reference. A perfectly flat history therefore appeared to be moving — the projection
+sat 1.1 grades away from the prediction. Both now use the reference table, and a flat history is
+asserted to project flat (slope < 0.05/week).
+
+**3. A perfectly consistent history produced a zero-width range.** With identical results the
+standard deviation is zero, so the app reported a single point as though it were certain. A minimum
+half-width of 0.3 now applies, and the range is asserted to widen with volatility.
+
+**4. "Missed twice" did not count as repeatedly missed.** The checklist keyed off *lapses*, which
+only increments from the second miss onwards, so a question wrong in two separate attempts needed a
+third miss to surface. It now keys off total misses ≥ 2, which is what "missed more than once"
+means. Asserted by sitting the same paper twice with the same questions wrong.
+
+**5. A brand-new user was told to keep their papers balanced.** On a fresh install the first
+checklist item read "Sit 2016 Paper 1 under timed conditions — you have done 0 Paper 1s and
+0 Paper 2s, keep them balanced", which is nonsense before you have sat anything. First run now
+produces "Sit your first paper", explaining that the coach needs one real paper first.
+
+**6. Four wording defects, found by reading the generated advice rather than asserting on it.**
+"1 Paper 2s" (bad pluralisation); "you have left 0 question(s) blank at timeout" (a vacuous clause
+that undercut the point); "0 held back as clean mocks" (noise); and "worth about 3.06 marks a
+paper" (false precision). All fixed. Twenty generated items are now printed into the test output
+for human review — see [Advice samples](#advice-samples).
+
+### What is verified
+
+**§1 Diagnostics.** Topic accuracy and counts asserted exactly against a per-question expectation
+built from the bank. Topics below five attempted questions are labelled "need N more", excluded
+from the ranking, and sorted below every topic that has enough data — never ranked at 0%.
+
+*The decisive ranking case*: the most frequent topic answered at **50%** versus the rarest answered
+at **40%**, across all 16 core papers. The 50% topic must rank first, because it loses more marks
+per paper. Asserted both on the ordering and on the arithmetic
+(`(1 − accuracy) × questions per paper`, recomputed in the test).
+
+Error-type suggestions follow the timing signals (very fast + wrong → careless; very slow + wrong →
+conceptual; unanswered at timeout → time), and a manual tag always overrides and persists. Pacing
+figures (average time, Q1–10 vs Q11–20 accuracy, overruns) match hand-computed values. Trend
+detection is asserted to use **attempt date order, not insertion order**, by deliberately inserting
+a history newest-first and checking it is still classified as improving; the reverse history is
+classified as regressing.
+
+**§2 Predictor.** Conversion checked for every published year, both papers, at raw 0, 1, 7, 13, 19
+and 20. Years without a table produce a fitted estimate flagged `estimated`. Recency weighting is
+tested in **both** directions — an improving run predicts above the lifetime mean, a declining run
+below it — so a predictor that ignored recency could not pass. Range width, refusal under three
+papers (with the UI asserted to show no digits at all), the Paper 1/Paper 2 split, and the
+gap-to-7.0 arithmetic are all checked against the official tables. The gap breakdown can never
+claim more marks in a topic than that topic actually contains per paper.
+
+**§3 Countdown.** Frozen-clock assertions on exam day, the day before, the day after, across a
+month boundary and across a year boundary. **The BST→GMT change** (clocks go back 25 October 2026)
+is tested either side and on the day itself — 8, 7 and 6 days to 1 November, with no off-by-one.
+The **6pm deadline cutoff** is tested at 17:59 (not passed) and 18:01 (passed) on the deadline day.
+Warnings appear inside 21 days, clear when ticked off, and a custom exam date overrides the
+12 October default in the countdown, the status bar and the plan.
+
+**§4 Checklist.** Each scenario asserts the *specific* item generated: strong P1/weak P2 names an
+unsat Paper 2; one weak topic produces a study item naming the sub-skill; **all-careless errors
+produce habit fixes and no topic study at all** (the key negative test); all-time errors produce
+triage items; a question missed in two attempts becomes the top item; a fresh install says "sit your
+first paper". Phases switch correctly at ten weeks and two weeks, with no new-topic study inside
+the final fortnight. Reserve papers are held back and never suggested. Consuming papers too fast
+raises a pace warning. The list is capped at five, and firing an item records it in history and
+removes it.
+
+**§5 Study plan.** Spans today to exam day, schedules every unseen paper exactly once, never
+schedules a paper already sat, and places the reserve in the final fortnight. The weakest topic
+leads week 1 **and is revisited later** for spacing. Falling six weeks behind with 17 papers unseen
+still produces a bounded plan rather than an impossible backlog.
+
+**§6 Spaced repetition.** Intervals asserted at +3/+7/+21/+45 across a month boundary; a wrong
+review resets from **any** stage including the deepest; retirement needs two consecutive successes;
+flagged and revisit questions sit below genuine wrong answers, and confidently-wrong sits above
+them (`sure_wrong → wrong → revisit → flag`); a 60-day absence produces a 60-item backlog that
+still respects the 20-question cap and orders most-overdue first without breaking the UI.
+
+**§7 Changes and guessing.** A scripted 5 helped / 7 hurt / 2 neutral attempt asserts exactly those
+counts and **net −2**. Below 15 changes the coach stays silent. Above it, the verdict is asserted
+in **both** directions — a mostly-hurting history says "first instinct", a mostly-helping history
+says "changing helps" and produces no advice to stop changing. Hard-coded advice would fail this.
+Unsure-answer interpretation likewise flips between "trust" (90% accuracy) and "eliminate" (20%,
+about random). Auto-submit at timeout still records and reports the blanks.
+
+**§9 Data safety.** Every `DELETE`/`DROP`/`TRUNCATE` in the source is enumerated by a test and
+matched against a list of accounted-for statements, so a new destructive statement cannot be added
+silently. There are no `DROP` or `TRUNCATE` statements at all. The twelve `DELETE` statements are:
+un-marking a revisit, removing a retired queue entry, the two for an explicit attempt delete,
+removing an archive row on restore, and the seven that clear tables before an import replaces
+history. Archiving is asserted to leave the export byte-identical after restore, to remove archived
+runs from the active predictor, and coach data (review queue, archives, checklist history) is
+asserted to survive a `kill -9`.
+
+**§10 Formatting, offline and tone.** The new screens are swept at 1360×900 and 1024×700 for
+overflow, `NaN`/`undefined`/`null`/`Infinity`, unrounded percentages and console errors, plus dark
+mode legibility. The whole coach under load (40 queued reviews, eight screens) makes **zero**
+network requests. Generated advice is asserted to be specific (titles > 12 chars, reasons > 25)
+and free of motivational filler.
+
+### Advice samples
+
+Twenty generated checklist items are printed into the test output for you to read:
+
+```bash
+npx playwright test tests/qa2-behaviour.spec.js -g "advice samples"
+```
+
+A representative selection:
+
+- *Sit your first paper — 2016 Paper 1* — "The coach needs at least one real paper before it can
+  tell you anything useful about your maths. Sit it under timed conditions so the numbers mean
+  something."
+- *Drill a checking routine — your errors are slips, not gaps* — "100% of your tagged wrong answers
+  are careless slips. More topic revision will not fix these."
+- *Study Equations & inequalities — worth about 2.4 marks a paper* — "You are 38% on Equations &
+  inequalities over 16 questions, and it appears about 3.8 times per paper. That is your biggest
+  single leak."
+- *Stop leaving blanks — 9 across your papers* — "There is no negative marking. At random-guess
+  rate those blanks are about 1.5 marks thrown away."
+- *Sit 2016 Paper 2 under timed conditions* — "Paper 2 is your weaker paper (7.6 vs 9 scaled).
+  15 papers still unseen, 3 held back as clean mocks for the final fortnight."
+
+### Language
+
+User-facing text is British English throughout. American spellings that remain are API surfaces
+that cannot change: Electron's `canceled` property on dialog results, PyMuPDF's `csGRAY`, and CSS
+keywords such as `color` and `justify-content: center`.

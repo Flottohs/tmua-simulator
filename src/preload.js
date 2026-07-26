@@ -63,5 +63,8 @@ contextBridge.exposeInMainWorld('api', {
     blockedRequests: call('debug:blockedRequests'),
     srsSimulate: call('debug:srsSimulate'),
     srsSeed: call('debug:srsSeed'),
+    setClock: call('debug:setClock'),
+    now: call('debug:now'),
+    dbPath: call('debug:dbPath'),
   },
 });

@@ -10,6 +10,11 @@ const EWMA_WINDOW = 6;           // papers considered, most recent weighted high
 const EWMA_LAMBDA = 0.72;
 const RESERVE_PAPERS = 3;        // unseen papers held back for the final fortnight
 const CHANGE_SAMPLE_MIN = 15;    // answer-change advice needs this many changes
+// Even a perfectly consistent run carries real uncertainty on the day, so the
+// reported range never collapses to a single point.
+const MIN_RANGE_HALFWIDTH = 0.3;
+// How far above your best-ever paper the optimistic end of the range may reach.
+const BEST_EVER_MARGIN = 0.5;
 
 const DEFAULTS = {
   targetScore: 7.0,
@@ -388,6 +393,8 @@ function stdev(values) {
   return Math.sqrt(values.reduce((s, v) => s + (v - m) ** 2, 0) / (values.length - 1));
 }
 
+function refYear() { return content.conversionYears().slice(-1)[0]; }
+
 function predict(attempts, settings, now = Date.now()) {
   const s = { ...DEFAULTS, ...settings };
   const papers = fullPapers(attempts)
@@ -395,9 +402,14 @@ function predict(attempts, settings, now = Date.now()) {
     .sort((a, b) => a.completed_at - b.completed_at)
     .map(a => {
       const sc = scaledFor(a.year, a.paper, a.score_raw);
+      // Also express every paper on the reference (most recent) table, so the
+      // trajectory fit and the prediction are on the same scale. Mixing a 2016
+      // scaled score with a 2023-referenced prediction made a flat history look
+      // like it was moving.
+      const ref = scaledFor(refYear(), a.paper, a.score_raw);
       return {
         id: a.id, at: a.completed_at, year: a.year, paper: a.paper,
-        raw: a.score_raw, scaled: sc.value, estimated: sc.estimated,
+        raw: a.score_raw, scaled: sc.value, refScaled: ref.value, estimated: sc.estimated,
       };
     });
 
@@ -423,14 +435,22 @@ function predict(attempts, settings, now = Date.now()) {
     if (!list.length) { perPaper[p] = null; continue; }
     const raw = weightedRaw(list);
     const sc = scaledFor(content.conversionYears().slice(-1)[0], p, raw);
-    const spread = stdev(list.slice(-EWMA_WINDOW).map(x => x.scaled).filter(v => v !== null));
+    const observed = stdev(list.slice(-EWMA_WINDOW).map(x => x.refScaled).filter(v => v !== null));
+    const spread = Math.max(observed, MIN_RANGE_HALFWIDTH);
+    // Under-promise: the optimistic end of the range is capped just above the
+    // best paper actually produced. Telling someone they might score higher
+    // than they ever have is the one failure mode that would really cost them.
+    const bestSoFar = Math.max(...list.map(x => x.refScaled ?? 0));
+    const ceiling = Math.min(9, bestSoFar + BEST_EVER_MARGIN);
     perPaper[p] = {
       attempts: list.length,
       predictedRaw: Math.round(raw * 10) / 10,
-      scaled: sc.value,
+      scaled: Math.min(sc.value, ceiling),
       low: Math.max(1, Math.round((sc.value - spread) * 10) / 10),
-      high: Math.min(9, Math.round((sc.value + spread) * 10) / 10),
+      high: Math.min(ceiling, Math.round((sc.value + spread) * 10) / 10),
+      bestSoFar,
       spread: Math.round(spread * 100) / 100,
+      observedSpread: Math.round(observed * 100) / 100,
     };
   }
 
@@ -441,12 +461,16 @@ function predict(attempts, settings, now = Date.now()) {
     const rawTotal = perPaper[1].predictedRaw + perPaper[2].predictedRaw;
     const refYear = content.conversionYears().slice(-1)[0];
     const mid = scaledFor(refYear, 'overall', rawTotal).value;
-    const spread = (perPaper[1].spread + perPaper[2].spread) / 2;
+    const spread = Math.max(MIN_RANGE_HALFWIDTH,
+      (perPaper[1].spread + perPaper[2].spread) / 2);
+    const bestOverall = Math.max(...papers.map(x => x.refScaled ?? 0));
+    const ceiling = Math.min(9, bestOverall + BEST_EVER_MARGIN);
     overall = {
       rawTotal: Math.round(rawTotal * 10) / 10,
-      mostLikely: mid,
+      mostLikely: Math.min(mid, ceiling),
       low: Math.max(1, Math.round((mid - spread) * 10) / 10),
-      high: Math.min(9, Math.round((mid + spread) * 10) / 10),
+      high: Math.min(ceiling, Math.round((mid + spread) * 10) / 10),
+      bestSoFar: bestOverall,
     };
   } else {
     // only one paper type attempted — report it, do not invent the other
@@ -458,11 +482,11 @@ function predict(attempts, settings, now = Date.now()) {
 
   // trajectory: least-squares fit of scaled score against time, projected forward
   let trajectory = null;
-  const pts = papers.filter(p => p.scaled !== null);
+  const pts = papers.filter(p => p.refScaled !== null);
   if (pts.length >= 3) {
     const t0 = pts[0].at;
     const xs = pts.map(p => (p.at - t0) / 86400000);   // days
-    const ys = pts.map(p => p.scaled);
+    const ys = pts.map(p => p.refScaled);
     const n = xs.length;
     const mx = xs.reduce((a, b) => a + b, 0) / n;
     const my = ys.reduce((a, b) => a + b, 0) / n;
@@ -517,7 +541,7 @@ function predict(attempts, settings, now = Date.now()) {
 
 module.exports = {
   DEFAULTS, MIN_TOPIC_SAMPLE, MIN_PAPERS_TO_PREDICT, RESERVE_PAPERS, ERROR_TYPES,
-  CHANGE_SAMPLE_MIN,
+  CHANGE_SAMPLE_MIN, MIN_RANGE_HALFWIDTH, BEST_EVER_MARGIN,
   countdown, daysBetween, scaledFor, rawNeededFor, fittedTable,
   topicDiagnostics, paperSplit, errorMix, pacing, guessing, answerChangeStats,
   suggestErrorType, predict, fullPapers, completed,
