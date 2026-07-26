@@ -12,7 +12,8 @@
     "verify": "node scripts/verify-content.js",
     "qa:ocr": "pipeline/.venv/bin/python pipeline/ocr_crops.py",
     "qa:keys": "pipeline/.venv/bin/python pipeline/reparse_keys.py",
-    "qa:pages": "pipeline/.venv/bin/python pipeline/qa_pages.py"
+    "qa:pages": "pipeline/.venv/bin/python pipeline/qa_pages.py",
+    "icon": "pipeline/.venv/bin/python pipeline/make_icon.py"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.0",
@@ -51,7 +52,8 @@
     "mac": {
       "target": "dir",
       "category": "public.app-category.education",
-      "identity": null
+      "identity": null,
+      "icon": "build/icon.icns"
     }
   },
   "author": "Hayden Fletcher",
