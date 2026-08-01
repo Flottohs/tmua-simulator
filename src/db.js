@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const { DatabaseSync } = require('node:sqlite');
 
-const SCHEMA_VERSION = 3;
+const SCHEMA_VERSION = 4;
 
 let db = null;
 let dbFile = null;
@@ -179,6 +179,14 @@ function migrate() {
     `);
     setVersion(3);
   }
+
+  // v4 — soft deletion, so an explicit delete is undoable for a short window
+  // before the rows actually go.
+  if (readVersion() < 4) {
+    addColumn('attempts', 'deleted_at', 'INTEGER');
+    db.exec(`CREATE INDEX IF NOT EXISTS idx_attempts_deleted ON attempts(deleted_at)`);
+    setVersion(4);
+  }
 }
 
 function readVersion() {
@@ -221,7 +229,8 @@ function getAttempt(id) {
 }
 
 function listAttempts() {
-  return db.prepare(`SELECT * FROM attempts ORDER BY started_at DESC`).all();
+  return db.prepare(
+    `SELECT * FROM attempts WHERE deleted_at IS NULL ORDER BY started_at DESC`).all();
 }
 
 function listAttemptsFull() {
@@ -237,7 +246,8 @@ function listAttemptsFull() {
 }
 
 function inProgressAttempts() {
-  return db.prepare(`SELECT id FROM attempts WHERE status = 'in_progress' ORDER BY started_at DESC`)
+  return db.prepare(`SELECT id FROM attempts WHERE status = 'in_progress'
+                     AND deleted_at IS NULL ORDER BY started_at DESC`)
     .all().map(r => getAttempt(r.id));
 }
 
@@ -488,11 +498,11 @@ function archiveRestore(id) {
 }
 // archiveId: undefined = active only, number = that archive, 'all' = everything
 function attemptsScoped(archiveId) {
-  let sql = `SELECT * FROM attempts`;
+  let sql = `SELECT * FROM attempts WHERE deleted_at IS NULL`;
   const args = [];
-  if (archiveId === 'all') { /* no filter */ }
-  else if (archiveId === undefined || archiveId === null) sql += ` WHERE archive_id IS NULL`;
-  else { sql += ` WHERE archive_id = ?`; args.push(archiveId); }
+  if (archiveId === 'all') { /* every archive, still excluding deleted */ }
+  else if (archiveId === undefined || archiveId === null) sql += ` AND archive_id IS NULL`;
+  else { sql += ` AND archive_id = ?`; args.push(archiveId); }
   sql += ` ORDER BY started_at DESC`;
   const attempts = db.prepare(sql).all(...args);
   const qs = db.prepare(`SELECT * FROM attempt_questions ORDER BY attempt_id, position`).all();
@@ -520,6 +530,181 @@ function backupNow() {
   const dataDir = path.dirname(dbFile);
   backup(dataDir);
   return true;
+}
+
+// ---------- deletion ----------
+//
+// Deletion is explicit and cascading. It happens in two stages: a soft delete
+// (undoable for a short window) followed by a hard delete that actually removes
+// the rows and rebuilds everything derived from them.
+
+function attemptsByIds(ids) {
+  if (!ids.length) return [];
+  const marks = ids.map(() => '?').join(',');
+  const rows = db.prepare(`SELECT * FROM attempts WHERE id IN (${marks})`).all(...ids);
+  for (const a of rows) {
+    a.questions = db.prepare(
+      `SELECT * FROM attempt_questions WHERE attempt_id = ? ORDER BY position`).all(a.id);
+  }
+  return rows;
+}
+
+// Live counts for the confirmation dialog — never a generic warning.
+function deletePreview(ids, answerFor) {
+  const rows = attemptsByIds(ids).filter(a => a.deleted_at === null);
+  const marks = ids.length ? ids.map(() => '?').join(',') : 'NULL';
+  const changes = ids.length
+    ? db.prepare(`SELECT COUNT(*) n FROM answer_changes WHERE attempt_id IN (${marks})`).get(...ids).n
+    : 0;
+
+  let wrong = 0, answers = 0, flags = 0;
+  const questionIds = new Set();
+  for (const a of rows) {
+    for (const q of a.questions) {
+      questionIds.add(q.question_id);
+      if (q.selected) answers++;
+      if (q.correct === 0) wrong++;
+      if (q.flagged) flags++;
+    }
+  }
+
+  // which review-queue entries would disappear entirely: those no surviving
+  // attempt still justifies
+  const surviving = new Set();
+  const others = db.prepare(
+    `SELECT id FROM attempts WHERE deleted_at IS NULL AND status = 'completed'
+     ${ids.length ? `AND id NOT IN (${marks})` : ''}`).all(...(ids.length ? ids : []));
+  for (const o of others) {
+    for (const q of db.prepare(
+      `SELECT question_id, correct, flagged FROM attempt_questions WHERE attempt_id = ?`).all(o.id)) {
+      if (q.correct === 0 || q.flagged) surviving.add(q.question_id);
+    }
+  }
+  const queued = db.prepare(`SELECT question_id FROM review_queue`).all().map(r => r.question_id);
+  const queueGone = queued.filter(qid => questionIds.has(qid) && !surviving.has(qid)).length;
+  const queueKept = queued.filter(qid => questionIds.has(qid) && surviving.has(qid)).length;
+
+  const remaining = db.prepare(
+    `SELECT COUNT(*) n FROM attempts WHERE deleted_at IS NULL AND archive_id IS NULL
+     AND status = 'completed' AND paper IS NOT NULL
+     ${ids.length ? `AND id NOT IN (${marks})` : ''}`).get(...(ids.length ? ids : [])).n;
+
+  return {
+    attempts: rows.map(a => ({
+      id: a.id, year: a.year, paper: a.paper, mode: a.mode, label: a.label,
+      scoreRaw: a.score_raw, total: a.questions.length,
+      completedAt: a.completed_at, mockGroup: a.mock_group, status: a.status,
+      archived: a.archive_id !== null,
+    })),
+    answers, wrong, flags, changes,
+    reviewRemoved: queueGone,
+    reviewRecomputed: queueKept,
+    remainingPapers: remaining,
+  };
+}
+
+function softDelete(ids) {
+  if (!ids.length) return { deleted: 0 };
+  const marks = ids.map(() => '?').join(',');
+  return tx(() => {
+    const res = db.prepare(
+      `UPDATE attempts SET deleted_at = ? WHERE id IN (${marks}) AND deleted_at IS NULL`)
+      .run(Date.now(), ...ids);
+    return { deleted: res.changes };
+  });
+}
+
+function undelete(ids) {
+  if (!ids.length) return { restored: 0 };
+  const marks = ids.map(() => '?').join(',');
+  return tx(() => {
+    const res = db.prepare(
+      `UPDATE attempts SET deleted_at = NULL WHERE id IN (${marks})`).run(...ids);
+    return { restored: res.changes };
+  });
+}
+
+// Physically remove soft-deleted attempts and everything hanging off them.
+// One transaction: either it all goes or nothing does.
+function purge(ids) {
+  if (!ids.length) return { purged: 0 };
+  const marks = ids.map(() => '?').join(',');
+  return tx(() => {
+    const rows = db.prepare(
+      `SELECT id FROM attempts WHERE id IN (${marks}) AND deleted_at IS NOT NULL`).all(...ids);
+    const real = rows.map(r => r.id);
+    if (!real.length) return { purged: 0 };
+    const m2 = real.map(() => '?').join(',');
+    db.prepare(`DELETE FROM answer_changes WHERE attempt_id IN (${m2})`).run(...real);
+    db.prepare(`DELETE FROM attempt_questions WHERE attempt_id IN (${m2})`).run(...real);
+    db.prepare(`DELETE FROM attempts WHERE id IN (${m2})`).run(...real);
+    return { purged: real.length };
+  });
+}
+
+function softDeletedIds(olderThanMs) {
+  const rows = olderThanMs
+    ? db.prepare(`SELECT id FROM attempts WHERE deleted_at IS NOT NULL AND deleted_at <= ?`)
+      .all(olderThanMs)
+    : db.prepare(`SELECT id FROM attempts WHERE deleted_at IS NOT NULL`).all();
+  return rows.map(r => r.id);
+}
+
+function deleteAllHistory() {
+  return tx(() => {
+    const n = db.prepare(`SELECT COUNT(*) n FROM attempts`).get().n;
+    db.exec(`DELETE FROM answer_changes`);
+    db.exec(`DELETE FROM attempt_questions`);
+    db.exec(`DELETE FROM attempts`);
+    db.exec(`DELETE FROM review_queue`);
+    db.exec(`DELETE FROM revisit`);
+    db.exec(`DELETE FROM checklist_done`);
+    db.exec(`DELETE FROM archives`);
+    db.exec(`DELETE FROM plan_overrides`);
+    return { removed: n };
+  });
+}
+
+// Rows that reference an attempt which no longer exists (or is soft-deleted).
+function orphanCheck() {
+  const problems = [];
+  const dangling = db.prepare(`
+    SELECT DISTINCT aq.attempt_id FROM attempt_questions aq
+    LEFT JOIN attempts a ON a.id = aq.attempt_id WHERE a.id IS NULL`).all();
+  for (const d of dangling) problems.push(`attempt_questions references missing attempt ${d.attempt_id}`);
+
+  const changes = db.prepare(`
+    SELECT DISTINCT ac.attempt_id FROM answer_changes ac
+    LEFT JOIN attempts a ON a.id = ac.attempt_id WHERE a.id IS NULL`).all();
+  for (const c of changes) problems.push(`answer_changes references missing attempt ${c.attempt_id}`);
+
+  const badArchive = db.prepare(`
+    SELECT DISTINCT a.archive_id FROM attempts a
+    LEFT JOIN archives ar ON ar.id = a.archive_id
+    WHERE a.archive_id IS NOT NULL AND ar.id IS NULL`).all();
+  for (const b of badArchive) problems.push(`attempt references missing archive ${b.archive_id}`);
+
+  return problems;
+}
+
+function replaceReviewQueue(rows) {
+  return tx(() => {
+    db.exec(`DELETE FROM review_queue`);
+    for (const r of rows) reviewUpsert(r);
+    return { rows: rows.length };
+  });
+}
+
+function setRevisitList(questionIds) {
+  return tx(() => {
+    const keep = new Set(questionIds);
+    for (const r of db.prepare(`SELECT question_id FROM revisit`).all()) {
+      if (!keep.has(r.question_id)) {
+        db.prepare(`DELETE FROM revisit WHERE question_id = ?`).run(r.question_id);
+      }
+    }
+    return { kept: keep.size };
+  });
 }
 
 // ---------- study-plan overrides ----------
@@ -571,4 +756,6 @@ module.exports = {
   archiveList, archiveCreate, archiveRestore, attemptsScoped,
   setErrorType, backupNow, markOffline,
   planOverrides, planOverrideSet, planOverrideClear,
+  deletePreview, softDelete, undelete, purge, softDeletedIds, deleteAllHistory,
+  orphanCheck, replaceReviewQueue, setRevisitList, attemptsByIds,
 };

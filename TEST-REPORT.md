@@ -7,7 +7,7 @@ npm test
 ```
 
 runs the content integrity check followed by the full Playwright/Electron suite:
-**174 tests, 174 passed, 0 failed, 0 skipped** (about 2m 50s, including building the `.app`
+**185 tests, 185 passed, 0 failed, 0 skipped** (about 2m 50s, including building the `.app`
 from scratch and launching it from a clean directory).
 
 Three passes so far: the exam engine and content (85 tests), the Study Coach and refinements
@@ -294,7 +294,8 @@ Regenerate either with `npm run qa:pages` (and `npm run qa:ocr` after re-croppin
 | `tests/qa2-coach.spec.js` | 23 | QA2: harness safety, diagnostics, predictor, countdown |
 | `tests/qa2-behaviour.spec.js` | 25 | QA2: checklist, plan, SRS, stats, data safety, tone |
 | `tests/plan-edit.spec.js` | 6 | Editable study plan: overrides, pinning, reset, persistence |
-| **Total** | **174** | |
+| `tests/delete.spec.js` | 11 | Deletion: cascade, shared questions, undo, atomicity, orphans |
+| **Total** | **185** | |
 
 Supporting QA tooling: `pipeline/ocr_crops.py` (independent image + OCR analysis),
 `pipeline/reparse_keys.py` (independent key parser), `pipeline/qa_pages.py` (review pages),
@@ -577,3 +578,48 @@ exactly once across the whole plan and no paper is ever duplicated; per-week res
 original suggestion and reset-all clears everything; invalid edits are rejected (bad date, unknown
 paper, duplicate paper, unknown topic, wrong type); edits survive a restart and travel through
 export/import; and the UI path itself edits and saves a week.
+
+
+---
+
+## Deleting attempts, with cascade
+
+Explicit deletion is now supported, and cascades so nothing derived from a deleted attempt is left
+behind. Automatic or accidental loss is still prevented; only deletions requested by name happen.
+
+**What can be deleted:** a single attempt from the history list or its own results screen; a full
+mock as one unit or one of its papers alone; several attempts at once via multi-select; and all
+history at once from Settings.
+
+**How it cascades.** Deletion is two-stage. A soft delete hides the attempt immediately and is
+undoable for 30 seconds; the hard delete then removes the rows. Both stages run in a single
+transaction, so a failure rolls back completely.
+
+The interesting part is the review queue. Rather than trying to subtract one attempt's contribution,
+the queue is **rebuilt by replaying the scheduler over the surviving attempts in date order**. That
+makes the shared-question case correct by construction: a question missed in both a deleted and a
+surviving attempt keeps its entry with a schedule derived only from what remains, and disappears
+only when nothing justifies it. Revisit marks survive only if a surviving attempt still flags them.
+Topic accuracy, weakness ranking, pacing, trends, the predictor, the checklist and the plan all
+recompute because they are all derived from the same filtered attempt set.
+
+**Safety.** The confirmation names the attempt and its real counts — computed, not generic:
+"Delete 2019 Paper 1 (12/20, sat 3 Aug)? This also removes 8 wrong answers, 6 review-queue items…",
+plus a warning when the deletion would drop you below the predictor's minimum, and a reminder that
+archiving is the non-destructive alternative. Multi-delete requires typing DELETE; delete-all
+requires DELETE ALL. A backup is taken immediately before every deletion. An orphan check runs after
+every delete and throws if any row references a missing attempt.
+
+**Verified** (`delete.spec.js`, 11 tests): preview counts are real; the cascade removes exactly the
+expected rows with zero orphans, and topic accuracy afterwards matches values computed in the test
+from the survivors alone; the shared-question case survives one delete and disappears on the second;
+dropping below three papers reverts the predictor to "not enough data" with no stale number left in
+the UI; undo restores the attempt and every derived record (export and dashboard both deep-equal the
+pre-delete snapshot); a backup exists before each delete; multi-delete refuses without the typed
+word; deleting never touches archived runs; a `kill -9` mid-delete leaves the database consistent
+and the pending delete recoverable; delete-all clears history while keeping papers and settings; and
+the history screen path works end to end with the undo affordance shown.
+
+**One real gap this work exposed:** importing a history that carried no review queue (a hand-built
+payload, or an export predating the queue) left the queue silently empty rather than reconstructing
+it from the imported attempts. Import now rebuilds it.

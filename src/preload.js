@@ -57,6 +57,13 @@ contextBridge.exposeInMainWorld('api', {
     restore: call('archive:restore'),
   },
   offline: { record: call('offline:record') },
+  del: {
+    preview: call('delete:preview'),
+    attempts: call('delete:attempts'),
+    undo: call('delete:undo'),
+    commit: call('delete:commit'),
+    allHistory: call('delete:allHistory'),
+  },
   pdf: {
     paper: call('pdf:paper'), drill: call('pdf:drill'),
     paperTo: call('pdf:paperTo'), drillTo: call('pdf:drillTo'),
@@ -68,5 +75,7 @@ contextBridge.exposeInMainWorld('api', {
     setClock: call('debug:setClock'),
     now: call('debug:now'),
     dbPath: call('debug:dbPath'),
+    orphanCheck: call('debug:orphanCheck'),
+    pendingDeletes: call('debug:pendingDeletes'),
   },
 });

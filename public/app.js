@@ -670,7 +670,11 @@ async function viewResults() {
       el('h1', {}, 'Results — ', paperName(a)),
       el('div', { class: 'row' },
         el('button', { class: 'btn', onclick: () => go('review', { attemptId: a.id }) }, 'Review every question'),
-        el('button', { class: 'btn ghost', onclick: () => go('home') }, 'Done'))),
+        el('button', { class: 'btn ghost', onclick: () => go('home') }, 'Done'),
+        el('button', {
+          class: 'btn ghost', style: 'color:var(--bad)',
+          onclick: () => runDelete(a.id, { onDone: () => go('history') }),
+        }, 'Delete this attempt'))),
     a.finishReason === 'timeout'
       ? el('div', { class: 'banner', style: 'margin-bottom:14px' },
         `Time expired — the paper was submitted automatically with ${unanswered} question${unanswered === 1 ? '' : 's'} unanswered.`)
@@ -798,19 +802,44 @@ async function viewReview() {
 // ---------------------------------------------------------------- history
 async function viewHistory() {
   const rows = await api.history.list();
+  const selected = new Set();
+  const bar = el('div', { class: 'row', style: 'margin-bottom:12px' });
+  const paintBar = () => {
+    bar.replaceChildren(
+      el('span', { class: 'small muted' },
+        selected.size ? `${selected.size} selected` : 'Select attempts to delete'),
+      selected.size ? el('button', {
+        class: 'btn danger small',
+        onclick: () => runDelete([...selected], { onDone: () => render() }),
+      }, `Delete ${selected.size} selected`) : null,
+      selected.size ? el('button', {
+        class: 'btn ghost small', onclick: () => { selected.clear(); render(); },
+      }, 'Clear selection') : null);
+  };
+  paintBar();
+
   if (!rows.length) {
     return shell('history', el('h1', {}, 'History'),
       el('div', { class: 'card muted' }, 'No attempts yet. Start a paper from Practise.'));
   }
   return shell('history',
     el('h1', {}, 'History'),
+    bar,
     el('div', { class: 'card table-scroll' },
       el('table', {},
         el('thead', {}, el('tr', {},
+          el('th', {}, ''),
           el('th', {}, 'Paper'), el('th', {}, 'Mode'), el('th', {}, 'When'),
           el('th', {}, 'Score'), el('th', {}, 'Scaled'), el('th', {}, 'Time'),
           el('th', {}, 'Status'), el('th', {}, ''))),
         el('tbody', {}, rows.map(a => el('tr', {},
+          el('td', {}, el('input', {
+            type: 'checkbox', class: 'sel-attempt', 'data-id': String(a.id),
+            onchange: e => {
+              if (e.target.checked) selected.add(a.id); else selected.delete(a.id);
+              paintBar();
+            },
+          })),
           el('td', {}, paperName(a)),
           el('td', { class: 'small muted' }, a.mode),
           el('td', { class: 'small' }, fmtDate(a.completedAt || a.startedAt)),
@@ -828,7 +857,20 @@ async function viewHistory() {
                 : null,
             a.status === 'completed'
               ? el('button', { class: 'btn ghost small', onclick: () => go('review', { attemptId: a.id }) }, 'Review')
-              : null))))))));
+              : null,
+            a.mockGroup
+              ? el('button', {
+                class: 'btn ghost small', title: 'Delete both papers of this mock',
+                onclick: async () => {
+                  const all = rows.filter(r => r.mockGroup === a.mockGroup).map(r => r.id);
+                  runDelete(all, { onDone: () => render() });
+                },
+              }, 'Delete mock')
+              : null,
+            el('button', {
+              class: 'btn ghost small',
+              onclick: () => runDelete(a.id, { onDone: () => render() }),
+            }, 'Delete')))))))));
 }
 
 // ---------------------------------------------------------------- dashboard
@@ -1182,6 +1224,9 @@ async function viewSettings() {
               toast(`Archived ${r.moved} attempt(s)`); render();
             }
           }, 'Archive current run')),
+        el('p', { class: 'tiny muted', style: 'margin-top:12px' },
+          'Archiving is the non-destructive option. To remove data permanently, use '
+          + 'Delete all history below — that cannot be undone.'),
         archives.length
           ? el('table', { style: 'margin-top:12px' }, el('tbody', {}, archives.map(a => el('tr', {},
             el('td', {}, a.name),
@@ -1220,7 +1265,29 @@ async function viewSettings() {
         el('p', { class: 'tiny muted', style: 'margin-top:14px' },
           'This app makes no network requests. All questions, solutions and score conversions are bundled inside it.'),
         el('button', { class: 'btn ghost small', style: 'margin-top:10px',
-          onclick: () => go('about') }, 'About & format note'))));
+          onclick: () => go('about') }, 'About & format note')),
+
+      el('div', { class: 'card', style: 'border-color:var(--bad)' },
+        el('h2', {}, 'Delete all history'),
+        el('p', { class: 'small muted' },
+          'Removes every attempt, answer, review-queue item, archive and study-plan edit. '
+          + 'Your papers, question images and settings stay. A backup is taken first, but '
+          + 'this is not undoable from inside the app.'),
+        el('p', { class: 'small' },
+          el('strong', {}, 'If you only want a clean slate, archive instead — it keeps everything and is reversible.')),
+        el('button', {
+          class: 'btn danger', onclick: async () => {
+            const word = prompt('This permanently deletes all your history.\n\nType DELETE ALL to confirm.');
+            if (String(word || '').trim().toUpperCase() !== 'DELETE ALL') {
+              return toast('Not deleted — confirmation did not match');
+            }
+            try {
+              const r = await api.del.allHistory({ confirm: word });
+              toast(`Deleted ${r.removed} attempt(s)`);
+              go('home');
+            } catch (e) { toast(e.message); }
+          }
+        }, 'Delete all history'))));
 }
 
 // ---------------------------------------------------------------- router
@@ -1855,4 +1922,96 @@ function errorTagger(attemptId, q) {
   return el('div', { style: 'margin-top:10px' },
     el('div', { class: 'tiny muted' }, 'Why did you lose this one?'),
     row);
+}
+
+
+// ================================================================ deletion
+
+function describeAttempt(a) {
+  const y = a.year === 'specimen' ? 'Specimen' : a.year;
+  const name = a.mode === 'drill' ? (a.label || 'Custom drill') : `${y} Paper ${a.paper}`;
+  const score = a.scoreRaw === null || a.scoreRaw === undefined
+    ? a.status : `${a.scoreRaw}/${a.total}`;
+  return `${name} (${score}${a.completedAt ? `, sat ${new Date(a.completedAt).toLocaleDateString()}` : ''})`;
+}
+
+// Confirmation text built from real counts, never a generic warning.
+function deleteMessage(pv) {
+  const lines = [];
+  if (pv.attempts.length === 1) {
+    lines.push(`Delete ${describeAttempt(pv.attempts[0])}?`);
+  } else {
+    lines.push(`Delete ${pv.attempts.length} attempts?`);
+    for (const a of pv.attempts.slice(0, 8)) lines.push(`  · ${describeAttempt(a)}`);
+    if (pv.attempts.length > 8) lines.push(`  · …and ${pv.attempts.length - 8} more`);
+  }
+  lines.push('');
+  const bits = [];
+  if (pv.wrong) bits.push(`${pv.wrong} wrong answer${pv.wrong === 1 ? '' : 's'}`);
+  if (pv.reviewRemoved) bits.push(`${pv.reviewRemoved} review-queue item${pv.reviewRemoved === 1 ? '' : 's'}`);
+  if (pv.changes) bits.push(`${pv.changes} answer change${pv.changes === 1 ? '' : 's'}`);
+  lines.push(bits.length
+    ? `This also removes ${bits.join(', ')}, and will recompute your predicted score.`
+    : 'This will recompute your predicted score.');
+  if (pv.reviewRecomputed) {
+    lines.push(`${pv.reviewRecomputed} review item(s) are also justified by other attempts and will be kept, rescheduled from what remains.`);
+  }
+  if (pv.remainingPapers < 3) {
+    lines.push(`You would be left with ${pv.remainingPapers} completed paper(s), below the ${3} needed to predict a score.`);
+  }
+  lines.push('');
+  lines.push('If you only want a clean slate, Archive in Settings keeps everything and is reversible.');
+  return lines.join('\n');
+}
+
+// Soft-delete, show an undo toast, then commit when the window expires.
+async function runDelete(ids, { onDone } = {}) {
+  const list = Array.isArray(ids) ? ids : [ids];
+  let pv;
+  try { pv = await api.del.preview(list); } catch (e) { return toast(e.message); }
+  if (!pv.attempts.length) return toast('Nothing to delete');
+
+  if (!confirm(deleteMessage(pv))) return;
+
+  let confirmWord = null;
+  if (list.length > 1) {
+    confirmWord = prompt(
+      `This deletes ${list.length} attempts. Type DELETE to confirm.`);
+    if (String(confirmWord || '').trim().toUpperCase() !== 'DELETE') {
+      return toast('Not deleted — confirmation did not match');
+    }
+  }
+
+  try {
+    const res = await api.del.attempts({ ids: list, confirm: confirmWord });
+    showUndo(res, onDone);
+    if (onDone) onDone();
+  } catch (e) { toast(e.message); }
+}
+
+let undoTimer = null;
+function showUndo(res, onDone) {
+  clearTimeout(undoTimer);
+  const bar = $('#toast');
+  bar.textContent = '';
+  const seconds = Math.round((res.undoWindowMs || 30000) / 1000);
+  const label = el('span', {},
+    `Deleted ${res.softDeleted.length} attempt${res.softDeleted.length === 1 ? '' : 's'}. `);
+  const undoBtn = el('button', {
+    class: 'btn small', style: 'margin-left:10px',
+    onclick: async () => {
+      clearTimeout(undoTimer);
+      await api.del.undo(res.softDeleted);
+      bar.hidden = true;
+      toast('Restored');
+      if (onDone) onDone();
+    },
+  }, `Undo (${seconds}s)`);
+  bar.replaceChildren(label, undoBtn);
+  bar.hidden = false;
+
+  undoTimer = setTimeout(async () => {
+    try { await api.del.commit(res.softDeleted); } catch (e) { console.error(e); }
+    bar.hidden = true;
+  }, res.undoWindowMs || 30000);
 }

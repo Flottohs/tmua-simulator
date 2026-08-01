@@ -26,6 +26,8 @@ const DEFAULT_SETTINGS = {
 };
 
 let mainWindow = null;
+const UNDO_WINDOW_MS = 30000;   // how long a delete stays undoable
+let rebuildDerivedRef = () => {};
 
 // Injectable clock. Production always reads the real time; the verification
 // suite freezes it so date-dependent logic (countdowns, spaced repetition,
@@ -386,7 +388,14 @@ function registerIpc() {
   // Dialog-free forms: used by the verification suite, and by the dialog
   // handlers below so both paths share one implementation.
   handle('data:exportPayload', () => db.exportAll());
-  handle('data:importPayload', (payload) => db.importAll(payload));
+  handle('data:importPayload', (payload) => {
+    const res = db.importAll(payload);
+    // An import that carries no review queue (a hand-built payload, or an
+    // export from before the queue existed) must still end up with one that
+    // matches the imported history, rather than silently empty.
+    if (!payload.reviewQueue || !payload.reviewQueue.length) rebuildDerivedRef();
+    return res;
+  });
 
   handle('data:export', async () => {
     const payload = db.exportAll();
@@ -520,6 +529,104 @@ function registerIpc() {
     const picked = srs.session(db.reviewAll(), nowMs(), cap || srs.SESSION_CAP);
     return { ids: picked.map(p => p.questionId), items: picked };
   });
+
+  rebuildDerivedRef = rebuildDerived;
+
+  // ---------- deletion ----------
+  //
+  // Rebuild the review queue from the surviving attempts only. Replaying the
+  // scheduler over the remaining history in date order is what makes the
+  // shared-question case correct: a question missed in a deleted attempt AND a
+  // surviving one keeps its entry, with a schedule derived from what is left.
+  function rebuildDerived() {
+    const surviving = db.attemptsScoped('all')
+      .filter(a => a.status === 'completed')
+      .sort((a, b) => (a.completed_at || 0) - (b.completed_at || 0));
+
+    const rows = new Map();
+    for (const a of surviving) {
+      for (const q of a.questions) {
+        if (!content.get(q.question_id)) continue;
+        const correct = q.correct === null ? null : Boolean(q.correct);
+        let source = null;
+        if (correct === false) source = q.confidence === 'sure' ? 'sure_wrong' : 'wrong';
+        else if (q.flagged) source = 'flag';
+        const existing = rows.get(q.question_id) || null;
+        if (!existing && correct !== false && !q.flagged) continue;
+        rows.set(q.question_id, srs.applyResult(existing, {
+          questionId: q.question_id,
+          source: source || (existing ? existing.source : 'wrong'),
+          correct,
+          now: a.completed_at || Date.now(),
+        }));
+      }
+    }
+    db.replaceReviewQueue([...rows.values()]);
+
+    // a revisit mark only survives if a surviving attempt still flags it
+    const stillFlagged = new Set();
+    for (const a of surviving) {
+      for (const q of a.questions) if (q.flagged) stillFlagged.add(q.question_id);
+    }
+    const keep = db.revisitList()
+      .map(r => r.question_id)
+      .filter(qid => stillFlagged.has(qid) || rows.has(qid));
+    db.setRevisitList(keep);
+
+    const orphans = db.orphanCheck();
+    if (orphans.length) {
+      console.error('[integrity] orphans after delete:', orphans);
+      throw new Error(`Integrity check failed: ${orphans[0]}`);
+    }
+    return orphans;
+  }
+
+  handle('delete:preview', (ids) => db.deletePreview(Array.isArray(ids) ? ids : [ids]));
+
+  handle('delete:attempts', ({ ids, confirm }) => {
+    const list = (Array.isArray(ids) ? ids : [ids]).map(Number).filter(Number.isFinite);
+    if (!list.length) throw new Error('Nothing selected to delete');
+    if (list.length > 1 && String(confirm || '').trim().toUpperCase() !== 'DELETE') {
+      throw new Error('Deleting several attempts requires typing DELETE to confirm');
+    }
+    db.backupNow();                       // a backup before every deletion, always
+    const preview = db.deletePreview(list);
+    db.softDelete(list);
+    rebuildDerived();
+    return { ...preview, softDeleted: list, undoWindowMs: UNDO_WINDOW_MS };
+  });
+
+  handle('delete:undo', (ids) => {
+    const list = (Array.isArray(ids) ? ids : [ids]).map(Number).filter(Number.isFinite);
+    const res = db.undelete(list);
+    rebuildDerived();
+    return res;
+  });
+
+  // Called when the undo window expires, and on startup for anything left over
+  // from a previous session.
+  handle('delete:commit', (ids) => {
+    const list = ids && ids.length
+      ? ids.map(Number).filter(Number.isFinite)
+      : db.softDeletedIds();
+    const res = db.purge(list);
+    rebuildDerived();
+    return res;
+  });
+
+  handle('delete:allHistory', ({ confirm }) => {
+    if (String(confirm || '').trim().toUpperCase() !== 'DELETE ALL') {
+      throw new Error('Type DELETE ALL to confirm');
+    }
+    db.backupNow();
+    const res = db.deleteAllHistory();
+    const orphans = db.orphanCheck();
+    if (orphans.length) throw new Error(`Integrity check failed: ${orphans[0]}`);
+    return res;
+  });
+
+  handle('debug:orphanCheck', () => db.orphanCheck());
+  handle('debug:pendingDeletes', () => db.softDeletedIds());
 
   // ---------- archives ----------
 
