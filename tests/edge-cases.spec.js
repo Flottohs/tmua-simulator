@@ -155,24 +155,26 @@ test.describe('edge cases and abuse', () => {
     await win.waitForTimeout(200);
 
     let list = await win.evaluate(() => window.api.revisit.list());
-    expect(list.length).toBe(1);
-    const qid = list[0].questionId;
+    // wrong answers land here automatically too, so target the first question
+    const qid = '2017-P1-Q01';
+    expect(list.map(r => r.questionId)).toContain(qid);
+    const startCount = list.length;
 
     // it appears on the revisit screen
     await win.evaluate(() => go('revisit'));
     await win.waitForSelector('h1:has-text("Revisit list")');
-    expect(await win.locator('tbody tr').count()).toBe(1);
+    expect(await win.locator('tbody tr').count()).toBe(startCount);
 
-    // one-click redo builds a drill of exactly that question
+    // one-click redo builds a drill of the whole revisit list
     await win.locator('button:has-text("Redo all as a drill")').click();
     await win.waitForSelector('.exam-bar');
     const drill = await win.evaluate(() => ({
       n: State.exam.a.questions.length,
-      id: State.exam.a.questions[0].question.id,
+      ids: State.exam.a.questions.map(q => q.question.id),
       mode: State.exam.a.mode,
     }));
-    expect(drill.n).toBe(1);
-    expect(drill.id).toBe(qid);
+    expect(drill.n).toBe(startCount);
+    expect(drill.ids).toContain(qid);
     expect(drill.mode).toBe('drill');
 
     // unmark removes it
@@ -182,10 +184,10 @@ test.describe('edge cases and abuse', () => {
       await go('revisit');
     });
     await win.waitForSelector('h1:has-text("Revisit list")');
-    await win.locator('button:has-text("Remove")').click();
-    await win.waitForTimeout(250);
+    await win.locator('tbody tr:first-child button:has-text("Remove")').click();
+    await win.waitForTimeout(300);
     list = await win.evaluate(() => window.api.revisit.list());
-    expect(list.length).toBe(0);
+    expect(list.length).toBe(startCount - 1);
   });
 
   test('invalid timer settings are rejected, not silently clamped', async () => {

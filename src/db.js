@@ -204,14 +204,14 @@ function addColumn(table, column, decl) {
 
 // ---------- attempts ----------
 
-function createAttempt({ mode, year, paper, mockGroup, allowedSec, questionIds, settings, label }) {
+function createAttempt({ mode, year, paper, mockGroup, allowedSec, questionIds, settings, label, source }) {
   const now = Date.now();
   return tx(() => {
     const info = db.prepare(`
-      INSERT INTO attempts (mode, year, paper, mock_group, status, started_at, allowed_sec, settings_json, label)
-      VALUES (?, ?, ?, ?, 'in_progress', ?, ?, ?, ?)
+      INSERT INTO attempts (mode, year, paper, mock_group, status, started_at, allowed_sec, settings_json, label, source)
+      VALUES (?, ?, ?, ?, 'in_progress', ?, ?, ?, ?, ?)
     `).run(mode, year ?? null, paper ?? null, mockGroup ?? null, now, allowedSec ?? null,
-           JSON.stringify(settings || {}), label ?? null);
+           JSON.stringify(settings || {}), label ?? null, source || 'paper');
     const attemptId = Number(info.lastInsertRowid);
     const ins = db.prepare(
       `INSERT INTO attempt_questions (attempt_id, position, question_id) VALUES (?, ?, ?)`);

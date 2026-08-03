@@ -82,6 +82,19 @@ function allowedSeconds(settings) {
   return allowedMinutes(settings) * 60;
 }
 
+// Where an attempt came from, so history can always tell exam conditions from
+// a relaxed drill.
+const SOURCE_LABELS = {
+  paper: 'Timed paper', mock: 'Full mock', untimed: 'Untimed practice',
+  drill: 'Drill', review: 'Review session', offline: 'Sat on paper',
+};
+function sourceOf({ mode, label }) {
+  if (mode === 'mock') return 'mock';
+  if (mode === 'untimed') return 'untimed';
+  if (mode === 'drill') return /^Review /.test(label || '') ? 'review' : 'drill';
+  return 'paper';
+}
+
 function currentSettings() {
   return { ...DEFAULT_SETTINGS, ...db.getSettings() };
 }
@@ -159,6 +172,9 @@ function updateReviewQueue(attempt, now = Date.now()) {
       now,
     });
     db.reviewUpsert(row);
+    // A miss is a miss whatever produced it — a drill answer is not a lesser
+    // event than a paper answer, so it lands on the revisit list too.
+    if (correct === false || q.flagged) db.revisitAdd(q.question_id, null);
   }
   // anything on the manual revisit list is tracked too, at low priority
   for (const r of db.revisitList()) {
@@ -248,6 +264,7 @@ function registerIpc() {
     const seconds = Number.isFinite(allowedSec) ? allowedSec : allowedSeconds(settings);
     const attempt = db.createAttempt({
       mode, year, paper, mockGroup, label,
+      source: sourceOf({ mode, label }),
       allowedSec: timed ? seconds : null,
       questionIds: ids,
       settings: { baseMinutes: settings.baseMinutes, extraTimePercent: settings.extraTimePercent },
@@ -311,6 +328,11 @@ function registerIpc() {
       allowedSec: a.allowed_sec, elapsedSec: a.elapsed_sec,
       scoreRaw: a.score_raw, scoreScaled: a.score_scaled,
       finishReason: a.finish_reason, total: a.questions.length,
+      source: a.source === 'offline' ? 'offline' : sourceOf({ mode: a.mode, label: a.label }),
+      sourceLabel: SOURCE_LABELS[a.source === 'offline' ? 'offline'
+        : sourceOf({ mode: a.mode, label: a.label })],
+      countsTowardPrediction: a.status === 'completed' && a.paper !== null
+        && a.questions.length === 20 && a.mode !== 'drill',
     }));
   });
 
@@ -563,15 +585,20 @@ function registerIpc() {
     }
     db.replaceReviewQueue([...rows.values()]);
 
-    // a revisit mark only survives if a surviving attempt still flags it
-    const stillFlagged = new Set();
+    // a revisit mark survives only if a surviving attempt still justifies it
+    const stillJustified = new Set();
     for (const a of surviving) {
-      for (const q of a.questions) if (q.flagged) stillFlagged.add(q.question_id);
+      for (const q of a.questions) {
+        if (q.flagged || q.correct === 0) stillJustified.add(q.question_id);
+      }
     }
     const keep = db.revisitList()
       .map(r => r.question_id)
-      .filter(qid => stillFlagged.has(qid) || rows.has(qid));
+      .filter(qid => stillJustified.has(qid));
     db.setRevisitList(keep);
+    for (const qid of stillJustified) {
+      if (!db.revisitList().some(r => r.question_id === qid)) db.revisitAdd(qid, null);
+    }
 
     const orphans = db.orphanCheck();
     if (orphans.length) {

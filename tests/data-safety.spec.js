@@ -91,7 +91,9 @@ test.describe('data safety', () => {
     const exported = await win.evaluate(() => window.api.data.exportPayload());
     expect(exported.attempts.length).toBe(1);
     expect(exported.attempts[0].questions.length).toBe(20);
-    expect(exported.revisit.length).toBe(1);
+    // wrong answers auto-populate the revisit list, so assert the manually
+    // marked question is present rather than a fixed total
+    expect(exported.revisit.map(r => r.question_id)).toContain('2020-P2-Q05');
 
     const file = path.join(userDir, 'export.json');
     fs.writeFileSync(file, JSON.stringify(exported));
@@ -114,7 +116,8 @@ test.describe('data safety', () => {
     expect(restored.questions[0].notepad).toBe('my working');
     expect(restored.questions[3].flagged).toBe(true);
     expect(restored.questions[1].confidence).toBe('sure');
-    expect((await win.evaluate(() => window.api.revisit.list())).length).toBe(1);
+    expect((await win.evaluate(() => window.api.revisit.list())).map(r => r.questionId))
+      .toContain('2020-P2-Q05');
 
     await app.close();
   });

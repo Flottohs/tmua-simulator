@@ -153,8 +153,8 @@ test.describe('exam engine', () => {
     // revisit marking persists
     await first.locator('button:has-text("Revisit later")').click();
     const list = await win.evaluate(() => window.api.revisit.list());
-    expect(list.length).toBe(1);
-    expect(list[0].questionId).toContain('2019-P2');
+    // wrong answers populate this list automatically as well
+    expect(list.some(r => r.questionId.startsWith('2019-P2'))).toBe(true);
     void attemptId;
   });
 

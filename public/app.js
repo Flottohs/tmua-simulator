@@ -690,7 +690,14 @@ async function viewResults() {
       el('div', { class: 'stat' },
         el('div', { class: 'label' }, 'Percentage'),
         el('div', { class: 'value' }, pct(correct / total))),
-      el('div', { class: 'stat' },
+      a.mode === 'drill'
+        ? el('div', { class: 'stat' },
+          el('div', { class: 'label' }, 'Estimated TMUA score'),
+          el('div', { class: 'value' }, '—'),
+          el('div', { class: 'small muted' },
+            'drills do not count toward your prediction, but every wrong answer here still '
+            + 'enters your review queue and topic stats'))
+        : el('div', { class: 'stat' },
         el('div', { class: 'label' }, 'Estimated TMUA score'),
         el('div', { class: 'value' }, a.scoreScaled !== null && a.scoreScaled !== undefined ? a.scoreScaled.toFixed(1) : '—'),
         el('div', { class: 'small muted' },
@@ -816,7 +823,17 @@ async function viewHistory() {
         class: 'btn ghost small', onclick: () => { selected.clear(); render(); },
       }, 'Clear selection') : null);
   };
+  const srcFilter = el('select', { id: 'filter-source', onchange: () => render() },
+    el('option', { value: 'all' }, 'All sources'),
+    ...[...new Set(rows.map(r => r.source))].map(sv =>
+      el('option', { value: sv, ...(State.params.source === sv ? { selected: true } : {}) },
+        rows.find(r => r.source === sv).sourceLabel)));
+  srcFilter.value = State.params.source || 'all';
+  srcFilter.onchange = (e) => go('history', { source: e.target.value });
   paintBar();
+
+  const shown = (State.params.source && State.params.source !== 'all')
+    ? rows.filter(r => r.source === State.params.source) : rows;
 
   if (!rows.length) {
     return shell('history', el('h1', {}, 'History'),
@@ -824,15 +841,19 @@ async function viewHistory() {
   }
   return shell('history',
     el('h1', {}, 'History'),
+    el('div', { class: 'row', style: 'margin-bottom:10px' },
+      srcFilter,
+      el('span', { class: 'small muted' },
+        `${shown.length} of ${rows.length} shown · only timed papers and mocks count toward your predicted score`)),
     bar,
     el('div', { class: 'card table-scroll' },
       el('table', {},
         el('thead', {}, el('tr', {},
           el('th', {}, ''),
-          el('th', {}, 'Paper'), el('th', {}, 'Mode'), el('th', {}, 'When'),
+          el('th', {}, 'Paper'), el('th', {}, 'Source'), el('th', {}, 'When'),
           el('th', {}, 'Score'), el('th', {}, 'Scaled'), el('th', {}, 'Time'),
           el('th', {}, 'Status'), el('th', {}, ''))),
-        el('tbody', {}, rows.map(a => el('tr', {},
+        el('tbody', {}, shown.map(a => el('tr', {},
           el('td', {}, el('input', {
             type: 'checkbox', class: 'sel-attempt', 'data-id': String(a.id),
             onchange: e => {
@@ -841,7 +862,11 @@ async function viewHistory() {
             },
           })),
           el('td', {}, paperName(a)),
-          el('td', { class: 'small muted' }, a.mode),
+          el('td', { class: 'small' },
+            el('span', { class: 'pill ' + (a.countsTowardPrediction ? 'good' : '') },
+              a.sourceLabel),
+            a.countsTowardPrediction ? null
+              : el('div', { class: 'tiny muted', style: 'margin-top:2px' }, 'not in prediction')),
           el('td', { class: 'small' }, fmtDate(a.completedAt || a.startedAt)),
           el('td', { class: 'mono' }, a.scoreRaw === null ? '—' : `${a.scoreRaw}/${a.total}`),
           el('td', { class: 'mono' }, a.scoreScaled === null || a.scoreScaled === undefined ? '—' : a.scoreScaled.toFixed(1)),
@@ -1484,7 +1509,7 @@ async function viewCoach() {
             el('div', { class: 'small muted' },
               pred.perPaper[2] ? `${pred.perPaper[2].predictedRaw} raw · ${pred.perPaper[2].attempts} attempts` : 'none sat'))),
         el('p', { class: 'small', style: 'margin-top:12px' },
-          `Based on your last ${Math.min(pred.papers, 6)} papers, weighted towards recent results. `,
+          `Based on your last ${Math.min(pred.papers, 6)} full timed papers, weighted towards recent results. `,
           `Confidence: ${pred.confidence} (${pred.papers} papers).`,
           pred.anyEstimated
             ? ' Some papers have no official conversion table, so their scaled values are estimated from the published years.'
@@ -1641,6 +1666,11 @@ async function viewCoach() {
     el('h1', {}, 'Coach'),
     checklistCard,
     el('div', { style: 'margin-top:18px' }, predictionCard),
+    el('div', { class: 'banner info', style: 'margin-top:12px' },
+      'Drills and review sessions deliberately do not move your predicted score — they are '
+      + 'self-selected (often your weakest questions, often untimed or repeated), so counting them '
+      + 'would distort the prediction in both directions. They do feed everything else: the '
+      + 'wrong-answer log, the review queue, topic accuracy and this checklist.'),
     el('h2', { style: 'margin:22px 0 10px' }, 'Where the marks go'),
     el('p', { class: 'small muted' },
       `Ranked by expected marks lost per paper — accuracy × how often the topic actually appears. `

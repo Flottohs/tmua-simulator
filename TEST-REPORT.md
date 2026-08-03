@@ -7,7 +7,7 @@ npm test
 ```
 
 runs the content integrity check followed by the full Playwright/Electron suite:
-**185 tests, 185 passed, 0 failed, 0 skipped** (about 2m 50s, including building the `.app`
+**190 tests, 190 passed, 0 failed, 0 skipped** (about 2m 50s, including building the `.app`
 from scratch and launching it from a clean directory).
 
 Three passes so far: the exam engine and content (85 tests), the Study Coach and refinements
@@ -295,7 +295,8 @@ Regenerate either with `npm run qa:pages` (and `npm run qa:ocr` after re-croppin
 | `tests/qa2-behaviour.spec.js` | 25 | QA2: checklist, plan, SRS, stats, data safety, tone |
 | `tests/plan-edit.spec.js` | 6 | Editable study plan: overrides, pinning, reset, persistence |
 | `tests/delete.spec.js` | 11 | Deletion: cascade, shared questions, undo, atomicity, orphans |
-| **Total** | **185** | |
+| `tests/drill-feedback.spec.js` | 5 | Drills feeding the review system; predictor exclusion; source tags |
+| **Total** | **190** | |
 
 Supporting QA tooling: `pipeline/ocr_crops.py` (independent image + OCR analysis),
 `pipeline/reparse_keys.py` (independent key parser), `pipeline/qa_pages.py` (review pages),
@@ -623,3 +624,42 @@ the history screen path works end to end with the undo affordance shown.
 **One real gap this work exposed:** importing a history that carried no review queue (a hand-built
 payload, or an export predating the queue) left the queue silently empty rather than reconstructing
 it from the imported attempts. Import now rebuilds it.
+
+
+---
+
+## Drill results feeding the review system
+
+A drill answer is not a lesser event than a paper answer. Before starting, I probed what already
+happened rather than assuming: drills **already** fed the wrong-answer log, the spaced-repetition
+queue and topic accuracy, and were **already** excluded from the grade predictor. Two things were
+genuinely missing, and those are what changed.
+
+**Fixed: wrong answers never reached the revisit list.** From any source — paper, mock, drill or
+review session — a wrong answer (and a flagged question) now lands on the revisit list as well as
+the queue. The delete cascade was updated to match: a revisit mark survives only while some
+surviving attempt still justifies it, by a miss or a flag.
+
+**Fixed: attempt source was not visible.** Every attempt now records where it came from —
+`paper`, `mock`, `untimed`, `drill`, `review` or `offline` — and History shows it as a column with
+a filter, so you can always tell whether something was right under exam conditions or in a relaxed
+drill. Rows that do not feed the prediction are labelled "not in prediction".
+
+**The deliberate exception is kept and now explained in the UI.** Drills and review sessions do not
+move the predicted score, because they are self-selected — often your weakest questions, often
+untimed, often repeats — so counting them would distort the prediction in both directions. The Coach
+screen states this in a banner, and a drill's results screen shows "—" for the estimated score with
+the reason beside it, so a good drill that did not move the number is never a mystery.
+
+**Verified** (`drill-feedback.spec.js`, 5 tests): a wrong drill answer reaches the wrong-answer log,
+the revisit list and the review queue with a +3 day schedule and the right priority source, and a
+sure-but-wrong drill answer outranks ordinary wrong answers in a session; a wrong drill answer on an
+already-queued question resets its interval to the start and records a lapse, while a right one
+advances it (+3 → +7 → reset to +3 across three drills); a drill of eight wrong answers moves topic
+accuracy and the wrong-answer log while leaving the prediction **byte-identical**; all six source
+values are stored, labelled and filterable, with only papers, mocks, untimed sittings and offline
+entries flagged as counting toward the prediction; and the Coach screen carries the explanation.
+
+Five existing tests asserted fixed revisit-list totals and failed once wrong answers began
+populating it automatically. They now assert on the specific question rather than a magic number,
+which is what they should have done originally.
